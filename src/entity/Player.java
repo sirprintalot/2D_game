@@ -10,12 +10,10 @@ import java.util.*;
 
 public class Player extends Entity {
 
-    GamePanel gp;
     KeyHandler keyH;
 
     public final int screenX;
     public final int screenY;
-
 
     //standing sprite
     public int standingCounter = 0;
@@ -27,9 +25,11 @@ public class Player extends Entity {
 //    public int hasKey = 0;
 //    public int chestCounter = 0;
 
-
     public Player(GamePanel gp, KeyHandler keyH) {
-        this.gp = gp;
+
+        //pass the gamePanel from entity
+        super(gp);
+        // key handler
         this.keyH = keyH;
 
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
@@ -60,15 +60,14 @@ public class Player extends Entity {
 
     public void getPlayerImage() {
         //enhanced method
-
-        up1 = setup("boy_up_1");
-        up2 = setup("boy_up_2");
-        down1 = setup("boy_down_1");
-        down2 = setup("boy_down_2");
-        left1 = setup("boy_left_1");
-        left2 = setup("boy_left_2");
-        right1 = setup("boy_right_1");
-        right2 = setup("boy_right_2");
+        up1 = setup("/player/boy_up_1");
+        up2 = setup("/player/boy_up_2");
+        down1 = setup("/player/boy_down_1");
+        down2 = setup("/player/boy_down_2");
+        left1 = setup("/player/boy_left_1");
+        left2 = setup("/player/boy_left_2");
+        right1 = setup("/player/boy_right_1");
+        right2 = setup("/player/boy_right_2");
 
 
         //original method
@@ -85,24 +84,6 @@ public class Player extends Entity {
 //            throw new RuntimeException(e);
 //        }
     }
-
-
-//    enhanced method
-    public BufferedImage setup(String imageName) {
-        UtilityTool utilityTool = new UtilityTool();
-        BufferedImage image = null;
-        try {
-
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/" + imageName + ".png")));
-            image = utilityTool.scaledImage(image, gp.tileSize, gp.tileSize);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return image;
-    }
-
 
     public void update() {
         if (keyH.upPressed || keyH.downPressed
@@ -163,40 +144,38 @@ public class Player extends Entity {
                 spriteCounter = 0;
             }
         }
-
-
     }
 
     //pick object
     public void pickUpObject(int i) {
         if (i != 999) {
-            String objectName = gp.obj[i].name;
-            switch (objectName) {
-                case "key":
-                    gp.playSoundEffect(1);
-                    gp.obj[i] = null;
-//                    System.out.println(hasKey + " keys found!");
-                    gp.ui.showMessage("you got a Key!!");
-                    break;
-
-                case "door":
-
-                    gp.playSoundEffect(5);
-                    gp.ui.showMessage("Door locked. You need a key");
-
-//                    if (hasKey > 0) {
-//                        gp.obj[i] = null;
-//                        gp.playSoundEffect(3);
-//                        hasKey--;
-//                        gp.ui.showMessage("Door opened " + hasKey + " keys left..");
-//                    }
-//                    else {
-                    break;
-
-                case "chest":
-
-                    gp.obj[i] = null;
-                    gp.playSoundEffect(2);
+//            String objectName = gp.obj[i].name;
+//            switch (objectName) {
+//                case "key":
+//                    gp.playSoundEffect(1);
+//                    gp.obj[i] = null;
+////                    System.out.println(hasKey + " keys found!");
+//                    gp.ui.showMessage("you got a Key!!");
+//                    break;
+//
+//                case "door":
+//
+//                    gp.playSoundEffect(5);
+//                    gp.ui.showMessage("Door locked. You need a key");
+//
+////                    if (hasKey > 0) {
+////                        gp.obj[i] = null;
+////                        gp.playSoundEffect(3);
+////                        hasKey--;
+////                        gp.ui.showMessage("Door opened " + hasKey + " keys left..");
+////                    }
+////                    else {
+//                    break;
+//
+//                case "chest":
+//
+//                    gp.obj[i] = null;
+//                    gp.playSoundEffect(2);
 
 //                    if (chestCounter >= 3) {
 //
@@ -208,18 +187,17 @@ public class Player extends Entity {
 //
 //                    break;
 
-                case "boots":
-
-                    speed += speedIncrement; //para coca machucada
-                    gp.obj[i] = null;
-                    gp.playSoundEffect(6);
-                    gp.ui.showMessage("You have boots!!");
-
-                    break;
-
-            }
-        }
-
+//                case "boots":
+//
+//                    speed += speedIncrement; //para coca machucada
+//                    gp.obj[i] = null;
+//                    gp.playSoundEffect(6);
+//                    gp.ui.showMessage("You have boots!!");
+//
+//                    break;
+//            }
+            
+       }
     }
 
     public void draw(Graphics2D g2) {

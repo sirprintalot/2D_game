@@ -9,7 +9,7 @@ import java.text.*;
 public class UI {
 
     GamePanel gp;
-    Font arialBlack_40, arialBlack_80;
+    Font arialBlack_40, arialBlack_70;
 //    BufferedImage keyImage;
     Graphics2D g2;
 
@@ -26,7 +26,7 @@ public class UI {
 
         this.gp = gp;
         arialBlack_40= new Font("Arial Black", Font.PLAIN, 40);
-        arialBlack_80= new Font("Arial Black", Font.BOLD, 80);
+        arialBlack_70= new Font("Arial Black", Font.BOLD, 70);
 //        OBJ_Key key = new OBJ_Key(gp);
 //        keyImage = key.image;
     }
@@ -89,10 +89,9 @@ public class UI {
 //                }
 //            }
 //        }
-
         this.g2 = g2;
 
-        g2.setFont(arialBlack_80);
+        g2.setFont(arialBlack_70);
         g2.setColor(Color.WHITE);
 
         if(gp.gameState == gp.playState){
@@ -101,8 +100,6 @@ public class UI {
         if(gp.gameState == gp.pauseState){
               drawPauseScreen();
         }
-
-
     }
 
     public void drawPauseScreen(){
@@ -118,8 +115,7 @@ public class UI {
     public int getXforCenterDisplay(String text){
 
         int txtLen = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-        int x = gp.screenWidth/2 - txtLen/2;
-         return  x;
+        return gp.screenWidth/2 - txtLen/2;
     }
 
 

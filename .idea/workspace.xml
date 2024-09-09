@@ -35,7 +35,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/mauricio/Documents/Programing/GAME/GAME_V1",
+    "last_opened_file_path": "/Users/mauricio/Documents/Programing/GAME/GAME_V1/Resources/npc",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.22949219",
     "project.structure.side.proportion": "0.3968958",
@@ -43,9 +43,12 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/npc" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources/maps" />
       <recent name="$PROJECT_DIR$/Resources/sounds" />
+      <recent name="$PROJECT_DIR$/Resources/maps" />
       <recent name="$PROJECT_DIR$/Resources/objects" />
       <recent name="$PROJECT_DIR$/Resources/tiles" />
       <recent name="$PROJECT_DIR$/res/player" />

@@ -26,6 +26,8 @@ public class Sound {
 
         soundURL[7] = getClass().getResource("/sounds/STEP.wav");
 
+        soundURL[8] = getClass().getResource("/sounds/pause.wav");
+
     }
 
 
