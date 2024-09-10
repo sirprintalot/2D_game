@@ -100,6 +100,11 @@ public class Player extends Entity {
             int objIndex = gp.cCheck.checkObject(this, true);
             pickUpObject(objIndex);
 
+            //check npc collision
+            int npcIndex = gp.cCheck.checkEntity(this, gp.npc);
+            interactNpc(npcIndex);
+
+
             // if collision is false player can move
             if (!collisionOn) {
                 switch (direction) {
@@ -182,6 +187,14 @@ public class Player extends Entity {
 //            }
             
        }
+    }
+
+    public void interactNpc(int i){
+
+        if(i != 999){
+            System.out.println("npc collision!!");
+        }
+
     }
 
     public void draw(Graphics2D g2) {

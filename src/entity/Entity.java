@@ -43,8 +43,12 @@ public class Entity {
     public void update() {
 
         setAction();
+
         collisionOn = false;
         gp.cCheck.checkTile(this);
+        gp.cCheck.checkObject(this, false);
+        gp.cCheck.checkPlayer(this);
+
 
         //for the movement we copy the player's movement
         // if collision is false player can move
