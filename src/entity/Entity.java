@@ -20,22 +20,60 @@ public class Entity {
 
     public int spriteCounter = 0;
     public int spriteNum = 1;
-    public int animationSpeed = 10;
+    public int animationSpeed = 12;
+    
 
     //set the collision area of the character
     //solid area for all entities
-    public Rectangle solidArea = new Rectangle(0, 0, 48,48);
-    
+    public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
+
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
 
-    public Entity(GamePanel gp){
-           this.gp = gp;
+    public int actionLockCounter = 0;
+
+    public Entity(GamePanel gp) {
+        this.gp = gp;
     }
 
-    public void draw(Graphics2D g2){
+    public void setAction() {
+
+    }
+
+    public void update() {
+
+        setAction();
+        collisionOn = false;
+        gp.cCheck.checkTile(this);
+
+        //for the movement we copy the player's movement
+        // if collision is false player can move
+        if (!collisionOn) {
+            switch (direction) {
+                case "up" -> worldY -= speed;
+                case "down" -> worldY += speed;
+                case "left" -> worldX -= speed;
+                case "right" -> worldX += speed;
+            }
+        }
+
+        spriteCounter++;
+        if (spriteCounter > animationSpeed) {
+            if (spriteNum == 1) {
+                spriteNum = 2;
+            } else if (spriteNum == 2) {
+                spriteNum = 1;
+            }
+            spriteCounter = 0;
+        }
+
+    }
+
+
+    public void draw(Graphics2D g2) {
 
         BufferedImage image = null;
+
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
@@ -79,21 +117,19 @@ public class Entity {
                     }
                 }
             }
-         {
+        {
             g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
         }
-
-        
     }
-
 
     //    enhanced method
     public BufferedImage setup(String imagePath) {
+
         UtilityTool utilityTool = new UtilityTool();
         BufferedImage image = null;
         try {
 
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream( imagePath + ".png")));
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(imagePath + ".png")));
             image = utilityTool.scaledImage(image, gp.tileSize, gp.tileSize);
 
         } catch (IOException e) {
@@ -102,7 +138,6 @@ public class Entity {
 
         return image;
     }
-
 
 
 }

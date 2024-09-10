@@ -8,10 +8,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
+
     //screen settings
     final int originalTileSize = 16;
     final int scale = 3;
-
     public final int tileSize = originalTileSize * scale;
     public final int maxScreenCol = 16;
     public final int maxScreenRow = 12;
@@ -22,8 +22,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
-//    public final int worldWidht = tileSize * maxWorldCol;
-//    public final int worldHeight = tileSize * maxScreenRow;
 
     //FPS
     int FPS = 60;
@@ -40,9 +38,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gameThread;
 
-    //entity & object
+    //player
     public Player player = new Player(this, keyH);  // tiene que ser public
+    //object
     public SuperObject[] obj = new SuperObject[10]; //[]cantidad de objetos
+    //NPC's
     public Entity[] npc = new Entity[10];
 
     //GAME STATE
@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int playState = 1;
     public final int pauseState = 2;
 
-
+    
     public GamePanel() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -64,9 +64,8 @@ public class GamePanel extends JPanel implements Runnable {
         
         assetSetter.setObject();
         assetSetter.setNpc();
-        
         //play the game theme on loop
-        playMusic(0);
+//        playMusic(0);
 //        stopMusic();
         gameState = playState;
 
@@ -131,7 +130,15 @@ public class GamePanel extends JPanel implements Runnable {
 
         if(gameState == playState){
 
-            player.update(); 
+            //player
+            player.update();
+            
+            //NPC
+            for(int i = 0; i < npc.length; i++){
+                if(npc[i] != null){
+                    npc[i].update();
+                }
+            }
         }
 
         if(gameState == pauseState){
@@ -183,8 +190,6 @@ public class GamePanel extends JPanel implements Runnable {
             g2.drawString("Time elapsed: " + passedTime, 50, 550);
             System.out.println(passedTime);
         }
-
-
 
         g2.dispose();
     }

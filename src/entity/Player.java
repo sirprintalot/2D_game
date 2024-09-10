@@ -1,12 +1,7 @@
 package entity;
-
 import main.*;
-
-import javax.imageio.*;
 import java.awt.*;
 import java.awt.image.*;
-import java.io.*;
-import java.util.*;
 
 public class Player extends Entity {
 
@@ -35,6 +30,7 @@ public class Player extends Entity {
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
 
+        //solid area specific for the player
         solidArea = new Rectangle();
         solidArea.x = 8;
         solidArea.y = 16;
@@ -42,7 +38,6 @@ public class Player extends Entity {
         solidAreaDefaultY = solidArea.y;
         solidArea.width = 25;
         solidArea.height = 25;
-
 
         setDefaultValues();
         getPlayerImage();
@@ -68,7 +63,6 @@ public class Player extends Entity {
         left2 = setup("/player/boy_left_2");
         right1 = setup("/player/boy_right_1");
         right2 = setup("/player/boy_right_2");
-
 
         //original method
 //        try {
@@ -105,24 +99,14 @@ public class Player extends Entity {
             //check object collision
             int objIndex = gp.cCheck.checkObject(this, true);
             pickUpObject(objIndex);
+
             // if collision is false player can move
             if (!collisionOn) {
                 switch (direction) {
-                    case "up":
-                        worldY -= speed;
-                        break;
-
-                    case "down":
-                        worldY += speed;
-                        break;
-
-                    case "left":
-                        worldX -= speed;
-                        break;
-
-                    case "right":
-                        worldX += speed;
-                        break;
+                    case "up" -> worldY -= speed;
+                    case "down" -> worldY += speed;
+                    case "left" -> worldX -= speed;
+                    case "right" -> worldX += speed;
                 }
             }
             //display the correct sprite when standing still (every 20 frames)
@@ -201,12 +185,11 @@ public class Player extends Entity {
     }
 
     public void draw(Graphics2D g2) {
-//        g2.setColor(Color.CYAN);
-//        g2.fillRect(x, y, gp.tileSize, gp.tileSize);
+
         BufferedImage image = null;
 
         switch (direction) {
-            case "up":
+            case "up" -> {
                 if (spriteNum == 1) {
                     image = up1;
 
@@ -214,38 +197,36 @@ public class Player extends Entity {
                 if (spriteNum == 2) {
                     image = up2;
                 }
-                break;
-            case "down":
+            }
+            case "down" -> {
                 if (spriteNum == 1) {
                     image = down1;
                 }
                 if (spriteNum == 2) {
                     image = down2;
                 }
-                break;
-            case "left":
+            }
+            case "left" -> {
                 if (spriteNum == 1) {
                     image = left1;
                 }
                 if (spriteNum == 2) {
                     image = left2;
                 }
-                break;
-            case "right":
+            }
+            case "right" -> {
                 if (spriteNum == 1) {
                     image = right1;
                 }
                 if (spriteNum == 2) {
                     image = right2;
                 }
-                break;
+            }
         }
         g2.drawImage(image, screenX, screenY, null);
 
         //display the player's collision area
-        g2.setColor(Color.red);
-        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
-
-
+//        g2.setColor(Color.red);
+//        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
     }
 }

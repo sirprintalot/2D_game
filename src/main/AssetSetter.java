@@ -59,8 +59,9 @@ public class AssetSetter {
 
     public void setNpc(){
 
+        //create the first npc
         gp.npc[0] = new Npc_Old_Man(gp);
-
+        //position on the world map
         gp.npc[0].worldX = gp.tileSize * 21;
         gp.npc[0].worldY = gp.tileSize * 21;
 
