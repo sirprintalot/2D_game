@@ -6,12 +6,14 @@ import java.util.*;
 
 public class Npc_Old_Man extends Entity {
 
+
     public Npc_Old_Man(GamePanel gp) {
 
         super(gp);
         direction = "up";
         speed = 1;
         getImage();
+        setDialogue();
 
     }
 
@@ -52,5 +54,15 @@ public class Npc_Old_Man extends Entity {
             actionLockCounter = 0;
         }
 
+    }
+
+    public void setDialogue(){
+
+        dialogues[0] = "hello";
+    }
+
+    public void speak(){
+
+        gp.ui.currentDialog = dialogues[0];
     }
 }

@@ -1,9 +1,7 @@
 package main;
-
 import entity.*;
 import objects.*;
 import tile.*;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -40,15 +38,19 @@ public class GamePanel extends JPanel implements Runnable {
 
     //player
     public Player player = new Player(this, keyH);  // tiene que ser public
+
     //object
     public SuperObject[] obj = new SuperObject[10]; //[]cantidad de objetos
+
     //NPC's
     public Entity[] npc = new Entity[10];
+
 
     //GAME STATE
     public int gameState;
     public final int playState = 1;
     public final int pauseState = 2;
+    public final int dialogueState = 3;
 
     
     public GamePanel() {

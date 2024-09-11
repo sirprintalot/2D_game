@@ -31,7 +31,6 @@ public class CollisionChecker {
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
                 if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
-//                    System.out.println("Collision happened");
                 }
             }
             case "down" -> {
@@ -203,7 +202,6 @@ public class CollisionChecker {
     }
 
     public void checkPlayer(Entity entity) {
-
 
         //get entity's solid area position
         entity.solidArea.x = entity.worldX + entity.solidArea.x;

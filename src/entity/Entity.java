@@ -1,7 +1,5 @@
 package entity;
-
 import main.*;
-
 import javax.imageio.*;
 import java.awt.*;
 import java.awt.image.*;
@@ -21,25 +19,26 @@ public class Entity {
     public int spriteCounter = 0;
     public int spriteNum = 1;
     public int animationSpeed = 12;
-    
 
-    //set the collision area of the character
-    //solid area for all entities
+    //DIALOGUE
+    String[] dialogues = new String[20];
+
+    //solid area for all entities (can be overwritten for each case)
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
 
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
 
+    //this counter controls the nps's activity
     public int actionLockCounter = 0;
 
     public Entity(GamePanel gp) {
         this.gp = gp;
     }
 
-    public void setAction() {
+    public void setAction() {}
 
-    }
-
+    public void speak(){}
     public void update() {
 
         setAction();
@@ -48,7 +47,6 @@ public class Entity {
         gp.cCheck.checkTile(this);
         gp.cCheck.checkObject(this, false);
         gp.cCheck.checkPlayer(this);
-
 
         //for the movement we copy the player's movement
         // if collision is false player can move
@@ -90,7 +88,6 @@ public class Entity {
                 case "up" -> {
                     if (spriteNum == 1) {
                         image = up1;
-
                     }
                     if (spriteNum == 2) {
                         image = up2;

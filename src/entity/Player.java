@@ -12,11 +12,11 @@ public class Player extends Entity {
 
     //standing sprite
     public int standingCounter = 0;
+
     //powerup
-
     public int speedIncrement = 4;
-    //objective
 
+    //objective
 //    public int hasKey = 0;
 //    public int chestCounter = 0;
 
@@ -80,6 +80,7 @@ public class Player extends Entity {
     }
 
     public void update() {
+
         if (keyH.upPressed || keyH.downPressed
                 || keyH.leftPressed || keyH.rightPressed) {
 
@@ -192,7 +193,12 @@ public class Player extends Entity {
     public void interactNpc(int i){
 
         if(i != 999){
-            System.out.println("npc collision!!");
+            // if the player collisions the npc we change the game state
+            gp.gameState = gp.dialogueState;
+
+            // speak with the npc
+            gp.npc[i].speak();
+
         }
 
     }
@@ -238,6 +244,7 @@ public class Player extends Entity {
         }
         g2.drawImage(image, screenX, screenY, null);
 
+        //DEBUG
         //display the player's collision area
 //        g2.setColor(Color.red);
 //        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
