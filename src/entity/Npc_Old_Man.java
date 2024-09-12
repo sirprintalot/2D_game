@@ -59,10 +59,27 @@ public class Npc_Old_Man extends Entity {
     public void setDialogue(){
 
         dialogues[0] = "hello";
+        dialogues[1] = "akfbakfbakfbak";
+        dialogues[2] = "sdad jasdfkanfn";
+        dialogues[3] = "asdfasf aksfbajffopnfd 1111";
     }
 
     public void speak(){
 
-        gp.ui.currentDialog = dialogues[0];
+        //if all the dialogues are finished, loop back to the first one
+        if(dialogues[dialogueIndex] == null){
+            dialogueIndex = 0;
+        }
+
+        gp.ui.currentDialog = dialogues[dialogueIndex];
+        dialogueIndex++;
+
+        //turn the npc facing the player when a dialogue occurs
+        switch (gp.player.direction) {
+            case "up" -> direction = "down";
+            case "down" -> direction = "up";
+            case "left" -> direction = "right";
+            case "right" -> direction = "left";
+        }
     }
 }

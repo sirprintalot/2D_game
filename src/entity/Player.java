@@ -194,13 +194,15 @@ public class Player extends Entity {
 
         if(i != 999){
             // if the player collisions the npc we change the game state
-            gp.gameState = gp.dialogueState;
+            if(gp.keyH.enterPressed) {
+                gp.gameState = gp.dialogueState;
+                // speak with the npc
+                gp.npc[i].speak();
 
-            // speak with the npc
-            gp.npc[i].speak();
 
+            }
+            gp.keyH.enterPressed = false;
         }
-
     }
 
     public void draw(Graphics2D g2) {

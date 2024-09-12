@@ -22,6 +22,7 @@ public class Entity {
 
     //DIALOGUE
     String[] dialogues = new String[20];
+    int dialogueIndex = 0;
 
     //solid area for all entities (can be overwritten for each case)
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
@@ -70,7 +71,6 @@ public class Entity {
         }
 
     }
-
 
     public void draw(Graphics2D g2) {
 
