@@ -192,14 +192,14 @@ public class Player extends Entity {
 
     public void interactNpc(int i){
 
-        if(i != 999){
-            // if the player collisions the npc we change the game state
+        if(i != 999){ 
+            // if the player collisions the npc, we change the game state
+            //BUG dialogue happens only when an enter and arrow key are pressed
+            //at the same time. detect collision while still
             if(gp.keyH.enterPressed) {
                 gp.gameState = gp.dialogueState;
                 // speak with the npc
                 gp.npc[i].speak();
-
-
             }
             gp.keyH.enterPressed = false;
         }

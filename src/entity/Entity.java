@@ -39,7 +39,24 @@ public class Entity {
 
     public void setAction() {}
 
-    public void speak(){}
+    public void speak(){
+
+        //if all the dialogues are finished, loop back to the first one
+        if(dialogues[dialogueIndex] == null){
+            dialogueIndex = 0;
+        }
+
+        gp.ui.currentDialog = dialogues[dialogueIndex];
+        dialogueIndex++;
+
+        //turn the npc facing the player when a dialogue occurs
+        switch (gp.player.direction) {
+            case "up" -> direction = "down";
+            case "down" -> direction = "up";
+            case "left" -> direction = "right";
+            case "right" -> direction = "left";
+        }
+    }
     public void update() {
 
         setAction();

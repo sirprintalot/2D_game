@@ -1,12 +1,13 @@
 package main;
 
 import java.awt.*;
+import java.io.*;
 import java.text.*;
 
 public class UI {
 
     GamePanel gp;
-    Font arialBlack_40, arialBlack_70;
+    Font MP16REG, SHPinscher, VCR_OSD_MONO_1 ;
     Graphics2D g2;
 
     public boolean messageOn = false;
@@ -20,9 +21,24 @@ public class UI {
     public UI(GamePanel gp) {
 
         this.gp = gp;
-        arialBlack_40 = new Font("Arial Black", Font.PLAIN, 40);
-        arialBlack_70 = new Font("Arial Black", Font.BOLD, 70);
-        
+
+        try {
+
+            //font 1
+            InputStream is = getClass().getResourceAsStream("/font/VCR_OSD_MONO_1.001.ttf");
+            assert is != null;
+            VCR_OSD_MONO_1 = Font.createFont(Font.TRUETYPE_FONT, is);
+
+            //font 2
+            InputStream inputStream = getClass().getResourceAsStream("/font/MP16REG.ttf");
+            assert inputStream != null;
+            MP16REG = Font.createFont(Font.TRUETYPE_FONT, inputStream);
+
+
+        } catch (FontFormatException | IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public void showMessage(String text) {
@@ -36,7 +52,7 @@ public class UI {
        
         this.g2 = g2;
 
-        g2.setFont(arialBlack_70);
+        g2.setFont(VCR_OSD_MONO_1);
         g2.setColor(Color.WHITE);
 
         //PLAY STATE
@@ -78,9 +94,14 @@ public class UI {
 
         x += (gp.tileSize/2) ;
         y += gp.tileSize;
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 32f));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28f));
 
-        g2.drawString(currentDialog, x, y);
+        // create line brakes for dialogue
+        for(String line : currentDialog.split("/n")){
+            g2.drawString(line, x, y);
+            y += 40;
+        }
+        
 
 
         

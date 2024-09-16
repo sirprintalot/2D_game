@@ -7,6 +7,7 @@ import java.util.*;
 public class Npc_Old_Man extends Entity {
 
 
+    //Constructor
     public Npc_Old_Man(GamePanel gp) {
 
         super(gp);
@@ -17,6 +18,7 @@ public class Npc_Old_Man extends Entity {
 
     }
 
+    //Get the sprite image depending on the position
     public void getImage() {
         //enhanced method
         up1 = setup("/npc/oldman_up_1");
@@ -29,6 +31,7 @@ public class Npc_Old_Man extends Entity {
         right2 = setup("/npc/oldman_right_2");
     }
 
+    //Define a random movement with a set delay
     public void setAction() {
 
         actionLockCounter++;
@@ -56,30 +59,17 @@ public class Npc_Old_Man extends Entity {
 
     }
 
+    //Load dialogues
     public void setDialogue(){
 
         dialogues[0] = "hello";
         dialogues[1] = "akfbakfbakfbak";
-        dialogues[2] = "sdad jasdfkanfn";
-        dialogues[3] = "asdfasf aksfbajffopnfd 1111";
+        dialogues[2] = "sdad jasdfkanfn asdasdfa dafafasf /n qsaasasdasdfaf";
+        dialogues[3] = "asdfasf aksfbajffopnfasdfafaf /n asfafsasdasdad /n asdasdfasf";
     }
 
     public void speak(){
 
-        //if all the dialogues are finished, loop back to the first one
-        if(dialogues[dialogueIndex] == null){
-            dialogueIndex = 0;
-        }
-
-        gp.ui.currentDialog = dialogues[dialogueIndex];
-        dialogueIndex++;
-
-        //turn the npc facing the player when a dialogue occurs
-        switch (gp.player.direction) {
-            case "up" -> direction = "down";
-            case "down" -> direction = "up";
-            case "left" -> direction = "right";
-            case "right" -> direction = "left";
-        }
+        super.speak();
     }
 }
