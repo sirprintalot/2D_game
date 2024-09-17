@@ -1,7 +1,9 @@
 package main;
+
 import entity.*;
 import objects.*;
 import tile.*;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -48,11 +50,12 @@ public class GamePanel extends JPanel implements Runnable {
 
     //GAME STATE
     public int gameState;
+    public final int tittleState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
     public final int dialogueState = 3;
 
-    
+
     public GamePanel() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -62,14 +65,14 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
     }
 
-    public void setUpGame(){
-        
+    public void setUpGame() {
+
         assetSetter.setObject();
         assetSetter.setNpc();
         //play the game theme on loop
 //        playMusic(0);
 //        stopMusic();
-        gameState = playState;
+        gameState = tittleState;
 
     }
 
@@ -105,7 +108,7 @@ public class GamePanel extends JPanel implements Runnable {
 //
 //    }
 
-    //method 2 DELTA/ACUMULATOR
+    //method 2 DELTA/ACCUMULATOR
     @Override
     public void run() {
 
@@ -130,21 +133,21 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update() {
 
-        if(gameState == playState){
+        if (gameState == playState) {
 
             //player
             player.update();
-            
+
             //NPC
-            for(int i = 0; i < npc.length; i++){
-                if(npc[i] != null){
+            for (int i = 0; i < npc.length; i++) {
+                if (npc[i] != null) {
                     npc[i].update();
                 }
             }
         }
 
-        if(gameState == pauseState){
-               //TO DO
+        if (gameState == pauseState) {
+            //TO DO
 //            stopMusic();
 
         }
@@ -158,34 +161,45 @@ public class GamePanel extends JPanel implements Runnable {
 
         //DEBUG
         long drawStart = 0;
-        if(keyH.checkDrawTime){
-            
+        if (keyH.checkDrawTime) {
+
             drawStart = System.nanoTime();
         }
 
+        //Tittle State
+        if (gameState == tittleState) {
 
-        //tiles
-        tileM.draw(g2);
-        //objects
-        for(int i = 0; i < obj.length; i++){
-            if(obj[i] != null){
-                obj[i].draw(g2, this);
-            }
+            ui.draw(g2);
+
         }
 
-        //NPC
-        for(int i = 0; i < npc.length; i++) {
-                if(npc[i] != null){
+        //play State
+        else {
+
+
+            //tiles
+            tileM.draw(g2);
+            //objects
+            for (int i = 0; i < obj.length; i++) {
+                if (obj[i] != null) {
+                    obj[i].draw(g2, this);
+                }
+            }
+            //NPC
+            for (int i = 0; i < npc.length; i++) {
+                if (npc[i] != null) {
                     npc[i].draw(g2);
                 }
+            }
+            //player
+            player.draw(g2);
+            //UI
+            ui.draw(g2);
+
         }
-        //player
-        player.draw(g2);
-        //UI
-        ui.draw(g2);
 
         //debug
-        if(keyH.checkDrawTime) {
+        if (keyH.checkDrawTime) {
             long drawEnd = System.nanoTime();
             long passedTime = drawEnd - drawStart;
             g2.setColor(Color.white);
@@ -197,18 +211,18 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     //SOUND 
-    public void playMusic(int songIndex){
+    public void playMusic(int songIndex) {
         music.setFile(songIndex);
         music.play();
         music.loop();
     }
 
-    public void stopMusic(){
+    public void stopMusic() {
 
         music.stop();
     }
 
-    public void playSoundEffect(int i){
+    public void playSoundEffect(int i) {
 
         soundFX.setFile(i);
         soundFX.play();

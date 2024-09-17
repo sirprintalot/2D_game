@@ -7,7 +7,7 @@ import java.text.*;
 public class UI {
 
     GamePanel gp;
-    Font MP16REG, SHPinscher, VCR_OSD_MONO_1 ;
+    Font MP16REG, VCR_OSD_MONO_1 ;
     Graphics2D g2;
 
     public boolean messageOn = false;
@@ -51,9 +51,13 @@ public class UI {
     public void draw(Graphics2D g2) {
        
         this.g2 = g2;
-
         g2.setFont(VCR_OSD_MONO_1);
         g2.setColor(Color.WHITE);
+
+        //Tittle state
+        if(gp.gameState == gp.tittleState){
+            drawTitleScreen();
+        }
 
         //PLAY STATE
         if (gp.gameState == gp.playState) {
@@ -70,6 +74,54 @@ public class UI {
 
             drawDialogueScreen();
         }
+    }
+
+    public void drawTitleScreen() {
+
+        //Optional set the background color
+
+        g2.setColor(new Color(0, 0,0));
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+        //title name
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 63F));
+        String text = "Mi vecino Tarata";
+        int x = getXforCenterDisplay(text);
+        int y = gp.tileSize * 3;
+
+        // shadow
+
+        g2.setColor(Color.GRAY);
+        g2.drawString(text, x+5, y+5);
+        
+        //main color
+        g2.setColor(Color.white);
+        g2.drawString(text, x, y);
+
+        //Character Image
+        x = (gp.screenWidth/2) - gp.tileSize;
+        y += gp.tileSize * 2;
+        g2.drawImage(gp.player.down1, x, y, gp.tileSize * 2, gp.tileSize *2, null);
+
+        // menu
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 35));
+        text = "New Game";
+        x = getXforCenterDisplay(text);
+        y += gp.tileSize * 4;
+        g2.drawString(text, x, y);
+
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 35));
+        text = "Load Game";
+        x = getXforCenterDisplay(text);
+        y += gp.tileSize;
+        g2.drawString(text, x, y);
+
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 35));
+        text = "Quit";
+        x = getXforCenterDisplay(text);
+        y += gp.tileSize;
+        g2.drawString(text, x, y);
+        
     }
 
     public void drawPauseScreen() {
@@ -101,9 +153,6 @@ public class UI {
             g2.drawString(line, x, y);
             y += 40;
         }
-        
-
-
         
     }
 
