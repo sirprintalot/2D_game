@@ -183,9 +183,6 @@ public class UI {
             if(commandNum == 3){
                 g2.drawString(">", x - gp.tileSize/2, y);
             }
-
-
-            
         }
 
 
