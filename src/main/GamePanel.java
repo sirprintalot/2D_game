@@ -175,8 +175,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         //play State
         else {
-
-
+            
             //tiles
             tileM.draw(g2);
             //objects
