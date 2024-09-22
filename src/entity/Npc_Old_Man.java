@@ -62,7 +62,7 @@ public class Npc_Old_Man extends Entity {
     //Load dialogues
     public void setDialogue(){
 
-        dialogues[0] = "hello";
+        dialogues[0] = "Caco te ofrece coca machucada... /n Aceptar /n Rechazar";
         dialogues[1] = "akfbakfbakfbak";
         dialogues[2] = "sdad jasdfkanfn asdasdfa dafafasf /n qsaasasdasdfaf";
         dialogues[3] = "asdfasf aksfbajffopnfasdfafaf /n asfafsasdasdad /n asdasdfasf";

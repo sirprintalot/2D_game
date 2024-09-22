@@ -44,7 +44,7 @@ public class KeyHandler implements KeyListener {
                         gp.ui.titleScreenState = 1;
                         //gp.gameState = gp.playState; without title screen substate
                         //BUG music keep reproducing while pressing enter
-//                gp.playMusic(0);
+//                       gp.playMusic(0);
 
                     }
                     if (gp.ui.commandNum == 1) {
@@ -123,10 +123,7 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_D) {
                 rightPressed = true;
             }
-            if (code == KeyEvent.VK_P) {
 
-                gp.gameState = gp.pauseState;
-            }
             if (code == KeyEvent.VK_ENTER) {
 
                 enterPressed = true;
@@ -136,17 +133,20 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_T) {
                 checkDrawTime = !checkDrawTime;
             }
+
+            if (code == KeyEvent.VK_P) {
+                gp.gameState = gp.pauseState;
+            }
         }
 
         //pause state
 
         else if (gp.gameState == gp.pauseState) {
-
             if (code == KeyEvent.VK_P) {
                 gp.gameState = gp.playState;
+                gp.playMusic(0);
             }
-
-        }
+       }
 
         //exit dialogue state
         else if (gp.gameState == gp.dialogueState) {

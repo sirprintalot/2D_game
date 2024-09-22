@@ -70,7 +70,7 @@ public class GamePanel extends JPanel implements Runnable {
         assetSetter.setObject();
         assetSetter.setNpc();
         //play the game theme on loop
-//        playMusic(0);
+        playMusic(0);
 //        stopMusic();
         gameState = tittleState;
 
@@ -148,8 +148,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         if (gameState == pauseState) {
             //TO DO
-//            stopMusic();
-
+            stopMusic();
         }
 
     }
@@ -202,6 +201,7 @@ public class GamePanel extends JPanel implements Runnable {
             long drawEnd = System.nanoTime();
             long passedTime = drawEnd - drawStart;
             g2.setColor(Color.white);
+
             g2.drawString("Time elapsed: " + passedTime, 50, 550);
             System.out.println(passedTime);
         }

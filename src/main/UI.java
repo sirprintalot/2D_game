@@ -190,6 +190,7 @@ public class UI {
 
     public void drawPauseScreen() {
 
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 70f));
         String text = "Game Paused";
 
         int x = getXforCenterDisplay(text);
