@@ -13,7 +13,7 @@ public class Player extends Entity {
     //standing sprite
     public int standingCounter = 0;
 
-    //powerup
+    //power up
     public int speedIncrement = 4;
 
     //objective
@@ -51,6 +51,10 @@ public class Player extends Entity {
         speed = 6;
         direction = "down";
 
+        //PLAYER STATUS
+        maxLife = 6;
+        life = maxLife;
+
     }
 
     public void getPlayerImage() {
@@ -64,19 +68,6 @@ public class Player extends Entity {
         right1 = setup("/player/boy_right_1");
         right2 = setup("/player/boy_right_2");
 
-        //original method
-//        try {
-//            up1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/boy_up_1.png")));
-//            up2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/boy_up_2.png")));
-//            down1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/boy_down_1.png")));
-//            down2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/boy_down_2.png")));
-//            left1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/boy_left_1.png")));
-//            left2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/boy_left_2.png")));
-//            right1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/boy_right_1.png")));
-//            right2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/player/boy_right_2.png")));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
     public void update() {

@@ -70,7 +70,7 @@ public class GamePanel extends JPanel implements Runnable {
         assetSetter.setObject();
         assetSetter.setNpc();
         //play the game theme on loop
-        playMusic(0);
+//        playMusic(0);
 //        stopMusic();
         gameState = tittleState;
 
@@ -148,7 +148,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         if (gameState == pauseState) {
             //TO DO
-
 
         }
 

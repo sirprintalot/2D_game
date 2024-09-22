@@ -1,6 +1,9 @@
 package main;
 
+import objects.*;
+
 import java.awt.*;
+import java.awt.image.*;
 import java.io.*;
 import java.text.*;
 
@@ -10,6 +13,7 @@ public class UI {
     Font MP16REG, VCR_OSD_MONO_1;
     Graphics2D g2;
 
+    BufferedImage fullHeart, halfHeart, blankHeart;
     public boolean messageOn = false;
     public String message = "";
     public int messageCounter = 0;
@@ -45,6 +49,12 @@ public class UI {
             throw new RuntimeException(e);
         }
 
+        //CREATE H OBJECT
+        SuperObject heart = new OBJ_Heart(gp);
+        fullHeart = heart.image;
+        halfHeart = heart.image2;
+        blankHeart = heart.image3;
+
     }
 
     public void showMessage(String text) {
@@ -67,19 +77,59 @@ public class UI {
 
         //PLAY STATE
         if (gp.gameState == gp.playState) {
-            // continue with playstate
+
+            drawPlayerLife();
         }
 
         //PAUSE STATE
         if (gp.gameState == gp.pauseState) {
+
+            drawPlayerLife();
             drawPauseScreen();
         }
 
         //DIALOGUE STATE
         if (gp.gameState == gp.dialogueState) {
 
+            drawPlayerLife();
             drawDialogueScreen();
         }
+    }
+
+    public void drawPlayerLife(){
+
+
+        //Draw MAX LIFE
+        int x = gp.tileSize/2;
+        int y = gp.tileSize/2;
+        int i = 0;
+
+        while (i < gp.player.maxLife/2){
+
+            g2.drawImage(blankHeart, x, y, null);
+            i++;
+            x += gp.tileSize;
+
+        }
+
+        //RESET VALUES
+        x = gp.tileSize/2;
+        y = gp.tileSize/2;
+         i = 0;
+
+         //DRAW CURRENT LIFE
+
+        while(i < gp.player.life){
+            g2.drawImage(halfHeart, x, y, null);
+            i++;
+            if(i < gp.player.life){
+                g2.drawImage(fullHeart, x, y, null);
+                i++;
+                x += gp.tileSize;
+            }
+        }
+        
+        
     }
 
     public void drawTitleScreen() {

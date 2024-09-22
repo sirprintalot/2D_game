@@ -13,12 +13,20 @@ public class Entity {
     public int worldX, worldY;
     public int speed;
 
+    //IMAGES
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
+
+    //DIRECTION
     public String direction;
 
+    //SPRITE
     public int spriteCounter = 0;
     public int spriteNum = 1;
     public int animationSpeed = 12;
+
+    //CHARACTER STATUS
+    public int maxLife;
+    public int life;
 
     //DIALOGUE
     String[] dialogues = new String[20];
