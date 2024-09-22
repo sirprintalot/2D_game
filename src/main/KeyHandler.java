@@ -135,14 +135,20 @@ public class KeyHandler implements KeyListener {
             }
 
             if (code == KeyEvent.VK_P) {
+                gp.stopMusic();
                 gp.gameState = gp.pauseState;
+                gp.playMusic(8);
+
             }
         }
 
         //pause state
 
         else if (gp.gameState == gp.pauseState) {
+
             if (code == KeyEvent.VK_P) {
+
+                gp.stopMusic();
                 gp.gameState = gp.playState;
                 gp.playMusic(0);
             }
