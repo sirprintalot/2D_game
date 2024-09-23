@@ -5,7 +5,6 @@ import objects.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
-import java.text.*;
 
 public class UI {
 
@@ -25,7 +24,7 @@ public class UI {
     public int titleScreenState = 0; //0 = first screen(main) 1 = character selection screen
 
 
-    public String currentDialog = "";
+    public String currentDialogue = "";
 
 
     public UI(GamePanel gp) {
@@ -264,7 +263,7 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28f));
 
         // create line brakes for dialogue
-        for (String line : currentDialog.split("/n")) {
+        for (String line : currentDialogue.split("/n")) {
             g2.drawString(line, x, y);
             y += 40;
         }

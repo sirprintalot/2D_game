@@ -54,7 +54,7 @@ public class Entity {
             dialogueIndex = 0;
         }
 
-        gp.ui.currentDialog = dialogues[dialogueIndex];
+        gp.ui.currentDialogue = dialogues[dialogueIndex];
         dialogueIndex++;
 
         //turn the npc facing the player when a dialogue occurs
