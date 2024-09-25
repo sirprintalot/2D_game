@@ -79,6 +79,7 @@ public class TileManager {
 
         setup(40, "wall", true);
         setup(41, "tree", true);
+        setup(42, "teleport", false);
 
         //original method
 //        try {

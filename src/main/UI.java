@@ -48,7 +48,7 @@ public class UI {
             throw new RuntimeException(e);
         }
 
-        //CREATE H OBJECT
+        //CREATE Heart OBJECT
         SuperObject heart = new OBJ_Heart(gp);
         fullHeart = heart.image;
         halfHeart = heart.image2;

@@ -30,6 +30,11 @@ public class EventHandler {
             healingPool(gp.dialogueState);
         }
 
+        //TODO add teleport
+        if(hit(23, 42, "down")){
+            teleport(gp.dialogueState);
+        }
+
     }
 
     public boolean hit(int eventCol, int eventRow, String reqDirection) {
@@ -76,6 +81,15 @@ public class EventHandler {
             gp.player.life = gp.player.maxLife;
             
         }
+    }
+
+    public void teleport(int gameState){
+
+        gp.gameState =  gameState;
+        gp.ui.currentDialogue = "Teleport!";
+
+        gp.player.worldX = gp.tileSize * 38;
+        gp.player.worldY = gp.tileSize * 7;
     }
 
 
