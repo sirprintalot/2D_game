@@ -19,7 +19,6 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = tileSize * maxScreenRow;
 
     //World settings
-
     public final int maxWorldCol = 50;
     public final int maxWorldRow = 50;
 
@@ -35,6 +34,7 @@ public class GamePanel extends JPanel implements Runnable {
     public UI ui = new UI(this);
     public CollisionChecker cCheck = new CollisionChecker(this);
     public AssetSetter assetSetter = new AssetSetter(this);
+
     //Event Handler
     public EventHandler eventHandler = new EventHandler(this);
 
@@ -49,7 +49,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     //NPC's
     public Entity[] npc = new Entity[10];
-
 
     //GAME STATE
     public int gameState;
@@ -177,7 +176,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         //play State
         else {
-            
+
             //tiles
             tileM.draw(g2);
             //objects
