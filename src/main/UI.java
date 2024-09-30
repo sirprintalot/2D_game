@@ -1,5 +1,6 @@
 package main;
 
+import entity.*;
 import objects.*;
 
 import java.awt.*;
@@ -49,7 +50,7 @@ public class UI {
         }
 
         //CREATE Heart OBJECT
-        SuperObject heart = new OBJ_Heart(gp);
+        Entity heart = new OBJ_Heart(gp);
         fullHeart = heart.image;
         halfHeart = heart.image2;
         blankHeart = heart.image3;

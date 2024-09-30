@@ -1,25 +1,17 @@
 package objects;
 
+import entity.*;
 import main.*;
 
-import javax.imageio.*;
-import java.io.*;
-import java.util.*;
 
-public class OBJ_Boots extends SuperObject{
+public class OBJ_Boots extends Entity {
 
-    GamePanel gp;
+    public OBJ_Boots(GamePanel gp) {
 
-    public OBJ_Boots(GamePanel gp){
-
+        super(gp);
         name = "boots";
+        down1 = setup("/objects/key");
 
-        try{
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/objects/boots.png")));
-            utilityTool.scaledImage(image, gp.tileSize, gp.tileSize);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
 
     }
 }

@@ -16,8 +16,8 @@ public class Entity {
     //IMAGES
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
 
-    //DIRECTION
-    public String direction;
+    //DIRECTION 
+    public String direction = "down";
 
     //SPRITE
     public int spriteCounter = 0;
@@ -40,6 +40,11 @@ public class Entity {
 
     //this counter controls the nps's activity
     public int actionLockCounter = 0;
+
+    //Super object attributes
+    public BufferedImage image, image2, image3;
+    public String name;
+    public boolean collision = false;
 
     public Entity(GamePanel gp) {
         this.gp = gp;
