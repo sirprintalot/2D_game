@@ -57,7 +57,7 @@ public class EventHandler {
             if (hit(27, 15, "right")) {
                 damagePit(gp.dialogueState, 27, 15);
             }
-            if (hit(23, 42, "down")) {
+            if (hit(23, 42, "any")) {
                 teleport(gp.dialogueState);
             }
             if (hit(23, 12, "up")) {
