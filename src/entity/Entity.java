@@ -77,6 +77,8 @@ public class Entity {
         collisionOn = false;
         gp.cCheck.checkTile(this);
         gp.cCheck.checkObject(this, false);
+        gp.cCheck.checkEntity(this, gp.npc);
+        gp.cCheck.checkEntity(this, gp.monster);
         gp.cCheck.checkPlayer(this);
 
         //for the movement we copy the player's movement
