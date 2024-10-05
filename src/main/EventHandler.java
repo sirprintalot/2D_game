@@ -129,7 +129,10 @@ public class EventHandler {
         gp.player.worldX = gp.tileSize * 38;
         gp.player.worldY = gp.tileSize * 7;
 
+
+
         //TODO after one teleportation reset the tile to the original one
+        //TODO MAKE THE PLAYER SEMI TRANSPARENT WHEN TELEPORTING
     }
 
 

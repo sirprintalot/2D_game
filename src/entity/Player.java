@@ -1,5 +1,7 @@
 package entity;
+
 import main.*;
+
 import java.awt.*;
 import java.awt.image.*;
 
@@ -98,6 +100,7 @@ public class Player extends Entity {
 
             // Monster collision
             int monsterIndex = gp.cCheck.checkEntity(this, gp.monster);
+            interactMonster(monsterIndex);
 
 
             // Check event
@@ -133,6 +136,14 @@ public class Player extends Entity {
                     spriteNum = 1;
                 }
                 spriteCounter = 0;
+            }
+        }
+        // player taking damage from monster
+        if (invincible) {
+            invincibleCounter++;
+            if (invincibleCounter > 60) {
+                invincible = false;
+                invincibleCounter = 0;
             }
         }
     }
@@ -187,22 +198,34 @@ public class Player extends Entity {
 //
 //                    break;
 //            }
-            
-       }
+
+        }
     }
 
-    public void interactNpc(int i){
+    public void interactNpc(int i) {
 
-        if(i != 999){ 
+        if (i != 999) {
             // if the player collisions the npc, we change the game state
             //BUG dialogue happens only when an enter and arrow key are pressed
             //at the same time. detect collision while still
-            if(gp.keyH.enterPressed) {
+            if (gp.keyH.enterPressed) {
                 gp.gameState = gp.dialogueState;
                 // speak with the npc
                 gp.npc[i].speak();
             }
-           
+
+        }
+    }
+
+    public void interactMonster(int i) {
+
+        if (i != 999) {
+
+            if (!invincible) {
+                life -= 1;
+                invincible = true;
+            }
+
         }
     }
 
@@ -245,11 +268,26 @@ public class Player extends Entity {
                 }
             }
         }
+
+        // change the player's opacity when invicible
+        if (invincible) {
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+        }
+
+        //Draw the character
         g2.drawImage(image, screenX, screenY, null);
+
+        // Reset the opacity
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+
 
         //DEBUG
         //display the player's collision area
 //        g2.setColor(Color.red);
 //        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+        //check if damage with monster is ok
+//        g2.setFont(new Font("Arial", Font.PLAIN, 25));
+//        g2.setColor(Color.WHITE);
+//        g2.drawString("invincible counter: " + invincibleCounter, 10, 380 );
     }
 }

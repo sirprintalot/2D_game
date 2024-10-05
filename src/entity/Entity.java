@@ -28,6 +28,13 @@ public class Entity {
     public int maxLife;
     public int life;
 
+    // CHARACTER DAMAGE MANAGE
+    public boolean invincible = false;
+    public int invincibleCounter = 0;
+
+    // CHECKING THE ENTITY CLASS FOR TAKING DAMAGE OR NOT
+    public int type; //0 player, 1 npc etc
+
     //DIALOGUE
     String[] dialogues = new String[20];
     int dialogueIndex = 0;
@@ -79,7 +86,17 @@ public class Entity {
         gp.cCheck.checkObject(this, false);
         gp.cCheck.checkEntity(this, gp.npc);
         gp.cCheck.checkEntity(this, gp.monster);
-        gp.cCheck.checkPlayer(this);
+
+        boolean contactPLayer = gp.cCheck.checkPlayer(this);
+
+        if(this.type == 2 && contactPLayer){
+
+            if(!gp.player.invincible){
+                // if the player is not invincible, we add damage
+                gp.player.life -= 1;
+                gp.player.invincible = true;
+            }
+        }
 
         //for the movement we copy the player's movement
         // if collision is false player can move
