@@ -75,7 +75,7 @@ public class Player extends Entity {
     public void update() {
 
         if (keyH.upPressed || keyH.downPressed
-                || keyH.leftPressed || keyH.rightPressed) {
+                || keyH.leftPressed || keyH.rightPressed || keyH.enterPressed) {
 
             if (keyH.upPressed) {
                 direction = "up";
@@ -106,12 +106,8 @@ public class Player extends Entity {
             // Check event
             gp.eventHandler.checkEvent();
 
-            //reset enter button
-            gp.keyH.enterPressed = false;
-
-
             // if collision is false player can move
-            if (!collisionOn) {
+            if (!collisionOn && !keyH.enterPressed) {
                 switch (direction) {
                     case "up" -> worldY -= speed;
                     case "down" -> worldY += speed;
@@ -206,7 +202,7 @@ public class Player extends Entity {
 
         if (i != 999) {
             // if the player collisions the npc, we change the game state
-            //BUG dialogue happens only when an enter and arrow key are pressed
+            //BUG dialogue happens only when enter and arrow key are pressed
             //at the same time. detect collision while still
             if (gp.keyH.enterPressed) {
                 gp.gameState = gp.dialogueState;
