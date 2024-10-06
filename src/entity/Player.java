@@ -74,8 +74,10 @@ public class Player extends Entity {
 
     public void update() {
 
-        if (keyH.upPressed || keyH.downPressed
-                || keyH.leftPressed || keyH.rightPressed || keyH.enterPressed) {
+        boolean moving = keyH.upPressed || keyH.downPressed
+                || keyH.leftPressed || keyH.rightPressed;
+
+        if (moving) {
 
             if (keyH.upPressed) {
                 direction = "up";
@@ -86,6 +88,7 @@ public class Player extends Entity {
             } else {
                 direction = "right";
             }
+
             //check tile collision
             collisionOn = false;
             gp.cCheck.checkTile(this);
@@ -107,23 +110,17 @@ public class Player extends Entity {
             gp.eventHandler.checkEvent();
 
             // if collision is false player can move
-            if (!collisionOn && !keyH.enterPressed) {
+            if (!collisionOn) {
                 switch (direction) {
+
                     case "up" -> worldY -= speed;
                     case "down" -> worldY += speed;
                     case "left" -> worldX -= speed;
                     case "right" -> worldX += speed;
                 }
             }
-            //display the correct sprite when standing still (every 20 frames)
-            else {
-                standingCounter++;
-                if (standingCounter == 10) {
-                    spriteNum = 1;
-                    standingCounter = 0;
-                }
-            }
 
+            //sprite animation
             spriteCounter++;
             if (spriteCounter > animationSpeed) {
                 if (spriteNum == 1) {
@@ -134,6 +131,28 @@ public class Player extends Entity {
                 spriteCounter = 0;
             }
         }
+
+        //display the correct sprite when standing still (every 20 frames)
+        else {
+            standingCounter++;
+            if (standingCounter == 30) {
+                spriteNum = 1;
+                standingCounter = 0;
+            }
+        }
+
+        // Interact with npc when pressing enter key
+        int npcIndex = gp.cCheck.checkEntity(this, gp.npc);
+
+        if (keyH.enterPressed) {
+            if (npcIndex != 999) {
+                interactNpc(npcIndex);
+            }
+            // Reset the enter key
+            gp.keyH.enterPressed = false;
+        }
+
+
         // player taking damage from monster
         if (invincible) {
             invincibleCounter++;
@@ -202,8 +221,6 @@ public class Player extends Entity {
 
         if (i != 999) {
             // if the player collisions the npc, we change the game state
-            //BUG dialogue happens only when enter and arrow key are pressed
-            //at the same time. detect collision while still
             if (gp.keyH.enterPressed) {
                 gp.gameState = gp.dialogueState;
                 // speak with the npc

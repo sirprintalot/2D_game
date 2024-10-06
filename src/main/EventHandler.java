@@ -8,7 +8,7 @@ public class EventHandler {
 
     int previousEventX, previousEventY;
     boolean canTouchEvent = true;
-    
+
 
     public EventHandler(GamePanel gp) {
 
@@ -42,17 +42,17 @@ public class EventHandler {
 
         //Check the distance between the character, and the event tile
         //is it's more than a tile the event can happen again
-        int xdistance = Math.abs(gp.player.worldX -  previousEventX);
-        int yDistance =  Math.abs(gp.player.worldY - previousEventY);
+        int xdistance = Math.abs(gp.player.worldX - previousEventX);
+        int yDistance = Math.abs(gp.player.worldY - previousEventY);
 
         int distance = Math.max(xdistance, yDistance);
 
-        if(distance > gp.tileSize){
+        if (distance > gp.tileSize) {
 
             canTouchEvent = true;
         }
 
-        if(canTouchEvent){
+        if (canTouchEvent) {
 
             if (hit(27, 15, "right")) {
                 damagePit(gp.dialogueState, 27, 15);
@@ -83,7 +83,7 @@ public class EventHandler {
 
                 hit = true;
 
-                previousEventX =  gp.player.worldX;
+                previousEventX = gp.player.worldX;
                 previousEventY = gp.player.worldY;
             }
         }
@@ -118,6 +118,8 @@ public class EventHandler {
             gp.ui.currentDialogue = "You drank the healing water. /nLife restored";
             gp.player.life = gp.player.maxLife;
 
+            //TODO implement use of when pressing just enter key
+
         }
     }
 
@@ -128,8 +130,6 @@ public class EventHandler {
 
         gp.player.worldX = gp.tileSize * 38;
         gp.player.worldY = gp.tileSize * 7;
-
-
 
         //TODO after one teleportation reset the tile to the original one
         //TODO MAKE THE PLAYER SEMI TRANSPARENT WHEN TELEPORTING
