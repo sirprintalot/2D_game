@@ -10,7 +10,7 @@ public class OBJ_Boots extends Entity {
 
         super(gp);
         name = "boots";
-        down1 = setup("/objects/key");
+        down1 = setup("/objects/key", gp.tileSize, gp.tileSize);
 
 
     }

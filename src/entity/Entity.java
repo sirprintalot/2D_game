@@ -14,8 +14,12 @@ public class Entity {
     public int speed;
 
     //IMAGES
+    // Walking
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
 
+    // Atacking
+    public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
+    
     //DIRECTION 
     public String direction = "down";
 
@@ -31,6 +35,10 @@ public class Entity {
     // CHARACTER DAMAGE MANAGE
     public boolean invincible = false;
     public int invincibleCounter = 0;
+
+    // Attack
+    boolean attacking =  false;
+    public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
 
     // CHECKING THE ENTITY CLASS FOR TAKING DAMAGE OR NOT
     public int type; //0 player, 1 npc etc
@@ -119,6 +127,14 @@ public class Entity {
             spriteCounter = 0;
         }
 
+        if (invincible) {
+            invincibleCounter++;
+            if (invincibleCounter > 40) {
+                invincible = false;
+                invincibleCounter = 0;
+            }
+        }
+
     }
 
     public void draw(Graphics2D g2) {
@@ -168,19 +184,25 @@ public class Entity {
                 }
             }
         {
+
+            if (invincible) {
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
+            }
             g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         }
     }
 
     //    enhanced method
-    public BufferedImage setup(String imagePath) {
+    public BufferedImage setup(String imagePath, int width, int height) {
 
         UtilityTool utilityTool = new UtilityTool();
         BufferedImage image = null;
         try {
 
             image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(imagePath + ".png")));
-            image = utilityTool.scaledImage(image, gp.tileSize, gp.tileSize);
+            image = utilityTool.scaledImage(image, width, height);
 
         } catch (IOException e) {
             e.printStackTrace();
