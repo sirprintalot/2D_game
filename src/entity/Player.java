@@ -305,6 +305,7 @@ public class Player extends Entity {
                 }
 
             } else {
+//                gp.playSoundEffect(9);
                 attacking = true;
                 System.out.println("attack");
             }
@@ -318,6 +319,7 @@ public class Player extends Entity {
         if (i != 999) {
 
             if (!invincible) {
+                gp.playSoundEffect(10);
                 life -= 1;
                 invincible = true;
             }
@@ -329,11 +331,14 @@ public class Player extends Entity {
 
         if( i != 999){
              if(!gp.monster[i].invincible){
+
+                 gp.playSoundEffect(11);
                  gp.monster[i].life -= 1;
                  gp.monster[i].invincible = true;
+                 gp.monster[i].damageReaction();
 
                  if(gp.monster[i].life <= 0){
-                     gp.monster[i] = null;
+                     gp.monster[i].dying = true;
                  }
              }
         }

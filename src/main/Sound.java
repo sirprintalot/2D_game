@@ -28,6 +28,12 @@ public class Sound {
 
         soundURL[8] = getClass().getResource("/sounds/pause.wav");
 
+        soundURL[9] = getClass().getResource("/sounds/blade.wav");
+
+        soundURL[10] = getClass().getResource("/sounds/receivedamage.wav");
+
+        soundURL[11] = getClass().getResource("/sounds/hitmonster.wav");
+
     }
 
 

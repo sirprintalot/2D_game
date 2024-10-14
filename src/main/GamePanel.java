@@ -127,10 +127,17 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
             // Monster
-            for(int i = 0; i < monster.length; i++){
-                if (monster[i] != null){
-                    monster[i].update();
+            for (int i = 0; i < monster.length; i++) {
+                if (monster[i] != null) {
+                    
+                    if (monster[i].isAlive && !monster[i].dying) {
+                        monster[i].update();
+                    }
+                    if (!monster[i].isAlive) {
+                        monster[i] = null;
+                    }
                 }
+
             }
         }
 
@@ -201,12 +208,12 @@ public class GamePanel extends JPanel implements Runnable {
             });
 
             // Draw entities
-            for(int i = 0; i < entityList.size(); i++){
+            for (int i = 0; i < entityList.size(); i++) {
 
-                entityList.get(i).draw(g2); 
+                entityList.get(i).draw(g2);
             }
-            
-            entityList.clear(); 
+
+            entityList.clear();
 
             //UI
             ui.draw(g2);
