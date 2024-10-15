@@ -99,6 +99,7 @@ public class EventHandler {
 
     public void damagePit(int gameState, int col, int row) {
 
+        gp.playSoundEffect(10);
         gp.gameState = gameState;
         gp.ui.currentDialogue = "You fall into a pit";
         gp.player.life -= 1;
@@ -114,7 +115,9 @@ public class EventHandler {
 
         if (gp.keyH.enterPressed) {
 
+            gp.playSoundEffect(2);
             gp.gameState = gameState;
+            gp.player.attackCancel = true;
             gp.ui.currentDialogue = "You drank the healing water. /nLife restored";
             gp.player.life = gp.player.maxLife;
 
@@ -125,14 +128,16 @@ public class EventHandler {
 
     public void teleport(int gameState) {
 
+        gp.playSoundEffect(12);
         gp.gameState = gameState;
         gp.ui.currentDialogue = "Teleport!";
 
+        // position to be teleported to
         gp.player.worldX = gp.tileSize * 38;
         gp.player.worldY = gp.tileSize * 7;
 
         //TODO after one teleportation reset the tile to the original one
-        //TODO MAKE THE PLAYER SEMI TRANSPARENT WHEN TELEPORTING
+        //TODO MAKE THE PLAYER flicker while teleporting
     }
 
 

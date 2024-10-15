@@ -34,6 +34,10 @@ public class Sound {
 
         soundURL[11] = getClass().getResource("/sounds/hitmonster.wav");
 
+        soundURL[12] = getClass().getResource("/sounds/teleport.wav");
+
+
+
     }
 
 

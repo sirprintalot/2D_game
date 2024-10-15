@@ -1,6 +1,7 @@
 package entity;
 
 import main.*;
+import objects.*;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -17,6 +18,9 @@ public class Player extends Entity {
 
     //power up
     public int speedIncrement = 4;
+
+    // Attack
+    public boolean attackCancel = false;
     
 
     //objective
@@ -65,8 +69,31 @@ public class Player extends Entity {
         maxLife = 6;
         life = maxLife;
 
+        // Player stats
+        level = 1;
+        strength = 1; // the more strength more damage
+        dexterity = 1; // more dexterity, more chances to block attacks
+        exp = 0;
+        nextLevelExp = 5;
+        coin = 0;
+        currentWeapon = new OBJ_Sword_Normal(gp);
+        currentShield =  new OBJ_shield_Wood(gp);
+        attack = getAttack();
+        defense = getDefense();
+
     }
 
+    public int getAttack(){
+
+        return attack = strength * currentWeapon.attackValue; 
+    }
+
+
+    public int getDefense(){
+
+        return defense = dexterity * currentShield.defenseValue;
+        
+    }
     public void getPlayerImage() {
         //enhanced method
         up1 = setup("/player/boy_up_1", gp.tileSize, gp.tileSize);
@@ -143,6 +170,15 @@ public class Player extends Entity {
                     case "right" -> worldX += speed;
                 }
             }
+
+            if(keyH.enterPressed && !attackCancel){
+
+                gp.playSoundEffect(9);
+                attacking = true;
+                spriteCounter = 0;
+            }
+
+            attackCancel = false;
 
             //sprite animation
             spriteCounter++;
@@ -298,17 +334,15 @@ public class Player extends Entity {
             if (i != 999) {
                 // if the player collisions the npc, we change the game state
                 if (gp.keyH.enterPressed) {
+
+                    attackCancel = true; 
                     gp.gameState = gp.dialogueState;
                     // speak with the npc
                     gp.npc[i].speak();
                     System.out.println("dialogue");
                 }
 
-            } else {
-//                gp.playSoundEffect(9);
-                attacking = true;
-                System.out.println("attack");
-            }
+            } 
 
         }
 

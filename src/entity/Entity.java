@@ -37,6 +37,25 @@ public class Entity {
     public boolean isAlive = true;
     public boolean dying = false;
 
+    // Character stats
+    public int level;
+    public int strength;
+    public int dexterity;
+    public int attack;
+    public int defense;
+    public int exp;
+    public int nextLevelExp;
+    public int coin;
+
+    // Character equipment
+    public Entity currentWeapon;
+    public Entity currentShield;
+
+    // Item attributes
+    public int attackValue;
+    public int defenseValue;
+
+    // HP bar on monsters
     boolean hpBarOn = false;
     
 
