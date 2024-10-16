@@ -25,140 +25,159 @@ public class KeyHandler implements KeyListener {
 
         //title state
         if (gp.gameState == gp.tittleState) {
-            //check the sub-state
-            if (gp.ui.titleScreenState == 0) {
-                if (code == KeyEvent.VK_W) {
-                    gp.ui.commandNum--;
-                    if (gp.ui.commandNum < 0) {
-                        gp.ui.commandNum = 2;
-                    }
-                }
-                if (code == KeyEvent.VK_S) {
-                    gp.ui.commandNum++;
-                    if (gp.ui.commandNum > 2) {
-                        gp.ui.commandNum = 0;
-                    }
-                }
-                if (code == KeyEvent.VK_ENTER) {
-                    if (gp.ui.commandNum == 0) {
-                        gp.ui.titleScreenState = 1;
-                        //gp.gameState = gp.playState; without title screen substate
-                        //BUG music keep reproducing while pressing enter
-//                       gp.playMusic(0);
-
-                    }
-                    if (gp.ui.commandNum == 1) {
-
-                        //TODO
-                    }
-
-                    if (gp.ui.commandNum == 2) {
-
-                        System.exit(0);
-
-                    }
-                }
-
-            }
-
-            //character selection screen
-
-            else if (gp.ui.titleScreenState == 1) {
-
-                if (code == KeyEvent.VK_W) {
-                    gp.ui.commandNum--;
-                    if (gp.ui.commandNum < 0) {
-                        gp.ui.commandNum = 3;
-                    }
-                }
-                if (code == KeyEvent.VK_S) {
-                    gp.ui.commandNum++;
-                    if (gp.ui.commandNum > 3) {
-                        gp.ui.commandNum = 0;
-                    }
-                }
-                if (code == KeyEvent.VK_ENTER) {
-                    if (gp.ui.commandNum == 0) {
-
-                        System.out.println("select fighter character with specific stats");
-                        gp.gameState = gp.playState;
-                    }
-                    if (gp.ui.commandNum == 1) {
-
-                        System.out.println("select thief character with specific stats");
-                        gp.gameState = gp.playState;
-                    }
-
-                    if (gp.ui.commandNum == 2) {
-
-                        System.out.println("select sorcerer character with specific stats");
-                        gp.gameState = gp.playState;
-
-                    }
-
-                    if (gp.ui.commandNum == 3) {
-
-                        //back option
-                        gp.ui.titleScreenState = 0;
-
-                    }
-                }
-            }
-
+            titleState(code);
         }
 
         //play state
         else if (gp.gameState == gp.playState) {
-
-            if (code == KeyEvent.VK_W) {
-                upPressed = true;
-            }
-            if (code == KeyEvent.VK_S) {
-                downPressed = true;
-            }
-            if (code == KeyEvent.VK_A) {
-                leftPressed = true;
-            }
-            if (code == KeyEvent.VK_D) {
-                rightPressed = true;
-            }
-
-            if (code == KeyEvent.VK_ENTER) {
-
-                enterPressed = true;
-            }
-
-            //DEBUG
-            if (code == KeyEvent.VK_T) {
-                checkDrawTime = !checkDrawTime;
-            }
-
-            if (code == KeyEvent.VK_P) {
-//                gp.stopMusic();
-                gp.gameState = gp.pauseState;
-//                gp.playMusic(8);
-
-            }
+            playState(code);
         }
 
         //pause state
-
         else if (gp.gameState == gp.pauseState) {
-
-            if (code == KeyEvent.VK_P) {
-
-//                gp.stopMusic();
-                gp.gameState = gp.playState;
-//                gp.playMusic(0);
-            }
-       }
+            pauseState(code);
+        }
 
         //exit dialogue state
         else if (gp.gameState == gp.dialogueState) {
-            if (code == KeyEvent.VK_ENTER) {
-                gp.gameState = gp.playState;
-                enterPressed = false;
+            dialogueState(code);
+        }
+        //Character state
+        else if (gp.gameState == gp.characterState) {
+            characterState(code);
+        }
+    }
+
+    // Title state method
+    public void titleState(int code) {
+
+        //check the sub-state
+        if (gp.ui.titleScreenState == 0) {
+            if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                if (gp.ui.commandNum < 0) {
+                    gp.ui.commandNum = 2;
+                }
             }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                if (gp.ui.commandNum > 2) {
+                    gp.ui.commandNum = 0;
+                }
+            }
+            if (code == KeyEvent.VK_ENTER) {
+                if (gp.ui.commandNum == 0) {
+                    gp.ui.titleScreenState = 1;
+                    //gp.gameState = gp.playState; without title screen substate
+                    //BUG music keep reproducing while pressing enter
+//                       gp.playMusic(0);
+
+                }
+                if (gp.ui.commandNum == 2) {
+                    System.exit(0);
+                }
+            }
+        }
+
+        //character selection screen
+
+        else if (gp.ui.titleScreenState == 1) {
+
+            if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                if (gp.ui.commandNum < 0) {
+                    gp.ui.commandNum = 3;
+                }
+            }
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                if (gp.ui.commandNum > 3) {
+                    gp.ui.commandNum = 0;
+                }
+            }
+            if (code == KeyEvent.VK_ENTER) {
+                if (gp.ui.commandNum == 0) {
+
+                    System.out.println("select fighter character with specific stats");
+                    gp.gameState = gp.playState;
+                }
+                if (gp.ui.commandNum == 1) {
+
+                    System.out.println("select thief character with specific stats");
+                    gp.gameState = gp.playState;
+                }
+
+                if (gp.ui.commandNum == 2) {
+
+                    System.out.println("select sorcerer character with specific stats");
+                    gp.gameState = gp.playState;
+
+                }
+
+                if (gp.ui.commandNum == 3) {
+
+                    //back option
+                    gp.ui.titleScreenState = 0;
+
+                }
+            }
+        }
+    }
+
+    public void playState(int code) {
+
+        if (code == KeyEvent.VK_W) {
+            upPressed = true;
+        }
+        if (code == KeyEvent.VK_S) {
+            downPressed = true;
+        }
+        if (code == KeyEvent.VK_A) {
+            leftPressed = true;
+        }
+        if (code == KeyEvent.VK_D) {
+            rightPressed = true;
+        }
+
+        if (code == KeyEvent.VK_ENTER) {
+
+            enterPressed = true;
+        }
+        // open character window
+        if (code == KeyEvent.VK_C) {
+            gp.gameState = gp.characterState;
+            System.out.println("char window");
+        }
+
+        //DEBUG
+        if (code == KeyEvent.VK_T) {
+            checkDrawTime = !checkDrawTime;
+        }
+
+        if (code == KeyEvent.VK_P) {
+            gp.gameState = gp.pauseState;
+
+        }
+
+    }
+
+    public void dialogueState(int code) {
+        if (code == KeyEvent.VK_ENTER) {
+            gp.gameState = gp.playState;
+            enterPressed = false;
+        }
+    }
+
+    public void pauseState(int code) {
+        if (code == KeyEvent.VK_P) {
+            gp.gameState = gp.playState;
+        }
+    }
+
+    public void characterState(int code) {
+        //exit character window
+        if (code == KeyEvent.VK_C) {
+            gp.gameState = gp.playState;
         }
 
     }
