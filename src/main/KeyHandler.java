@@ -146,6 +146,7 @@ public class KeyHandler implements KeyListener {
         // open character window
         if (code == KeyEvent.VK_C) {
             gp.gameState = gp.characterState;
+            
             System.out.println("char window");
         }
 

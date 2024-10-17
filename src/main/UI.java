@@ -70,7 +70,7 @@ public class UI {
         g2.setFont(VCR_OSD_MONO_1);
         g2.setColor(Color.WHITE);
 
-        //Tittle state
+        //TITTLE STATE
         if (gp.gameState == gp.tittleState) {
             drawTitleScreen();
         }
@@ -87,6 +87,10 @@ public class UI {
             drawPlayerLife();
             drawPauseScreen();
         }
+        // CHARACTER STATE
+        if(gp.gameState == gp.characterState){
+              drawCharacterScreen();
+        }
 
         //DIALOGUE STATE
         if (gp.gameState == gp.dialogueState) {
@@ -97,7 +101,6 @@ public class UI {
     }
 
     public void drawPlayerLife(){
-
 
         //Draw MAX LIFE
         int x = gp.tileSize/2;
@@ -271,6 +274,62 @@ public class UI {
 
     }
 
+    //Character screen
+    public void drawCharacterScreen(){
+        
+        //create a frame
+        final int frameX = gp.tileSize ;
+        final int frameY = gp.tileSize;
+        final int frameWidth = gp.tileSize * 6;
+        final int frameHeight = gp.tileSize * 10;
+
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        //TEXT
+        g2.setColor(Color.WHITE);
+        g2.setFont(g2.getFont().deriveFont(32f));
+
+        int textX = frameX + 20;
+        int textY = frameY + gp.tileSize;
+        final int lineHeight = 36;
+
+        // NAME COLUMN
+        g2.drawString("Level", textX, textY);
+        textY += lineHeight;
+        g2.drawString("Life", textX, textY);
+        textY += lineHeight;
+        g2.drawString("Strength", textX, textY);
+        textY += lineHeight;
+        g2.drawString("Dexterity", textX, textY);
+        textY += lineHeight;
+        g2.drawString("Attack", textX, textY);
+        textY += lineHeight;
+        g2.drawString("XP", textX, textY);
+        textY += lineHeight;
+        g2.drawString("Next lvl", textX, textY);
+        textY += lineHeight;
+        g2.drawString("Coin", textX, textY);
+        textY += lineHeight;
+        g2.drawString("Weapon", textX, textY);
+        textY += lineHeight;
+        g2.drawString("Shield", textX, textY);
+
+        //VALUES COLUMN
+        int borderX = (frameX + frameWidth) - gp.tileSize;
+
+        //Reset textY
+        textY =  frameY + gp.tileSize;
+
+        String value;
+         value = String.valueOf(gp.player.level);
+
+         textX = getXforRightAlingn(value, borderX);
+         g2.drawString(value, textX, textY);
+        
+
+        
+    }
+
     public void drawSubWindow(int x, int y, int width, int height) {
 
         //set the background rect, must be first, so the margin can be visible
@@ -285,6 +344,14 @@ public class UI {
         g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 36, 36);
 
 
+    }
+
+    //get the text inside player stats centered to the right
+    public int getXforRightAlingn(String text, int borderX){
+
+        int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x = borderX - length;
+        return x;
     }
 
     public int getXforCenterDisplay(String text) {
