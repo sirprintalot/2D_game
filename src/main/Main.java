@@ -1,5 +1,6 @@
 package main;
 
+
 import javax.swing.*;
 
 public class Main {
@@ -14,7 +15,8 @@ public class Main {
         //game panel
         GamePanel gamePanel = new GamePanel();
 
-        //add a game panel to window
+        //add
+        // a game panel to window
         window.add(gamePanel);
         window.pack();
                                    
@@ -26,11 +28,15 @@ public class Main {
         //set the objects and npc's and the game state
         gamePanel.setUpGame();  //must be before the game thread
 
+        
         //run the game thread
         gamePanel.startGameThread();
 
+        
     }
 }
+
+
 
  
                                       

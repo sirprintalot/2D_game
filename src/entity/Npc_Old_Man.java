@@ -12,7 +12,7 @@ public class Npc_Old_Man extends Entity {
 
         super(gp);
         direction = "up";
-        speed = 1;
+        speed = 2;
         getImage();
         setDialogue();
 
@@ -72,4 +72,5 @@ public class Npc_Old_Man extends Entity {
 
         super.speak();
     }
+
 }

@@ -31,6 +31,7 @@ public class Player extends Entity {
 
         //pass the gamePanel from entity
         super(gp);
+
         // key handler
         this.keyH = keyH;
 
@@ -40,11 +41,11 @@ public class Player extends Entity {
         //solid area specific for the player
         solidArea = new Rectangle();
         solidArea.x = 8;
-        solidArea.y = 16;
+        solidArea.y = 10;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        solidArea.width = 25;
-        solidArea.height = 25;
+        solidArea.width = 30;
+        solidArea.height = 35;
 
         //Attack area
         attackArea.width = 36;
@@ -122,55 +123,69 @@ public class Player extends Entity {
 
     public void update() {
 
-        boolean moving = keyH.upPressed || keyH.downPressed
-                || keyH.leftPressed || keyH.rightPressed;
-
         if (attacking) {
             attack();
-        }
-
-        else if (moving) {
+        } else if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed || keyH.enterPressed) {
 
             if (keyH.upPressed) {
                 direction = "up";
-            } else if (keyH.downPressed) {
+            }
+            if (keyH.downPressed) {
                 direction = "down";
-            } else if (keyH.leftPressed) {
+            }
+            if (keyH.leftPressed) {
                 direction = "left";
-            } else {
+            }
+            if (keyH.rightPressed) {
                 direction = "right";
             }
 
-            //check tile collision
+            //Check tile collision
             collisionOn = false;
             gp.cCheck.checkTile(this);
 
-            //check object collision
+            //Object collision
             int objIndex = gp.cCheck.checkObject(this, true);
             pickUpObject(objIndex);
 
-            //check npc collision
+            //Npc collision
             int npcIndex = gp.cCheck.checkEntity(this, gp.npc);
             interactNpc(npcIndex);
 
-            // Monster collision
+            //Monster collision
             int monsterIndex = gp.cCheck.checkEntity(this, gp.monster);
             interactMonster(monsterIndex);
 
-
-            // Check event
+            //Check event
             gp.eventHandler.checkEvent();
 
-            // if collision is false player can move
-            if (!collisionOn) {
+            //If collsion is false, player can move
+            if (!collisionOn && !gp.keyH.enterPressed) {
                 switch (direction) {
-
-                    case "up" -> worldY -= speed;
-                    case "down" -> worldY += speed;
-                    case "left" -> worldX -= speed;
-                    case "right" -> worldX += speed;
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
                 }
             }
+
+            // BUG
+//            if (keyH.enterPressed) {
+//                gp.playSoundEffect(9);
+//                attacking = true;
+//                spriteCounter = 0;
+//            }
+
+            gp.keyH.enterPressed = false;
+
 
             //sprite animation
             spriteCounter++;
@@ -190,37 +205,19 @@ public class Player extends Entity {
                     standingCounter = 0;
                 }
             }
-        }
 
-        if (keyH.enterPressed && !attackCancel) {
-            gp.playSoundEffect(9);
-            attacking = true;
-            spriteCounter = 0;
-            attackCancel = false;
-        }
-
-
-        // Interact with npc when pressing enter key
-        int npcIndex = gp.cCheck.checkEntity(this, gp.npc);
-
-        if (keyH.enterPressed) {
-            if (npcIndex != 999) {
-                interactNpc(npcIndex);
-            }
-            // Reset the enter key
-            gp.keyH.enterPressed = false;
-        }
-
-
-        // player taking damage from monster
-        if (invincible) {
-            invincibleCounter++;
-            if (invincibleCounter > 60) {
-                invincible = false;
-                invincibleCounter = 0;
+            if (invincible) {
+                invincibleCounter++;
+                if (invincibleCounter > 40) {
+                    invincible = false;
+                    invincibleCounter = 0;
+                }
+                
             }
         }
+
     }
+
 
     public void attack() {
 
@@ -328,25 +325,14 @@ public class Player extends Entity {
     public void interactNpc(int i) {
 
         if (keyH.enterPressed) {
-
             if (i != 999) {
-                // if the player collisions the npc, we change the game state
-                if (gp.keyH.enterPressed) {
-                    attackCancel = true;
-                    gp.gameState = gp.dialogueState;
-                    // speak with the npc
-                    gp.npc[i].speak();
-                    System.out.println("dialogue");
-                }
-
+                gp.gameState = gp.dialogueState;
+                gp.npc[i].speak();
+            } else {
+                attacking = true;
             }
 
         }
-
-        if (gp.gameState != gp.dialogueState) {
-            attackCancel = false;
-        }
-
     }
 
     public void interactMonster(int i) {
@@ -478,11 +464,12 @@ public class Player extends Entity {
 
         //DEBUG
         //display the player's collision area
-//        g2.setColor(Color.red);
-//        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+        g2.setColor(Color.red);
+        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
         //check if damage with monster is ok
 //        g2.setFont(new Font("Arial", Font.PLAIN, 25));
 //        g2.setColor(Color.WHITE);
 //        g2.drawString("invincible counter: " + invincibleCounter, 10, 380 );
     }
+
 }

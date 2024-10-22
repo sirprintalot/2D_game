@@ -83,10 +83,10 @@ public class UI {
 
         //PAUSE STATE
         if (gp.gameState == gp.pauseState) {
-
             drawPlayerLife();
             drawPauseScreen();
         }
+
         // CHARACTER STATE
         if(gp.gameState == gp.characterState){
               drawCharacterScreen();
@@ -94,7 +94,11 @@ public class UI {
 
         //DIALOGUE STATE
         if (gp.gameState == gp.dialogueState) {
-
+            drawPlayerLife();
+            drawDialogueScreen();
+        }
+        // Interact state
+        if(gp.gameState == gp.interactState){
             drawPlayerLife();
             drawDialogueScreen();
         }
@@ -132,7 +136,6 @@ public class UI {
             }
         }
         
-        
     }
 
     public void drawTitleScreen() {
@@ -151,7 +154,6 @@ public class UI {
             int y = gp.tileSize * 3;
 
             // shadow
-
             g2.setColor(Color.GRAY);
             g2.drawString(text, x + 5, y + 5);
 
@@ -170,6 +172,7 @@ public class UI {
             x = getXforCenterDisplay(text);
             y += gp.tileSize * 4;
             g2.drawString(text, x, y);
+
             //Set the cursor for the menu
             if (commandNum == 0) {
                 g2.drawString(">", x - gp.tileSize / 2, y);
@@ -237,8 +240,6 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize/2, y);
             }
         }
-
-
     }
 
     public void drawPauseScreen() {

@@ -5,7 +5,6 @@ import tile.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.lang.reflect.*;
 import java.util.*;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -63,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 2;
     public final int dialogueState = 3;
     public final int characterState = 4;
-    
+    public final int interactState = 5;
 
 
     public GamePanel() {
@@ -131,7 +130,7 @@ public class GamePanel extends JPanel implements Runnable {
             // Monster
             for (int i = 0; i < monster.length; i++) {
                 if (monster[i] != null) {
-                    
+
                     if (monster[i].isAlive && !monster[i].dying) {
                         monster[i].update();
                     }
@@ -164,14 +163,11 @@ public class GamePanel extends JPanel implements Runnable {
 
         //Tittle State
         if (gameState == tittleState) {
-
             ui.draw(g2);
-
         }
 
         //play State
         else {
-
             //tiles
             tileM.draw(g2);
 
@@ -199,15 +195,17 @@ public class GamePanel extends JPanel implements Runnable {
                     entityList.add(monster[i]);
                 }
             }
+            //enhanced method
+            entityList.sort(Comparator.comparingInt(entity -> entity.worldY));
 
-            //Sort the order of entities based on the y position
-            Collections.sort(entityList, new Comparator<Entity>() {
-                @Override
-                public int compare(Entity entity1, Entity entity2) {
-
-                    return Integer.compare(entity1.worldY, entity2.worldY);
-                }
-            });
+            //Sort the order of entities based on the y position old method
+//            Collections.sort(entityList, new Comparator<Entity>() {
+//                @Override
+//                public int compare(Entity entity1, Entity entity2) {
+//
+//                    return Integer.compare(entity1.worldY, entity2.worldY);
+//                }
+//            });
 
             // Draw entities
             for (int i = 0; i < entityList.size(); i++) {
