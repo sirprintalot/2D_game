@@ -160,8 +160,11 @@ public class Player extends Entity {
             int monsterIndex = gp.cCheck.checkEntity(this, gp.monster);
             interactMonster(monsterIndex);
 
+            //Check event
+            gp.eventHandler.checkEvent();
+
             //If collision is false, player can move
-            if (!collisionOn) {
+            if (!collisionOn && !keyH.enterPressed) {
                 switch (direction) {
                     case "up":
                         worldY -= speed;
@@ -178,18 +181,16 @@ public class Player extends Entity {
                 }
             }
 
-            //Check event
-            gp.eventHandler.checkEvent();
 
-            // BUG
-//            if (keyH.enterPressed) {
-//                gp.playSoundEffect(9);
-//                attacking = true;
-//                spriteCounter = 0;
-//            }
+            if(keyH.enterPressed && !attackCancel){
+                gp.playSoundEffect(9);
+                attacking = true;
+                spriteCounter = 0;
+            }
+
+            attackCancel = false;
 
             gp.keyH.enterPressed = false;
-
 
             //sprite animation
             spriteCounter++;
@@ -330,12 +331,16 @@ public class Player extends Entity {
 
         if (keyH.enterPressed) {
             if (i != 999) {
+                
+                attackCancel = true;
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();
-            } else {
-                attacking = true;
-                gp.playSoundEffect(9);
             }
+
+//            else {
+//                gp.playSoundEffect(9);
+//                attacking = true;
+//            }
 
         }
     }

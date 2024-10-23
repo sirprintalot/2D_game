@@ -99,8 +99,8 @@ public class EventHandler {
 
     public void damagePit(int gameState, int col, int row) {
 
-        gp.playSoundEffect(10);
         gp.gameState = gameState;
+        gp.playSoundEffect(10);
         gp.ui.currentDialogue = "You fall into a pit";
         gp.player.life -= 1;
 
@@ -112,12 +112,12 @@ public class EventHandler {
     }
 
     public void healingPool(int gameState) {
-
+        
         if (gp.keyH.enterPressed) {
 
-            gp.playSoundEffect(2);
             gp.gameState = gameState;
             gp.player.attackCancel = true;
+            gp.playSoundEffect(2);
             gp.ui.currentDialogue = "You drank the healing water. /nLife restored";
             gp.player.life = gp.player.maxLife;
             canTouchEvent = false;
