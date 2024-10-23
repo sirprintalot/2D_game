@@ -44,8 +44,8 @@ public class Player extends Entity {
         solidArea.y = 10;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        solidArea.width = 30;
-        solidArea.height = 35;
+        solidArea.width = 25;
+        solidArea.height = 28;
 
         //Attack area
         attackArea.width = 36;
@@ -123,9 +123,13 @@ public class Player extends Entity {
 
     public void update() {
 
+        boolean moving = keyH.upPressed || keyH.downPressed || keyH.leftPressed ||keyH.rightPressed;
+
         if (attacking) {
             attack();
-        } else if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed || keyH.enterPressed) {
+        }
+
+        else if (moving || keyH.enterPressed) {
 
             if (keyH.upPressed) {
                 direction = "up";
@@ -156,11 +160,8 @@ public class Player extends Entity {
             int monsterIndex = gp.cCheck.checkEntity(this, gp.monster);
             interactMonster(monsterIndex);
 
-            //Check event
-            gp.eventHandler.checkEvent();
-
-            //If collsion is false, player can move
-            if (!collisionOn && !gp.keyH.enterPressed) {
+            //If collision is false, player can move
+            if (!collisionOn) {
                 switch (direction) {
                     case "up":
                         worldY -= speed;
@@ -176,6 +177,9 @@ public class Player extends Entity {
                         break;
                 }
             }
+
+            //Check event
+            gp.eventHandler.checkEvent();
 
             // BUG
 //            if (keyH.enterPressed) {
@@ -212,7 +216,7 @@ public class Player extends Entity {
                     invincible = false;
                     invincibleCounter = 0;
                 }
-                
+
             }
         }
 
@@ -330,6 +334,7 @@ public class Player extends Entity {
                 gp.npc[i].speak();
             } else {
                 attacking = true;
+                gp.playSoundEffect(9);
             }
 
         }
