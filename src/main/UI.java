@@ -292,7 +292,7 @@ public class UI {
 
         int textX = frameX + 20;
         int textY = frameY + gp.tileSize;
-        final int lineHeight = 36;
+        final int lineHeight = 45;
 
         // NAME COLUMN
         g2.drawString("Level", textX, textY);
@@ -322,10 +322,52 @@ public class UI {
         textY =  frameY + gp.tileSize;
 
         String value;
+        
          value = String.valueOf(gp.player.level);
-
          textX = getXforRightAlingn(value, borderX);
          g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+
+        value = String.valueOf(gp.player.life + "/" + gp.player.maxLife);
+        textX = getXforRightAlingn(value, borderX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.strength);
+        textX = getXforRightAlingn(value, borderX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.dexterity);
+        textX = getXforRightAlingn(value, borderX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.attack);
+        textX = getXforRightAlingn(value, borderX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.exp);
+        textX = getXforRightAlingn(value, borderX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.nextLevelExp);
+        textX = getXforRightAlingn(value, borderX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.coin);
+        textX = getXforRightAlingn(value, borderX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        g2.drawImage(gp.player.currentWeapon.down1, borderX - (gp.tileSize - 13), textY - 38, null );
+        textY += gp.tileSize;
+
+        g2.drawImage(gp.player.currentShield.down1, borderX - (gp.tileSize - 13), textY - 45,  null);
         
 
         

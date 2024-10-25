@@ -122,8 +122,6 @@ public class EventHandler {
             gp.player.life = gp.player.maxLife;
             canTouchEvent = false;
 
-            //TODO implement use of when pressing just enter key
-
         }
     }
 

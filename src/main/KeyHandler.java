@@ -143,7 +143,6 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_ENTER) {
             enterPressed = true;
-            System.out.println("enter");
         }
 
         // open character window
