@@ -6,6 +6,7 @@ import objects.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
+import java.util.*;
 
 public class UI {
 
@@ -15,9 +16,14 @@ public class UI {
 
     BufferedImage fullHeart, halfHeart, blankHeart;
     public boolean messageOn = false;
-    public String message = "";
-    public int messageCounter = 0;
-    public boolean gameFinished = false;
+//    public String message = "";
+//    public int messageCounter = 0;
+//    public boolean gameFinished = false;
+
+    //display scrolling messages
+    ArrayList<String> message = new ArrayList<>();
+    ArrayList<Integer> messageCounter = new ArrayList<>();
+
 
     public int commandNum = 0;
 
@@ -57,10 +63,12 @@ public class UI {
 
     }
 
-    public void showMessage(String text) {
+    public void addMessage(String text) {
 
-        message = text;
-        messageOn = true;
+        message.add(text);
+        messageCounter.add(0);
+        
+
     }
 
 
@@ -79,6 +87,7 @@ public class UI {
         if (gp.gameState == gp.playState) {
 
             drawPlayerLife();
+            drawMessage();
         }
 
         //PAUSE STATE
@@ -137,6 +146,40 @@ public class UI {
         }
         
     }
+
+    public void   drawMessage() {
+
+        int messageX = gp.tileSize;
+        int messageY = gp.tileSize * 4;
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32f));
+
+        for(int i = 0; i < message.size(); i++){
+            if(message.get(i) != null){
+
+                g2.setColor(Color.BLACK);
+                g2.drawString(message.get(i), messageX+3, messageY+3);
+                g2.setColor(Color.WHITE);
+                g2.drawString(message.get(i), messageX, messageY);
+
+                int counter = messageCounter.get(i) + 1;  // messageCounter++
+                messageCounter.set(i, counter); // set the counter to the array
+
+                messageY += 50;
+                //remove the message after 3 seconds
+                if(messageCounter.get(i) > 180){
+                    message.remove(i);
+                    messageCounter.remove(i);
+                }
+            }
+        }
+        
+
+
+
+    }
+
+
 
     public void drawTitleScreen() {
 

@@ -36,6 +36,8 @@ public class Sound {
 
         soundURL[12] = getClass().getResource("/sounds/teleport.wav");
 
+        soundURL[13] = getClass().getResource("/sounds/levelup.wav");
+
 
 
     }

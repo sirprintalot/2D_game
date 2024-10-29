@@ -121,6 +121,9 @@ public class EventHandler {
             gp.ui.currentDialogue = "You drank the healing water. /nLife restored";
             gp.player.life = gp.player.maxLife;
             canTouchEvent = false;
+            //after healing, the monsters reappear
+            gp.assetSetter.setMonster();
+
 
         }
     }

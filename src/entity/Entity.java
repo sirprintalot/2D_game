@@ -136,9 +136,17 @@ public class Entity {
         if (this.type == 2 && contactPLayer) {
 
             if (!gp.player.invincible) {
+                
                 // if the player is not invincible, we add damage
                 gp.playSoundEffect(10);
-                gp.player.life -= 1;
+
+                int damage =  attack - gp.player.defense;
+
+                if(damage < 0){
+                    damage = 0;
+                }
+
+                gp.player.life -= damage;
                 gp.player.invincible = true;
             }
         }
