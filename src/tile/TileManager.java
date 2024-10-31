@@ -16,11 +16,12 @@ public class TileManager {
     public TileManager(GamePanel gp) {
 
         this.gp = gp;
+        
         tile = new Tile[50];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
-        loadMap();
+        loadMap("/maps/worldV2.txt");
 
     }
 
@@ -147,10 +148,10 @@ public class TileManager {
 //        }
 //    }
 
-    public void loadMap() {
+    public void loadMap(String filePath) {
 
         try {
-            InputStream is = getClass().getResourceAsStream("/maps/worldV2.txt");
+            InputStream is = getClass().getResourceAsStream(filePath);
             assert is != null;
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             int col = 0;
@@ -176,6 +177,7 @@ public class TileManager {
                 col = 0;  // Reset column counter for next row
                 row++;    // Move to the next row
             }
+            System.out.println("map loaded");
             br.close();
         } catch (Exception e) {
             e.printStackTrace();

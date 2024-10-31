@@ -9,7 +9,7 @@ public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
 
     //DEBUG
-    public boolean checkDrawTime = false;
+    public boolean debugFunc = false;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -131,16 +131,22 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_W) {
             upPressed = true;
         }
+
+        
         if (code == KeyEvent.VK_S) {
             downPressed = true;
         }
+
+        //<=
         if (code == KeyEvent.VK_A) {
             leftPressed = true;
         }
+        // =>
         if (code == KeyEvent.VK_D) {
             rightPressed = true;
         }
 
+        //Attack interact
         if (code == KeyEvent.VK_ENTER) {
             enterPressed = true;
         }
@@ -151,6 +157,7 @@ public class KeyHandler implements KeyListener {
             System.out.println("char window");
         }
 
+        // Pause game
         if (code == KeyEvent.VK_P) {
             gp.gameState = gp.pauseState;
 
@@ -158,8 +165,14 @@ public class KeyHandler implements KeyListener {
 
         //DEBUG
         if (code == KeyEvent.VK_T) {
-            checkDrawTime = !checkDrawTime;
+            debugFunc = !debugFunc;
         }
+
+        if (code == KeyEvent.VK_R) {
+            gp.tileM.loadMap("/maps/worldV2.txt");
+//            System.out.println("map loaded");
+        }
+        
 
     }
 

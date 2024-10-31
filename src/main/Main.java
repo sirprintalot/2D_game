@@ -19,7 +19,7 @@ public class Main {
         //add
         // a game panel to window
         window.add(gamePanel);
-        window.pack();
+        window.pack();                             
                                    
         //window position and visibility
         

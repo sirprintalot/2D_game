@@ -156,7 +156,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         //DEBUG
         long drawStart = 0;
-        if (keyH.checkDrawTime) {
+        if (keyH.debugFunc) {
 
             drawStart = System.nanoTime();
         }
@@ -222,13 +222,30 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
         //debug
-        if (keyH.checkDrawTime) {
+        if (keyH.debugFunc) {
             long drawEnd = System.nanoTime();
             long passedTime = drawEnd - drawStart;
-            g2.setColor(Color.white);
 
-            g2.drawString("Time elapsed: " + passedTime, 50, 550);
-            System.out.println(passedTime);
+            g2.setFont(new Font("Arial",Font.PLAIN, 25));
+
+            int textX = 20;
+            int textY = 480;
+            int lineHeight = 20;
+
+            g2.drawString("Player's world X: " + player.worldX, textX, textY);
+            textY += lineHeight;
+
+            g2.drawString("Player's world Y: " + player.worldY, textX, textY);
+            textY += lineHeight;
+
+            g2.drawString("Col: " + (player.worldX + player.solidArea.x)/tileSize, textX, textY);
+            textY += lineHeight;
+
+            g2.drawString("Row: " + (player.worldY + player.solidArea.y)/tileSize, textX, textY);
+            textY += lineHeight;
+
+            g2.setColor(Color.white);
+            g2.drawString("Time passed: " + passedTime, textX, textY);
         }
 
         g2.dispose();
