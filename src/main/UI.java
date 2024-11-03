@@ -20,6 +20,12 @@ public class UI {
 //    public int messageCounter = 0;
 //    public boolean gameFinished = false;
 
+    // item Slots
+    public int slotCol = 0;
+    public int slotRow = 0;
+
+    public boolean messageDisplay = true;
+
     //display scrolling messages
     ArrayList<String> message = new ArrayList<>();
     ArrayList<Integer> messageCounter = new ArrayList<>();
@@ -99,6 +105,7 @@ public class UI {
         // CHARACTER STATE
         if(gp.gameState == gp.characterState){
               drawCharacterScreen();
+              drawInventoryScreen();
         }
 
         //DIALOGUE STATE
@@ -166,19 +173,15 @@ public class UI {
                 messageCounter.set(i, counter); // set the counter to the array
 
                 messageY += 50;
+
                 //remove the message after 3 seconds
-                if(messageCounter.get(i) > 180){
+                if(messageCounter.get(i) > 125){
                     message.remove(i);
                     messageCounter.remove(i);
                 }
             }
         }
-        
-
-
-
     }
-
 
 
     public void drawTitleScreen() {
@@ -411,9 +414,38 @@ public class UI {
         textY += gp.tileSize;
 
         g2.drawImage(gp.player.currentShield.down1, borderX - (gp.tileSize - 13), textY - 45,  null);
-        
 
-        
+    }
+
+    // INVENTORY SCREEN
+    public void drawInventoryScreen(){
+
+        //create a frame
+        final int frameX = gp.tileSize * 9;
+        final int frameY = gp.tileSize;
+        final int frameWidth = gp.tileSize * 6;
+        final int frameHeight = gp.tileSize * 5;
+
+        //Draw the sub-window
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        // Slots for the items
+        final int slotXstart = frameX + 20;
+        final int slotYstart = frameY + 20;
+
+        int slotX = slotXstart;
+        int slotY = slotYstart;
+
+        // Cursor
+        int cursorX = slotX + (gp.tileSize * slotCol);
+        int cursorY = slotY + (gp.tileSize * slotRow);
+        int cursorWidth = gp.tileSize;
+        int cursorHeight = gp.tileSize;
+
+        // Draw cursor
+        g2.setColor(Color.WHITE);
+        g2.setStroke(new BasicStroke(3));
+        g2.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight,10, 10);
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {
@@ -428,8 +460,6 @@ public class UI {
         g2.setColor(c);
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 36, 36);
-
-
     }
 
     //get the text inside player stats centered to the right

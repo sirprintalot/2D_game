@@ -38,6 +38,8 @@ public class Sound {
 
         soundURL[13] = getClass().getResource("/sounds/levelup.wav");
 
+        soundURL[14] = getClass().getResource("/sounds/cursor.wav");
+
 
 
     }
