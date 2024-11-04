@@ -10,6 +10,6 @@ public class OBJ_shield_Wood extends Entity {
         name = "Wooden Shield";
         down1  = setup("/objects/shield_wood", gp.tileSize, gp.tileSize);
         defenseValue = 1;
-        itemDescription ="[" + name + "] /n A light and old shield";
+        itemDescription ="[" + name + "] /n A light and/n old shield";
     }
 }
