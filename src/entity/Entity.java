@@ -54,6 +54,7 @@ public class Entity {
     // Item attributes
     public int attackValue;
     public int defenseValue;
+    public String itemDescription = "";
 
     // HP bar on monsters
     boolean hpBarOn = false;

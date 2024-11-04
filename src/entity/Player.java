@@ -5,6 +5,7 @@ import objects.*;
 
 import java.awt.*;
 import java.awt.image.*;
+import java.util.*;
 
 public class Player extends Entity {
 
@@ -21,6 +22,11 @@ public class Player extends Entity {
 
     // Attack
     public boolean attackCancel = false;
+
+    //Inventory
+    public ArrayList<Entity> inventory = new ArrayList<>();
+    public final int inventorySize = 20;
+    
 
 
     //objective
@@ -56,6 +62,7 @@ public class Player extends Entity {
         setDefaultValues();
         getPlayerImage();
         getPlayerAttackImage();
+        setItems();
     }
 
 
@@ -83,6 +90,28 @@ public class Player extends Entity {
         defense = getDefense();
 
     }
+
+    public void setItems(){
+
+        //TODO FIX ITEM BUG WHEN THERE'S MORE THAN 20 ITEMS
+        inventory.add(currentWeapon);
+        inventory.add(currentShield);
+        inventory.add(new OBJ_Key(gp) );
+        inventory.add(new OBJ_Boots(gp));
+        inventory.add(new OBJ_Key(gp) );
+        inventory.add(new OBJ_Boots(gp));
+        inventory.add(new OBJ_Key(gp) );
+        inventory.add(new OBJ_Boots(gp));
+        inventory.add(new OBJ_Key(gp) );
+        inventory.add(new OBJ_Boots(gp));
+        inventory.add(new OBJ_Key(gp) );
+        inventory.add(new OBJ_Boots(gp));
+        inventory.add(new OBJ_Key(gp) );
+
+        
+    }
+
+
 
     public int getAttack() {
 

@@ -13,6 +13,8 @@ public class OBJ_Key extends Entity {
         name = "key";
         down1 = setup("/objects/key", gp.tileSize, gp.tileSize);
 
+        itemDescription ="[" + name + "] /n A golden key";
+
 
     }
 

@@ -432,21 +432,45 @@ public class UI {
         // Slots for the items
         final int slotXstart = frameX + 20;
         final int slotYstart = frameY + 20;
-
         int slotX = slotXstart;
         int slotY = slotYstart;
+        int slotSize = gp.tileSize + 3;
 
         // Cursor
-        int cursorX = slotX + (gp.tileSize * slotCol);
-        int cursorY = slotY + (gp.tileSize * slotRow);
+        int cursorX = slotX + (slotSize * slotCol);
+        int cursorY = slotY + (slotSize * slotRow);
         int cursorWidth = gp.tileSize;
         int cursorHeight = gp.tileSize;
+
+        //Draw player's items
+        for (int i = 0; i < gp.player.inventory.size(); i++){
+
+            //draw the first item
+            g2.drawImage(gp.player.inventory.get(i).down1, slotX,slotY, null);
+            //pass to the next column
+            slotX += slotSize;
+
+            if(i == 4 || i == 9 || i == 14) {
+                slotX = slotXstart;
+                slotY += slotSize;
+
+            }
+        }
 
         // Draw cursor
         g2.setColor(Color.WHITE);
         g2.setStroke(new BasicStroke(3));
         g2.drawRoundRect(cursorX, cursorY, cursorWidth, cursorHeight,10, 10);
+
+        //Description window
+        int dFrameX =  frameX;
+        int dFrameY = frameY + frameHeight;
+        int dFrameWidth =  frameWidth;
+        int dFrameHeight = gp.tileSize * 3;
+
+        drawSubWindow(dFrameX,dFrameY,dFrameWidth,dFrameHeight);
     }
+
 
     public void drawSubWindow(int x, int y, int width, int height) {
 
