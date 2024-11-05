@@ -14,10 +14,30 @@ public class AssetSetter {
 
     public void setObject() {
 //        //KEYS
-        gp.obj[0] = new OBJ_Key(gp);
-        gp.obj[0].worldX = 23 * gp.tileSize;
-        gp.obj[0].worldY = 7 * gp.tileSize;
-//
+
+        int objIndex = 0;
+        gp.obj[objIndex] = new OBJ_Key(gp);
+        gp.obj[objIndex].worldX = 23 * gp.tileSize;
+        gp.obj[objIndex].worldY = 7 * gp.tileSize;
+
+        objIndex++;
+
+        gp.obj[objIndex] = new OBJ_Key(gp);
+        gp.obj[objIndex].worldX = 38 * gp.tileSize;
+        gp.obj[objIndex].worldY = 8 * gp.tileSize;
+
+        objIndex++;
+
+        gp.obj[objIndex] = new OBJ_Boots(gp);
+        gp.obj[objIndex].worldX = 37 * gp.tileSize;
+        gp.obj[objIndex].worldY = 42 * gp.tileSize;
+
+        objIndex++;
+
+        gp.obj[objIndex] = new OBJ_Axe(gp);
+        gp.obj[objIndex].worldX = 25 * gp.tileSize;
+        gp.obj[objIndex].worldY = 21 * gp.tileSize;
+
 //        gp.obj[1] = new OBJ_Key(gp);
 //        gp.obj[1].worldX = 33 * gp.tileSize;
 //        gp.obj[1].worldY = 7 * gp.tileSize;
@@ -52,9 +72,7 @@ public class AssetSetter {
 //        gp.obj[8].worldX = 20 * gp.tileSize;
 //        gp.obj[8].worldY = 42 * gp.tileSize;
 //
-//        gp.obj[9] = new OBJ_Boots(gp);
-//        gp.obj[9].worldX = 37 * gp.tileSize;
-//        gp.obj[9].worldY = 42 * gp.tileSize;
+
 //    }
 }
 

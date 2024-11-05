@@ -54,8 +54,8 @@ public class Player extends Entity {
         solidArea.height = 28;
 
         //Attack area
-        attackArea.width = 36;
-        attackArea.height = 36;
+//        attackArea.width = 36;
+//        attackArea.height = 36;
 
 
         // Methods
@@ -96,14 +96,14 @@ public class Player extends Entity {
         //TODO FIX ITEM BUG WHEN THERE'S MORE THAN 20 ITEMS
         inventory.add(currentWeapon);
         inventory.add(currentShield);
-        inventory.add(new OBJ_Key(gp) );
-        inventory.add(new OBJ_Key(gp) );
     }
 
 
 
     public int getAttack() {
 
+        //set the attack area according to the current weapon
+        attackArea = currentWeapon.attackArea;
         return attack = strength * currentWeapon.attackValue;
     }
 
@@ -294,54 +294,21 @@ public class Player extends Entity {
     //pick object
     public void pickUpObject(int i) {
         if (i != 999) {
-//            String objectName = gp.obj[i].name;
-//            switch (objectName) {
-//                case "key":
-//                    gp.playSoundEffect(1);
-//                    gp.obj[i] = null;
-////                    System.out.println(hasKey + " keys found!");
-//                    gp.ui.showMessage("you got a Key!!");
-//                    break;
-//
-//                case "door":
-//
-//                    gp.playSoundEffect(5);
-//                    gp.ui.showMessage("Door locked. You need a key");
-//
-////                    if (hasKey > 0) {
-////                        gp.obj[i] = null;
-////                        gp.playSoundEffect(3);
-////                        hasKey--;
-////                        gp.ui.showMessage("Door opened " + hasKey + " keys left..");
-////                    }
-////                    else {
-//                    break;
-//
-//                case "chest":
-//
-//                    gp.obj[i] = null;
-//                    gp.playSoundEffect(2);
 
-//                    if (chestCounter >= 3) {
-//
-//                        gp.ui.gameFinished = true;
-////                        gp.stopMusic();
-//                        gp.playSoundEffect(4);
-//                        gp.ui.showMessage("All " + chestCounter + " treasures found!!");
-//                    }
-//
-//                    break;
+            String displayText;
+            //Check if the player's inventory is not full
+            if(inventory.size() != inventorySize){
 
-//                case "boots":
-//
-//                    speed += speedIncrement; //para coca machucada
-//                    gp.obj[i] = null;
-//                    gp.playSoundEffect(6);
-//                    gp.ui.showMessage("You have boots!!");
-//
-//                    break;
-//            }
+                inventory.add(gp.obj[i]);
+                gp.playSoundEffect(1);
+                displayText = "Pick a " + gp.obj[i].name + " !!";
+            }
+           else{
+               displayText = "Can't carry anything more!";
+            }
 
+           gp.ui.addMessage(displayText);
+           gp.obj[i] = null;
         }
     }
 
@@ -354,11 +321,6 @@ public class Player extends Entity {
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();
             }
-//            else {
-//                gp.playSoundEffect(9);
-//                attacking = true;
-//            }
-
         }
     }
 

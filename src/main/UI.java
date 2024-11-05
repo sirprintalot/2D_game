@@ -73,8 +73,6 @@ public class UI {
 
         message.add(text);
         messageCounter.add(0);
-
-
     }
 
 
@@ -159,7 +157,7 @@ public class UI {
         int messageX = gp.tileSize;
         int messageY = gp.tileSize * 4;
 
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32f));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 23f));
 
         for (int i = 0; i < message.size(); i++) {
             if (message.get(i) != null) {
@@ -172,7 +170,7 @@ public class UI {
                 int counter = messageCounter.get(i) + 1;  // messageCounter++
                 messageCounter.set(i, counter); // set the counter to the array
 
-                messageY += 50;
+                messageY += 25;
 
                 //remove the message after 3 seconds
                 if (messageCounter.get(i) > 125) {
@@ -444,7 +442,19 @@ public class UI {
         //Draw player's items
         for (int i = 0; i < gp.player.inventory.size(); i++) {
 
-            //draw the first item
+            //Highlight the current item
+            if(gp.player.inventory.get(i) == gp.player.currentWeapon || gp.player.inventory.get(i) == gp.player.currentShield ){
+
+                g2.setColor(new Color(240,150,20));
+                g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);
+
+
+
+            }
+
+
+
+            //draws the first item
             g2.drawImage(gp.player.inventory.get(i).down1, slotX, slotY, null);
             //pass to the next column
             slotX += slotSize;
@@ -467,8 +477,6 @@ public class UI {
         int dFrameWidth = frameWidth;
         int dFrameHeight = gp.tileSize * 3;
 
-        drawSubWindow(dFrameX, dFrameY, dFrameWidth, dFrameHeight);
-
         //Draw description text
         int descTextX = dFrameX + 20;
         int descTextY = dFrameY + gp.tileSize;
@@ -477,6 +485,9 @@ public class UI {
 
         int itemIndex = getItemIndex();
         if (itemIndex < gp.player.inventory.size()) {
+
+            //Only drawing the subwindow when there's an item
+            drawSubWindow(dFrameX, dFrameY, dFrameWidth, dFrameHeight);
 
             for (String line : gp.player.inventory.get(itemIndex).itemDescription.split("/n")) {
                 g2.drawString(line, descTextX, descTextY);
