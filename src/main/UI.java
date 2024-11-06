@@ -331,11 +331,11 @@ public class UI {
 
         //TEXT
         g2.setColor(Color.WHITE);
-        g2.setFont(g2.getFont().deriveFont(32f));
+        g2.setFont(g2.getFont().deriveFont(30f));
 
         int textX = frameX + 20;
         int textY = frameY + gp.tileSize;
-        final int lineHeight = 45;
+        final int lineHeight = 40;
 
         // NAME COLUMN
         g2.drawString("Level", textX, textY);
@@ -347,6 +347,8 @@ public class UI {
         g2.drawString("Dexterity", textX, textY);
         textY += lineHeight;
         g2.drawString("Attack", textX, textY);
+        textY += lineHeight;
+        g2.drawString("Defense", textX, textY);
         textY += lineHeight;
         g2.drawString("XP", textX, textY);
         textY += lineHeight;
@@ -388,6 +390,11 @@ public class UI {
         textY += lineHeight;
 
         value = String.valueOf(gp.player.attack);
+        textX = getXforRightAlingn(value, borderX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.defense);
         textX = getXforRightAlingn(value, borderX);
         g2.drawString(value, textX, textY);
         textY += lineHeight;

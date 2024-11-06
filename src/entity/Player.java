@@ -400,6 +400,32 @@ public class Player extends Entity {
 
     }
 
+    public void selectItem(){
+
+        int itemIndex = gp.ui.getItemIndex();
+
+        if(itemIndex < inventory.size()){
+
+            Entity selectedItem = inventory.get(itemIndex);
+
+            if(selectedItem.type == typeSword || selectedItem.type == typeAxe) {
+                currentWeapon = selectedItem;
+                attack = getAttack();
+            }
+
+            if(selectedItem.type == typeShield){
+
+                currentShield = selectedItem;
+                defense = getDefense();
+            }
+            if(selectedItem.type == typeUsable){
+                //TODO implemet
+            }
+        }
+
+
+    }
+
     public void draw(Graphics2D g2) {
 
         BufferedImage image = null;

@@ -34,7 +34,7 @@ public class AssetSetter {
 
         objIndex++;
 
-        gp.obj[objIndex] = new OBJ_Axe(gp);
+        gp.obj[objIndex] = new OBJ_Shield_blue(gp);
         gp.obj[objIndex].worldX = 25 * gp.tileSize;
         gp.obj[objIndex].worldY = 21 * gp.tileSize;
 

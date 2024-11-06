@@ -201,7 +201,6 @@ public class KeyHandler implements KeyListener {
                 gp.ui.slotRow--;
                 gp.playSoundEffect(14);
             }
-
         }
 
         if (code == KeyEvent.VK_S) {
@@ -209,7 +208,6 @@ public class KeyHandler implements KeyListener {
                 gp.ui.slotRow++;
                 gp.playSoundEffect(14);
             }
-
         }
 
         if (code == KeyEvent.VK_A) {
@@ -218,7 +216,6 @@ public class KeyHandler implements KeyListener {
                 gp.ui.slotCol--;
                 gp.playSoundEffect(14);
             }
-
         }
 
         if (code == KeyEvent.VK_D) {
@@ -227,7 +224,10 @@ public class KeyHandler implements KeyListener {
                 gp.ui.slotCol++;
                 gp.playSoundEffect(14);
             }
+        }
 
+        if(code == KeyEvent.VK_ENTER){
+            gp.player.selectItem();
         }
 
     }

@@ -68,9 +68,19 @@ public class Entity {
     boolean attacking = false;
     public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
 
-    // CHECKING THE ENTITY CLASS FOR TAKING DAMAGE OR NOT
+    // CHECKING THE ENTITY CLASS FOR TAKING DAMAGE OR NOT  also check weapon or shield type
     public int type; //0 player, 1 npc etc
 
+    //Entities
+    public final int typePlayer = 0;
+    public final int typeNpc = 1;
+    public final int typeMonster = 2;
+
+    //Objects
+    public final int typeSword = 3;
+    public final int typeAxe = 4;
+    public final int typeShield = 5;
+    public final int typeUsable  = 6;
     //DIALOGUE
     String[] dialogues = new String[20];
     int dialogueIndex = 0;
@@ -134,7 +144,7 @@ public class Entity {
 
         boolean contactPLayer = gp.cCheck.checkPlayer(this);
 
-        if (this.type == 2 && contactPLayer) {
+        if (this.type == typeMonster && contactPLayer) {
 
             if (!gp.player.invincible) {
                 
