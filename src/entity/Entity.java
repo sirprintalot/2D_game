@@ -108,6 +108,7 @@ public class Entity {
 
     public void setAction() {
     }
+    public void useItem(Entity entity){}
 
     public void damageReaction(){
         

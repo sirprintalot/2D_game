@@ -38,6 +38,18 @@ public class AssetSetter {
         gp.obj[objIndex].worldX = 25 * gp.tileSize;
         gp.obj[objIndex].worldY = 21 * gp.tileSize;
 
+        objIndex++;
+        gp.obj[objIndex] = new OBJ_Axe(gp);
+        gp.obj[objIndex].worldX = 27 * gp.tileSize;
+        gp.obj[objIndex].worldY = 21 * gp.tileSize;
+
+        objIndex++;
+        gp.obj[objIndex] = new OBJ_Potion_Red(gp);
+        gp.obj[objIndex].worldX = 23 * gp.tileSize;
+        gp.obj[objIndex].worldY = 21 * gp.tileSize;
+
+
+
 //        gp.obj[1] = new OBJ_Key(gp);
 //        gp.obj[1].worldX = 33 * gp.tileSize;
 //        gp.obj[1].worldY = 7 * gp.tileSize;
