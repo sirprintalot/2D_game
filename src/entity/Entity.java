@@ -47,14 +47,19 @@ public class Entity {
     public int nextLevelExp;
     public int coin;
 
+    public int maxMana;
+    public int mana;
+
     // Character equipment
     public Entity currentWeapon;
     public Entity currentShield;
+    public Projectile projectile;
 
     // Item attributes
     public int attackValue;
     public int defenseValue;
     public String itemDescription = "";
+    public int useCost;
 
     // HP bar on monsters
     boolean hpBarOn = false;
@@ -295,7 +300,7 @@ public class Entity {
         if (dyingCounter >  interval * 6 && dyingCounter <= interval * 7) {changeAlpha(g2, 0f);}
         if (dyingCounter >  interval * 7 && dyingCounter <= interval * 8) {changeAlpha(g2, 1f);}
         if (dyingCounter >  interval * 8) {
-            dying = false;
+//            dying = false;
             isAlive = false;
         }
 

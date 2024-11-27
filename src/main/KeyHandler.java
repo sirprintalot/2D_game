@@ -6,7 +6,7 @@ public class KeyHandler implements KeyListener {
 
     GamePanel gp;
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, shootPressed;
 
     //DEBUG
     public boolean debugFunc = false;
@@ -150,6 +150,10 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_ENTER) {
             enterPressed = true;
         }
+        // shoot projectile
+        if (code == KeyEvent.VK_F) {
+            shootPressed = true;
+        }
 
         // open character window
         if (code == KeyEvent.VK_C) {
@@ -251,6 +255,9 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_ENTER) {
             enterPressed = false;
+        }
+        if (code == KeyEvent.VK_F) {
+            shootPressed = false;
         }
 
     }

@@ -77,6 +77,9 @@ public class Player extends Entity {
         maxLife = 6;
         life = maxLife;
 
+        //projectile
+        projectile = new OBJ_Fireball(gp);
+
         // Player stats
         level = 1;
         strength = 1; // the more strength more damage
@@ -241,15 +244,26 @@ public class Player extends Entity {
                     standingCounter = 0;
                 }
             }
+        }
+        //shoot projectile when key pressed
+        if(keyH.shootPressed && !projectile.isAlive){
 
-            if (invincible) {
-                invincibleCounter++;
-                if (invincibleCounter > 40) {
-                    invincible = false;
-                    invincibleCounter = 0;
-                }
+            //set default coordinates for projectile
+            projectile.set(worldX, worldY, direction, true, this);
 
+            //add projectile to the projectile list
+            gp.projectileList.add(projectile);
+            
+        }
+
+        //Make player invincible when receive damage
+        if (invincible) {
+            invincibleCounter++;
+            if (invincibleCounter > 60) {
+                invincible = false;
+                invincibleCounter = 0;
             }
+
         }
 
     }
@@ -341,7 +355,7 @@ public class Player extends Entity {
 
         if (i != 999) {
 
-            if (!invincible) {
+            if (!invincible && !gp.monster[i].dying) {
                 gp.playSoundEffect(10);
 
                 int damage = gp.monster[i].attack - defense;
