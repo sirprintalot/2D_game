@@ -142,6 +142,18 @@ public class GamePanel extends JPanel implements Runnable {
                 }
 
             }
+            // Projectile
+            for (int i = 0; i < projectileList.size(); i++) {
+                if (projectileList.get(i) != null) {
+
+                    if (projectileList.get(i).isAlive) {
+                        projectileList.get(i).update();
+                    }
+                    if (!projectileList.get(i).isAlive) {
+                        projectileList.remove(i);
+                    }
+                }
+            }
         }
 
         if (gameState == pauseState) {
@@ -197,6 +209,12 @@ public class GamePanel extends JPanel implements Runnable {
                     entityList.add(monster[i]);
                 }
             }
+            // Projectile
+            for (int i = 0; i < projectileList.size(); i++) {
+                if (projectileList.get(i) != null) {
+                    entityList.add(projectileList.get(i));
+                }
+            }
             //enhanced method
             entityList.sort(Comparator.comparingInt(entity -> entity.worldY));
 
@@ -228,7 +246,7 @@ public class GamePanel extends JPanel implements Runnable {
             long drawEnd = System.nanoTime();
             long passedTime = drawEnd - drawStart;
 
-            g2.setFont(new Font("Arial",Font.PLAIN, 25));
+            g2.setFont(new Font("Arial", Font.PLAIN, 25));
 
             int textX = 20;
             int textY = 480;
@@ -240,10 +258,10 @@ public class GamePanel extends JPanel implements Runnable {
             g2.drawString("Player's world Y: " + player.worldY, textX, textY);
             textY += lineHeight;
 
-            g2.drawString("Col: " + (player.worldX + player.solidArea.x)/tileSize, textX, textY);
+            g2.drawString("Col: " + (player.worldX + player.solidArea.x) / tileSize, textX, textY);
             textY += lineHeight;
 
-            g2.drawString("Row: " + (player.worldY + player.solidArea.y)/tileSize, textX, textY);
+            g2.drawString("Row: " + (player.worldY + player.solidArea.y) / tileSize, textX, textY);
             textY += lineHeight;
 
             g2.setColor(Color.white);

@@ -246,13 +246,18 @@ public class Player extends Entity {
             }
         }
         //shoot projectile when key pressed
-        if(keyH.shootPressed && !projectile.isAlive){
+        if(keyH.shootPressed && !projectile.isAlive && shotAvailableCounter == 30){
 
             //set default coordinates for projectile
             projectile.set(worldX, worldY, direction, true, this);
 
             //add projectile to the projectile list
             gp.projectileList.add(projectile);
+
+            shotAvailableCounter = 0;
+
+            gp.playSoundEffect(15);
+            System.out.println("shot fired!");
             
         }
 
@@ -264,6 +269,10 @@ public class Player extends Entity {
                 invincibleCounter = 0;
             }
 
+        }
+        // Timer for the next shoot
+        if(shotAvailableCounter < 30){
+            shotAvailableCounter++;
         }
 
     }
@@ -300,7 +309,7 @@ public class Player extends Entity {
 
             // check monster collision with the updated coordinates
             int monsterIndex = gp.cCheck.checkEntity(this, gp.monster);
-            damageMonster(monsterIndex);
+            damageMonster(monsterIndex, attack);
 
             // Reset the player's position
             worldX = currentWorldX;
@@ -370,7 +379,7 @@ public class Player extends Entity {
         }
     }
 
-    public void damageMonster(int i) {
+    public void damageMonster(int i, int attack) {
 
         if (i != 999) {
             if (!gp.monster[i].invincible) {

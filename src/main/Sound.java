@@ -10,6 +10,7 @@ public class Sound {
 
     public Sound(){
 
+        //replace numbers by index++
         soundURL[0] = getClass().getResource("/sounds/BlueBoyAdventure.wav");
 
         soundURL[1] = getClass().getResource("/sounds/coin.wav");
@@ -39,6 +40,8 @@ public class Sound {
         soundURL[13] = getClass().getResource("/sounds/levelup.wav");
 
         soundURL[14] = getClass().getResource("/sounds/cursor.wav");
+
+        soundURL[15] = getClass().getResource("/sounds/burning.wav");
 
 
 

@@ -73,6 +73,8 @@ public class Entity {
     boolean attacking = false;
     public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
 
+    public int shotAvailableCounter = 0;
+
     // CHECKING THE ENTITY CLASS FOR TAKING DAMAGE OR NOT  also check weapon or shield type
     public int type; //0 player, 1 npc etc
 

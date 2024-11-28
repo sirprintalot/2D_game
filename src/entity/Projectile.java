@@ -20,6 +20,20 @@ public class Projectile extends Entity {
     }
 
     public void update() {
+        //Check which entity shoots the projectile
+
+        if(user == gp.player){
+
+            int mosnterIndex = gp.cCheck.checkEntity(this, gp.monster);
+            if(mosnterIndex != 999){
+                gp.player.damageMonster(mosnterIndex, attack);
+                isAlive = false;
+            }
+            
+        }
+        if(user != gp.player){
+            
+        }
 
         switch (direction) {
 
