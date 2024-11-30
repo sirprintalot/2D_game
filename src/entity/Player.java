@@ -87,6 +87,8 @@ public class Player extends Entity {
         exp = 1;
         nextLevelExp = 5;
         coin = 0;
+        maxMana = 4;
+        mana = maxMana;
         currentWeapon = new OBJ_Sword_Normal(gp);
         currentShield = new OBJ_shield_Wood(gp);
         attack = getAttack();

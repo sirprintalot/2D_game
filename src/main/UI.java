@@ -14,7 +14,7 @@ public class UI {
     Font MP16REG, VCR_OSD_MONO_1;
     Graphics2D g2;
 
-    BufferedImage fullHeart, halfHeart, blankHeart;
+    BufferedImage fullHeart, halfHeart, blankHeart, crystal_full, crystal_blank;
     public boolean messageOn = false;
 //    public String message = "";
 //    public int messageCounter = 0;
@@ -66,6 +66,12 @@ public class UI {
         fullHeart = heart.image;
         halfHeart = heart.image2;
         blankHeart = heart.image3;
+
+        // Mana display
+        Entity crystal = new OBJ_manaCrystal(gp);
+        crystal_full = crystal.image;
+        crystal_blank = crystal.image2;
+
 
     }
 
@@ -149,6 +155,29 @@ public class UI {
                 x += gp.tileSize;
             }
         }
+
+        //Draw max mana
+        x = (gp.tileSize / 2) - 5;
+        y = (int) (gp.tileSize * 1.5);
+        i = 0;
+
+        while(i < gp.player.maxMana){
+
+            g2.drawImage(crystal_blank, x, y, null);
+            i++;
+            x += 35;
+        }
+
+        // draw mana
+        x = (gp.tileSize / 2) - 5;
+        y = (int) (gp.tileSize * 1.5);
+        i = 0;
+        while(i < gp.player.mana){
+            g2.drawImage(crystal_full, x, y, null);
+            i++;
+            x += 35;
+        }
+        
 
     }
 
@@ -335,12 +364,14 @@ public class UI {
 
         int textX = frameX + 20;
         int textY = frameY + gp.tileSize;
-        final int lineHeight = 40;
+        final int lineHeight = 37;
 
         // NAME COLUMN
         g2.drawString("Level", textX, textY);
         textY += lineHeight;
         g2.drawString("Life", textX, textY);
+        textY += lineHeight;
+        g2.drawString("Mana", textX, textY);
         textY += lineHeight;
         g2.drawString("Strength", textX, textY);
         textY += lineHeight;
@@ -374,7 +405,12 @@ public class UI {
         textY += lineHeight;
 
 
-        value = String.valueOf(gp.player.life + "/" + gp.player.maxLife);
+        value = gp.player.life + "/" + gp.player.maxLife;
+        textX = getXforRightAlingn(value, borderX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = gp.player.mana + "/" + gp.player.maxMana;
         textX = getXforRightAlingn(value, borderX);
         g2.drawString(value, textX, textY);
         textY += lineHeight;
@@ -450,15 +486,13 @@ public class UI {
         for (int i = 0; i < gp.player.inventory.size(); i++) {
 
             //Highlight the current item
-            if(gp.player.inventory.get(i) == gp.player.currentWeapon || gp.player.inventory.get(i) == gp.player.currentShield ){
+            if (gp.player.inventory.get(i) == gp.player.currentWeapon || gp.player.inventory.get(i) == gp.player.currentShield) {
 
-                g2.setColor(new Color(240,150,20));
+                g2.setColor(new Color(240, 150, 20));
                 g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);
 
 
-
             }
-
 
 
             //draws the first item
