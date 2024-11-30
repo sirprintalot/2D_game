@@ -2,6 +2,7 @@ package monster;
 
 import entity.*;
 import main.*;
+import objects.*;
 
 import java.util.*;
 
@@ -24,6 +25,8 @@ public class MON_GreenSlime extends Entity {
         attack = 4;
         defense = 0;
         exp = 2;
+
+        projectile = new OBJ_Rock(gp);
 
         solidArea.x = 3;
         solidArea.y = 18;
@@ -78,6 +81,12 @@ public class MON_GreenSlime extends Entity {
             actionLockCounter = 0;
         }
 
+        int i = new Random().nextInt(100) + 1;
+         if(i > 99 && !projectile.isAlive && shotAvailableCounter == 30){
+             projectile.set(worldX, worldY, direction, true, this);
+             gp.projectileList.add(projectile);
+             shotAvailableCounter = 0;
+         }
     }
 
     public void damageReaction(){

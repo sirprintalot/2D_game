@@ -63,7 +63,7 @@ public class Entity {
 
     // HP bar on monsters
     boolean hpBarOn = false;
-    
+
 
     // CHARACTER DAMAGE MANAGE
     public boolean invincible = false;
@@ -87,7 +87,7 @@ public class Entity {
     public final int typeSword = 3;
     public final int typeAxe = 4;
     public final int typeShield = 5;
-    public final int typeUsable  = 6;
+    public final int typeUsable = 6;
     //DIALOGUE
     String[] dialogues = new String[20];
     int dialogueIndex = 0;
@@ -115,10 +115,12 @@ public class Entity {
 
     public void setAction() {
     }
-    public void useItem(Entity entity){}
 
-    public void damageReaction(){
-        
+    public void useItem(Entity entity) {
+    }
+
+    public void damageReaction() {
+
     }
 
     public void speak() {
@@ -153,21 +155,7 @@ public class Entity {
         boolean contactPLayer = gp.cCheck.checkPlayer(this);
 
         if (this.type == typeMonster && contactPLayer) {
-
-            if (!gp.player.invincible) {
-                
-                // if the player is not invincible, we add damage
-                gp.playSoundEffect(10);
-
-                int damage =  attack - gp.player.defense;
-
-                if(damage < 0){
-                    damage = 0;
-                }
-
-                gp.player.life -= damage;
-                gp.player.invincible = true;
-            }
+              damagePlayer(attack);
         }
 
         //for the movement we copy the player's movement
@@ -197,6 +185,30 @@ public class Entity {
                 invincible = false;
                 invincibleCounter = 0;
             }
+        }
+
+        // Timer for the next shoot
+        if(shotAvailableCounter < 30){
+            shotAvailableCounter++;
+        }
+
+    }
+
+    public void damagePlayer(int attack) {
+
+        if (!gp.player.invincible) {
+
+            // if the player is not invincible, we add damage
+            gp.playSoundEffect(10);
+
+            int damage = attack - gp.player.defense;
+
+            if (damage < 0) {
+                damage = 0;
+            }
+
+            gp.player.life -= damage;
+            gp.player.invincible = true;
         }
 
     }
@@ -249,20 +261,20 @@ public class Entity {
             }
         {
             // Monster's health bar
-            if(type == 2 && hpBarOn){
+            if (type == 2 && hpBarOn) {
                 // Calculate the remaining life
-                double oneScale = (double)gp.tileSize/maxLife;
+                double oneScale = (double) gp.tileSize / maxLife;
                 double hpBarValue = oneScale * life;
 
                 g2.setColor(Color.BLACK);
                 g2.fillRect(screenX - 3, screenY - 10, gp.tileSize + 5, 15);
-                
-                g2.setColor(new Color(255, 0 , 90));
-                g2.fillRect(screenX, screenY - 8, (int)hpBarValue, 10);
+
+                g2.setColor(new Color(255, 0, 90));
+                g2.fillRect(screenX, screenY - 8, (int) hpBarValue, 10);
 
                 hpBarCounter++;
 
-                if(hpBarCounter > 6000){
+                if (hpBarCounter > 6000) {
 
                     hpBarCounter = 0;
                     hpBarOn = false;
@@ -293,15 +305,31 @@ public class Entity {
 
         int interval = 5;
 
-        if (dyingCounter <= interval) {changeAlpha(g2, 0f);}
-        if (dyingCounter > interval && dyingCounter <= interval * 2) {changeAlpha(g2, 1f);}
-        if (dyingCounter >  interval * 2 && dyingCounter <= interval * 3) {changeAlpha(g2, 0f);}
-        if (dyingCounter >  interval * 3 && dyingCounter <= interval * 4) {changeAlpha(g2, 1f);}
-        if (dyingCounter >  interval * 4 && dyingCounter <= interval * 5) {changeAlpha(g2, 0f);}
-        if (dyingCounter >  interval * 5 && dyingCounter <= interval * 6) {changeAlpha(g2, 1f);}
-        if (dyingCounter >  interval * 6 && dyingCounter <= interval * 7) {changeAlpha(g2, 0f);}
-        if (dyingCounter >  interval * 7 && dyingCounter <= interval * 8) {changeAlpha(g2, 1f);}
-        if (dyingCounter >  interval * 8) {
+        if (dyingCounter <= interval) {
+            changeAlpha(g2, 0f);
+        }
+        if (dyingCounter > interval && dyingCounter <= interval * 2) {
+            changeAlpha(g2, 1f);
+        }
+        if (dyingCounter > interval * 2 && dyingCounter <= interval * 3) {
+            changeAlpha(g2, 0f);
+        }
+        if (dyingCounter > interval * 3 && dyingCounter <= interval * 4) {
+            changeAlpha(g2, 1f);
+        }
+        if (dyingCounter > interval * 4 && dyingCounter <= interval * 5) {
+            changeAlpha(g2, 0f);
+        }
+        if (dyingCounter > interval * 5 && dyingCounter <= interval * 6) {
+            changeAlpha(g2, 1f);
+        }
+        if (dyingCounter > interval * 6 && dyingCounter <= interval * 7) {
+            changeAlpha(g2, 0f);
+        }
+        if (dyingCounter > interval * 7 && dyingCounter <= interval * 8) {
+            changeAlpha(g2, 1f);
+        }
+        if (dyingCounter > interval * 8) {
 //            dying = false;
             isAlive = false;
         }
