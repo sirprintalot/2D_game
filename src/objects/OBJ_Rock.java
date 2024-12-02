@@ -32,4 +32,18 @@ public class OBJ_Rock extends Projectile {
         right1 = setup("/projectile/rock_down_1", gp.tileSize, gp.tileSize);
         right2 = setup("/projectile/rock_down_1", gp.tileSize, gp.tileSize);
     }
+
+    public boolean haveResources(Entity user){
+
+        boolean haveResource =  false;
+        if(user.ammo >= useCost){
+            haveResource = true;
+        }
+
+        return haveResource;
+    }
+
+    public void substrackResource(Entity user){
+        user.ammo -= useCost;
+    }
 }

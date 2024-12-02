@@ -65,5 +65,12 @@ public class Projectile extends Entity {
         }
     }
 
+    public boolean haveResources(Entity user){
+        return false;
+    }
+
+    public void substrackResource(Entity user){
+    }
+
 
 }

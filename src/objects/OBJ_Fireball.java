@@ -33,7 +33,19 @@ public class OBJ_Fireball extends Projectile {
         right2 = setup("/projectile/fireball_right_2", gp.tileSize, gp.tileSize);
     }
 
+    public boolean haveResources(Entity user){
 
+        boolean haveResource =  false;
+        if(user.mana >= useCost){
+            haveResource = true;
+        }
+
+        return haveResource;
+    }
+
+    public void substrackResource(Entity user){
+        user.mana -= useCost;
+    }
 
 
 }

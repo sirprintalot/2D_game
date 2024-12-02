@@ -60,6 +60,7 @@ public class Entity {
     public int defenseValue;
     public String itemDescription = "";
     public int useCost;
+    public int ammo;
 
     // HP bar on monsters
     boolean hpBarOn = false;

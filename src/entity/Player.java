@@ -78,7 +78,8 @@ public class Player extends Entity {
         life = maxLife;
 
         //projectile
-        projectile = new OBJ_Fireball(gp);
+//        projectile = new OBJ_Fireball(gp);
+        projectile = new OBJ_Rock(gp);
 
         // Player stats
         level = 1;
@@ -89,6 +90,7 @@ public class Player extends Entity {
         coin = 0;
         maxMana = 4;
         mana = maxMana;
+        ammo = 10;
         currentWeapon = new OBJ_Sword_Normal(gp);
         currentShield = new OBJ_shield_Wood(gp);
         attack = getAttack();
@@ -247,13 +249,16 @@ public class Player extends Entity {
                 }
             }
         }
+        
         //shoot projectile when key pressed
-        if(keyH.shootPressed && !projectile.isAlive && shotAvailableCounter == 30){
+        if(keyH.shootPressed && !projectile.isAlive && shotAvailableCounter == 30 && projectile.haveResources(this)){
 
             //set default coordinates for projectile
             projectile.set(worldX, worldY, direction, true, this);
 
-            //add projectile to the projectile list
+            // subtract the mana cost of the attack
+            projectile.substrackResource(this);
+            //adds projectile to the projectile list
             gp.projectileList.add(projectile);
 
             shotAvailableCounter = 0;
