@@ -47,5 +47,4 @@ public class OBJ_Fireball extends Projectile {
         user.mana -= useCost;
     }
 
-
 }

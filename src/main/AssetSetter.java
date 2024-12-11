@@ -34,12 +34,19 @@ public class AssetSetter {
 
         objIndex++;
 
-        gp.obj[objIndex] = new OBJ_Shield_blue(gp);
+        gp.obj[objIndex] = new OBJ_manaCrystal(gp);
         gp.obj[objIndex].worldX = 25 * gp.tileSize;
         gp.obj[objIndex].worldY = 21 * gp.tileSize;
 
+
         objIndex++;
-        gp.obj[objIndex] = new OBJ_Axe(gp);
+
+        gp.obj[objIndex] = new OBJ_Heart(gp);
+        gp.obj[objIndex].worldX = 27 * gp.tileSize;
+        gp.obj[objIndex].worldY = 21 * gp.tileSize;
+
+        objIndex++;
+        gp.obj[objIndex] = new OBJ_BronzeCoin(gp);
         gp.obj[objIndex].worldX = 27 * gp.tileSize;
         gp.obj[objIndex].worldY = 21 * gp.tileSize;
 
@@ -47,6 +54,8 @@ public class AssetSetter {
         gp.obj[objIndex] = new OBJ_Potion_Red(gp);
         gp.obj[objIndex].worldX = 23 * gp.tileSize;
         gp.obj[objIndex].worldY = 21 * gp.tileSize;
+
+
 
 
 

@@ -61,6 +61,7 @@ public class Entity {
     public String itemDescription = "";
     public int useCost;
     public int ammo;
+    public int value;
 
     // HP bar on monsters
     boolean hpBarOn = false;
@@ -89,6 +90,7 @@ public class Entity {
     public final int typeAxe = 4;
     public final int typeShield = 5;
     public final int typeUsable = 6;
+    public final int typePickupOnly = 7;
     //DIALOGUE
     String[] dialogues = new String[20];
     int dialogueIndex = 0;
@@ -292,7 +294,7 @@ public class Entity {
             if (dying) {
                 dyingAnimation(g2);
             }
-            g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(image, screenX, screenY, null);
 
             changeAlpha(g2, 1f);
         }

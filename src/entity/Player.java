@@ -26,7 +26,6 @@ public class Player extends Entity {
     //Inventory
     public ArrayList<Entity> inventory = new ArrayList<>();
     public final int inventorySize = 20;
-    
 
 
     //objective
@@ -78,8 +77,8 @@ public class Player extends Entity {
         life = maxLife;
 
         //projectile
-//        projectile = new OBJ_Fireball(gp);
-        projectile = new OBJ_Rock(gp);
+        projectile = new OBJ_Fireball(gp);
+//        projectile = new OBJ_Rock(gp);
 
         // Player stats
         level = 1;
@@ -98,13 +97,12 @@ public class Player extends Entity {
 
     }
 
-    public void setItems(){
+    public void setItems() {
 
         //TODO FIX ITEM BUG WHEN THERE'S MORE THAN 20 ITEMS
         inventory.add(currentWeapon);
         inventory.add(currentShield);
     }
-
 
 
     public int getAttack() {
@@ -136,7 +134,7 @@ public class Player extends Entity {
 
     public void getPlayerAttackImage() {
 
-        if(currentWeapon.type == typeSword){
+        if (currentWeapon.type == typeSword) {
             attackUp1 = setup("/player/boy_attack_up_1", gp.tileSize, gp.tileSize * 2);
             attackUp2 = setup("/player/boy_attack_up_2", gp.tileSize, gp.tileSize * 2);
             attackDown1 = setup("/player/boy_attack_down_1", gp.tileSize, gp.tileSize * 2);
@@ -146,7 +144,7 @@ public class Player extends Entity {
             attackRight1 = setup("/player/boy_attack_right_1", gp.tileSize * 2, gp.tileSize);
             attackRight2 = setup("/player/boy_attack_right_2", gp.tileSize * 2, gp.tileSize);
         }
-        if(currentWeapon.type == typeAxe){
+        if (currentWeapon.type == typeAxe) {
             attackUp1 = setup("/player/boy_axe_up_1", gp.tileSize, gp.tileSize * 2);
             attackUp2 = setup("/player/boy_axe_up_2", gp.tileSize, gp.tileSize * 2);
             attackDown1 = setup("/player/boy_axe_down_1", gp.tileSize, gp.tileSize * 2);
@@ -156,18 +154,16 @@ public class Player extends Entity {
             attackRight1 = setup("/player/boy_axe_right_1", gp.tileSize * 2, gp.tileSize);
             attackRight2 = setup("/player/boy_axe_right_2", gp.tileSize * 2, gp.tileSize);
         }
-        
+
     }
 
     public void update() {
 
-        boolean moving = keyH.upPressed || keyH.downPressed || keyH.leftPressed ||keyH.rightPressed;
+        boolean moving = keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed;
 
         if (attacking) {
             attack();
-        }
-
-        else if (moving || keyH.enterPressed) {
+        } else if (moving || keyH.enterPressed) {
 
             if (keyH.upPressed) {
                 direction = "up";
@@ -220,7 +216,7 @@ public class Player extends Entity {
             }
 
 
-            if(keyH.enterPressed && !attackCancel){
+            if (keyH.enterPressed && !attackCancel) {
                 gp.playSoundEffect(9);
                 attacking = true;
                 spriteCounter = 0;
@@ -249,9 +245,9 @@ public class Player extends Entity {
                 }
             }
         }
-        
+
         //shoot projectile when key pressed
-        if(keyH.shootPressed && !projectile.isAlive && shotAvailableCounter == 30 && projectile.haveResources(this)){
+        if (keyH.shootPressed && !projectile.isAlive && shotAvailableCounter == 30 && projectile.haveResources(this)) {
 
             //set default coordinates for projectile
             projectile.set(worldX, worldY, direction, true, this);
@@ -265,7 +261,11 @@ public class Player extends Entity {
 
             gp.playSoundEffect(15);
             System.out.println("shot fired!");
-            
+
+            if (gp.player.mana <= 0) {
+                gp.ui.addMessage("Not enough mana!");
+            }
+
         }
 
         //Make player invincible when receive damage
@@ -278,8 +278,17 @@ public class Player extends Entity {
 
         }
         // Timer for the next shoot
-        if(shotAvailableCounter < 30){
+        if (shotAvailableCounter < 30) {
             shotAvailableCounter++;
+        }
+
+        // check if life or mana are at full when healing if so, the value is the max value
+        if(life > maxLife){
+            life = maxLife;
+        }
+
+        if(mana > maxMana){
+            mana = maxMana;
         }
 
     }
@@ -338,28 +347,39 @@ public class Player extends Entity {
     public void pickUpObject(int i) {
         if (i != 999) {
 
-            String displayText;
-            //Check if the player's inventory is not full
-            if(inventory.size() != inventorySize){
+            // Pickup only items
+            if (gp.obj[i].type == typePickupOnly) {
 
-                inventory.add(gp.obj[i]);
-                gp.playSoundEffect(1);
-                displayText = "Pick a " + gp.obj[i].name + " !!";
-            }
-           else{
-               displayText = "Can't carry anything more!";
-            }
+                gp.obj[i].useItem(this);
+                gp.obj[i] = null;
+                
+            } else {
 
-           gp.ui.addMessage(displayText);
-           gp.obj[i] = null;
+                //Inventory items
+                String displayText;
+                //Check if the player's inventory is not full
+                if (inventory.size() != inventorySize) {
+
+                    inventory.add(gp.obj[i]);
+                    gp.playSoundEffect(1);
+                    displayText = "Pick a " + gp.obj[i].name + " !!";
+                } else {
+                    displayText = "Can't carry anything more!";
+                }
+
+                gp.ui.addMessage(displayText);
+                gp.obj[i] = null;
+            }
         }
+
+
     }
 
     public void interactNpc(int i) {
 
         if (keyH.enterPressed) {
             if (i != 999) {
-                
+
                 attackCancel = true;
                 gp.gameState = gp.dialogueState;
                 gp.npc[i].speak();
@@ -376,7 +396,7 @@ public class Player extends Entity {
 
                 int damage = gp.monster[i].attack - defense;
 
-                if(damage < 0){
+                if (damage < 0) {
                     damage = 0;
                 }
                 life -= damage;
@@ -394,8 +414,8 @@ public class Player extends Entity {
                 gp.playSoundEffect(11);
 
                 int damage = attack - gp.monster[i].defense;
-                
-                if(damage < 0){
+
+                if (damage < 0) {
                     damage = 0;
                 }
 
@@ -443,29 +463,29 @@ public class Player extends Entity {
 
     }
 
-    public void selectItem(){
+    public void selectItem() {
 
         int itemIndex = gp.ui.getItemIndex();
 
-        if(itemIndex < inventory.size()){
+        if (itemIndex < inventory.size()) {
 
             Entity selectedItem = inventory.get(itemIndex);
 
-            if(selectedItem.type == typeSword || selectedItem.type == typeAxe) {
+            if (selectedItem.type == typeSword || selectedItem.type == typeAxe) {
                 currentWeapon = selectedItem;
                 attack = getAttack();
                 getPlayerAttackImage();
             }
 
-            if(selectedItem.type == typeShield){
+            if (selectedItem.type == typeShield) {
 
                 currentShield = selectedItem;
                 defense = getDefense();
             }
-            if(selectedItem.type == typeUsable){
+            if (selectedItem.type == typeUsable) {
                 selectedItem.useItem(this);
                 inventory.remove(itemIndex);
-                
+
             }
         }
 
