@@ -20,7 +20,7 @@ public class Main {
         // a game panel to window
         window.add(gamePanel);
         window.pack();                             
-                                   
+
         //window position and visibility
         window.setLocationRelativeTo(null);
         window.setVisible(true);

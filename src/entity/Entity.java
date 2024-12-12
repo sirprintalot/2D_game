@@ -46,7 +46,6 @@ public class Entity {
     public int exp;
     public int nextLevelExp;
     public int coin;
-
     public int maxMana;
     public int mana;
 
@@ -116,14 +115,25 @@ public class Entity {
         this.gp = gp;
     }
 
-    public void setAction() {
-    }
+    // METHODS
+    public void setAction() {}
 
-    public void useItem(Entity entity) {
-    }
+    public void useItem(Entity entity) {}
 
-    public void damageReaction() {
+    public void damageReaction() {}
 
+    public void checkItemDrop() {}
+
+    public void dropItem(Entity itemDropped) {
+
+        for(int i = 0; i < gp.obj.length; i++){
+            if(gp.obj[i] == null){
+                gp.obj[i] = itemDropped;
+                gp.obj[i].worldX = worldX; // dead monster's coordenates
+                gp.obj[i].worldY = worldY;
+                break;
+            }
+        }
     }
 
     public void speak() {

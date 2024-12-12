@@ -45,7 +45,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, keyH);  // tiene que ser public
 
     //object
-    public Entity[] obj = new Entity[10];               //[]cantidad de objetos
+    public Entity[] obj = new Entity[50];               //[]cantidad de objetos
 
     //NPC's
     public Entity[] npc = new Entity[10];
@@ -137,6 +137,8 @@ public class GamePanel extends JPanel implements Runnable {
                         monster[i].update();
                     }
                     if (!monster[i].isAlive) {
+
+                        monster[i].checkItemDrop();
                         monster[i] = null;
                     }
                 }
