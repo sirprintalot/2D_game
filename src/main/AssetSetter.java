@@ -4,6 +4,7 @@ package main;
 import entity.*;
 import monster.*;
 import objects.*;
+import tile_interactive.*;
 
 public class AssetSetter {
     GamePanel gp;
@@ -56,12 +57,9 @@ public class AssetSetter {
         gp.obj[objIndex].worldY = 21 * gp.tileSize;
 
 
-
-
-
-//        gp.obj[1] = new OBJ_Key(gp);
-//        gp.obj[1].worldX = 33 * gp.tileSize;
-//        gp.obj[1].worldY = 7 * gp.tileSize;
+        gp.obj[1] = new OBJ_Axe(gp);
+        gp.obj[1].worldX = 29 * gp.tileSize;
+        gp.obj[1].worldY = 21 * gp.tileSize;
 ////
 //        gp.obj[2] = new OBJ_Key(gp);
 //        gp.obj[2].worldX = 35 * gp.tileSize;
@@ -95,9 +93,9 @@ public class AssetSetter {
 //
 
 //    }
-}
+    }
 
-    public void setNpc(){
+    public void setNpc() {
 
         //create the first npc
         gp.npc[0] = new Npc_Old_Man(gp);
@@ -108,7 +106,7 @@ public class AssetSetter {
 
     }
 
-    public void setMonster(){
+    public void setMonster() {
 
         int i = 0;
 
@@ -116,7 +114,7 @@ public class AssetSetter {
         gp.monster[i].worldX = gp.tileSize * 19;
         gp.monster[i].worldY = gp.tileSize * 36;
 
-         i++;
+        i++;
         gp.monster[i] = new MON_GreenSlime(gp);
         gp.monster[i].worldX = gp.tileSize * 27;
         gp.monster[i].worldY = gp.tileSize * 36;
@@ -135,6 +133,33 @@ public class AssetSetter {
         gp.monster[i] = new MON_GreenSlime(gp);
         gp.monster[i].worldX = gp.tileSize * 38;
         gp.monster[i].worldY = gp.tileSize * 42;
-        
+
     }
- }
+
+    public void setInteractiveTiles() {
+
+        int i = 0;
+        gp.inTile[i] = new IT_DryTree(gp, 27, 12);
+        i++;
+
+        gp.inTile[i] = new IT_DryTree(gp, 28, 12);
+        i++;
+
+        gp.inTile[i] = new IT_DryTree(gp, 29, 12);
+        i++;
+
+        gp.inTile[i] = new IT_DryTree(gp, 30, 12);
+        i++;
+
+        gp.inTile[i] = new IT_DryTree(gp, 31, 12);
+        i++;
+
+        gp.inTile[i] = new IT_DryTree(gp, 32, 12);
+        i++;
+
+        gp.inTile[i] = new IT_DryTree(gp, 33, 12);
+
+    }
+
+
+}

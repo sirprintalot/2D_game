@@ -194,24 +194,19 @@ public class Player extends Entity {
             int monsterIndex = gp.cCheck.checkEntity(this, gp.monster);
             interactMonster(monsterIndex);
 
+            //Check interactive tile collision
+            int inTileIndex = gp.cCheck.checkEntity(this, gp.inTile);
+
             //Check event
             gp.eventHandler.checkEvent();
 
             //If collision is false, player can move
             if (!collisionOn && !keyH.enterPressed) {
                 switch (direction) {
-                    case "up":
-                        worldY -= speed;
-                        break;
-                    case "down":
-                        worldY += speed;
-                        break;
-                    case "left":
-                        worldX -= speed;
-                        break;
-                    case "right":
-                        worldX += speed;
-                        break;
+                    case "up" -> worldY -= speed;
+                    case "down" -> worldY += speed;
+                    case "left" -> worldX -= speed;
+                    case "right" -> worldX += speed;
                 }
             }
 
@@ -283,11 +278,11 @@ public class Player extends Entity {
         }
 
         // check if life or mana are at full when healing if so, the value is the max value
-        if(life > maxLife){
+        if (life > maxLife) {
             life = maxLife;
         }
 
-        if(mana > maxMana){
+        if (mana > maxMana) {
             mana = maxMana;
         }
 
@@ -327,6 +322,10 @@ public class Player extends Entity {
             int monsterIndex = gp.cCheck.checkEntity(this, gp.monster);
             damageMonster(monsterIndex, attack);
 
+            // interactive tile
+            int inTileIndex = gp.cCheck.checkEntity(this, gp.inTile);
+            damageInteractiveTile(inTileIndex);
+            
             // Reset the player's position
             worldX = currentWorldX;
             worldY = currentWorldY;
@@ -352,7 +351,7 @@ public class Player extends Entity {
 
                 gp.obj[i].useItem(this);
                 gp.obj[i] = null;
-                
+
             } else {
 
                 //Inventory items
@@ -439,6 +438,15 @@ public class Player extends Entity {
                     checkLevelUp();
                 }
             }
+        }
+    }
+
+    public void damageInteractiveTile(int index){
+
+        if(index != 999  && gp.inTile[index].destructible && gp.inTile[index].correctItem(this)){
+
+            gp.inTile[index] = null;
+            
         }
     }
 

@@ -2,6 +2,7 @@ package main;
 
 import entity.*;
 import tile.*;
+import tile_interactive.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -57,6 +58,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public ArrayList<Entity> projectileList = new ArrayList<>(); //must be public 16:27
 
+    //Interactive tiles
+    public InteractiveTile inTile[] = new InteractiveTile[50];
+
     //GAME STATE
     public int gameState;
     public final int tittleState = 0;
@@ -81,6 +85,7 @@ public class GamePanel extends JPanel implements Runnable {
         assetSetter.setObject();
         assetSetter.setNpc();
         assetSetter.setMonster();
+        assetSetter.setInteractiveTiles();
         //play the game theme on loop
 //        playMusic(0);
 //        stopMusic();
@@ -156,8 +161,13 @@ public class GamePanel extends JPanel implements Runnable {
                     }
                 }
             }
-        }
+             for(int i = 0; i < inTile.length; i++){
+                 if(inTile[i] != null){
+                     inTile[i].update();
+                 }
+             }
 
+        }
         if (gameState == pauseState) {
             //TO DO
 
@@ -186,6 +196,14 @@ public class GamePanel extends JPanel implements Runnable {
         else {
             //tiles
             tileM.draw(g2);
+
+            // Interactive tiles
+            for(int i = 0; i < inTile.length; i++){
+                if(inTile[i] != null){
+                    inTile[i].draw(g2);
+                }
+            }
+
 
             //entity List
             //add player
@@ -223,7 +241,7 @@ public class GamePanel extends JPanel implements Runnable {
             //Sort the order of entities based on the y position old method
 //            Collections.sort(entityList, new Comparator<Entity>() {
 //                @Override
-//                public int compare(Entity entity1, Entity entity2) {
+//                public int compare (Entity entity1, Entity entity2) {
 //
 //                    return Integer.compare(entity1.worldY, entity2.worldY);
 //                }
