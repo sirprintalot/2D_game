@@ -15,6 +15,9 @@ public class IT_DryTree extends InteractiveTile{
         
         down1 = setup("/interactive_tiles/drytree", gp.tileSize, gp.tileSize);
          destructible = true;
+
+         // set the tree life, so it takes x amount of hits to disappear
+         life = 3;
          
     }
     public boolean correctItem(Entity entity){
@@ -26,4 +29,17 @@ public class IT_DryTree extends InteractiveTile{
 
         return correctItem;
     }
+
+    public void playSoundEffect(){
+        gp.playSoundEffect(16);
+    }
+    
+    public InteractiveTile getDestroyedForm(){
+
+        InteractiveTile inTile = new IT_Trunk(gp, worldX/gp.tileSize, worldY/gp.tileSize);
+        return inTile;
+    }
+
+
+
 }

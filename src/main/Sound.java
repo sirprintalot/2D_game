@@ -43,6 +43,8 @@ public class Sound {
 
         soundURL[15] = getClass().getResource("/sounds/burning.wav");
 
+        soundURL[16] = getClass().getResource("/sounds/cuttree.wav");
+
 
 
     }

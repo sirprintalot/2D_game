@@ -325,7 +325,7 @@ public class Player extends Entity {
             // interactive tile
             int inTileIndex = gp.cCheck.checkEntity(this, gp.inTile);
             damageInteractiveTile(inTileIndex);
-            
+
             // Reset the player's position
             worldX = currentWorldX;
             worldY = currentWorldY;
@@ -441,12 +441,21 @@ public class Player extends Entity {
         }
     }
 
-    public void damageInteractiveTile(int index){
+    public void damageInteractiveTile(int index) {
 
-        if(index != 999  && gp.inTile[index].destructible && gp.inTile[index].correctItem(this)){
+        if (index != 999 && gp.inTile[index].destructible &&
+                gp.inTile[index].correctItem(this) && !gp.inTile[index].invincible) {
 
-            gp.inTile[index] = null;
-            
+            gp.inTile[index].playSoundEffect();
+
+            gp.inTile[index].life--;
+
+            gp.inTile[index].invincible = true;
+
+            if (gp.inTile[index].life == 0) {
+
+                gp.inTile[index] = gp.inTile[index].getDestroyedForm();
+            }
         }
     }
 

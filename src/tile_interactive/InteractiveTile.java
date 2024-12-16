@@ -19,5 +19,20 @@ public class InteractiveTile extends Entity {
         return correctItem;
     }
 
-    public void update(){}
+    public void update(){
+
+        if (invincible) {
+            invincibleCounter++;
+            if (invincibleCounter > 20) {
+                invincible = false;
+                invincibleCounter = 0;
+            }
+        }
+    }
+    public void playSoundEffect(){}
+    public InteractiveTile getDestroyedForm(){
+
+        InteractiveTile inTile = null;
+        return inTile;
+    }
 }

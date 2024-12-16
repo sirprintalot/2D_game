@@ -164,6 +164,7 @@ public class Entity {
         gp.cCheck.checkObject(this, false);
         gp.cCheck.checkEntity(this, gp.npc);
         gp.cCheck.checkEntity(this, gp.monster);
+        gp.cCheck.checkEntity(this, gp.inTile);
 
         boolean contactPLayer = gp.cCheck.checkPlayer(this);
 
