@@ -116,18 +116,22 @@ public class Entity {
     }
 
     // METHODS
-    public void setAction() {}
+    public void setAction() {
+    }
 
-    public void useItem(Entity entity) {}
+    public void useItem(Entity entity) {
+    }
 
-    public void damageReaction() {}
+    public void damageReaction() {
+    }
 
-    public void checkItemDrop() {}
+    public void checkItemDrop() {
+    }
 
     public void dropItem(Entity itemDropped) {
 
-        for(int i = 0; i < gp.obj.length; i++){
-            if(gp.obj[i] == null){
+        for (int i = 0; i < gp.obj.length; i++) {
+            if (gp.obj[i] == null) {
                 gp.obj[i] = itemDropped;
                 gp.obj[i].worldX = worldX; // dead monster's coordenates
                 gp.obj[i].worldY = worldY;
@@ -155,6 +159,55 @@ public class Entity {
         }
     }
 
+    //Particle
+    public Color getParticleColor() {
+
+        Color color = null;
+        return color;
+    }
+
+    public int getParticleSize() {
+        int size = 0;
+        return size;
+    }
+
+    public int getParticleSpeed() {
+
+        int speed = 0;
+        return speed;
+    }
+
+    public int getParticleMaxLife() {
+
+        int maxLife = 0;
+        return maxLife;
+    }
+
+    public void generateParticle(Entity generator, Entity target){
+
+        Color color = generator.getParticleColor();
+        int size = generator.getParticleSize();
+        int speed = generator.getParticleSpeed();
+        int maxLife = generator.getParticleMaxLife();
+
+        // Instance a new particle
+        Particle p1 = new Particle(gp, target, color, size, speed, maxLife,-2, -1);
+        Particle p2 = new Particle(gp, target, color, size, speed, maxLife,2, -1);
+        Particle p3 = new Particle(gp, target, color, size, speed, maxLife,-2, 1);
+        Particle p4 = new Particle(gp, target, color, size, speed, maxLife,2, 1);
+
+        // add this particle to the particle array
+        gp.particleList.add(p1);
+        gp.particleList.add(p2);
+        gp.particleList.add(p3);
+        gp.particleList.add(p4);
+
+    }
+
+
+
+
+    // UPDATE
     public void update() {
 
         setAction();
@@ -169,7 +222,7 @@ public class Entity {
         boolean contactPLayer = gp.cCheck.checkPlayer(this);
 
         if (this.type == typeMonster && contactPLayer) {
-              damagePlayer(attack);
+            damagePlayer(attack);
         }
 
         //for the movement we copy the player's movement
@@ -202,7 +255,7 @@ public class Entity {
         }
 
         // Timer for the next shoot
-        if(shotAvailableCounter < 30){
+        if (shotAvailableCounter < 30) {
             shotAvailableCounter++;
         }
 

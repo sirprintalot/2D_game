@@ -447,10 +447,12 @@ public class Player extends Entity {
                 gp.inTile[index].correctItem(this) && !gp.inTile[index].invincible) {
 
             gp.inTile[index].playSoundEffect();
-
             gp.inTile[index].life--;
-
             gp.inTile[index].invincible = true;
+
+            //Generate particles when hitting an interactive tile
+            generateParticle(gp.inTile[index], gp.inTile[index]);
+
 
             if (gp.inTile[index].life == 0) {
 

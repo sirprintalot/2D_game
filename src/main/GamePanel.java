@@ -59,7 +59,11 @@ public class GamePanel extends JPanel implements Runnable {
     public ArrayList<Entity> projectileList = new ArrayList<>(); //must be public 16:27
 
     //Interactive tiles
-    public InteractiveTile inTile[] = new InteractiveTile[50];
+    public InteractiveTile[] inTile = new InteractiveTile[50];
+
+    //Particles
+    public ArrayList<Entity> particleList = new ArrayList<>();
+
 
     //GAME STATE
     public int gameState;
@@ -161,11 +165,25 @@ public class GamePanel extends JPanel implements Runnable {
                     }
                 }
             }
-             for(int i = 0; i < inTile.length; i++){
-                 if(inTile[i] != null){
-                     inTile[i].update();
-                 }
-             }
+            // Interactive tiles
+            for (int i = 0; i < inTile.length; i++) {
+                if (inTile[i] != null) {
+                    inTile[i].update();
+                }
+            }
+
+            // Particles from interactive tiles
+            for (int i = 0; i < particleList.size(); i++) {
+                if (particleList.get(i) != null) {
+
+                    if (particleList.get(i).isAlive) {
+                        particleList.get(i).update();
+                    }
+                    if (!particleList.get(i).isAlive) {
+                        particleList.remove(i);
+                    }
+                }
+            }
 
         }
         if (gameState == pauseState) {
@@ -198,13 +216,11 @@ public class GamePanel extends JPanel implements Runnable {
             tileM.draw(g2);
 
             // Interactive tiles
-            for(int i = 0; i < inTile.length; i++){
-                if(inTile[i] != null){
+            for (int i = 0; i < inTile.length; i++) {
+                if (inTile[i] != null) {
                     inTile[i].draw(g2);
                 }
             }
-
-
             //entity List
             //add player
             entityList.add(player);
@@ -233,6 +249,13 @@ public class GamePanel extends JPanel implements Runnable {
             for (int i = 0; i < projectileList.size(); i++) {
                 if (projectileList.get(i) != null) {
                     entityList.add(projectileList.get(i));
+                }
+            }
+
+            //Particles
+            for (int i = 0; i < particleList.size(); i++) {
+                if (particleList.get(i) != null) {
+                    entityList.add(particleList.get(i));
                 }
             }
             //enhanced method

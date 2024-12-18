@@ -3,6 +3,8 @@ package objects;
 import entity.*;
 import main.*;
 
+import java.awt.*;
+
 public class OBJ_Rock extends Projectile {
 
     GamePanel gp;
@@ -46,4 +48,29 @@ public class OBJ_Rock extends Projectile {
     public void substrackResource(Entity user){
         user.ammo -= useCost;
     }
+
+    //Particle
+    public Color getParticleColor(){
+
+        return new Color(155, 103 ,60);
+
+    }
+
+    public int getParticleSize(){
+        int size = 8;
+        return size;
+    }
+
+    public int getParticleSpeed(){
+
+        int speed = 1;
+        return speed;
+    }
+
+    public int getParticleMaxLife(){
+
+        int maxLife = 25;
+        return maxLife;
+    }
+
 }
