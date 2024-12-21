@@ -362,8 +362,9 @@ public class Entity {
 
             changeAlpha(g2, 1f);
         }
-        g2.setColor(Color.red);
-        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+
+//        g2.setColor(Color.red);
+//        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
     }
 
     public void dyingAnimation(Graphics2D g2) {
