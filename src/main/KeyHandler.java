@@ -47,6 +47,11 @@ public class KeyHandler implements KeyListener {
         else if (gp.gameState == gp.characterState) {
             characterState(code);
         }
+
+        // Option state
+        else if (gp.gameState == gp.optionState) {
+            optionState(code);
+        }
     }
 
     // Title state method
@@ -126,6 +131,7 @@ public class KeyHandler implements KeyListener {
         }
     }
 
+
     public void playState(int code) {
 
         if (code == KeyEvent.VK_W) {
@@ -167,6 +173,13 @@ public class KeyHandler implements KeyListener {
 
         }
 
+        // option menu
+        if (code == KeyEvent.VK_ESCAPE) {
+
+            gp.gameState = gp.optionState;
+
+        }
+
         //DEBUG
         if (code == KeyEvent.VK_T) {
             debugFunc = !debugFunc;
@@ -190,6 +203,44 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_P) {
             gp.gameState = gp.playState;
         }
+    }
+
+    public void optionState(int code) {
+
+        if (code == KeyEvent.VK_ESCAPE) {
+
+            gp.gameState = gp.playState;
+        }
+        if (code == KeyEvent.VK_ENTER) {
+            enterPressed = true;
+        }
+        int maxCommandNum = 0;
+
+        switch (gp.ui.subState) {
+            case 0:
+                maxCommandNum = 5;
+        }
+
+
+        if (code == KeyEvent.VK_S) {
+            gp.ui.commandNum++;
+            gp.playSoundEffect(14);
+
+            if (gp.ui.commandNum > maxCommandNum) {
+                gp.ui.commandNum = 0;
+            }
+        }
+
+        if (code == KeyEvent.VK_W) {
+            gp.ui.commandNum--;
+            gp.playSoundEffect(14);
+            
+            if (gp.ui.commandNum < 0) {
+                gp.ui.commandNum = maxCommandNum;
+            }
+        }
+
+
     }
 
     public void characterState(int code) {
@@ -230,7 +281,7 @@ public class KeyHandler implements KeyListener {
             }
         }
 
-        if(code == KeyEvent.VK_ENTER){
+        if (code == KeyEvent.VK_ENTER) {
             gp.player.selectItem();
         }
 

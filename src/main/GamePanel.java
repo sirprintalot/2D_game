@@ -15,7 +15,8 @@ public class GamePanel extends JPanel implements Runnable {
     final int originalTileSize = 16;
     final int scale = 3;
     public final int tileSize = originalTileSize * scale;
-//    public final int maxScreenCol = 16; only for small screen
+
+    //public final int maxScreenCol = 16; only for small screen
     public final int maxScreenCol = 20; //full screen
     public final int maxScreenRow = 12;
 
@@ -60,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
     //NPC's
     public Entity[] npc = new Entity[10];
 
-    //Monsters
+    //Monsters/Entities/projectiles
     public Entity[] monster = new Entity[20];
 
     ArrayList<Entity> entityList = new ArrayList<>();
@@ -82,6 +83,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int dialogueState = 3;
     public final int characterState = 4;
     public final int interactState = 5;
+    public final int optionState = 6;
 
 
     public GamePanel() {
@@ -108,11 +110,12 @@ public class GamePanel extends JPanel implements Runnable {
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB_PRE);
         g2 = tempScreen.createGraphics();
         
-        setFullScreen();
+//        setFullScreen();
 
     }
 
     public void setFullScreen(){
+
         // Enable macOS full-screen behavior
         System.setProperty("apple.awt.fullscreenable", "true");
 
@@ -126,7 +129,6 @@ public class GamePanel extends JPanel implements Runnable {
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         screenWidth2 = (int) (gd.getDefaultConfiguration().getBounds().getWidth());
         screenHeight2 = (int) (gd.getDefaultConfiguration().getBounds().getHeight());
-
 
 
 //        // get local screen size

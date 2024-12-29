@@ -16,7 +16,7 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("2D game");
-        window.setUndecorated(true);
+//        window.setUndecorated(true);
 
         //game panel
         GamePanel gamePanel = new GamePanel();
