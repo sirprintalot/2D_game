@@ -29,7 +29,7 @@ public class Main {
         //window position and visibility
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-
+                                          
         //set the objects and npc's and the game state
         gamePanel.setUpGame();  //must be before the game thread
 
