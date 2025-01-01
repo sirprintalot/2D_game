@@ -75,10 +75,10 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_ENTER) {
                 if (gp.ui.commandNum == 0) {
                     gp.ui.titleScreenState = 1;
-                    //gp.gameState = gp.playState; without title screen substate
-                    //BUG music keep reproducing while pressing enter
-//                       gp.playMusic(0);
+                    gp.gameState = gp.playState; //without title screen substate
 
+                    //play the game theme on loop
+                    gp.playMusic(0);
                 }
                 if (gp.ui.commandNum == 2) {
                     System.exit(0);
@@ -211,9 +211,12 @@ public class KeyHandler implements KeyListener {
 
             gp.gameState = gp.playState;
         }
+
         if (code == KeyEvent.VK_ENTER) {
             enterPressed = true;
         }
+
+        
         int maxCommandNum = 0;
 
         switch (gp.ui.subState) {
@@ -234,10 +237,46 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_W) {
             gp.ui.commandNum--;
             gp.playSoundEffect(14);
-            
+
             if (gp.ui.commandNum < 0) {
                 gp.ui.commandNum = maxCommandNum;
             }
+        }
+
+        //sound volume control
+        if (code == KeyEvent.VK_A) { 
+            if (gp.ui.subState == 0) {
+                if (gp.ui.commandNum == 1 && gp.music.volumeScale > 0) {
+                    gp.music.volumeScale--;
+                    gp.music.checkVolume();
+                    gp.playSoundEffect(14);
+                    System.out.println("bajar volumen musica");
+                }
+//                //sounf fx
+                if (gp.ui.commandNum == 2 && gp.soundFX.volumeScale > 0) {
+                    gp.soundFX.volumeScale--;
+                    gp.playSoundEffect(14);
+                    System.out.println("bajar volumen fx");
+                }
+            }
+        }
+
+        if (code == KeyEvent.VK_D) {
+            if (gp.ui.subState == 0) {
+
+                if (gp.ui.commandNum == 1 && gp.music.volumeScale < 5) {
+                    gp.music.volumeScale++;
+                    gp.playSoundEffect(14);
+                    System.out.println("subir musica");
+                }
+                //sound fx
+                if (gp.ui.commandNum == 2 && gp.soundFX.volumeScale < 5) {
+                    gp.soundFX.volumeScale++;
+                    gp.playSoundEffect(14);
+                    System.out.println("subir fx");
+                }
+            }
+
         }
 
 

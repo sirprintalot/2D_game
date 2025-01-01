@@ -2,13 +2,17 @@ package main;
 
 import javax.sound.sampled.*;
 import java.net.*;
+import java.sql.*;
 
 public class Sound {
 
     Clip clip;
-    URL[] soundURL =  new URL[30];
+    URL[] soundURL = new URL[30];
+    FloatControl fc;
+    int volumeScale = 3; //default volume
+    float volume;
 
-    public Sound(){
+    public Sound() {
 
         //replace numbers by index++
         soundURL[0] = getClass().getResource("/sounds/BlueBoyAdventure.wav");
@@ -46,37 +50,54 @@ public class Sound {
         soundURL[16] = getClass().getResource("/sounds/cuttree.wav");
 
 
-
     }
 
 
-    public void setFile(int i){
+    public void setFile(int i) {
 
-        try{
+        try {
 
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
+            fc = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+            checkVolume();
 
-        }   catch (Exception e){
-            
+        } catch (Exception e) {
+
             e.printStackTrace();
         }
-        
+
     }
 
-    public void play(){
-         clip.start();
+    public void play() {
+        clip.start();
     }
 
-    public void loop(){
+    public void checkVolume(){
+
+        switch (volumeScale) {
+            case 0 -> volume = -80f;
+            case 1 -> volume = -20f;
+            case 2 -> volume = -12f;
+            case 3 -> volume = -5f;
+            case 4 -> volume = 1f;
+            case 5 -> volume = 6f;
+        }
+
+        fc.setValue(volume);
+        System.out.println(volume);
+
+    }
+
+    public void loop() {
         clip.loop(clip.LOOP_CONTINUOUSLY);
     }
 
-    public void stop(){
+    public void stop() {
 
         clip.stop();
-        
+
     }
-    
+
 }

@@ -573,19 +573,18 @@ public class UI {
                 options_top(frameX, frameY);
                 break;
 
-            case 1:
+            case 1: options_fullScreenNotification(frameX, frameY);
                 break;
 
             case 2:
                 break;
-
-
+                
         }
-
+       gp.keyH.enterPressed = false;
 
     }
 
-    public void options_top(int frameX, int frameY){
+    public void options_top(int frameX, int frameY) {
 
         int textX;
         int textY;
@@ -597,23 +596,28 @@ public class UI {
         g2.drawString(text, textX, textY);
 
         //SET FONT SIZE FOR MENU ITEMS
-        g2.setFont(g2.getFont().deriveFont(28F));
+        g2.setFont(g2.getFont().deriveFont(23F));
 
         // FULLSCREEN ON/OFF
         textX = frameX + gp.tileSize;
         textY += gp.tileSize * 2;
         g2.drawString("Full Screen", textX, textY);
-
         // DRAW THE CURSOR
-        if(commandNum == 0){
+        if (commandNum == 0) {
             g2.drawString(">", textX - 20, textY);
+            
+            // check or uncheck the checkbox
+            if(gp.keyH.enterPressed ){
+                gp.fullScreenOn = !gp.fullScreenOn;
+                subState = 1;
+            }
         }
 
         // MUSIC VOLUME
         textY += gp.tileSize;
         g2.drawString("Music Volume", textX, textY);
         // DRAW THE CURSOR
-        if(commandNum == 1){
+        if (commandNum == 1) {
             g2.drawString(">", textX - 20, textY);
         }
 
@@ -622,7 +626,7 @@ public class UI {
         textY += gp.tileSize;
         g2.drawString("Sound FX Volume", textX, textY);
         // DRAW THE CURSOR
-        if(commandNum == 2){
+        if (commandNum == 2) {
             g2.drawString(">", textX - 20, textY);
         }
 
@@ -630,7 +634,7 @@ public class UI {
         textY += gp.tileSize;
         g2.drawString("Controls", textX, textY);
         // DRAW THE CURSOR
-        if(commandNum == 3){
+        if (commandNum == 3) {
             g2.drawString(">", textX - 20, textY);
         }
 
@@ -638,7 +642,7 @@ public class UI {
         textY += gp.tileSize;
         g2.drawString("End Game", textX, textY);
         // DRAW THE CURSOR
-        if(commandNum == 4){
+        if (commandNum == 4) {
             g2.drawString(">", textX - 20, textY);
         }
 
@@ -647,24 +651,75 @@ public class UI {
         textX = getXforCenterDisplay(backText);
         textY += gp.tileSize * 2;
         g2.drawString(backText, textX, textY);
-
         // DRAW THE CURSOR
-        if(commandNum == 5){
+        if (commandNum == 5) {
             g2.drawString(">", textX - 20, textY);
+            if(gp.keyH.enterPressed){
+                gp.gameState = gp.playState;
+            }
         }
+
+
+
+        // FULLSCREEN CHECKBOX
+        textX = frameX + gp.tileSize * 6 + 24;
+        textY = frameY + gp.tileSize * 2 + 24;
+        g2.setStroke(new BasicStroke(3));
+        g2.drawRect(textX, textY, 24, 24);
+        if (gp.fullScreenOn){
+            g2.fillRect(textX, textY, 24, 24);
+        }
+
+        //MUSIC VOLUME
+        textX -= gp.tileSize;
+        textY += gp.tileSize;
+        g2.drawRect(textX, textY, 100, 24);  // 100/5 = 20px increment for display
+        
+        int volumeWidth = 20 * gp.music.volumeScale;
+        g2.fillRect(textX, textY, volumeWidth, 24);
+
+        //SOUND FX
+//        textX -= gp.tileSize;
+        textY += gp.tileSize;
+        g2.drawRect(textX, textY, 100, 24);
+        volumeWidth = 20 * gp.soundFX.volumeScale;
+        g2.fillRect(textX, textY, volumeWidth, 24);
+
 
     }
 
+    public void options_fullScreenNotification(int frameX, int frameY){
+
+        int textX = frameX + gp.tileSize + 24;
+        int textY = frameY + gp.tileSize * 3;
+
+        currentDialogue = "Restart the game /nfor full screen!";
+        g2.setFont(g2.getFont().deriveFont(25F));
+        for(String line : currentDialogue.split("/n")){
+            g2.drawString(line, textX, textY);
+            textY += 40;
+        }
+        // BACK
+        textY += gp.tileSize * 4;
+
+        g2.drawString("BACK", textX, textY);
+
+        //CURSOR
+        if(commandNum == 0){
+            g2.drawString(">", textX - 25, textY);
+            if(gp.keyH.enterPressed){
+                subState = 0;
+            }
+        }
 
 
-
+    }
 
     public int getItemIndex() {
 
         int itemIndex = slotCol + (slotRow * 5);
         return itemIndex;
     }
-
 
     public void drawSubWindow(int x, int y, int width, int height) {
 

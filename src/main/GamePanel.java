@@ -33,6 +33,8 @@ public class GamePanel extends JPanel implements Runnable {
     BufferedImage tempScreen;
     Graphics2D g2;
 
+    public boolean fullScreenOn = false;
+
     //FPS
     int FPS = 60;
 
@@ -101,9 +103,8 @@ public class GamePanel extends JPanel implements Runnable {
         assetSetter.setNpc();
         assetSetter.setMonster();
         assetSetter.setInteractiveTiles();
-        //play the game theme on loop
-//        playMusic(0);
-//        stopMusic();
+
+
         gameState = tittleState;
 
         //create a temporal screen with the width and height of the original screen
