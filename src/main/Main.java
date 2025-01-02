@@ -16,7 +16,7 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("2D game");
-//        window.setUndecorated(true);
+
 
         //game panel
         GamePanel gamePanel = new GamePanel();
@@ -24,12 +24,19 @@ public class Main {
         //add
         // a game panel to window
         window.add(gamePanel);
+
+        // Load configurations
+        gamePanel.config.loadConfig();
+        if(gamePanel.fullScreenOn){
+            window.setUndecorated(true);
+        }
+
         window.pack();                             
 
         //window position and visibility
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-                                          
+
         //set the objects and npc's and the game state
         gamePanel.setUpGame();  //must be before the game thread
 

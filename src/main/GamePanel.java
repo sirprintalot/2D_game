@@ -44,6 +44,9 @@ public class GamePanel extends JPanel implements Runnable {
     Sound music = new Sound();
     Sound soundFX = new Sound();
 
+    // Config
+    Config config = new Config(this);
+
     public UI ui = new UI(this);
     public CollisionChecker cCheck = new CollisionChecker(this);
     public AssetSetter assetSetter = new AssetSetter(this);
@@ -109,12 +112,15 @@ public class GamePanel extends JPanel implements Runnable {
         //create a temporal screen with the width and height of the original screen
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB_PRE);
         g2 = tempScreen.createGraphics();
-        
-//        setFullScreen();
 
+        if (fullScreenOn) {
+            
+            setFullScreen();
+        }
+        
     }
 
-    public void setFullScreen(){
+    public void setFullScreen() {
 
         // Enable macOS full-screen behavior
         System.setProperty("apple.awt.fullscreenable", "true");
@@ -244,7 +250,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     // New method for drawing the game
-    public void drawToTempScreen(){
+    public void drawToTempScreen() {
 
         //DEBUG
         long drawStart = 0;
@@ -475,13 +481,13 @@ public class GamePanel extends JPanel implements Runnable {
 //        g2.dispose();
 //    }
 
-    public void drawToScreen(){
+    public void drawToScreen() {
 
         Graphics g = getGraphics();
 
         g.drawImage(tempScreen, 0, 0, screenWidth2, screenHeight2, null);
         g.dispose();
-        
+
     }
 
 
