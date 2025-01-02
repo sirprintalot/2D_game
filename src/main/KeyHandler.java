@@ -76,7 +76,6 @@ public class KeyHandler implements KeyListener {
                 if (gp.ui.commandNum == 0) {
 //                    gp.ui.titleScreenState = 1;
                     gp.gameState = gp.playState; //without title screen substate
-
                     //play the game theme on loop
                     gp.playMusic(0);
                     System.out.println("play music");
@@ -250,16 +249,20 @@ public class KeyHandler implements KeyListener {
         if (code == KeyEvent.VK_A) { 
             if (gp.ui.subState == 0) {
                 if (gp.ui.commandNum == 1 && gp.music.volumeScale > 0) {
+
                     gp.music.volumeScale--;
                     gp.music.checkVolume();
                     gp.playSoundEffect(14);
                     System.out.println("bajar volumen musica");
+                    System.out.println(gp.music.volume);
+
                 }
 //                //sounf fx
                 if (gp.ui.commandNum == 2 && gp.soundFX.volumeScale > 0) {
                     gp.soundFX.volumeScale--;
                     gp.playSoundEffect(14);
                     System.out.println("bajar volumen fx");
+                    System.out.println(gp.soundFX.volume);
                 }
             }
         }
@@ -269,14 +272,17 @@ public class KeyHandler implements KeyListener {
 
                 if (gp.ui.commandNum == 1 && gp.music.volumeScale < 5) {
                     gp.music.volumeScale++;
+                    gp.music.checkVolume();
                     gp.playSoundEffect(14);
                     System.out.println("subir musica");
+                    System.out.println(gp.music.volume);
                 }
                 //sound fx
                 if (gp.ui.commandNum == 2 && gp.soundFX.volumeScale < 5) {
                     gp.soundFX.volumeScale++;
                     gp.playSoundEffect(14);
                     System.out.println("subir fx");
+                    System.out.println(gp.soundFX.volume);
                 }
             }
         }

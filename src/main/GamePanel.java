@@ -104,7 +104,6 @@ public class GamePanel extends JPanel implements Runnable {
         assetSetter.setMonster();
         assetSetter.setInteractiveTiles();
 
-
         gameState = tittleState;
 
         //create a temporal screen with the width and height of the original screen

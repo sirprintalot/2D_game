@@ -76,25 +76,26 @@ public class Sound {
     }
 
     public void checkVolume(){
+        if(fc != null){
 
-        if(volumeScale < 0 ){
-            volumeScale = 0;
-        }
-        if(volumeScale > 5){
-            volumeScale = 5;
-        }
-        switch (volumeScale) {
-            
-            case 0 -> volume = -80f;
-            case 1 -> volume = -20f;
-            case 2 -> volume = -12f;
-            case 3 -> volume = -5f;
-            case 4 -> volume = 1f;
-            case 5 -> volume = 5f;
-        }
+            if(volumeScale < 0 ){
+                volumeScale = 0;
+            }
+            if(volumeScale > 5){
+                volumeScale = 5;
+            }
+            switch (volumeScale) {
 
-        fc.setValue(volume);
+                case 0 -> volume = -80f;
+                case 1 -> volume = -20f;
+                case 2 -> volume = -12f;
+                case 3 -> volume = -5f;
+                case 4 -> volume = 1f;
+                case 5 -> volume = 6f;
+            }
 
+            fc.setValue(volume);
+        }
     }
 
     public void loop() {
