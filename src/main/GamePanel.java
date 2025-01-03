@@ -43,13 +43,12 @@ public class GamePanel extends JPanel implements Runnable {
     public KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound soundFX = new Sound();
-
-    // Config
-    Config config = new Config(this);
-
     public UI ui = new UI(this);
     public CollisionChecker cCheck = new CollisionChecker(this);
     public AssetSetter assetSetter = new AssetSetter(this);
+
+    // Config
+    Config config = new Config(this);
 
     //Event Handler
     public EventHandler eventHandler = new EventHandler(this);
@@ -87,8 +86,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 2;
     public final int dialogueState = 3;
     public final int characterState = 4;
-    public final int interactState = 5;
-    public final int optionState = 6;
+    public final int optionState = 5;
+    public final int gameOverState = 6;
 
 
     public GamePanel() {
@@ -149,6 +148,26 @@ public class GamePanel extends JPanel implements Runnable {
 //
 //        System.out.println(screenWidth2);
 //        System.out.println(screenHeight2);
+    }
+
+    public void retry(){
+
+        player.setDefaultPosition();
+        player.restorePlayerStats();
+        assetSetter.setNpc();
+        assetSetter.setMonster();
+        playMusic(0);
+    }
+
+    public void restart(){
+
+        player.setDefaultValues();
+        player.setItems();
+        assetSetter.setObject();
+        assetSetter.setNpc();
+        assetSetter.setMonster();
+        assetSetter.setInteractiveTiles();
+
     }
 
     public void startGameThread() {

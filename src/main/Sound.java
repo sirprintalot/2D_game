@@ -49,6 +49,8 @@ public class Sound {
 
         soundURL[16] = getClass().getResource("/sounds/cuttree.wav");
 
+        soundURL[17] = getClass().getResource("/sounds/gameover.wav");
+
 
     }
 

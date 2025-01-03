@@ -52,6 +52,11 @@ public class KeyHandler implements KeyListener {
         else if (gp.gameState == gp.optionState) {
             optionState(code);
         }
+
+        // Option state
+        else if (gp.gameState == gp.gameOverState) {
+            gameOverState(code);
+        }
     }
 
     // Title state method
@@ -87,7 +92,7 @@ public class KeyHandler implements KeyListener {
         }
     }
 
-        //character selection screen
+    //character selection screen
 
 //        else if (gp.ui.titleScreenState == 1) {
 //
@@ -217,13 +222,17 @@ public class KeyHandler implements KeyListener {
             enterPressed = true;
         }
 
-        
+
         int maxCommandNum = 0;
 
         switch (gp.ui.subState) {
-            case 0: maxCommandNum = 5; break;
+            case 0:
+                maxCommandNum = 5;
+                break;
 
-            case 3: maxCommandNum = 1; break;
+            case 3:
+                maxCommandNum = 1;
+                break;
         }
 
 
@@ -246,7 +255,7 @@ public class KeyHandler implements KeyListener {
         }
 
         //sound volume control
-        if (code == KeyEvent.VK_A) { 
+        if (code == KeyEvent.VK_A) {
             if (gp.ui.subState == 0) {
                 if (gp.ui.commandNum == 1 && gp.music.volumeScale > 0) {
 
@@ -332,6 +341,39 @@ public class KeyHandler implements KeyListener {
             gp.player.selectItem();
         }
 
+    }
+
+    public void gameOverState(int code){
+
+        if(code == KeyEvent.VK_W){
+
+            gp.ui.commandNum--;
+            if(gp.ui.commandNum < 0){
+                gp.ui.commandNum = 1;
+            }
+            gp.playSoundEffect(14);
+        }
+
+        if(code == KeyEvent.VK_S){
+
+            gp.ui.commandNum++;
+            if(gp.ui.commandNum > 1){
+                gp.ui.commandNum = 0;
+            }
+            gp.playSoundEffect(14);
+        }
+
+        if (code == KeyEvent.VK_ENTER) {
+            if(gp.ui.commandNum == 0){
+                gp.gameState = gp.playState;
+                gp.retry();
+            }
+            else if(gp.ui.commandNum == 1){
+                gp.gameState = gp.tittleState;
+                gp.restart();
+            }
+
+        }
     }
 
     @Override
