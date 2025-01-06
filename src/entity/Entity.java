@@ -130,11 +130,11 @@ public class Entity {
 
     public void dropItem(Entity itemDropped) {
 
-        for (int i = 0; i < gp.obj.length; i++) {
-            if (gp.obj[i] == null) {
-                gp.obj[i] = itemDropped;
-                gp.obj[i].worldX = worldX; // dead monster's coordenates
-                gp.obj[i].worldY = worldY;
+        for (int i = 0; i < gp.obj[1].length; i++) {
+            if (gp.obj[gp.currentMap][i] == null) {
+                gp.obj[gp.currentMap][i] = itemDropped;
+                gp.obj[gp.currentMap][i].worldX = worldX; // dead monster's coordenates
+                gp.obj[gp.currentMap][i].worldY = worldY;
                 break;
             }
         }

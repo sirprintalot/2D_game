@@ -16,50 +16,52 @@ public class AssetSetter {
     public void setObject() {
 //        //KEYS
 
+        //OBJECTS FOT THE FIRST MAP
+        int mapNum = 0;
         int objIndex = 0;
-        gp.obj[objIndex] = new OBJ_Key(gp);
-        gp.obj[objIndex].worldX = 23 * gp.tileSize;
-        gp.obj[objIndex].worldY = 7 * gp.tileSize;
+        gp.obj[mapNum][objIndex] = new OBJ_Key(gp);
+        gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 7 * gp.tileSize;
 
         objIndex++;
 
-        gp.obj[objIndex] = new OBJ_Key(gp);
-        gp.obj[objIndex].worldX = 38 * gp.tileSize;
-        gp.obj[objIndex].worldY = 8 * gp.tileSize;
+        gp.obj[mapNum][objIndex] = new OBJ_Key(gp);
+        gp.obj[mapNum][objIndex].worldX = 38 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 8 * gp.tileSize;
 
         objIndex++;
 
-        gp.obj[objIndex] = new OBJ_Boots(gp);
-        gp.obj[objIndex].worldX = 37 * gp.tileSize;
-        gp.obj[objIndex].worldY = 42 * gp.tileSize;
+        gp.obj[mapNum][objIndex] = new OBJ_Boots(gp);
+        gp.obj[mapNum][objIndex].worldX = 37 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 42 * gp.tileSize;
 
         objIndex++;
 
-        gp.obj[objIndex] = new OBJ_manaCrystal(gp);
-        gp.obj[objIndex].worldX = 25 * gp.tileSize;
-        gp.obj[objIndex].worldY = 21 * gp.tileSize;
+        gp.obj[mapNum][objIndex] = new OBJ_manaCrystal(gp);
+        gp.obj[mapNum][objIndex].worldX = 25 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 21 * gp.tileSize;
 
 
         objIndex++;
 
-        gp.obj[objIndex] = new OBJ_Heart(gp);
-        gp.obj[objIndex].worldX = 27 * gp.tileSize;
-        gp.obj[objIndex].worldY = 21 * gp.tileSize;
+        gp.obj[mapNum][objIndex] = new OBJ_Heart(gp);
+        gp.obj[mapNum][objIndex].worldX = 27 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 21 * gp.tileSize;
 
         objIndex++;
-        gp.obj[objIndex] = new OBJ_BronzeCoin(gp);
-        gp.obj[objIndex].worldX = 27 * gp.tileSize;
-        gp.obj[objIndex].worldY = 21 * gp.tileSize;
+        gp.obj[mapNum][objIndex] = new OBJ_BronzeCoin(gp);
+        gp.obj[mapNum][objIndex].worldX = 27 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 21 * gp.tileSize;
 
         objIndex++;
-        gp.obj[objIndex] = new OBJ_Potion_Red(gp);
-        gp.obj[objIndex].worldX = 23 * gp.tileSize;
-        gp.obj[objIndex].worldY = 21 * gp.tileSize;
+        gp.obj[mapNum][objIndex] = new OBJ_Potion_Red(gp);
+        gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 21 * gp.tileSize;
 
 
-        gp.obj[1] = new OBJ_Axe(gp);
-        gp.obj[1].worldX = 29 * gp.tileSize;
-        gp.obj[1].worldY = 21 * gp.tileSize;
+        gp.obj[mapNum][1] = new OBJ_Axe(gp);
+        gp.obj[mapNum][1].worldX = 29 * gp.tileSize;
+        gp.obj[mapNum][1].worldY = 21 * gp.tileSize;
 ////
 //        gp.obj[2] = new OBJ_Key(gp);
 //        gp.obj[2].worldX = 35 * gp.tileSize;
@@ -97,92 +99,95 @@ public class AssetSetter {
 
     public void setNpc() {
 
+        int mapNum = 0;
         //create the first npc
-        gp.npc[0] = new Npc_Old_Man(gp);
+        gp.npc[mapNum][0] = new Npc_Old_Man(gp);
         //position on the world map
-        gp.npc[0].worldX = gp.tileSize * 21;
-        gp.npc[0].worldY = gp.tileSize * 20;
+        gp.npc[mapNum][0].worldX = gp.tileSize * 21;
+        gp.npc[mapNum][0].worldY = gp.tileSize * 20;
 
 
     }
 
     public void setMonster() {
 
+        int mapNum = 0;
         int i = 0;
 
-        gp.monster[i] = new MON_GreenSlime(gp);
-        gp.monster[i].worldX = gp.tileSize * 19;
-        gp.monster[i].worldY = gp.tileSize * 36;
+        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+        gp.monster[mapNum][i].worldX = gp.tileSize * 19;
+        gp.monster[mapNum][i].worldY = gp.tileSize * 36;
 
         i++;
-        gp.monster[i] = new MON_GreenSlime(gp);
-        gp.monster[i].worldX = gp.tileSize * 27;
-        gp.monster[i].worldY = gp.tileSize * 36;
+        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+        gp.monster[mapNum][i].worldX = gp.tileSize * 27;
+        gp.monster[mapNum][i].worldY = gp.tileSize * 36;
 
         i++;
-        gp.monster[i] = new MON_GreenSlime(gp);
-        gp.monster[i].worldX = gp.tileSize * 34;
-        gp.monster[i].worldY = gp.tileSize * 42;
+        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+        gp.monster[mapNum][i].worldX = gp.tileSize * 34;
+        gp.monster[mapNum][i].worldY = gp.tileSize * 42;
 
         i++;
-        gp.monster[i] = new MON_GreenSlime(gp);
-        gp.monster[i].worldX = gp.tileSize * 24;
-        gp.monster[i].worldY = gp.tileSize * 37;
+        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+        gp.monster[mapNum][i].worldX = gp.tileSize * 24;
+        gp.monster[mapNum][i].worldY = gp.tileSize * 37;
 
         i++;
-        gp.monster[i] = new MON_GreenSlime(gp);
-        gp.monster[i].worldX = gp.tileSize * 38;
-        gp.monster[i].worldY = gp.tileSize * 42;
+        gp.monster[mapNum][i] = new MON_GreenSlime(gp);
+        gp.monster[mapNum][i].worldX = gp.tileSize * 38;
+        gp.monster[mapNum][i].worldY = gp.tileSize * 42;
 
     }
 
     public void setInteractiveTiles() {
 
+        int mapNum = 0;
         int i = 0;
-        gp.inTile[i] = new IT_DryTree(gp, 27, 12);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 27, 12);
         i++;
 
-        gp.inTile[i] = new IT_DryTree(gp, 28, 12);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 28, 12);
         i++;
 
-        gp.inTile[i] = new IT_DryTree(gp, 29, 12);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 29, 12);
         i++;
 
-        gp.inTile[i] = new IT_DryTree(gp, 30, 12);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 30, 12);
         i++;
 
-        gp.inTile[i] = new IT_DryTree(gp, 31, 12);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 31, 12);
         i++;
 
-        gp.inTile[i] = new IT_DryTree(gp, 32, 12);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 32, 12);
         i++;
 
-        gp.inTile[i] = new IT_DryTree(gp, 33, 12);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 33, 12);
         i++;
-        gp.inTile[i] = new IT_DryTree(gp, 21, 21);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 21, 21);
         i++;
         //new
-        gp.inTile[i] = new IT_DryTree(gp, 18, 40);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 18, 40);
         i++;
-        gp.inTile[i] = new IT_DryTree(gp, 17, 40);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 17, 40);
         i++;
-        gp.inTile[i] = new IT_DryTree(gp, 16, 40);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 16, 40);
         i++;
-        gp.inTile[i] = new IT_DryTree(gp, 15, 40);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 15, 40);
         i++;
-        gp.inTile[i] = new IT_DryTree(gp, 14, 40);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 14, 40);
         i++;
-        gp.inTile[i] = new IT_DryTree(gp, 13, 40);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 13, 40);
         i++;
-        gp.inTile[i] = new IT_DryTree(gp, 13, 41);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 13, 41);
         i++;
-        gp.inTile[i] = new IT_DryTree(gp, 12, 41);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 12, 41);
         i++;
-        gp.inTile[i] = new IT_DryTree(gp, 11, 41);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 11, 41);
         i++;
-        gp.inTile[i] = new IT_DryTree(gp, 10, 41);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 10, 41);
         i++;
-        gp.inTile[i] = new IT_DryTree(gp, 10, 40);
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 10, 40);
 
     }
 

@@ -66,9 +66,14 @@ public class Player extends Entity {
 
 
     public void setDefaultValues() {
+//
+//        worldX = gp.tileSize * 23;
+//        worldY = gp.tileSize * 21;
 
-        worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 21;
+        //test hut map
+        worldX = gp.tileSize * 12;
+        worldY = gp.tileSize * 13;
+        
         speed = 6;
         direction = "down";
 
@@ -195,7 +200,9 @@ public class Player extends Entity {
 
             //Check tile collision
             collisionOn = false;
-            gp.cCheck.checkTile(this);
+            
+            //GOD mode if disabled
+//            gp.cCheck.checkTile(this);
 
             //Object collision
             int objIndex = gp.cCheck.checkObject(this, true);
@@ -369,10 +376,10 @@ public class Player extends Entity {
         if (i != 999) {
 
             // Pickup only items
-            if (gp.obj[i].type == typePickupOnly) {
+            if (gp.obj[gp.currentMap][i].type == typePickupOnly) {
 
-                gp.obj[i].useItem(this);
-                gp.obj[i] = null;
+                gp.obj[gp.currentMap][i].useItem(this);
+                gp.obj[gp.currentMap][i] = null;
 
             } else {
 
@@ -381,15 +388,15 @@ public class Player extends Entity {
                 //Check if the player's inventory is not full
                 if (inventory.size() != inventorySize) {
 
-                    inventory.add(gp.obj[i]);
+                    inventory.add(gp.obj[gp.currentMap][i]);
                     gp.playSoundEffect(1);
-                    displayText = "Pick a " + gp.obj[i].name + " !!";
+                    displayText = "Pick a " + gp.obj[gp.currentMap][i].name + " !!";
                 } else {
                     displayText = "Can't carry anything more!";
                 }
 
                 gp.ui.addMessage(displayText);
-                gp.obj[i] = null;
+                gp.obj[gp.currentMap][i] = null;     //THis dont show error but [gp.currentMap] most be in it
             }
         }
 
@@ -403,7 +410,7 @@ public class Player extends Entity {
 
                 attackCancel = true;
                 gp.gameState = gp.dialogueState;
-                gp.npc[i].speak();
+                gp.npc[gp.currentMap][i].speak();
             }
         }
     }
@@ -412,10 +419,10 @@ public class Player extends Entity {
 
         if (i != 999) {
 
-            if (!invincible && !gp.monster[i].dying) {
+            if (!invincible && !gp.monster[gp.currentMap][i].dying) {
                 gp.playSoundEffect(10);
 
-                int damage = gp.monster[i].attack - defense;
+                int damage = gp.monster[gp.currentMap][i].attack - defense;
 
                 if (damage < 0) {
                     damage = 0;
@@ -430,31 +437,31 @@ public class Player extends Entity {
     public void damageMonster(int i, int attack) {
 
         if (i != 999) {
-            if (!gp.monster[i].invincible) {
+            if (!gp.monster[gp.currentMap][i].invincible) {
 
                 gp.playSoundEffect(11);
 
-                int damage = attack - gp.monster[i].defense;
+                int damage = attack - gp.monster[gp.currentMap][i].defense;
 
                 if (damage < 0) {
                     damage = 0;
                 }
 
-                gp.monster[i].life -= damage;
+                gp.monster[gp.currentMap][i].life -= damage;
 
                 gp.ui.addMessage("+" + damage + " Damage!");
 
-                gp.monster[i].invincible = true;
-                gp.monster[i].damageReaction();
+                gp.monster[gp.currentMap][i].invincible = true;
+                gp.monster[gp.currentMap][i].damageReaction();
 
-                if (gp.monster[i].life <= 0) {
-                    gp.monster[i].dying = true;
+                if (gp.monster[gp.currentMap][i].life <= 0) {
+                    gp.monster[gp.currentMap][i].dying = true;
                     //add message
-                    gp.ui.addMessage(gp.monster[i].name + " defeated");
+                    gp.ui.addMessage(gp.monster[gp.currentMap][i].name + " defeated");
 
                     //leveling up
                     gp.ui.addMessage("+" + exp + " Experience!!");
-                    exp += gp.monster[i].exp;
+                    exp += gp.monster[gp.currentMap][i].exp;
 
                     //check next level
                     checkLevelUp();
@@ -465,20 +472,20 @@ public class Player extends Entity {
 
     public void damageInteractiveTile(int index) {
 
-        if (index != 999 && gp.inTile[index].destructible &&
-                gp.inTile[index].correctItem(this) && !gp.inTile[index].invincible) {
+        if (index != 999 && gp.inTile[gp.currentMap][index].destructible &&
+                gp.inTile[gp.currentMap][index].correctItem(this) && !gp.inTile[gp.currentMap][index].invincible) {
 
-            gp.inTile[index].playSoundEffect();
-            gp.inTile[index].life--;
-            gp.inTile[index].invincible = true;
+            gp.inTile[gp.currentMap][index].playSoundEffect();
+            gp.inTile[gp.currentMap][index].life--;
+            gp.inTile[gp.currentMap][index].invincible = true;
 
             //Generate particles when hitting an interactive tile
-            generateParticle(gp.inTile[index], gp.inTile[index]);
+            generateParticle(gp.inTile[gp.currentMap][index], gp.inTile[gp.currentMap][index]);
 
 
-            if (gp.inTile[index].life == 0) {
+            if (gp.inTile[gp.currentMap][index].life == 0) {
 
-                gp.inTile[index] = gp.inTile[index].getDestroyedForm();
+                gp.inTile[gp.currentMap][index] = gp.inTile[gp.currentMap][index].getDestroyedForm();
             }
         }
     }
