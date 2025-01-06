@@ -107,6 +107,7 @@ public class GamePanel extends JPanel implements Runnable {
         assetSetter.setInteractiveTiles();
 
         gameState = tittleState;
+        playMusic(8);
 
         //create a temporal screen with the width and height of the original screen
         tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB_PRE);

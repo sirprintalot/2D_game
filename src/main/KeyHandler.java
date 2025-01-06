@@ -81,6 +81,7 @@ public class KeyHandler implements KeyListener {
                 if (gp.ui.commandNum == 0) {
 //                    gp.ui.titleScreenState = 1;
                     gp.gameState = gp.playState; //without title screen substate
+                    gp.stopMusic();
                     //play the game theme on loop
                     gp.playMusic(0);
                     System.out.println("play music");
@@ -370,6 +371,7 @@ public class KeyHandler implements KeyListener {
             }
             else if(gp.ui.commandNum == 1){
                 gp.gameState = gp.tittleState;
+                gp.playMusic(8);
                 gp.restart();
             }
 
