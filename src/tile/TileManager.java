@@ -21,7 +21,7 @@ public class TileManager {
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
-        loadMap("/maps/worldV2.txt");
+        loadMap("/maps/worldV3.txt");
 
     }
 
@@ -80,7 +80,12 @@ public class TileManager {
 
         setup(40, "wall", true);
         setup(41, "tree", true);
-        setup(42, "teleport", false);
+        setup(42, "hut", true);
+        setup(43, "floor01", true);
+        setup(44, "table01", true);
+        setup(45, "teleport", false);
+
+
 
         //original method
 //        try {

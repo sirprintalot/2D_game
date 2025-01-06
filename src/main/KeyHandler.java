@@ -177,6 +177,7 @@ public class KeyHandler implements KeyListener {
         // Pause game
         if (code == KeyEvent.VK_P) {
             gp.gameState = gp.pauseState;
+            gp.stopMusic();
 
         }
 
@@ -193,7 +194,7 @@ public class KeyHandler implements KeyListener {
         }
 
         if (code == KeyEvent.VK_R) {
-            gp.tileM.loadMap("/maps/worldV2.txt");
+            gp.tileM.loadMap("/maps/worldV3.txt");
         }
 
 
@@ -209,13 +210,13 @@ public class KeyHandler implements KeyListener {
     public void pauseState(int code) {
         if (code == KeyEvent.VK_P) {
             gp.gameState = gp.playState;
+            gp.playMusic(0);
         }
     }
 
     public void optionState(int code) {
 
         if (code == KeyEvent.VK_ESCAPE) {
-
             gp.gameState = gp.playState;
         }
 
@@ -373,6 +374,7 @@ public class KeyHandler implements KeyListener {
                 gp.gameState = gp.tittleState;
                 gp.playMusic(8);
                 gp.restart();
+
             }
 
         }
