@@ -51,6 +51,8 @@ public class Sound {
 
         soundURL[17] = getClass().getResource("/sounds/gameover.wav");
 
+        soundURL[18] = getClass().getResource("/sounds/stairs.wav");
+
 
     }
 

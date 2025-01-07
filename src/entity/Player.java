@@ -67,12 +67,12 @@ public class Player extends Entity {
 
     public void setDefaultValues() {
 //
-//        worldX = gp.tileSize * 23;
-//        worldY = gp.tileSize * 21;
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 21;
 
         //test hut map
-        worldX = gp.tileSize * 12;
-        worldY = gp.tileSize * 13;
+//        worldX = gp.tileSize * 12;
+//        worldY = gp.tileSize * 13;
         
         speed = 6;
         direction = "down";
@@ -202,7 +202,7 @@ public class Player extends Entity {
             collisionOn = false;
             
             //GOD mode if disabled
-//            gp.cCheck.checkTile(this);
+            gp.cCheck.checkTile(this);
 
             //Object collision
             int objIndex = gp.cCheck.checkObject(this, true);

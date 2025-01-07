@@ -18,9 +18,8 @@ public class EventHandler {
         int row = 0;
         int col = 0;
 
-        while (row < gp.maxWorldRow) {
+        while (row < gp.maxWorldRow && col < gp.maxWorldCol) {
 
-            while (col < gp.maxWorldCol) {
                 eventRect[col][row] = new EventRect();
                 eventRect[col][row].x = 23;
                 eventRect[col][row].y = 23;
@@ -30,10 +29,11 @@ public class EventHandler {
                 eventRect[col][row].eventRectDefaultY = eventRect[col][row].y;
 
                 col++;
-            }
-            col = 0;
-            row++;
 
+                if(col == gp.maxWorldCol){
+                    col = 0;
+                    row++;
+                }
         }
 
     }
@@ -42,10 +42,10 @@ public class EventHandler {
 
         //Check the distance between the character, and the event tile
         //is it's more than a tile the event can happen again
-        int xdistance = Math.abs(gp.player.worldX - previousEventX);
+        int xDistance = Math.abs(gp.player.worldX - previousEventX);
         int yDistance = Math.abs(gp.player.worldY - previousEventY);
 
-        int distance = Math.max(xdistance, yDistance);
+        int distance = Math.max(xDistance, yDistance);
 
         if (distance > gp.tileSize) {
 
@@ -54,8 +54,8 @@ public class EventHandler {
 
         if (canTouchEvent) {
 
-            if (hit(27, 15, "right")) {
-                damagePit(gp.dialogueState, 27, 15);
+            if (hit(27, 16, "right")) {
+                damagePit(gp.dialogueState, 27, 16);
             }
             if (hit(23, 42, "any")) {
                 teleport(gp.dialogueState);
@@ -112,7 +112,7 @@ public class EventHandler {
     }
 
     public void healingPool(int gameState) {
-        
+
         if (gp.keyH.enterPressed) {
 
             gp.gameState = gameState;
