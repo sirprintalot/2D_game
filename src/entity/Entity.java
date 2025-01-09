@@ -28,7 +28,7 @@ public class Entity {
     //SPRITE
     public int spriteCounter = 0;
     public int spriteNum = 1;
-    public int animationSpeed = 12;
+    public int animationSpeed = 24;
 
     //CHARACTER STATUS
     public int maxLife;
@@ -61,6 +61,9 @@ public class Entity {
     public int useCost;
     public int ammo;
     public int value;
+    //Inventory
+    public ArrayList<Entity> inventory = new ArrayList<>();
+    public final int inventorySize = 20;
 
     // HP bar on monsters
     boolean hpBarOn = false;

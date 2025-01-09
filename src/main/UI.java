@@ -16,9 +16,6 @@ public class UI {
 
     BufferedImage fullHeart, halfHeart, blankHeart, crystal_full, crystal_blank;
     public boolean messageOn = false;
-//    public String message = "";
-//    public int messageCounter = 0;
-//    public boolean gameFinished = false;
 
     // item Slots
     public int slotCol = 0;
@@ -31,19 +28,17 @@ public class UI {
     int counter = 0;
 
     public boolean messageDisplay = true;
-
     //display scrolling messages
     ArrayList<String> message = new ArrayList<>();
     ArrayList<Integer> messageCounter = new ArrayList<>();
 
-
     public int commandNum = 0;
-
     //extra title screen substate for choosing character
     public int titleScreenState = 0; //0 = first screen(main) 1 = character selection screen
 
-
     public String currentDialogue = "";
+
+    public Entity merchant;
 
 
     public UI(GamePanel gp) {
@@ -137,6 +132,11 @@ public class UI {
         // TRansition state
         if (gp.gameState == gp.transitionState) {
             transition();
+        }
+
+        // Trade state
+        if (gp.gameState == gp.tradeState) {
+            drawTradeScreen();
         }
     }
 
@@ -403,9 +403,9 @@ public class UI {
     public void drawDialogueScreen() {
 
         //dialogue window
-        int x = gp.tileSize * 2;
+        int x = gp.tileSize * 3;
         int y = gp.tileSize / 2;
-        int width = gp.screenWidth - (gp.tileSize * 4);
+        int width = gp.screenWidth - (gp.tileSize * 6);
         int height = gp.tileSize * 4;
 
         drawSubWindow(x, y, width, height);
@@ -613,6 +613,92 @@ public class UI {
 
     }
 
+
+    // MAP TRANSITION
+    public void transition(){
+            counter++;
+
+            g2.setColor(new Color(0,0,0,counter * 5));
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+            if(counter == 50){
+                counter = 0;
+                gp.gameState = gp.playState;
+                gp.currentMap = gp.eventHandler.tempMap;
+                gp.player.worldX = gp.tileSize * gp.eventHandler.tempCol;
+                gp.player.worldY = gp.tileSize * gp.eventHandler.tempRow;
+                gp.eventHandler.previousEventX =  gp.player.worldX;
+                gp.eventHandler.previousEventY = gp.player.worldY;
+            }
+        
+    }
+
+    // TRADE SCREEN
+    public void drawTradeScreen(){
+
+        switch (subState) {
+            case 0 -> trade_Select();
+            case 1 -> trade_buy();
+            case 2 -> trade_sell();
+        }
+
+        gp.keyH.enterPressed = false;
+    }
+
+    public void trade_Select(){
+
+        drawDialogueScreen();
+
+        // DRAW OPTIONS WINDOW
+        int x = gp.tileSize * 14;
+        int y = (int)(gp.tileSize * 4.5);
+        int width = gp.tileSize * 3;
+        int height = (int)(gp.tileSize * 3.5);
+
+        drawSubWindow(x, y, width, height);
+
+        // draw text
+        x += gp.tileSize - 15;
+        y += gp.tileSize;
+        g2.drawString("Buy", x, y);
+        if(commandNum == 0){
+            g2.drawString(">", x -24, y);
+            if(gp.keyH.enterPressed){
+                subState = 1;
+            }
+        }
+
+        y += gp.tileSize;
+        g2.drawString("Sell", x, y);
+        if(commandNum == 1){
+            g2.drawString(">", x -24, y);
+            if(gp.keyH.enterPressed){
+                subState = 2;
+            }
+        }
+
+        y += gp.tileSize;
+        g2.drawString("Leave", x, y);
+        if(commandNum == 2){
+            g2.drawString(">", x -24, y);
+            if(gp.keyH.enterPressed){
+                commandNum = 0;
+                
+                gp.gameState = gp.dialogueState;
+                gp.ui.currentDialogue = "Bye";
+
+                
+            }
+        }
+
+     
+
+    }
+    public void trade_buy(){}
+    public void trade_sell(){}
+    
+
+
     // OPTIONS SCREEN
     public void drawOptionScreen() {
 
@@ -649,24 +735,6 @@ public class UI {
         }
         gp.keyH.enterPressed = false;
 
-    }
-
-    public void transition(){
-            counter++;
-
-            g2.setColor(new Color(0,0,0,counter * 5));
-            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
-
-            if(counter == 50){
-                counter = 0;
-                gp.gameState = gp.playState;
-                gp.currentMap = gp.eventHandler.tempMap;
-                gp.player.worldX = gp.tileSize * gp.eventHandler.tempCol;
-                gp.player.worldY = gp.tileSize * gp.eventHandler.tempRow;
-                gp.eventHandler.previousEventX =  gp.player.worldX;
-                gp.eventHandler.previousEventY = gp.player.worldY;
-            }
-        
     }
 
     public void options_top(int frameX, int frameY) {
@@ -917,6 +985,8 @@ public class UI {
 
 
     }
+
+
 
     public int getItemIndex() {
 

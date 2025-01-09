@@ -100,11 +100,21 @@ public class AssetSetter {
     public void setNpc() {
 
         int mapNum = 0;
+        int i = 0;
         //create the first npc
-        gp.npc[mapNum][0] = new Npc_Old_Man(gp);
+        gp.npc[mapNum][i] = new NPC_Old_Man(gp);
         //position on the world map
-        gp.npc[mapNum][0].worldX = gp.tileSize * 21;
-        gp.npc[mapNum][0].worldY = gp.tileSize * 20;
+        gp.npc[mapNum][i].worldX = gp.tileSize * 21;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 20;
+
+
+        // Merchant
+         mapNum = 1;
+         i = 1;
+        gp.npc[mapNum][i] = new NPC_Merchant(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 12;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 7;
+
 
 
     }

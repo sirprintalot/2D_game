@@ -4,11 +4,11 @@ import main.*;
 
 import java.util.*;
 
-public class Npc_Old_Man extends Entity {
+public class NPC_Old_Man extends Entity {
 
 
     //Constructor
-    public Npc_Old_Man(GamePanel gp) {
+    public NPC_Old_Man(GamePanel gp) {
 
         super(gp);
         direction = "up";

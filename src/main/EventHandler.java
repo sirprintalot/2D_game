@@ -1,6 +1,8 @@
 package main;
 
 
+import entity.*;
+
 public class EventHandler {
 
     GamePanel gp;
@@ -88,6 +90,12 @@ public class EventHandler {
             else if (hit(1, 12, 13, "any")) {
                 nextMap(0, 10, 39);
             }
+
+            else if (hit(1, 12, 9, "up")) {
+                speak(gp.npc[1][1]);
+            }
+
+
         }
 
     }
@@ -194,6 +202,15 @@ public class EventHandler {
         gp.playSoundEffect(18);
 
     }
+
+    public void speak(Entity entity){
+        if(gp.keyH.enterPressed){
+            gp.gameState = gp.dialogueState;
+            gp.player.attackCancel = true;
+            entity.speak();
+        }
+    }
+
 
 
 }

@@ -23,9 +23,7 @@ public class Player extends Entity {
     // Attack
     public boolean attackCancel = false;
 
-    //Inventory
-    public ArrayList<Entity> inventory = new ArrayList<>();
-    public final int inventorySize = 20;
+
 
 
     //objective
@@ -67,8 +65,11 @@ public class Player extends Entity {
 
     public void setDefaultValues() {
 //
-        worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 21;
+//        worldX = gp.tileSize * 23;
+//        worldY = gp.tileSize * 21;
+
+        worldY = gp.tileSize * 10;
+        worldX = gp.tileSize * 11;
 
         //test hut map
 //        worldX = gp.tileSize * 12;
