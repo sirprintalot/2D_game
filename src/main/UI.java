@@ -27,6 +27,9 @@ public class UI {
     // options substate
     int subState = 0;
 
+    //Transition
+    int counter = 0;
+
     public boolean messageDisplay = true;
 
     //display scrolling messages
@@ -129,6 +132,11 @@ public class UI {
         // Game Over state
         if (gp.gameState == gp.gameOverState) {
             drawGameOverscreen();
+        }
+
+        // TRansition state
+        if (gp.gameState == gp.transitionState) {
+            transition();
         }
     }
 
@@ -641,6 +649,24 @@ public class UI {
         }
         gp.keyH.enterPressed = false;
 
+    }
+
+    public void transition(){
+            counter++;
+
+            g2.setColor(new Color(0,0,0,counter * 5));
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+            if(counter == 50){
+                counter = 0;
+                gp.gameState = gp.playState;
+                gp.currentMap = gp.eventHandler.tempMap;
+                gp.player.worldX = gp.tileSize * gp.eventHandler.tempCol;
+                gp.player.worldY = gp.tileSize * gp.eventHandler.tempRow;
+                gp.eventHandler.previousEventX =  gp.player.worldX;
+                gp.eventHandler.previousEventY = gp.player.worldY;
+            }
+        
     }
 
     public void options_top(int frameX, int frameY) {
