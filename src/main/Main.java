@@ -21,7 +21,7 @@ public class Main {
         //game panel
         GamePanel gamePanel = new GamePanel();
 
-        //add
+        //add  
         // a game panel to window
         window.add(gamePanel);
 

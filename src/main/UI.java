@@ -14,7 +14,7 @@ public class UI {
     Font MP16REG, VCR_OSD_MONO_1;
     Graphics2D g2;
 
-    BufferedImage fullHeart, halfHeart, blankHeart, crystal_full, crystal_blank;
+    BufferedImage fullHeart, halfHeart, blankHeart, crystal_full, crystal_blank, coin;
     public boolean messageOn = false;
 
     // player inventory
@@ -80,6 +80,9 @@ public class UI {
         crystal_full = crystal.image;
         crystal_blank = crystal.image2;
 
+        //Coin
+        Entity bronzeCoin = new OBJ_BronzeCoin(gp);
+        coin = bronzeCoin.down1;
 
     }
 
@@ -726,6 +729,36 @@ public class UI {
 
         //DRAW NPC INVENTORY
         drawInventoryScreen(gp.npc[1][1], true);
+
+        //DRAW HINT WINDOW
+        int x = gp.tileSize * 2;
+        int y = gp.tileSize * 9;
+        int width = gp.tileSize * 6;
+        int height = gp.tileSize * 2;
+        drawSubWindow(x, y, width, height);
+        g2.drawString("[ESC] Back", x+24, y+60);
+
+        //DRAW COIN WINDOW
+        x = gp.tileSize * 12;
+        y = gp.tileSize * 9;
+        width = gp.tileSize * 6;
+        height = gp.tileSize * 2;
+        drawSubWindow(x, y, width, height);
+        g2.drawString("Current money: " + gp.player.coin, x+24, y+60);
+
+        //DRAW PRICE WINDOW
+        int itemIndex = getItemIndex(npcSlotCol, npcSlotRow);
+
+        //if the slot is not empty, we display the price
+        if(itemIndex < gp.npc[1][1].inventory.size()){
+           x = (int) (gp.tileSize * 5.5);
+           y = (int) (gp.tileSize * 5.5);
+           width = (int)(gp.tileSize*2.5);
+           height = gp.tileSize;
+
+           drawSubWindow(x, y, width, height);
+           g2.drawImage(coin, x+10, y+8 , 32, 32, null);
+        }
 
 
 
