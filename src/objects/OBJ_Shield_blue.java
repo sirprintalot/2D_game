@@ -13,5 +13,6 @@ public class OBJ_Shield_blue extends Entity {
         down1  = setup("/objects/shield_blue", gp.tileSize, gp.tileSize);
         defenseValue = 3;
         itemDescription ="[" + name + "] /nA brand new/nblue shlied..";
+        price = 100;
     }
 }

@@ -757,11 +757,15 @@ public class UI {
            height = gp.tileSize;
 
            drawSubWindow(x, y, width, height);
-           g2.drawImage(coin, x+10, y+8 , 32, 32, null);
+           g2.drawImage(coin, x+10, y+8, 32, 32, null);
+
+           int price = gp.npc[1][1].inventory.get(itemIndex).price;
+
+           String text = " " + price;
+           x = getXforRightAlingn(text, gp.tileSize*7 + 24);
+           g2.drawString(text, x, y+34);
+
         }
-
-
-
     }
     public void trade_sell(){}
 

@@ -61,6 +61,8 @@ public class Entity {
     public int useCost;
     public int ammo;
     public int value;
+    public int price;
+
     //Inventory
     public ArrayList<Entity> inventory = new ArrayList<>();
     public final int inventorySize = 20;
@@ -186,7 +188,7 @@ public class Entity {
         return maxLife;
     }
 
-    public void generateParticle(Entity generator, Entity target){
+    public void generateParticle(Entity generator, Entity target) {
 
         Color color = generator.getParticleColor();
         int size = generator.getParticleSize();
@@ -194,10 +196,10 @@ public class Entity {
         int maxLife = generator.getParticleMaxLife();
 
         // Instance a new particle
-        Particle p1 = new Particle(gp, target, color, size, speed, maxLife,-2, -1);
-        Particle p2 = new Particle(gp, target, color, size, speed, maxLife,2, -1);
-        Particle p3 = new Particle(gp, target, color, size, speed, maxLife,-2, 1);
-        Particle p4 = new Particle(gp, target, color, size, speed, maxLife,2, 1);
+        Particle p1 = new Particle(gp, target, color, size, speed, maxLife, -2, -1);
+        Particle p2 = new Particle(gp, target, color, size, speed, maxLife, 2, -1);
+        Particle p3 = new Particle(gp, target, color, size, speed, maxLife, -2, 1);
+        Particle p4 = new Particle(gp, target, color, size, speed, maxLife, 2, 1);
 
         // add this particle to the particle array
         gp.particleList.add(p1);
@@ -206,8 +208,6 @@ public class Entity {
         gp.particleList.add(p4);
 
     }
-
-
 
 
     // UPDATE

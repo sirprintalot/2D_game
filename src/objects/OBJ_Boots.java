@@ -12,7 +12,7 @@ public class OBJ_Boots extends Entity {
         name = "boots";
         down1 = setup("/objects/boots", gp.tileSize, gp.tileSize);
         itemDescription ="["+ name +"] /nA pair of boots/nSpeed increased!";
-
+        price = 10;
 
     }
 }
