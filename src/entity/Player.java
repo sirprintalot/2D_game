@@ -74,7 +74,7 @@ public class Player extends Entity {
         //test hut map
 //        worldX = gp.tileSize * 12;
 //        worldY = gp.tileSize * 13;
-        
+
         speed = 6;
         direction = "down";
 
@@ -201,7 +201,7 @@ public class Player extends Entity {
 
             //Check tile collision
             collisionOn = false;
-            
+
             //GOD mode if disabled
             gp.cCheck.checkTile(this);
 
@@ -311,10 +311,10 @@ public class Player extends Entity {
 
         // Game Over
         if(life <= 0){
-             gp.gameState = gp.gameOverState;
-             gp.stopMusic();
-             gp.playSoundEffect(17);
-             gp.ui.commandNum = -1;
+            gp.gameState = gp.gameOverState;
+            gp.stopMusic();
+            gp.playSoundEffect(17);
+            gp.ui.commandNum = -1;
         }
 
     }
@@ -514,7 +514,7 @@ public class Player extends Entity {
 
     public void selectItem() {
 
-        int itemIndex = gp.ui.getItemIndex();
+        int itemIndex = gp.ui.getItemIndex(gp.ui.playerSlotCol, gp.ui.playerSlotRow);
 
         if (itemIndex < inventory.size()) {
 

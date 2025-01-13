@@ -3,8 +3,6 @@ package entity;
 import main.*;
 import objects.*;
 
-import java.awt.*;
-
 public class NPC_Merchant extends Entity{
 
     //Constructor

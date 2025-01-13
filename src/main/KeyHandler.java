@@ -310,75 +310,117 @@ public class KeyHandler implements KeyListener {
     }
 
     public void characterState(int code) {
+
         //exit character window
         if (code == KeyEvent.VK_C) {
             gp.gameState = gp.playState;
-        }
-
-        //cursor movement
-        if (code == KeyEvent.VK_W) {
-
-            if (gp.ui.slotRow != 0) {
-                gp.ui.slotRow--;
-                gp.playSoundEffect(14);
-            }
-        }
-
-        if (code == KeyEvent.VK_S) {
-            if (gp.ui.slotRow != 3) {
-                gp.ui.slotRow++;
-                gp.playSoundEffect(14);
-            }
-        }
-
-        if (code == KeyEvent.VK_A) {
-
-            if (gp.ui.slotCol != 0) {
-                gp.ui.slotCol--;
-                gp.playSoundEffect(14);
-            }
-        }
-
-        if (code == KeyEvent.VK_D) {
-
-            if (gp.ui.slotCol != 4) {
-                gp.ui.slotCol++;
-                gp.playSoundEffect(14);
-            }
         }
 
         if (code == KeyEvent.VK_ENTER) {
             gp.player.selectItem();
         }
 
+        playerInventory(code);
     }
 
-    public void gameOverState(int code){
+    public void playerInventory(int code) {
 
-        if(code == KeyEvent.VK_W){
+        //cursor movement
+        if (code == KeyEvent.VK_W) {
+
+            if (gp.ui.playerSlotRow != 0) {
+                gp.ui.playerSlotRow--;
+                gp.playSoundEffect(14);
+            }
+        }
+
+        if (code == KeyEvent.VK_S) {
+            if (gp.ui.playerSlotRow != 3) {
+                gp.ui.playerSlotRow++;
+                gp.playSoundEffect(14);
+            }
+        }
+
+        if (code == KeyEvent.VK_A) {
+
+            if (gp.ui.playerSlotCol != 0) {
+                gp.ui.playerSlotCol--;
+                gp.playSoundEffect(14);
+            }
+        }
+
+        if (code == KeyEvent.VK_D) {
+
+            if (gp.ui.playerSlotCol != 4) {
+                gp.ui.playerSlotCol++;
+                gp.playSoundEffect(14);
+            }
+        }
+    }
+
+    public void npcInventory(int code){
+
+        //cursor movement
+        if (code == KeyEvent.VK_W) {
+
+            if (gp.ui.npcSlotRow != 0) {
+                gp.ui.npcSlotRow--;
+                gp.playSoundEffect(14);
+            }
+        }
+
+        if (code == KeyEvent.VK_S) {
+            if (gp.ui.npcSlotRow != 3) {
+                gp.ui.npcSlotRow++;
+                gp.playSoundEffect(14);
+            }
+        }
+
+        if (code == KeyEvent.VK_A) {
+
+            if (gp.ui.npcSlotCol != 0) {
+                gp.ui.npcSlotCol--;
+                gp.playSoundEffect(14);
+            }
+        }
+
+        if (code == KeyEvent.VK_D) {
+
+            if (gp.ui.npcSlotCol != 4) {
+                gp.ui.npcSlotCol++;
+                gp.playSoundEffect(14);
+            }
+        }
+        
+    }
+
+
+
+    public void gameOverState(int code) {
+
+        if (code == KeyEvent.VK_W) {
 
             gp.ui.commandNum--;
-            if(gp.ui.commandNum < 0){
+            if (gp.ui.commandNum < 0) {
                 gp.ui.commandNum = 1;
             }
             gp.playSoundEffect(14);
         }
 
-        if(code == KeyEvent.VK_S){
+        if (code == KeyEvent.VK_S) {
 
             gp.ui.commandNum++;
-            if(gp.ui.commandNum > 1){
+            if (gp.ui.commandNum > 1) {
                 gp.ui.commandNum = 0;
             }
             gp.playSoundEffect(14);
         }
 
         if (code == KeyEvent.VK_ENTER) {
-            if(gp.ui.commandNum == 0){
+            if (gp.ui.commandNum == 0) {
                 gp.gameState = gp.playState;
                 gp.retry();
-            }
-            else if(gp.ui.commandNum == 1){
+            } else if (gp.ui.commandNum == 1) {
                 gp.gameState = gp.tittleState;
                 gp.playMusic(8);
                 gp.restart();
@@ -388,32 +430,40 @@ public class KeyHandler implements KeyListener {
         }
     }
 
-    public void tradeState(int code){
+    public void tradeState(int code) {
 
-        if(gp.keyH.enterPressed){
+        if (code == KeyEvent.VK_ENTER) {
             enterPressed = true;
         }
 
-        if(gp.ui.subState == 0){
-            if(code == KeyEvent.VK_W){
-                gp.ui.commandNum --;
-                if(gp.ui.commandNum < 0){
+        if (gp.ui.subState == 0) {
+            if (code == KeyEvent.VK_W) {
+                gp.ui.commandNum--;
+                if (gp.ui.commandNum < 0) {
                     gp.ui.commandNum = 2;
                 }
                 gp.playSoundEffect(14);
             }
 
-            if(code == KeyEvent.VK_S){
-                gp.ui.commandNum ++;
-                if(gp.ui.commandNum > 2){
+            if (code == KeyEvent.VK_S) {
+                gp.ui.commandNum++;
+                if (gp.ui.commandNum > 2) {
                     gp.ui.commandNum = 0;
                 }
                 gp.playSoundEffect(14);
             }
         }
 
+        if(gp.ui.subState == 1){
+            npcInventory(code);
+
+            if(code == KeyEvent.VK_ESCAPE){
+                gp.ui.subState = 0;
+            }
+        }
     }
 
+    
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();

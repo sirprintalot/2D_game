@@ -101,6 +101,7 @@ public class AssetSetter {
 
         int mapNum = 0;
         int i = 0;
+
         //create the first npc
         gp.npc[mapNum][i] = new NPC_Old_Man(gp);
         //position on the world map
