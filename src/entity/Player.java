@@ -24,8 +24,6 @@ public class Player extends Entity {
     public boolean attackCancel = false;
 
 
-
-
     //objective
 //    public int hasKey = 0;
 //    public int chestCounter = 0;
@@ -92,7 +90,7 @@ public class Player extends Entity {
         dexterity = 1; // more dexterity, more chances to block attacks
         exp = 1;
         nextLevelExp = 5;
-        coin = 0;
+        coin = 1000;
         maxMana = 4;
         mana = maxMana;
         ammo = 10;

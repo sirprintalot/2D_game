@@ -74,7 +74,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/UI.java</url>
-          <line>545</line>
+          <line>542</line>
           <properties class="main.UI" method="drawInventoryScreen">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -83,7 +83,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/UI.java</url>
-          <line>677</line>
+          <line>674</line>
           <properties class="main.UI" method="trade_Select">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -92,7 +92,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/UI.java</url>
-          <line>724</line>
+          <line>721</line>
           <properties class="main.UI" method="trade_buy">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
