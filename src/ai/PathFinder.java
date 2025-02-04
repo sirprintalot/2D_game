@@ -148,15 +148,16 @@ public class PathFinder {
             if(openList.get(i).fCost < bestNodeFCost){
                 bestNodeIndex = i;
                 bestNodeFCost = openList.get(i).fCost;
-                
             }
+
             //if f cost is equal check g cost
             else if(openList.get(i).fCost == bestNodeFCost){
                 if(openList.get(i).gCost < openList.get(bestNodeIndex).gCost){
                     bestNodeIndex = i;
                 }
             }
-            // if there's no node  in the open list, end the loop
+
+            // if there's no node in the open list, end the loop
             if(openList.size() == 0){
                 break;
             }
@@ -167,8 +168,8 @@ public class PathFinder {
                 goalReached = true;
                 trackThePath();
             }
+            
             step++;
-
         }
           return goalReached;
     }
