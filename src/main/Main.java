@@ -31,7 +31,7 @@ public class Main {
             window.setUndecorated(true);
         }
 
-        window.pack();                             
+        window.pack();
 
         //window position and visibility
         window.setLocationRelativeTo(null);

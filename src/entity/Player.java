@@ -5,7 +5,6 @@ import objects.*;
 
 import java.awt.*;
 import java.awt.image.*;
-import java.util.*;
 
 public class Player extends Entity {
 
@@ -45,8 +44,8 @@ public class Player extends Entity {
         solidArea.y = 10;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        solidArea.width = 25;
-        solidArea.height = 28;
+        solidArea.width = 27;
+        solidArea.height = 30;
 
         //Attack area
 //        attackArea.width = 36;
@@ -63,11 +62,12 @@ public class Player extends Entity {
 
     public void setDefaultValues() {
 //
-//        worldX = gp.tileSize * 23;
-//        worldY = gp.tileSize * 21;
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 21;
 
-        worldY = gp.tileSize * 10;
-        worldX = gp.tileSize * 11;
+        //for map 1
+//        worldY = gp.tileSize * 10;
+//        worldX = gp.tileSize * 11;
 
         //test hut map
 //        worldX = gp.tileSize * 12;

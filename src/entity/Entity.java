@@ -70,7 +70,6 @@ public class Entity {
     // HP bar on monsters
     boolean hpBarOn = false;
 
-
     // CHARACTER DAMAGE MANAGE
     public boolean invincible = false;
     public int invincibleCounter = 0;
@@ -95,6 +94,7 @@ public class Entity {
     public final int typeShield = 5;
     public final int typeUsable = 6;
     public final int typePickupOnly = 7;
+
     //DIALOGUE
     String[] dialogues = new String[20];
     int dialogueIndex = 0;
@@ -214,19 +214,7 @@ public class Entity {
     public void update() {
 
         setAction();
-
-        collisionOn = false;
-        gp.cCheck.checkTile(this);
-        gp.cCheck.checkObject(this, false);
-        gp.cCheck.checkEntity(this, gp.npc);
-        gp.cCheck.checkEntity(this, gp.monster);
-        gp.cCheck.checkEntity(this, gp.inTile);
-
-        boolean contactPLayer = gp.cCheck.checkPlayer(this);
-
-        if (this.type == typeMonster && contactPLayer) {
-            damagePlayer(attack);
-        }
+        checkCollision();
 
         //for the movement we copy the player's movement
         // if collision is false player can move
@@ -366,8 +354,8 @@ public class Entity {
             changeAlpha(g2, 1f);
         }
 
-//        g2.setColor(Color.red);
-//        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+        g2.setColor(Color.red);
+        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
     }
 
     public void dyingAnimation(Graphics2D g2) {
@@ -427,6 +415,23 @@ public class Entity {
         }
 
         return image;
+    }
+
+    //pathfinding
+    public void checkCollision() {
+
+        collisionOn = false;
+        gp.cCheck.checkTile(this);
+        gp.cCheck.checkObject(this, false);
+        gp.cCheck.checkEntity(this, gp.npc);
+        gp.cCheck.checkEntity(this, gp.monster);
+        gp.cCheck.checkEntity(this, gp.inTile);
+
+        boolean contactPLayer = gp.cCheck.checkPlayer(this);
+
+        if (this.type == typeMonster && contactPLayer) {
+            damagePlayer(attack);
+        }
     }
 
 

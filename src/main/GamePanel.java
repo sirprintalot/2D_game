@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxWorldRow = 50;
 
     public final int maxMap = 10;
-    public int currentMap = 1;
+    public int currentMap = 0;
 
     // FULL SCREEN
     int screenWidth2 = screenWidth;
@@ -42,7 +42,7 @@ public class GamePanel extends JPanel implements Runnable {
     int FPS = 60;
 
     //instances
-    TileManager tileM = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound soundFX = new Sound();

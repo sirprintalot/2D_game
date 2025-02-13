@@ -766,7 +766,7 @@ public class UI {
 
         }
         //BUY AN ITEM
-        if (gp.keyH.enterPressed && itemIndex < merchant.inventory.size()) {
+        if (gp.keyH.enterPressed) {
             int price = merchant.inventory.get(itemIndex).price;
             //if a player doesn't have enough money
             if (merchant.inventory.get(itemIndex).price > gp.player.coin) {
@@ -836,9 +836,8 @@ public class UI {
 
         }
         //SeLL AN ITEM
-        int playerItemIndex = getItemIndex(playerSlotCol, playerSlotRow);
-        if (gp.keyH.enterPressed && playerItemIndex < gp.player.inventory.size()) {
-
+        if (gp.keyH.enterPressed) {
+            
             int price = (int)(gp.player.inventory.get(itemIndex).price * 0.8);
             //PREVENT SELLING AN EQUIPPED ITEM
             if(gp.player.inventory.get(itemIndex) == gp.player.currentShield || gp.player.inventory.get(itemIndex) == gp.player.currentWeapon){

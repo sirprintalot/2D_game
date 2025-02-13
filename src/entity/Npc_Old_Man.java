@@ -2,6 +2,7 @@ package entity;
 
 import main.*;
 
+import java.awt.*;
 import java.util.*;
 
 public class NPC_Old_Man extends Entity {
@@ -12,7 +13,14 @@ public class NPC_Old_Man extends Entity {
 
         super(gp);
         direction = "up";
-        speed = 2;
+        speed = 1;
+        solidArea = new Rectangle();
+        solidArea.x = 9;
+        solidArea.y = 10;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+        solidArea.width = 25;
+        solidArea.height = 25;
         getImage();
         setDialogue();
 
@@ -34,33 +42,32 @@ public class NPC_Old_Man extends Entity {
     //Define a random movement with a set delay
     public void setAction() {
 
-        actionLockCounter++;
+            actionLockCounter++;
 
-        if (actionLockCounter == 120) {
+            if (actionLockCounter == 120) {
 
-            Random rand = new Random();
-            int i = rand.nextInt(100) + 1;
+                Random rand = new Random();
+                int i = rand.nextInt(100) + 1;
 
-            if (i <= 25) {
-                direction = "up";
+                if (i <= 25) {
+                    direction = "up";
+                }
+                if (i > 25 && i <= 50) {
+                    direction = "down";
+                }
+                if (i > 50 && i <= 75) {
+                    direction = "left";
+                }
+                if (i > 75) {
+                    direction = "right";
+                }
+
+                actionLockCounter = 0;
             }
-            if (i > 25 && i <= 50) {
-                direction = "down";
-            }
-            if (i > 50 && i <= 75) {
-                direction = "left";
-            }
-            if (i > 75) {
-                direction = "right";
-            }
-
-            actionLockCounter = 0;
-        }
-
     }
 
     //Load dialogues
-    public void setDialogue(){
+    public void setDialogue() {
 
         dialogues[0] = "Caco te ofrece coca machucada... /n Aceptar /n Rechazar";
         dialogues[1] = "akfbakfbakfbak";
@@ -68,8 +75,7 @@ public class NPC_Old_Man extends Entity {
         dialogues[3] = "asdfasf aksfbajffopnfasdfafaf /n asfafsasdasdad /n asdasdfasf";
     }
 
-    public void speak(){
-
+    public void speak() {
         super.speak();
     }
 
