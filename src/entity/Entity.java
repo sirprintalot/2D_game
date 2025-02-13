@@ -18,7 +18,6 @@ public class Entity {
     //IMAGES
     // Walking
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
-
     // Atacking
     public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
 
@@ -80,7 +79,7 @@ public class Entity {
 
     public int shotAvailableCounter = 0;
 
-    // CHECKING THE ENTITY CLASS FOR TAKING DAMAGE OR NOT  also check weapon or shield type
+    // CHECKING THE ENTITY CLASS FOR TAKING DAMAGE OR NOT also check weapon or shield type
     public int type; //0 player, 1 npc etc
 
     //Entities
@@ -271,17 +270,39 @@ public class Entity {
 
     }
 
+    //pathfinding
+    public void checkCollision() {
+
+        collisionOn = false;
+        gp.cCheck.checkTile(this);
+        gp.cCheck.checkObject(this, false);
+        gp.cCheck.checkEntity(this, gp.npc);
+        gp.cCheck.checkEntity(this, gp.monster);
+        gp.cCheck.checkEntity(this, gp.inTile);
+
+        boolean contactPLayer = gp.cCheck.checkPlayer(this);
+
+        if (this.type == typeMonster && contactPLayer) {
+            damagePlayer(attack);
+        }
+    }
+
+    public boolean isOnScreen(){
+        return worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
+                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
+                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY;
+    }
+
     public void draw(Graphics2D g2) {
+
 
         BufferedImage image = null;
 
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-        if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
-                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
-                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY)
+        if (isOnScreen()) {
 
             switch (direction) {
                 case "up" -> {
@@ -317,46 +338,49 @@ public class Entity {
                     }
                 }
             }
-        {
-            // Monster's health bar
-            if (type == 2 && hpBarOn) {
-                // Calculate the remaining life
-                double oneScale = (double) gp.tileSize / maxLife;
-                double hpBarValue = oneScale * life;
 
-                g2.setColor(Color.BLACK);
-                g2.fillRect(screenX - 3, screenY - 10, gp.tileSize + 5, 15);
+                // Monster's health bar
+                if (type == 2 && hpBarOn) {
+                    // Calculate the remaining life
+                    double oneScale = (double) gp.tileSize / maxLife;
+                    double hpBarValue = oneScale * life;
 
-                g2.setColor(new Color(255, 0, 90));
-                g2.fillRect(screenX, screenY - 8, (int) hpBarValue, 10);
+                    g2.setColor(Color.BLACK);
+                    g2.fillRect(screenX - 3, screenY - 10, gp.tileSize + 5, 15);
 
-                hpBarCounter++;
+                    g2.setColor(new Color(255, 0, 90));
+                    g2.fillRect(screenX, screenY - 8, (int) hpBarValue, 10);
 
-                if (hpBarCounter > 6000) {
+                    hpBarCounter++;
 
-                    hpBarCounter = 0;
-                    hpBarOn = false;
+                    if (hpBarCounter > 6000) {
+
+                        hpBarCounter = 0;
+                        hpBarOn = false;
+                    }
                 }
-            }
 
-            if (invincible) {
+                if (invincible) {
+                    hpBarOn = true;
+                    hpBarCounter = 0;
+                    changeAlpha(g2, 0.5f);
+                }
 
-                hpBarOn = true;
-                hpBarCounter = 0;
-                changeAlpha(g2, 0.5f);
-            }
+                if (dying) {
+                    dyingAnimation(g2);
+                }
 
-            if (dying) {
-                dyingAnimation(g2);
-            }
-            g2.drawImage(image, screenX, screenY, null);
+                g2.drawImage(image, screenX, screenY, null);
+                changeAlpha(g2, 1f);
 
-            changeAlpha(g2, 1f);
+            //draw solid area
+            g2.setColor(Color.BLUE);
+            g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+
+        }
         }
 
-        g2.setColor(Color.red);
-        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
-    }
+
 
     public void dyingAnimation(Graphics2D g2) {
 
@@ -416,23 +440,4 @@ public class Entity {
 
         return image;
     }
-
-    //pathfinding
-    public void checkCollision() {
-
-        collisionOn = false;
-        gp.cCheck.checkTile(this);
-        gp.cCheck.checkObject(this, false);
-        gp.cCheck.checkEntity(this, gp.npc);
-        gp.cCheck.checkEntity(this, gp.monster);
-        gp.cCheck.checkEntity(this, gp.inTile);
-
-        boolean contactPLayer = gp.cCheck.checkPlayer(this);
-
-        if (this.type == typeMonster && contactPLayer) {
-            damagePlayer(attack);
-        }
-    }
-
-
 }

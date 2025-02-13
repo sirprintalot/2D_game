@@ -8,19 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386db496-e533-4c11-89ba-e5f09e407936" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Entity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Npc_Old_Man.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Npc_Old_Man.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/GamePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/UI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/UI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Npc_Old_Man.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Npc_Old_Man.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,33 +97,6 @@
           <properties class="java.lang.NumberFormatException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/UI.java</url>
-          <line>542</line>
-          <properties class="main.UI" method="drawInventoryScreen">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/UI.java</url>
-          <line>674</line>
-          <properties class="main.UI" method="trade_Select">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/UI.java</url>
-          <line>721</line>
-          <properties class="main.UI" method="trade_buy">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

@@ -406,7 +406,7 @@ public class Player extends Entity {
 
         if (keyH.enterPressed) {
             if (i != 999) {
-
+                
                 attackCancel = true;
                 gp.gameState = gp.dialogueState;
                 gp.npc[gp.currentMap][i].speak();

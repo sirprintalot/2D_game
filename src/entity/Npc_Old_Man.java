@@ -12,17 +12,18 @@ public class NPC_Old_Man extends Entity {
     public NPC_Old_Man(GamePanel gp) {
 
         super(gp);
-        direction = "up";
+        direction = "down";
         speed = 1;
-        solidArea = new Rectangle();
-        solidArea.x = 9;
-        solidArea.y = 10;
-        solidAreaDefaultX = solidArea.x;
-        solidAreaDefaultY = solidArea.y;
-        solidArea.width = 25;
-        solidArea.height = 25;
+//        solidArea = new Rectangle();
+//        solidArea.x = 9;
+//        solidArea.y = 10;
+//        solidAreaDefaultX = solidArea.x;
+//        solidAreaDefaultY = solidArea.y;
+//        solidArea.width = 25;
+//        solidArea.height = 25;
         getImage();
         setDialogue();
+
 
     }
 
@@ -42,28 +43,30 @@ public class NPC_Old_Man extends Entity {
     //Define a random movement with a set delay
     public void setAction() {
 
-            actionLockCounter++;
+        gp.cCheck.checkTile(this);
 
-            if (actionLockCounter == 120) {
+        actionLockCounter++;
 
-                Random rand = new Random();
-                int i = rand.nextInt(100) + 1;
+        if (actionLockCounter == 120) {
 
-                if (i <= 25) {
-                    direction = "up";
-                }
-                if (i > 25 && i <= 50) {
-                    direction = "down";
-                }
-                if (i > 50 && i <= 75) {
-                    direction = "left";
-                }
-                if (i > 75) {
-                    direction = "right";
-                }
+            Random rand = new Random();
+            int i = rand.nextInt(100) + 1;
 
-                actionLockCounter = 0;
+            if (i <= 25) {
+                direction = "up";
             }
+            if (i > 25 && i <= 50) {
+                direction = "down";
+            }
+            if (i > 50 && i <= 75) {
+                direction = "left";
+            }
+            if (i > 75) {
+                direction = "right";
+            }
+
+            actionLockCounter = 0;
+        }
     }
 
     //Load dialogues

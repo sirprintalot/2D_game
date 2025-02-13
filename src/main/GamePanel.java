@@ -66,7 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Entity[][] obj = new Entity[maxMap][50];               //[]cantidad de objetos
 
     //NPC's
-    public Entity[][] npc = new Entity[maxMap][10];
+    public Entity[][] npc = new Entity[maxMap][15];
 
     //Monsters/Entities/projectiles
     public Entity[][] monster = new Entity[maxMap][20];
@@ -141,19 +141,7 @@ public class GamePanel extends JPanel implements Runnable {
         screenWidth2 = (int) (gd.getDefaultConfiguration().getBounds().getWidth());
         screenHeight2 = (int) (gd.getDefaultConfiguration().getBounds().getHeight());
 
-
-//        // get local screen size
-//        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-//        GraphicsDevice gd = ge.getDefaultScreenDevice();
-//
-//        gd.setFullScreenWindow(Main.window);
-//
-//        // GET FULLSCREEN WIDTH AND HEIGHT
-//        screenWidth2 = Main.window.getWidth();
-//        screenHeight2 = Main.window.getHeight();
-//
-//        System.out.println(screenWidth2);
-//        System.out.println(screenHeight2);
+        
     }
 
     public void retry(){
