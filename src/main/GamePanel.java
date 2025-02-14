@@ -140,7 +140,6 @@ public class GamePanel extends JPanel implements Runnable {
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         screenWidth2 = (int) (gd.getDefaultConfiguration().getBounds().getWidth());
         screenHeight2 = (int) (gd.getDefaultConfiguration().getBounds().getHeight());
-
         
     }
 
@@ -265,10 +264,13 @@ public class GamePanel extends JPanel implements Runnable {
     // New method for drawing the game
     public void drawToTempScreen() {
 
+//        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR));
+//        g2.fillRect(0, 0, screenWidth, screenHeight);
+//        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
+
         //DEBUG
         long drawStart = 0;
         if (keyH.debugFunc) {
-
             drawStart = System.nanoTime();
         }
 
@@ -330,7 +332,6 @@ public class GamePanel extends JPanel implements Runnable {
 
             // Draw entities
             for (int i = 0; i < entityList.size(); i++) {
-
                 entityList.get(i).draw(g2);
             }
 
@@ -338,6 +339,7 @@ public class GamePanel extends JPanel implements Runnable {
 
             //UI
             ui.draw(g2);
+
         }
 
         //debug

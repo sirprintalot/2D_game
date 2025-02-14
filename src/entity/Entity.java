@@ -27,7 +27,7 @@ public class Entity {
     //SPRITE
     public int spriteCounter = 0;
     public int spriteNum = 1;
-    public int animationSpeed = 24;
+    public int animationSpeed = 12;
 
     //CHARACTER STATUS
     public int maxLife;
@@ -296,46 +296,32 @@ public class Entity {
 
     public void draw(Graphics2D g2) {
 
-
         BufferedImage image = null;
 
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-        if (isOnScreen()) {
+        if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
+                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
+                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
 
             switch (direction) {
                 case "up" -> {
-                    if (spriteNum == 1) {
-                        image = up1;
-                    }
-                    if (spriteNum == 2) {
-                        image = up2;
-                    }
+                    if (spriteNum == 1) {image = up1;}
+                    if (spriteNum == 2) {image = up2;}
                 }
                 case "down" -> {
-                    if (spriteNum == 1) {
-                        image = down1;
-                    }
-                    if (spriteNum == 2) {
-                        image = down2;
-                    }
+                    if (spriteNum == 1) {image = down1;}
+                    if (spriteNum == 2) {image = down2;}
                 }
                 case "left" -> {
-                    if (spriteNum == 1) {
-                        image = left1;
-                    }
-                    if (spriteNum == 2) {
-                        image = left2;
-                    }
+                    if (spriteNum == 1) {image = left1;}
+                    if (spriteNum == 2) {image = left2;}
                 }
                 case "right" -> {
-                    if (spriteNum == 1) {
-                        image = right1;
-                    }
-                    if (spriteNum == 2) {
-                        image = right2;
-                    }
+                    if (spriteNum == 1) {image = right1;}
+                    if (spriteNum == 2) {image = right2;}
                 }
             }
 
@@ -345,16 +331,16 @@ public class Entity {
                     double oneScale = (double) gp.tileSize / maxLife;
                     double hpBarValue = oneScale * life;
 
+                    //border
                     g2.setColor(Color.BLACK);
-                    g2.fillRect(screenX - 3, screenY - 10, gp.tileSize + 5, 15);
-
+                    g2.fillRect(screenX - 3, screenY - 6, gp.tileSize + 5, 15);
+                    // fill
                     g2.setColor(new Color(255, 0, 90));
-                    g2.fillRect(screenX, screenY - 8, (int) hpBarValue, 10);
+                    g2.fillRect(screenX, screenY - 4, (int) hpBarValue, 10);
 
                     hpBarCounter++;
 
-                    if (hpBarCounter > 6000) {
-
+                    if (hpBarCounter > 600) {
                         hpBarCounter = 0;
                         hpBarOn = false;
                     }
@@ -376,7 +362,6 @@ public class Entity {
             //draw solid area
             g2.setColor(Color.BLUE);
             g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
-
         }
         }
 

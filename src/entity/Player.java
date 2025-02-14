@@ -17,7 +17,7 @@ public class Player extends Entity {
     public int standingCounter = 0;
 
     //power up
-    public int speedIncrement = 4;
+    public int speedIncrement = 2;
 
     // Attack
     public boolean attackCancel = false;
@@ -73,7 +73,7 @@ public class Player extends Entity {
 //        worldX = gp.tileSize * 12;
 //        worldY = gp.tileSize * 13;
 
-        speed = 6;
+        speed = 5;
         direction = "down";
 
         //PLAYER STATUS
@@ -231,7 +231,6 @@ public class Player extends Entity {
                 }
             }
 
-
             if (keyH.enterPressed && !attackCancel) {
                 gp.playSoundEffect(9);
                 attacking = true;
@@ -252,14 +251,16 @@ public class Player extends Entity {
                 }
                 spriteCounter = 0;
             }
+
+            //TODO check this bug when walking continuously
             //display the correct sprite when standing still (every 20 frames)
-            else {
-                standingCounter++;
-                if (standingCounter == 30) {
-                    spriteNum = 1;
-                    standingCounter = 0;
-                }
-            }
+//            else {
+//                standingCounter++;
+//                if (standingCounter == 60) {
+//                    spriteNum = 1;
+//                    standingCounter = 0;
+//                }
+//            }
         }
 
         //shoot projectile when key pressed

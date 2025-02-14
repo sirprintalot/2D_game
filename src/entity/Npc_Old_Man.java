@@ -12,15 +12,15 @@ public class NPC_Old_Man extends Entity {
     public NPC_Old_Man(GamePanel gp) {
 
         super(gp);
-        direction = "down";
-        speed = 1;
+        direction = "left";
+        speed = 5;
 //        solidArea = new Rectangle();
-//        solidArea.x = 9;
-//        solidArea.y = 10;
-//        solidAreaDefaultX = solidArea.x;
-//        solidAreaDefaultY = solidArea.y;
-//        solidArea.width = 25;
-//        solidArea.height = 25;
+        solidArea.x = 14;
+        solidArea.y = 15;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+        solidArea.width = 20;
+        solidArea.height = 20;
         getImage();
         setDialogue();
 
@@ -47,7 +47,7 @@ public class NPC_Old_Man extends Entity {
 
         actionLockCounter++;
 
-        if (actionLockCounter == 120) {
+        if (actionLockCounter == 100) {
 
             Random rand = new Random();
             int i = rand.nextInt(100) + 1;
@@ -55,13 +55,13 @@ public class NPC_Old_Man extends Entity {
             if (i <= 25) {
                 direction = "up";
             }
-            if (i > 25 && i <= 50) {
+            if (i > 26 && i <= 50) {
                 direction = "down";
             }
-            if (i > 50 && i <= 75) {
+            if (i > 51 && i <= 75) {
                 direction = "left";
             }
-            if (i > 75) {
+            if (i > 76) {
                 direction = "right";
             }
 

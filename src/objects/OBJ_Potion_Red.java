@@ -24,7 +24,6 @@ public class OBJ_Potion_Red extends Entity {
 
     public void useItem(Entity entity){
 
-
         gp.gameState = gp.dialogueState;
         gp.playSoundEffect(6);
         gp.ui.currentDialogue = "You Drank the " + name + "!!!" + "/n"+
