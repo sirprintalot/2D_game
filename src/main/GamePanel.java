@@ -1,5 +1,6 @@
 package main;
 
+import ai.*;
 import entity.*;
 import tile.*;
 import tile_interactive.*;
@@ -80,6 +81,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     //Particles
     public ArrayList<Entity> particleList = new ArrayList<>();
+
+    //Pathfinding
+    public Pathfinder pFinder = new Pathfinder(this);
 
 
     //GAME STATE

@@ -43,29 +43,37 @@ public class NPC_Old_Man extends Entity {
     //Define a random movement with a set delay
     public void setAction() {
 
-        gp.cCheck.checkTile(this);
+        if(onPath){
 
-        actionLockCounter++;
+            int goalCol = 12;
+            int goalRow = 9;
 
-        if (actionLockCounter == 80) {
+            searchPath(goalCol, goalRow);
 
-            Random rand = new Random();
-            int i = rand.nextInt(100) + 1;
+        }
 
-            if (i <= 25) {
-                direction = "up";
+        else{
+            actionLockCounter++;
+
+            if (actionLockCounter == 120) {
+
+                Random rand = new Random();
+                int i = rand.nextInt(100) + 1;
+
+                if (i <= 25) {
+                    direction = "up";
+                }
+                if (i > 26 && i <= 50) {
+                    direction = "down";
+                }
+                if (i > 51 && i <= 75) {
+                    direction = "left";
+                }
+                if (i > 76) {
+                    direction = "right";
+                }
+                actionLockCounter = 0;
             }
-            if (i > 26 && i <= 50) {
-                direction = "down";
-            }
-            if (i > 51 && i <= 75) {
-                direction = "left";
-            }
-            if (i > 76) {
-                direction = "right";
-            }
-
-            actionLockCounter = 0;
         }
     }
 
@@ -80,6 +88,7 @@ public class NPC_Old_Man extends Entity {
 
     public void speak() {
         super.speak();
+        onPath = true;
     }
 
 }

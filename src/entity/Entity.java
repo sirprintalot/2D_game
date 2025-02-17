@@ -115,6 +115,9 @@ public class Entity {
     public String name;
     public boolean collision = false;
 
+    //pathfinding
+    public boolean onPath = false;
+
     public Entity(GamePanel gp) {
         this.gp = gp;
     }
@@ -208,7 +211,23 @@ public class Entity {
 
     }
 
+    //pathfinding
+    public void checkCollision() {
 
+        collisionOn = false;
+        gp.cCheck.checkTile(this);
+        gp.cCheck.checkObject(this, false);
+        gp.cCheck.checkEntity(this, gp.npc);
+        gp.cCheck.checkEntity(this, gp.monster);
+        gp.cCheck.checkEntity(this, gp.inTile);
+
+        boolean contactPLayer = gp.cCheck.checkPlayer(this);
+
+        if (this.type == typeMonster && contactPLayer) {
+            damagePlayer(attack);
+        }
+    }
+    
     // UPDATE
     public void update() {
 
@@ -270,23 +289,6 @@ public class Entity {
 
     }
 
-    //pathfinding
-    public void checkCollision() {
-
-        collisionOn = false;
-        gp.cCheck.checkTile(this);
-        gp.cCheck.checkObject(this, false);
-        gp.cCheck.checkEntity(this, gp.npc);
-        gp.cCheck.checkEntity(this, gp.monster);
-        gp.cCheck.checkEntity(this, gp.inTile);
-
-        boolean contactPLayer = gp.cCheck.checkPlayer(this);
-
-        if (this.type == typeMonster && contactPLayer) {
-            damagePlayer(attack);
-        }
-    }
-
     public boolean isOnScreen(){
         return worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
                 worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
@@ -301,6 +303,7 @@ public class Entity {
         int screenX = worldX - gp.player.worldX + gp.player.screenX;
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
+        //change for a boolean method
         if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
                 worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
                 worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
@@ -425,4 +428,86 @@ public class Entity {
 
         return image;
     }
+
+    public void searchPath(int goalCol, int goalRow){
+
+           int startCol = (worldX + solidArea.x) / gp.tileSize;
+           int startRow = (worldY + solidArea.y) / gp.tileSize;
+           
+         gp.pFinder.setNodes(startCol, startRow, goalCol, goalRow);
+
+         if(gp.pFinder.search()) {
+             //next worldX && worldY
+             int nextX = gp.pFinder.pathList.get(0).col * gp.tileSize;
+             int nextY = gp.pFinder.pathList.get(0).row * gp.tileSize;
+
+             // entity solid area position
+             int entLeftX = worldX + solidArea.x;
+             int entRightX = worldX + solidArea.x + solidArea.width;
+             int entTopY = worldY + solidArea.y;
+             int entBotY = worldY + solidArea.y + solidArea.height;
+
+             // don't let the entity get stuck
+             if(entTopY > nextY && entLeftX >= nextX && entRightX < nextX +gp.tileSize){
+                 direction = "up";
+             }
+             else if(entTopY < nextY && entLeftX >= nextX && entRightX < nextX +gp.tileSize){
+                 direction = "down";
+             }
+             else if(entTopY >= nextY && entBotY < nextY + gp.tileSize){
+                 //left or right
+                 if(entLeftX > nextX){
+                     direction = "left";
+                 }
+                 if(entLeftX < nextX){
+                     direction = "right";
+                 }
+             }
+             //other cases
+             else if(entTopY > nextY && entLeftX > nextX){
+                 //up or left
+                 direction = "up";
+                 checkCollision();
+                 if(collisionOn){
+                     direction = "left";
+                 }
+             }
+             else if(entTopY > nextY && entLeftX < nextX){
+                 //up or right
+                 direction = "up";
+                 checkCollision();
+                 if(collisionOn){
+                     direction = "right";
+                 }
+             }
+             else if(entTopY < nextY && entLeftX > nextX){
+                 //down or left
+                 direction = "down";
+                 checkCollision();
+                 if(collisionOn){
+                     direction = "left";
+                 }
+             }
+
+             else if(entTopY < nextY && entLeftX < nextX){
+                 //down or right
+                 direction = "down";
+                 checkCollision();
+                 if(collisionOn){
+                     direction = "right";
+                 }
+             }
+              //stop the npc when arriving to goal
+             int nextCol = gp.pFinder.pathList.get(0).col;
+             int nextRow = gp.pFinder.pathList.get(0).row;
+
+             if(nextCol == goalCol && nextRow == goalRow){
+                 onPath = false;
+                 speed = 0;
+             }
+
+         }
+    }
+
+
 }
