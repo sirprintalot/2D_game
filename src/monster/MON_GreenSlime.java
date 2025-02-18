@@ -18,7 +18,7 @@ public class MON_GreenSlime extends Entity {
 
         type = typeMonster;
         name = "Green Slime";
-        speed = 5;
+        speed = 4;
         maxLife = 5;
         life = maxLife;
 
@@ -30,8 +30,8 @@ public class MON_GreenSlime extends Entity {
 
         solidArea.x = 3;
         solidArea.y = 18;
-        solidArea.width = 42;
-        solidArea.height = 30;
+        solidArea.width = 38;
+        solidArea.height = 38;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -55,44 +55,87 @@ public class MON_GreenSlime extends Entity {
 
     }
 
+    // case 3 NPC getting aggro at certain distance
+    public void update(){
+        super.update();
+
+        //distance to the player
+        int xDistance = Math.abs(worldX - gp.player.worldX);
+        int yDistance = Math.abs(worldY - gp.player.worldY);
+        int tileDistance = (xDistance + yDistance) / gp.tileSize;
+
+        if(!onPath && tileDistance < 5){
+            // option 1
+            // onPath = true;
+
+            //option 2 randomize
+            int i = new Random().nextInt(100) + 1;
+            if(i > 50){
+                onPath = true;
+                System.out.println("aggro started ");
+            }
+        }
+        //stop hunting at a certain distance
+        if(onPath && tileDistance >= 10){
+            onPath = false;
+            System.out.println("aggro finished!");
+        }
+        
+    }
+
     public void setAction() {
 
 
-        actionLockCounter++;
+        if(onPath){
 
-        if (actionLockCounter == 120) {
+            // case 2 the npc follows the player
+            int goalCol = (gp.player.worldX + gp.player.solidArea.x) / gp.tileSize;
+            int goalRow = (gp.player.worldY + gp.player.solidArea.y) / gp.tileSize;;
+            
+//            speed = 7;
 
-            Random rand = new Random();
-            int i = rand.nextInt(100) + 1;
+            searchPath(goalCol, goalRow);
 
-            if (i <= 25) {
-                direction = "up";
-            }
-            if (i > 25 && i <= 50) {
-                direction = "down";
-            }
-            if (i > 50 && i <= 75) {
-                direction = "left";
-            }
-            if (i > 75) {
-                direction = "right";
+            int i = new Random().nextInt(100) + 1;
+            if(i > 99 && !projectile.isAlive && shotAvailableCounter == 30){
+                projectile.set(worldX, worldY, direction, true, this);
+                gp.projectileList.add(projectile);
+                shotAvailableCounter = 0;
             }
 
-            actionLockCounter = 0;
         }
 
-        int i = new Random().nextInt(100) + 1;
-         if(i > 99 && !projectile.isAlive && shotAvailableCounter == 30){
-             projectile.set(worldX, worldY, direction, true, this);
-             gp.projectileList.add(projectile);
-             shotAvailableCounter = 0;
-         }
+        else{
+            actionLockCounter++;
+
+            if (actionLockCounter == 120) {
+
+                Random rand = new Random();
+                int i = rand.nextInt(100) + 1;
+
+                if (i <= 25) {
+                    direction = "up";
+                }
+                if (i > 26 && i <= 50) {
+                    direction = "down";
+                }
+                if (i > 51 && i <= 75) {
+                    direction = "left";
+                }
+                if (i > 76) {
+                    direction = "right";
+                }
+                actionLockCounter = 0;
+            }
+        }
     }
 
     public void damageReaction(){
 
         actionLockCounter = 0;
-        direction = gp.player.direction;
+//        direction = gp.player.direction;
+        //getting aggro when player attacks
+        onPath = true;
         
     }
 

@@ -83,18 +83,8 @@ public class Pathfinder {
             //set solid node
             //check tiles
             int tileNum = gp.tileM.mapTileNum[gp.currentMap][col][row];
-            if(gp.tileM.tile[tileNum].collision == true){
+            if(gp.tileM.tile[tileNum].collision){
                 node[col][row].solid = true;
-            }
-            // check interactive tiles *out of this loop
-            for(int i = 0; i < gp.inTile[1].length; i++){
-                 if(gp.inTile[gp.currentMap][i] != null &&
-                gp.inTile[gp.currentMap][i].destructible){
-                     int intCol = gp.inTile[gp.currentMap][i].worldX/gp.tileSize;
-                     int intRow = gp.inTile[gp.currentMap][i].worldY/gp.tileSize;
-
-                     node[intCol][intRow].solid = true;
-                 }
             }
             //set cost
             getCost(node[col][row]);
@@ -103,6 +93,16 @@ public class Pathfinder {
             if(col == gp.maxWorldCol){
                 col = 0;
                 row++;
+            }
+        }
+        // check interactive tiles *out of this loop
+        for(int i = 0; i < gp.inTile[1].length; i++){
+            if(gp.inTile[gp.currentMap][i] != null &&
+                    gp.inTile[gp.currentMap][i].destructible){
+                int intCol = gp.inTile[gp.currentMap][i].worldX/gp.tileSize;
+                int intRow = gp.inTile[gp.currentMap][i].worldY/gp.tileSize;
+
+                node[intCol][intRow].solid = true;
             }
         }
     }

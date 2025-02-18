@@ -498,13 +498,13 @@ public class Entity {
                  }
              }
               //stop the npc when arriving to goal
-             int nextCol = gp.pFinder.pathList.get(0).col;
-             int nextRow = gp.pFinder.pathList.get(0).row;
-
-             if(nextCol == goalCol && nextRow == goalRow){
-                 onPath = false;
-                 speed = 0;
-             }
+             // dissable for case 2
+//             int nextCol = gp.pFinder.pathList.get(0).col;
+//             int nextRow = gp.pFinder.pathList.get(0).row;
+//             if(nextCol == goalCol && nextRow == goalRow){
+//                 onPath = false;
+//                 System.out.println("goalreached");
+//             }
 
          }
     }
