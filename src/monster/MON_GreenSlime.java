@@ -13,7 +13,6 @@ public class MON_GreenSlime extends Entity {
     public MON_GreenSlime(GamePanel gp) {
 
         super(gp);
-
         this.gp = gp;
 
         type = typeMonster;
@@ -23,15 +22,15 @@ public class MON_GreenSlime extends Entity {
         life = maxLife;
 
         attack = 4;
-        defense = 0;
+        defense = 1;
         exp = 2;
 
         projectile = new OBJ_Rock(gp);
 
         solidArea.x = 3;
         solidArea.y = 18;
-        solidArea.width = 38;
-        solidArea.height = 38;
+        solidArea.width = 35;
+        solidArea.height = 35;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -56,44 +55,40 @@ public class MON_GreenSlime extends Entity {
     }
 
     // case 3 NPC getting aggro at certain distance
-    public void update(){
-        super.update();
-
-        //distance to the player
-        int xDistance = Math.abs(worldX - gp.player.worldX);
-        int yDistance = Math.abs(worldY - gp.player.worldY);
-        int tileDistance = (xDistance + yDistance) / gp.tileSize;
-
-        if(!onPath && tileDistance < 5){
-            // option 1
-            // onPath = true;
-
-            //option 2 randomize
-            int i = new Random().nextInt(100) + 1;
-            if(i > 50){
-                onPath = true;
-                System.out.println("aggro started ");
-            }
-        }
-        //stop hunting at a certain distance
-        if(onPath && tileDistance >= 10){
-            onPath = false;
-            System.out.println("aggro finished!");
-        }
-        
-    }
+//    public void update(){
+//        super.update();
+//
+//        //distance to the player
+//        int xDistance = Math.abs(worldX - gp.player.worldX);
+//        int yDistance = Math.abs(worldY - gp.player.worldY);
+//        int tileDistance = (xDistance + yDistance) / gp.tileSize;
+//
+//        if(!onPath && tileDistance < 5){
+//            // option 1
+//            // onPath = true;
+//
+//            //option 2 randomize
+//            int i = new Random().nextInt(100) + 1;
+//            if(i > 50){
+//                onPath = true;
+//                System.out.println("aggro started ");
+//            }
+//        }
+//        //stop hunting at a certain distance
+//        if(onPath && tileDistance >= 10){
+//            onPath = false;
+//            System.out.println("aggro finished!");
+//        }
+//
+//    }
 
     public void setAction() {
 
-
         if(onPath){
-
             // case 2 the npc follows the player
             int goalCol = (gp.player.worldX + gp.player.solidArea.x) / gp.tileSize;
             int goalRow = (gp.player.worldY + gp.player.solidArea.y) / gp.tileSize;;
-            
 //            speed = 7;
-
             searchPath(goalCol, goalRow);
 
             int i = new Random().nextInt(100) + 1;
@@ -102,7 +97,6 @@ public class MON_GreenSlime extends Entity {
                 gp.projectileList.add(projectile);
                 shotAvailableCounter = 0;
             }
-
         }
 
         else{

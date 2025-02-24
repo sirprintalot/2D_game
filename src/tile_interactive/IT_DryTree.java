@@ -19,7 +19,7 @@ public class IT_DryTree extends InteractiveTile{
          destructible = true;
 
          // set the tree life, so it takes x amount of hits to disappear
-         life = 3;
+         life = 1;
          
     }
     public boolean correctItem(Entity entity){

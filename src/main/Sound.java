@@ -2,7 +2,6 @@ package main;
 
 import javax.sound.sampled.*;
 import java.net.*;
-import java.sql.*;
 
 public class Sound {
 
@@ -15,44 +14,46 @@ public class Sound {
     public Sound() {
 
         //replace numbers by index++
-        soundURL[0] = getClass().getResource("/sounds/BlueBoyAdventure.wav");
-
-        soundURL[1] = getClass().getResource("/sounds/coin.wav");
-
-        soundURL[2] = getClass().getResource("/sounds/powerup.wav");
-
-        soundURL[3] = getClass().getResource("/sounds/unlock.wav");
-
-        soundURL[4] = getClass().getResource("/sounds/fanfare.wav");
-
-        soundURL[5] = getClass().getResource("/sounds/blocked.wav");
-
-        soundURL[6] = getClass().getResource("/sounds/powerup.wav");
-
-        soundURL[7] = getClass().getResource("/sounds/STEP.wav");
-
-        soundURL[8] = getClass().getResource("/sounds/pause.wav");
-
-        soundURL[9] = getClass().getResource("/sounds/blade.wav");
-
-        soundURL[10] = getClass().getResource("/sounds/receivedamage.wav");
-
-        soundURL[11] = getClass().getResource("/sounds/hitmonster.wav");
-
-        soundURL[12] = getClass().getResource("/sounds/teleport.wav");
-
-        soundURL[13] = getClass().getResource("/sounds/levelup.wav");
-
-        soundURL[14] = getClass().getResource("/sounds/cursor.wav");
-
-        soundURL[15] = getClass().getResource("/sounds/burning.wav");
-
-        soundURL[16] = getClass().getResource("/sounds/cuttree.wav");
-
-        soundURL[17] = getClass().getResource("/sounds/gameover.wav");
-
-        soundURL[18] = getClass().getResource("/sounds/stairs.wav");
-
+        int index = 0;
+        soundURL[index] = getClass().getResource("/sounds/BlueBoyAdventure.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/coin.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/powerup.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/unlock.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/fanfare.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/blocked.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/powerup.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/STEP.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/pause.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/blade.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/receivedamage.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/hitmonster.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/teleport.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/levelup.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/cursor.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/burning.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/cuttree.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/gameover.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/stairs.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/Merchant.wav");
 
     }
 
@@ -64,7 +65,7 @@ public class Sound {
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
-            fc = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+            fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             checkVolume();
 //            System.out.println("check volume");
 
@@ -79,13 +80,13 @@ public class Sound {
         clip.start();
     }
 
-    public void checkVolume(){
-        if(fc != null){
+    public void checkVolume() {
+        if (fc != null) {
 
-            if(volumeScale < 0 ){
+            if (volumeScale < 0) {
                 volumeScale = 0;
             }
-            if(volumeScale > 5){
+            if (volumeScale > 5) {
                 volumeScale = 5;
             }
             switch (volumeScale) {

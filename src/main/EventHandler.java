@@ -46,15 +46,11 @@ public class EventHandler {
                         row = 0;
                         map++;
                     }
-
-
                 }
         }
-
     }
 
     public void checkEvent() {
-
         //Check the distance between the character, and the event tile
         //is it's more than a tile the event can happen again
         int xDistance = Math.abs(gp.player.worldX - previousEventX);
@@ -84,24 +80,24 @@ public class EventHandler {
             //Move to the next map
             else if (hit(0, 10, 39, "any")) {
                 nextMap(1, 12, 13);
+                gp.stopMusic();
+                gp.playMusic(19);
             }
 
             //Go back to the original map
             else if (hit(1, 12, 13, "any")) {
                 nextMap(0, 10, 39);
+                gp.stopMusic();
+                gp.playMusic(0);
             }
 
             else if (hit(1, 12, 9, "up")) {
                 speak(gp.npc[1][1]);
             }
-
-
         }
-
     }
 
     //TODO check this method again
-
     public boolean hit(int map, int col, int row, String reqDirection) {
 
         boolean hit = false;
@@ -153,7 +149,6 @@ public class EventHandler {
     public void healingPool(int gameState) {
 
         if (gp.keyH.enterPressed) {
-
             gp.gameState = gameState;
             gp.player.attackCancel = true;
             gp.playSoundEffect(2);
@@ -164,8 +159,6 @@ public class EventHandler {
             gp.player.mana = gp.player.maxMana;
             //after healing, the monsters reappear
             gp.assetSetter.setMonster();
-
-
         }
     }
 

@@ -123,7 +123,6 @@ public class GamePanel extends JPanel implements Runnable {
         g2 = tempScreen.createGraphics();
 
         if (fullScreenOn) {
-            
             setFullScreen();
         }
         
@@ -260,9 +259,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
         if (gameState == pauseState) {
             //TO DO
-
         }
-
     }
 
     // New method for drawing the game
