@@ -74,7 +74,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     ArrayList<Entity> entityList = new ArrayList<>();
 
-    public ArrayList<Entity> projectileList = new ArrayList<>(); //must be public 16:27
+    //for cutting the projectiles
+    public Entity projectile[][] = new Entity[maxMap][20];
+
+//    public ArrayList<Entity> projectileList = new ArrayList<>(); //must be public 16:27
 
     //Interactive tiles
     public InteractiveTile[][] inTile = new InteractiveTile[maxMap][50];
@@ -225,14 +228,14 @@ public class GamePanel extends JPanel implements Runnable {
 
             }
             // Projectile
-            for (int i = 0; i < projectileList.size(); i++) {
-                if (projectileList.get(i) != null) {
+            for (int i = 0; i < projectile[1].length; i++) {
+                if (projectile[currentMap][i] != null) {
 
-                    if (projectileList.get(i).isAlive) {
-                        projectileList.get(i).update();
+                    if (projectile[currentMap][i].isAlive) {
+                        projectile[currentMap][i].update();
                     }
-                    if (!projectileList.get(i).isAlive) {
-                        projectileList.remove(i);
+                    if (!projectile[currentMap][i].isAlive) {
+                        projectile[currentMap][i] = null;
                     }
                 }
             }
@@ -316,9 +319,9 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
             // Projectile
-            for (int i = 0; i < projectileList.size(); i++) {
-                if (projectileList.get(i) != null) {
-                    entityList.add(projectileList.get(i));
+            for (int i = 0; i < projectile[1].length; i++) {
+                if (projectile[currentMap][i] != null) {
+                    entityList.add(projectile[currentMap][i]);
                 }
             }
 

@@ -77,7 +77,7 @@ public class Player extends Entity {
         direction = "down";
 
         //PLAYER STATUS
-        maxLife = 6;
+        maxLife = 10;
         life = maxLife;
 
         //projectile
@@ -271,9 +271,16 @@ public class Player extends Entity {
 
             // subtract the mana cost of the attack
             projectile.substrackResource(this);
+            
             //adds projectile to the projectile list
-            gp.projectileList.add(projectile);
-
+//            gp.projectileList.add(projectile);
+              //CHECK VACANCY
+            for(int i = 0; i < gp.projectile[1].length; i++){
+                if(gp.projectile[gp.currentMap][i] == null){
+                    gp.projectile[gp.currentMap][i] = projectile;
+                    break;
+                }
+            }
             shotAvailableCounter = 0;
 
             gp.playSoundEffect(15);
@@ -327,7 +334,7 @@ public class Player extends Entity {
         if (spriteCounter <= 5) {
             spriteNum = 1;
         }
-        if (spriteCounter > 5 && spriteCounter <= 25) {
+        if (spriteCounter > 8 && spriteCounter <= 25) {
             spriteNum = 2;
 
             // original position of the player
@@ -356,13 +363,14 @@ public class Player extends Entity {
             int inTileIndex = gp.cCheck.checkEntity(this, gp.inTile);
             damageInteractiveTile(inTileIndex);
 
+          int projectleIndex = gp.cCheck.checkEntity(this, gp.projectile);
+          damageProjectile(projectleIndex);
+
             // Reset the player's position
             worldX = currentWorldX;
             worldY = currentWorldY;
             solidArea.width = solidAreaWidth;
             solidArea.height = solidAreaHeight;
-
-
         }
         if (spriteCounter > 25) {
             spriteNum = 1;
@@ -487,6 +495,14 @@ public class Player extends Entity {
 
                 gp.inTile[gp.currentMap][index] = gp.inTile[gp.currentMap][index].getDestroyedForm();
             }
+        }
+    }
+
+    public void damageProjectile(int i){
+        if(i != 999){
+            Entity projectile = gp.projectile[gp.currentMap][i];
+            projectile.isAlive = false;
+            generateParticle(projectile, projectile);
         }
     }
 
