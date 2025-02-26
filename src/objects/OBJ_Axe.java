@@ -13,6 +13,7 @@ public class OBJ_Axe extends Entity {
 
         type = typeAxe;
         attackValue = 2;
+        knockBackPower = 10;
         attackArea.width = 28;
         attackArea.height = 28;
         itemDescription = "[" +name+"] /nA small axe!!/nAttack +" + attackValue;

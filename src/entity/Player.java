@@ -73,7 +73,6 @@ public class Player extends Entity {
 //        worldX = gp.tileSize * 12;
 //        worldY = gp.tileSize * 13;
 
-        speed = 5;
         direction = "down";
 
         //PLAYER STATUS
@@ -96,6 +95,8 @@ public class Player extends Entity {
         ammo = 10;
         currentWeapon = new OBJ_Sword_Normal(gp);
         currentShield = new OBJ_shield_Wood(gp);
+        defaultSpeed = 5;
+        speed = defaultSpeed;
         attack = getAttack();
         defense = getDefense();
 
@@ -118,7 +119,6 @@ public class Player extends Entity {
 
         inventory.clear();
 
-        //TODO FIX ITEM BUG WHEN THERE'S MORE THAN 20 ITEMS
         inventory.add(currentWeapon);
         inventory.add(currentShield);
     }
@@ -357,7 +357,7 @@ public class Player extends Entity {
 
             // check monster collision with the updated coordinates
             int monsterIndex = gp.cCheck.checkEntity(this, gp.monster);
-            damageMonster(monsterIndex, attack);
+            damageMonster(monsterIndex, attack, currentWeapon.knockBackPower);
 
             // interactive tile
             int inTileIndex = gp.cCheck.checkEntity(this, gp.inTile);
@@ -442,13 +442,18 @@ public class Player extends Entity {
         }
     }
 
-    public void damageMonster(int i, int attack) {
+    public void damageMonster(int i, int attack, int knockBackPower) {
 
         if (i != 999) {
             if (!gp.monster[gp.currentMap][i].invincible) {
 
                 gp.playSoundEffect(11);
 
+                if(knockBackPower > 0){
+                    
+                    knockBack(gp.monster[gp.currentMap][i], knockBackPower);
+                }
+                
                 int damage = attack - gp.monster[gp.currentMap][i].defense;
 
                 if (damage < 0) {
@@ -476,6 +481,15 @@ public class Player extends Entity {
                 }
             }
         }
+    }
+
+    public void knockBack(Entity entity, int knockBackPower){
+
+        entity.direction = direction;
+        entity.speed += knockBackPower;
+        entity.knockBack = true;
+
+
     }
 
     public void damageInteractiveTile(int index) {

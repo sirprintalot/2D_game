@@ -118,6 +118,12 @@ public class Entity {
     //pathfinding
     public boolean onPath = false;
 
+    //Knock back
+    public boolean knockBack = false;
+    public int defaultSpeed;
+    int knockBackCounter = 0;
+    public int knockBackPower = 0;
+
     public Entity(GamePanel gp) {
         this.gp = gp;
     }
@@ -227,22 +233,46 @@ public class Entity {
             damagePlayer(attack);
         }
     }
-    
+
     // UPDATE
     public void update() {
-
-        setAction();
-        checkCollision();
-
-        //for the movement we copy the player's movement
-        // if collision is false player can move
-        if (!collisionOn) {
-            switch (direction) {
-                case "up" -> worldY -= speed;
-                case "down" -> worldY += speed;
-                case "left" -> worldX -= speed;
-                case "right" -> worldX += speed;
+        if(knockBack){
+            checkCollision();
+            if(collisionOn){
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
             }
+            else {
+                switch(gp.player.direction){
+                    case "up" -> worldY -= speed;
+                    case "down" -> worldY += speed;
+                    case "left" -> worldX -= speed;
+                    case "right" -> worldX += speed;
+                }
+            }
+             knockBackCounter++;
+            if(knockBackCounter == 10){
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+            }
+        }
+
+        else{
+            setAction();
+            checkCollision();
+            //for the movement we copy the player's movement
+            // if collision is false player can move
+            if (!collisionOn) {
+                switch (direction) {
+                    case "up" -> worldY -= speed;
+                    case "down" -> worldY += speed;
+                    case "left" -> worldX -= speed;
+                    case "right" -> worldX += speed;
+                }
+            }
+            
         }
 
         spriteCounter++;
@@ -433,7 +463,7 @@ public class Entity {
 
            int startCol = (worldX + solidArea.x) / gp.tileSize;
            int startRow = (worldY + solidArea.y) / gp.tileSize;
-           
+
          gp.pFinder.setNodes(startCol, startRow, goalCol, goalRow);
 
          if(gp.pFinder.search()) {
