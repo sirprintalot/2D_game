@@ -93,6 +93,7 @@ public class Entity {
     public final int typeShield = 5;
     public final int typeUsable = 6;
     public final int typePickupOnly = 7;
+    public final int typeObstacle = 8;
 
     //DIALOGUE
     String[] dialogues = new String[20];
@@ -132,8 +133,26 @@ public class Entity {
     public void setAction() {
     }
 
-    public void useItem(Entity entity) {
+    public int getLeftX(){
+        return worldX + solidArea.x;
     }
+    public int getRightX(){
+        return worldX + solidArea.x + solidArea.width;
+    }
+    public int getTopY(){
+        return worldY + solidArea.y;
+    }
+    public int getBotY(){
+        return worldY + solidArea.y + solidArea.height;
+    }
+    public int getRow(){
+        return (worldY+solidArea.y)/gp.tileSize;
+    }
+
+    public int getCol(){
+        return (worldX+solidArea.x)/gp.tileSize;
+    }
+    public boolean useItem(Entity entity) { return false;}
 
     public void damageReaction() {
     }
@@ -170,6 +189,11 @@ public class Entity {
             case "left" -> direction = "right";
             case "right" -> direction = "left";
         }
+    }
+
+    //Interact with objects
+    public void interact(){
+
     }
 
     //Particle
@@ -334,10 +358,7 @@ public class Entity {
         int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
         //change for a boolean method
-        if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
-                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
-                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
+        if (isOnScreen()) {
 
             switch (direction) {
                 case "up" -> {
@@ -461,8 +482,8 @@ public class Entity {
 
     public void searchPath(int goalCol, int goalRow){
 
-           int startCol = (worldX + solidArea.x) / gp.tileSize;
-           int startRow = (worldY + solidArea.y) / gp.tileSize;
+           int startCol = getCol();
+           int startRow = getRow();
 
          gp.pFinder.setNodes(startCol, startRow, goalCol, goalRow);
 
@@ -472,10 +493,10 @@ public class Entity {
              int nextY = gp.pFinder.pathList.get(0).row * gp.tileSize;
 
              // entity solid area position
-             int entLeftX = worldX + solidArea.x;
-             int entRightX = worldX + solidArea.x + solidArea.width;
-             int entTopY = worldY + solidArea.y;
-             int entBotY = worldY + solidArea.y + solidArea.height;
+             int entLeftX = getLeftX(); //worldX + solidArea.x;
+             int entRightX = getRightX(); //worldX + solidArea.x + solidArea.width;
+             int entTopY = getTopY(); //worldY + solidArea.y;
+             int entBotY = getBotY(); //worldY + solidArea.y + solidArea.height;
 
              // don't let the entity get stuck
              if(entTopY > nextY && entLeftX >= nextX && entRightX < nextX +gp.tileSize){
@@ -537,6 +558,40 @@ public class Entity {
 //             }
 
          }
+    }
+
+    //Object detection
+    public int getDetected(Entity user, Entity[][] target, String targetName){
+
+        int index = 999;
+
+        //check surrounding object
+        int nextWorldX = user.getLeftX();
+        int nextWorldY = user.getTopY();
+
+        switch (user.direction) {
+            case "up" -> nextWorldY = user.getTopY() - user.speed;
+            case "down" -> nextWorldY = user.getBotY() + user.speed;
+            case "left" -> nextWorldX = user.getLeftX() - user.speed;
+            case "right" -> nextWorldX = user.getRightX() + user.speed;
+        }
+
+        int col = nextWorldX/gp.tileSize;
+        int row = nextWorldY/gp.tileSize;
+
+        for(int i = 0; i < target[1].length; i++){
+            if(target[gp.currentMap][i] != null){
+                if(target[gp.currentMap][i].getCol() == col &&
+                        target[gp.currentMap][i].getRow() == row &&
+                        target[gp.currentMap][i].name.equals(targetName)){
+
+                    index = i;
+                    break;
+
+                }
+            }
+        }
+        return index;
     }
 
 

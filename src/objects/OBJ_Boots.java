@@ -19,7 +19,7 @@ public class OBJ_Boots extends Entity {
         itemDescription ="["+ name +"] /nA pair of boots/nSpeed increased!";
         price = 10;
     }
-    public void useItem(Entity entity){
+    public boolean useItem(Entity entity){
 
         //TODO create counter for the speed effect to disappear
         gp.gameState = gp.dialogueState;
@@ -29,5 +29,6 @@ public class OBJ_Boots extends Entity {
 
         entity.speed += value;
 
+        return true;
     }
 }

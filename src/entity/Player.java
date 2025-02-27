@@ -21,8 +21,6 @@ public class Player extends Entity {
 
     // Attack
     public boolean attackCancel = false;
-
-
     //objective
 //    public int hasKey = 0;
 //    public int chestCounter = 0;
@@ -123,14 +121,12 @@ public class Player extends Entity {
         inventory.add(currentShield);
     }
 
-
     public int getAttack() {
 
         //set the attack area according to the current weapon
         attackArea = currentWeapon.attackArea;
         return attack = strength * currentWeapon.attackValue;
     }
-
 
     public int getDefense() {
 
@@ -381,15 +377,25 @@ public class Player extends Entity {
 
     //pick object
     public void pickUpObject(int i) {
-        if (i != 999) {
 
+        if (i != 999) {
             // Pickup only items
             if (gp.obj[gp.currentMap][i].type == typePickupOnly) {
 
                 gp.obj[gp.currentMap][i].useItem(this);
                 gp.obj[gp.currentMap][i] = null;
 
-            } else {
+            }
+            // Obstacles
+            else if(gp.obj[gp.currentMap][i].type == typeObstacle){
+                if(keyH.enterPressed){
+                    attackCancel = true;
+                    gp.obj[gp.currentMap][i].interact();
+                }
+            }
+
+
+            else {
 
                 //Inventory items
                 String displayText;
@@ -561,9 +567,9 @@ public class Player extends Entity {
                 defense = getDefense();
             }
             if (selectedItem.type == typeUsable) {
-                selectedItem.useItem(this);
-                inventory.remove(itemIndex);
-
+                if(selectedItem.useItem(this)){
+                    inventory.remove(itemIndex);
+                }
             }
         }
 

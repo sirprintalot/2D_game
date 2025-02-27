@@ -58,10 +58,28 @@ public class AssetSetter {
         gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 21 * gp.tileSize;
 
+        objIndex++;
+        gp.obj[mapNum][objIndex] = new OBJ_Axe(gp);
+        gp.obj[mapNum][objIndex].worldX = 29 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 21 * gp.tileSize;
 
-        gp.obj[mapNum][1] = new OBJ_Axe(gp);
-        gp.obj[mapNum][1].worldX = 29 * gp.tileSize;
-        gp.obj[mapNum][1].worldY = 21 * gp.tileSize;
+        //set door
+        objIndex++;
+        gp.obj[mapNum][objIndex] = new OBJ_Door(gp);
+        gp.obj[mapNum][objIndex].worldX = 14 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 28 * gp.tileSize;
+
+        objIndex++;
+        gp.obj[mapNum][objIndex] = new OBJ_Door(gp);
+        gp.obj[mapNum][objIndex].worldX = 12 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 12  * gp.tileSize;
+
+        objIndex++;
+        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp, new OBJ_Heart(gp));
+        gp.obj[mapNum][objIndex].worldX = 34 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 8  * gp.tileSize;
+
+        //set door
 ////
 //        gp.obj[2] = new OBJ_Key(gp);
 //        gp.obj[2].worldX = 35 * gp.tileSize;

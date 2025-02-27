@@ -19,9 +19,11 @@ public class OBJ_BronzeCoin extends Entity {
 
     }
 
-    public void useItem(Entity entity){
+    public boolean useItem(Entity entity){
         gp.playSoundEffect(1);
         gp.ui.addMessage("+ " + value + " Coin");
         gp.player.coin += value;
+
+        return true;
     }
 }

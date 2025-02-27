@@ -23,11 +23,12 @@ public class OBJ_Heart extends Entity {
 
     }
 
-    public void useItem(Entity entity){
+    public boolean useItem(Entity entity){
         gp.playSoundEffect(2);
         gp.ui.addMessage("+ " + value + " Healed!");
         entity.life += value;
-       
+
+        return true;
     }
 
 

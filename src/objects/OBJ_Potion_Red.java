@@ -22,7 +22,7 @@ public class OBJ_Potion_Red extends Entity {
         price = 13;
     }
 
-    public void useItem(Entity entity){
+    public boolean useItem(Entity entity){
 
         gp.gameState = gp.dialogueState;
         gp.playSoundEffect(6);
@@ -30,7 +30,8 @@ public class OBJ_Potion_Red extends Entity {
                 "Your life has been restored!";
 
         entity.life += value;
-        
+
+        return true;
     }
     
 }
