@@ -14,6 +14,7 @@ public class OBJ_Key extends Entity {
         this.gp = gp;
         name = "key";
         type = typeUsable;
+        stackable = true;
 
         down1 = setup("/objects/key", gp.tileSize, gp.tileSize);
         itemDescription ="[" + name + "] /n A golden key/n opens a door";

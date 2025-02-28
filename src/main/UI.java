@@ -631,6 +631,29 @@ public class UI {
 
             //draws the first item
             g2.drawImage(entity.inventory.get(i).down1, slotX, slotY, null);
+
+            // display the number of stackable items
+            if(entity == gp.player && entity.inventory.get(i).ammount > 1){
+                g2.setFont(g2.getFont().deriveFont(28f));
+                int amountX;
+                int amountY;
+
+                String s = String.valueOf(entity.inventory.get(i).ammount);
+                amountX = getXforRightAlingn(s, slotX + 41);
+                amountY = slotY + gp.tileSize;
+
+                //draw the shadow of the number
+                g2.setColor(new Color(0,0,0));
+                g2.drawString(s, amountX, amountY);
+
+               // draw the number
+                g2.setColor(Color.white);
+                g2.drawString(s, amountX - 2, amountY - 2);
+                
+            }
+
+
+            
             //pass to the next column
             slotX += slotSize;
 
@@ -767,25 +790,40 @@ public class UI {
         }
         //BUY AN ITEM
         if (gp.keyH.enterPressed) {
+            
             int price = merchant.inventory.get(itemIndex).price;
             //if a player doesn't have enough money
-            if (merchant.inventory.get(itemIndex).price > gp.player.coin) {
+            if (price > gp.player.coin) {
 
                 gp.gameState = gp.dialogueState;
                 currentDialogue = "Not enough Coins!";
                 drawDialogueScreen();
                 subState = 0;
                 // if player doesn't have enough space in inventory
-            } else if (gp.player.inventory.size() == gp.player.inventorySize) {
-                subState = 0;
-                gp.gameState = gp.dialogueState;
-                currentDialogue = "Inventory full!!";
-                drawDialogueScreen();
             }
             else{
-                gp.player.coin -= price;
-                gp.player.inventory.add(merchant.inventory.get(itemIndex));
+                if(gp.player.canReceiveItem(merchant.inventory.get(itemIndex))){
+                    gp.player.coin -= price;
+                }
+                else{
+                    
+                    subState = 0;
+                    gp.gameState = gp.dialogueState;
+                    currentDialogue = "Inventory full!!";
+//                    drawDialogueScreen();
+                }
             }
+
+//            else if (gp.player.inventory.size() == gp.player.inventorySize) {
+//                subState = 0;
+//                gp.gameState = gp.dialogueState;
+//                currentDialogue = "Inventory full!!";
+//                drawDialogueScreen();
+//            }
+//            else{
+//                gp.player.coin -= price;
+//                gp.player.inventory.add(merchant.inventory.get(itemIndex));
+//            }
         }
     }
 
@@ -820,13 +858,14 @@ public class UI {
         //if the slot is not empty, we display the price
         if (itemIndex < gp.player.inventory.size()) {
             x = (int) (gp.tileSize * 9.5);
-            y = (int) (gp.tileSize);
+            y =  (gp.tileSize);
             width = (int) (gp.tileSize * 2.5);
             height = gp.tileSize;
 
             //DRAW THE PRICE
             drawSubWindow(x, y, width, height);
             g2.drawImage(coin, x + 10, y + 8, 32, 32, null);
+
 
             int price = (int)(gp.player.inventory.get(itemIndex).price * 0.8);
 
@@ -841,18 +880,23 @@ public class UI {
             int price = (int)(gp.player.inventory.get(itemIndex).price * 0.8);
             //PREVENT SELLING AN EQUIPPED ITEM
             if(gp.player.inventory.get(itemIndex) == gp.player.currentShield || gp.player.inventory.get(itemIndex) == gp.player.currentWeapon){
-
                 subState = 0;
                 commandNum = 0;
                 gp.gameState = gp.dialogueState;
                 currentDialogue = "Cant sell this item!!";
                 drawDialogueScreen();
-
             }
 
             else{
-                gp.player.inventory.remove(itemIndex);
-                gp.player.coin += price;
+                if(gp.player.inventory.get(itemIndex).ammount > 1){
+                    gp.player.inventory.get(itemIndex).ammount--;
+                    gp.player.coin += price;
+                }
+                else{
+                    gp.player.inventory.remove(itemIndex);
+                    gp.player.coin += price;
+                }
+
             }
         }
     }

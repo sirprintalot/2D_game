@@ -43,12 +43,12 @@ public class OBJ_Chest extends Entity {
             sb.append("You opened the chest /nand found a ").append(loot.name).append("!!");
 
             // if inventory is fulll
-            if(gp.player.inventory.size() == gp.player.inventorySize){
+            if(!gp.player.canReceiveItem(loot)){
                 sb.append("/nInventory full!").append("/nCan't carry anymore");
             }
             else{
                 sb.append("/nYou got a ").append(loot.name).append("!!");
-                gp.player.inventory.add(loot);
+//                gp.player.inventory.add(loot);
                 down1 = image2;
                 opened = true;
             }

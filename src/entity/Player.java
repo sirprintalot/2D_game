@@ -100,14 +100,14 @@ public class Player extends Entity {
 
     }
 
-    public void setDefaultPosition(){
+    public void setDefaultPosition() {
 
         worldX = gp.tileSize * 23;
         worldY = gp.tileSize * 21;
         direction = "down";
     }
 
-    public void restorePlayerStats(){
+    public void restorePlayerStats() {
         life = maxLife;
         mana = maxMana;
         invincible = false;
@@ -267,12 +267,12 @@ public class Player extends Entity {
 
             // subtract the mana cost of the attack
             projectile.substrackResource(this);
-            
+
             //adds projectile to the projectile list
 //            gp.projectileList.add(projectile);
-              //CHECK VACANCY
-            for(int i = 0; i < gp.projectile[1].length; i++){
-                if(gp.projectile[gp.currentMap][i] == null){
+            //CHECK VACANCY
+            for (int i = 0; i < gp.projectile[1].length; i++) {
+                if (gp.projectile[gp.currentMap][i] == null) {
                     gp.projectile[gp.currentMap][i] = projectile;
                     break;
                 }
@@ -312,7 +312,7 @@ public class Player extends Entity {
         }
 
         // Game Over
-        if(life <= 0){
+        if (life <= 0) {
             gp.gameState = gp.gameOverState;
             gp.stopMusic();
             gp.playSoundEffect(17);
@@ -359,8 +359,8 @@ public class Player extends Entity {
             int inTileIndex = gp.cCheck.checkEntity(this, gp.inTile);
             damageInteractiveTile(inTileIndex);
 
-          int projectleIndex = gp.cCheck.checkEntity(this, gp.projectile);
-          damageProjectile(projectleIndex);
+            int projectleIndex = gp.cCheck.checkEntity(this, gp.projectile);
+            damageProjectile(projectleIndex);
 
             // Reset the player's position
             worldX = currentWorldX;
@@ -387,22 +387,20 @@ public class Player extends Entity {
 
             }
             // Obstacles
-            else if(gp.obj[gp.currentMap][i].type == typeObstacle){
-                if(keyH.enterPressed){
+            else if (gp.obj[gp.currentMap][i].type == typeObstacle) {
+                if (keyH.enterPressed) {
                     attackCancel = true;
                     gp.obj[gp.currentMap][i].interact();
                 }
-            }
-
-
-            else {
+            } else {
 
                 //Inventory items
                 String displayText;
-                //Check if the player's inventory is not full
-                if (inventory.size() != inventorySize) {
 
-                    inventory.add(gp.obj[gp.currentMap][i]);
+                //Check if the player's inventory is not full
+                if (canReceiveItem(gp.obj[gp.currentMap][i])) {
+//                    inventory.add(gp.obj[gp.currentMap][i]);
+
                     gp.playSoundEffect(1);
                     displayText = "Pick a " + gp.obj[gp.currentMap][i].name + " !!";
                 } else {
@@ -421,7 +419,7 @@ public class Player extends Entity {
 
         if (keyH.enterPressed) {
             if (i != 999) {
-                
+
                 attackCancel = true;
                 gp.gameState = gp.dialogueState;
                 gp.npc[gp.currentMap][i].speak();
@@ -455,11 +453,11 @@ public class Player extends Entity {
 
                 gp.playSoundEffect(11);
 
-                if(knockBackPower > 0){
-                    
+                if (knockBackPower > 0) {
+
                     knockBack(gp.monster[gp.currentMap][i], knockBackPower);
                 }
-                
+
                 int damage = attack - gp.monster[gp.currentMap][i].defense;
 
                 if (damage < 0) {
@@ -489,7 +487,7 @@ public class Player extends Entity {
         }
     }
 
-    public void knockBack(Entity entity, int knockBackPower){
+    public void knockBack(Entity entity, int knockBackPower) {
 
         entity.direction = direction;
         entity.speed += knockBackPower;
@@ -518,8 +516,8 @@ public class Player extends Entity {
         }
     }
 
-    public void damageProjectile(int i){
-        if(i != 999){
+    public void damageProjectile(int i) {
+        if (i != 999) {
             Entity projectile = gp.projectile[gp.currentMap][i];
             projectile.isAlive = false;
             generateParticle(projectile, projectile);
@@ -567,14 +565,62 @@ public class Player extends Entity {
                 defense = getDefense();
             }
             if (selectedItem.type == typeUsable) {
-                if(selectedItem.useItem(this)){
-                    inventory.remove(itemIndex);
+
+                if (selectedItem.useItem(this)) {
+                    if (selectedItem.ammount > 1) {
+                        selectedItem.ammount--;
+                    } else {
+                        inventory.remove(itemIndex);
+                    }
                 }
             }
         }
 
 
     }
+
+    //this method can be used for detecting specific items
+    public int searchItemOnInventory(String itemName) {
+        int itemIndex = 999;
+
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).name.equals(itemName)) {
+                itemIndex = i;
+                break;
+            }
+        }
+        return itemIndex;
+    }
+
+    public boolean canReceiveItem(Entity item) {
+        boolean canObtain = false;
+
+        //CHEck if item is stackable
+        if (item.stackable) {
+            int index = searchItemOnInventory(item.name);
+
+            if (index != 999) {
+                inventory.get(index).ammount++;
+                canObtain = true;
+            }
+            // new item has to be checked for vacancy
+            else {
+                if (inventory.size() != inventorySize) {
+                    inventory.add(item);
+                    canObtain = true;
+                }
+            }
+        }
+        // NOT STACKABLE check vacancy
+        else {
+            if (inventory.size() != inventorySize) {
+                inventory.add(item);
+                canObtain = true;
+            }
+        }
+        return canObtain;
+    }
+
 
     public void draw(Graphics2D g2) {
 

@@ -66,6 +66,10 @@ public class Entity {
     public ArrayList<Entity> inventory = new ArrayList<>();
     public final int inventorySize = 20;
 
+    //stackable items
+    public boolean stackable = false;
+    public int ammount = 1;
+
     // HP bar on monsters
     boolean hpBarOn = false;
 

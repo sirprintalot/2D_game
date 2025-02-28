@@ -16,6 +16,7 @@ public class OBJ_Potion_Red extends Entity {
 
         value = 5;
         type = typeUsable;
+        stackable = true;
         name = "Red potion";
         down1 = setup("/objects/potion_red", gp.tileSize, gp.tileSize);
         itemDescription ="["+ name +"] /nA healing potion!! /n+" + value + "Heal!!!";
