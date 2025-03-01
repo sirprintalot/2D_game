@@ -633,7 +633,7 @@ public class UI {
             g2.drawImage(entity.inventory.get(i).down1, slotX, slotY, null);
 
             // display the number of stackable items
-            if(entity == gp.player && entity.inventory.get(i).ammount > 1){
+            if (entity == gp.player && entity.inventory.get(i).ammount > 1) {
                 g2.setFont(g2.getFont().deriveFont(28f));
                 int amountX;
                 int amountY;
@@ -643,17 +643,16 @@ public class UI {
                 amountY = slotY + gp.tileSize;
 
                 //draw the shadow of the number
-                g2.setColor(new Color(0,0,0));
+                g2.setColor(new Color(0, 0, 0));
                 g2.drawString(s, amountX, amountY);
 
-               // draw the number
+                // draw the number
                 g2.setColor(Color.white);
                 g2.drawString(s, amountX - 2, amountY - 2);
-                
+
             }
 
 
-            
             //pass to the next column
             slotX += slotSize;
 
@@ -790,7 +789,7 @@ public class UI {
         }
         //BUY AN ITEM
         if (gp.keyH.enterPressed) {
-            
+
             int price = merchant.inventory.get(itemIndex).price;
             //if a player doesn't have enough money
             if (price > gp.player.coin) {
@@ -800,13 +799,11 @@ public class UI {
                 drawDialogueScreen();
                 subState = 0;
                 // if player doesn't have enough space in inventory
-            }
-            else{
-                if(gp.player.canReceiveItem(merchant.inventory.get(itemIndex))){
+            } else {
+                if (gp.player.canReceiveItem(merchant.inventory.get(itemIndex))) {
                     gp.player.coin -= price;
-                }
-                else{
-                    
+                } else {
+
                     subState = 0;
                     gp.gameState = gp.dialogueState;
                     currentDialogue = "Inventory full!!";
@@ -858,7 +855,7 @@ public class UI {
         //if the slot is not empty, we display the price
         if (itemIndex < gp.player.inventory.size()) {
             x = (int) (gp.tileSize * 9.5);
-            y =  (gp.tileSize);
+            y = (gp.tileSize);
             width = (int) (gp.tileSize * 2.5);
             height = gp.tileSize;
 
@@ -867,7 +864,7 @@ public class UI {
             g2.drawImage(coin, x + 10, y + 8, 32, 32, null);
 
 
-            int price = (int)(gp.player.inventory.get(itemIndex).price * 0.8);
+            int price = (int) (gp.player.inventory.get(itemIndex).price * 0.8);
 
             String text = " " + price;
             x = getXforRightAlingn(text, gp.tileSize * 10);
@@ -876,23 +873,20 @@ public class UI {
         }
         //SeLL AN ITEM
         if (gp.keyH.enterPressed) {
-            
-            int price = (int)(gp.player.inventory.get(itemIndex).price * 0.8);
+
+            int price = (int) (gp.player.inventory.get(itemIndex).price * 0.8);
             //PREVENT SELLING AN EQUIPPED ITEM
-            if(gp.player.inventory.get(itemIndex) == gp.player.currentShield || gp.player.inventory.get(itemIndex) == gp.player.currentWeapon){
+            if (gp.player.inventory.get(itemIndex) == gp.player.currentShield || gp.player.inventory.get(itemIndex) == gp.player.currentWeapon) {
                 subState = 0;
                 commandNum = 0;
                 gp.gameState = gp.dialogueState;
                 currentDialogue = "Cant sell this item!!";
                 drawDialogueScreen();
-            }
-
-            else{
-                if(gp.player.inventory.get(itemIndex).ammount > 1){
+            } else {
+                if (gp.player.inventory.get(itemIndex).ammount > 1) {
                     gp.player.inventory.get(itemIndex).ammount--;
                     gp.player.coin += price;
-                }
-                else{
+                } else {
                     gp.player.inventory.remove(itemIndex);
                     gp.player.coin += price;
                 }

@@ -4,8 +4,7 @@ package main;
 import javax.swing.*;
                                        
 public class Main {
-
-
+    
     public static JFrame window;
     
     public static void main(String[] args) {
@@ -15,7 +14,6 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("2D game");
-
 
         //game panel
         GamePanel gamePanel = new GamePanel();
@@ -40,6 +38,5 @@ public class Main {
 
         //run the game thread
         gamePanel.startGameThread();
-        
     }
 }

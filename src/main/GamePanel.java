@@ -2,6 +2,7 @@ package main;
 
 import ai.*;
 import entity.*;
+import environment.*;
 import tile.*;
 import tile_interactive.*;
 
@@ -36,7 +37,6 @@ public class GamePanel extends JPanel implements Runnable {
     int screenHeight2 = screenHeight;
     BufferedImage tempScreen;
     Graphics2D g2;
-
     public boolean fullScreenOn = false;
 
     //FPS
@@ -50,6 +50,9 @@ public class GamePanel extends JPanel implements Runnable {
     public UI ui = new UI(this);
     public CollisionChecker cCheck = new CollisionChecker(this);
     public AssetSetter assetSetter = new AssetSetter(this);
+
+    //lightning
+    EnvironmentManager eManager = new EnvironmentManager(this);
 
     // Config
     Config config = new Config(this);
@@ -117,6 +120,7 @@ public class GamePanel extends JPanel implements Runnable {
         assetSetter.setNpc();
         assetSetter.setMonster();
         assetSetter.setInteractiveTiles();
+        eManager.setup();
 
         gameState = tittleState;
         playMusic(8);
@@ -267,7 +271,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     // New method for drawing the game
     public void drawToTempScreen() {
-
 //        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR));
 //        g2.fillRect(0, 0, screenWidth, screenHeight);
 //        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
@@ -339,7 +342,11 @@ public class GamePanel extends JPanel implements Runnable {
                 entityList.get(i).draw(g2);
             }
 
+            //empty entity list
             entityList.clear();
+
+            // environment
+            eManager.draw(g2);
 
             //UI
             ui.draw(g2);
