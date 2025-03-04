@@ -76,40 +76,6 @@ public class AssetSetter {
         gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 21 * gp.tileSize;
 
-        objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Potion_Red(gp);
-        gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 22 * gp.tileSize;
-
-        objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Potion_Red(gp);
-        gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 23 * gp.tileSize;
-
-        objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Potion_Red(gp);
-        gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 24 * gp.tileSize;
-
-        objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Potion_Red(gp);
-        gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 25 * gp.tileSize;
-
-        objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Potion_Red(gp);
-        gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 26 * gp.tileSize;
-
-        objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Potion_Red(gp);
-        gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 27 * gp.tileSize;
-
-        objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Potion_Red(gp);
-        gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 28 * gp.tileSize;
 
         objIndex++;
         gp.obj[mapNum][objIndex] = new OBJ_Axe(gp);
@@ -141,6 +107,11 @@ public class AssetSetter {
         gp.obj[mapNum][objIndex] = new OBJ_Chest(gp, new OBJ_Potion_Red(gp));
         gp.obj[mapNum][objIndex].worldX = 34 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 10  * gp.tileSize;
+
+        objIndex++;
+        gp.obj[mapNum][objIndex] = new OBJ_Lantern(gp);
+        gp.obj[mapNum][objIndex].worldX = 18 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 20  * gp.tileSize;
 
 
         //set door

@@ -51,6 +51,7 @@ public class Entity {
     // Character equipment
     public Entity currentWeapon;
     public Entity currentShield;
+    public Entity currentLight;
     public Projectile projectile;
 
     // Item attributes
@@ -61,6 +62,7 @@ public class Entity {
     public int ammo;
     public int value;
     public int price;
+    public int lightRadius;
 
     //Inventory
     public ArrayList<Entity> inventory = new ArrayList<>();
@@ -98,6 +100,7 @@ public class Entity {
     public final int typeUsable = 6;
     public final int typePickupOnly = 7;
     public final int typeObstacle = 8;
+    public final int typeLight = 9;
 
     //DIALOGUE
     String[] dialogues = new String[20];

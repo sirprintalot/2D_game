@@ -621,8 +621,8 @@ public class UI {
         //Draw entity items
         for (int i = 0; i < entity.inventory.size(); i++) {
 
-            //Highlight the current item
-            if (entity.inventory.get(i) == entity.currentWeapon || entity.inventory.get(i) == entity.currentShield) {
+            //Highlight the current item weapon, shield and light
+            if (entity.inventory.get(i) == entity.currentWeapon || entity.inventory.get(i) == entity.currentShield || entity.inventory.get(i) == entity.currentLight) {
 
                 g2.setColor(new Color(240, 150, 20));
                 g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);
@@ -651,8 +651,7 @@ public class UI {
                 g2.drawString(s, amountX - 2, amountY - 2);
 
             }
-
-
+            
             //pass to the next column
             slotX += slotSize;
 

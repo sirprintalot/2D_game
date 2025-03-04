@@ -17,7 +17,11 @@ public class EnvironmentManager {
         
         //TODO
         // the circle size must be dynamic depending on the light source
-        lighting = new Lighting(gp, 320);
+        lighting = new Lighting(gp);
+    }
+
+    public void update(){
+        lighting.update();
     }
 
     public void draw(Graphics2D g2){

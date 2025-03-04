@@ -21,9 +21,9 @@ public class Player extends Entity {
 
     // Attack
     public boolean attackCancel = false;
-    //objective
-//    public int hasKey = 0;
-//    public int chestCounter = 0;
+
+    //light
+    public boolean lightUpdated = false;
 
     public Player(GamePanel gp, KeyHandler keyH) {
 
@@ -564,6 +564,17 @@ public class Player extends Entity {
                 currentShield = selectedItem;
                 defense = getDefense();
             }
+            if(selectedItem.type == typeLight){
+                if(currentLight == selectedItem){
+                    currentLight = null;
+                }
+                else{
+                    currentLight = selectedItem;
+                    
+                }
+                lightUpdated = true;
+            }
+            
             if (selectedItem.type == typeUsable) {
 
                 if (selectedItem.useItem(this)) {
@@ -571,7 +582,7 @@ public class Player extends Entity {
                         selectedItem.ammount--;
                     } else {
                         inventory.remove(itemIndex);
-                    }
+                    } 
                 }
             }
         }

@@ -15,7 +15,7 @@ public class OBJ_Sword_Normal extends Entity {
         knockBackPower = 2;
         attackArea.width = 36;
         attackArea.height = 36;
-        itemDescription ="[" + name + "] /nA very old sword..";
+        itemDescription ="[" + name + "] /nA very old /nsword..";
         price = 99;
 
     }

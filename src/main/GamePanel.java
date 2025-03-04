@@ -262,6 +262,8 @@ public class GamePanel extends JPanel implements Runnable {
                     }
                 }
             }
+            //call the method from lightig
+            eManager.update();
 
         }
         if (gameState == pauseState) {
