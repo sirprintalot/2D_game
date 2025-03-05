@@ -4,6 +4,7 @@ import ai.*;
 import entity.*;
 import environment.*;
 import tile.*;
+import tile.Map;
 import tile_interactive.*;
 
 import javax.swing.*;
@@ -85,6 +86,9 @@ public class GamePanel extends JPanel implements Runnable {
     //Interactive tiles
     public InteractiveTile[][] inTile = new InteractiveTile[maxMap][50];
 
+    // Mini map
+    Map map = new Map(this);
+
     //Particles
     public ArrayList<Entity> particleList = new ArrayList<>();
 
@@ -104,6 +108,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int transitionState = 7;
     public final int tradeState = 8;
     public final int sleepState = 9;
+    public final int mapState = 10;
 
 
     public GamePanel() {
@@ -288,6 +293,10 @@ public class GamePanel extends JPanel implements Runnable {
         if (gameState == tittleState) {
             ui.draw(g2);
         }
+        //map screen
+        else if(gameState == mapState){
+            map.drawFullMapScreen(g2);
+        }
 
         //play State
         else {
@@ -351,7 +360,10 @@ public class GamePanel extends JPanel implements Runnable {
             // environment
             eManager.draw(g2);
 
-            //UI
+            // minimap
+            map.drawMiniMap(g2);
+
+            //UI must be at last or other displayed items will appear in front of the UI
             ui.draw(g2);
 
         }
