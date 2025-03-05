@@ -147,6 +147,18 @@ public class Player extends Entity {
 
     }
 
+    public void getSleepingImage(BufferedImage image) {
+        up1 = image;
+        up2 = image;
+        down1 = image;
+        down2 = image;
+        left1 = image;
+        left2 = image;
+        right1 = image;
+        right2 = image;
+    }
+
+
     public void getPlayerAttackImage() {
 
         if (currentWeapon.type == typeSword) {
@@ -564,17 +576,15 @@ public class Player extends Entity {
                 currentShield = selectedItem;
                 defense = getDefense();
             }
-            if(selectedItem.type == typeLight){
-                if(currentLight == selectedItem){
+            if (selectedItem.type == typeLight) {
+                if (currentLight == selectedItem) {
                     currentLight = null;
-                }
-                else{
+                } else {
                     currentLight = selectedItem;
-                    
                 }
                 lightUpdated = true;
             }
-            
+
             if (selectedItem.type == typeUsable) {
 
                 if (selectedItem.useItem(this)) {
@@ -582,7 +592,7 @@ public class Player extends Entity {
                         selectedItem.ammount--;
                     } else {
                         inventory.remove(itemIndex);
-                    } 
+                    }
                 }
             }
         }

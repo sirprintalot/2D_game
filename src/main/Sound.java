@@ -12,8 +12,7 @@ public class Sound {
     float volume;
 
     public Sound() {
-
-        //replace numbers by index++
+        
         int index = 0;
         soundURL[index] = getClass().getResource("/sounds/BlueBoyAdventure.wav");
         index++;
@@ -54,6 +53,8 @@ public class Sound {
         soundURL[index] = getClass().getResource("/sounds/stairs.wav");
         index++;
         soundURL[index] = getClass().getResource("/sounds/Merchant.wav");
+        index++;
+        soundURL[index] = getClass().getResource("/sounds/sleep.wav");
 
     }
 

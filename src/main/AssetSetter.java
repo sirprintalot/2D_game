@@ -113,6 +113,11 @@ public class AssetSetter {
         gp.obj[mapNum][objIndex].worldX = 18 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 20  * gp.tileSize;
 
+        objIndex++;
+        gp.obj[mapNum][objIndex] = new OBJ_Tent(gp);
+        gp.obj[mapNum][objIndex].worldX = 35 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 35  * gp.tileSize;
+
 
         //set door
 ////

@@ -11,14 +11,15 @@ public class Lighting {
     GamePanel gp;
     BufferedImage darknessFilter;
 
-    int dayCounter;
-    float filterAlpha = 0f;
+    public int dayCounter;
+    public float filterAlpha = 0f;
 
-    final int day = 0;
-    final int dusk = 1;
-    final int night = 2;
-    final int dawn = 3;
-    int dayState = day;
+    //day cycle
+    public final int day = 0;
+    public final int dusk = 1;
+    public final int night = 2;
+    public final int dawn = 3;
+    public int dayState = day;
     
 
     public Lighting(GamePanel gp){
@@ -36,7 +37,7 @@ public class Lighting {
         Graphics2D g2 = (Graphics2D)darknessFilter.getGraphics();
 
         if(gp.player.currentLight == null){
-            g2.setColor(new Color(0,0,0,0.98f));
+            g2.setColor(new Color(0,0,0,0.95f));
         }
 
         else{
@@ -49,8 +50,8 @@ public class Lighting {
             Color[] color = new Color[12];
             float[] fraction = new float[12];
 
-            color[0] = new Color(0,0,0,0.1f);
-            color[1] = new Color(0,0,0,0.42f);
+            color[0] = new Color(0,0,0,0.38f);
+            color[1] = new Color(0,0,0,0.44f);
             color[2] = new Color(0,0,0,0.52f);
             color[3] = new Color(0,0,0,0.61f);
             color[4] = new Color(0,0,0,0.69f);
@@ -58,9 +59,9 @@ public class Lighting {
             color[6] = new Color(0,0,0,0.82f);
             color[7] = new Color(0,0,0,0.87f);
             color[8] = new Color(0,0,0,0.91f);
-            color[9] = new Color(0,0,0,0.94f);
-            color[10] = new Color(0,0,0,0.96f);
-            color[11] = new Color(0,0,0,0.98f);
+            color[9] = new Color(0,0,0,0.92f);
+            color[10] = new Color(0,0,0,0.94f);
+            color[11] = new Color(0,0,0,0.95f);
 
             fraction[0] = 0f;
             fraction[1] = 0.4f;
@@ -114,7 +115,7 @@ public class Lighting {
         }
         if(dayState == night){
             dayCounter++;
-            if(dayCounter > 600){
+            if(dayCounter > 6000){
                 dayState = dawn;
                 dayCounter = 0;
             }
@@ -136,14 +137,13 @@ public class Lighting {
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
         //debug
-        String situation = "";
-
-        switch (dayState){
-            case  day: situation = "day"; break;
-            case dusk:  situation = "dusk"; break;
-            case night: situation = "night"; break;
-            case dawn: situation = "dawn"; break;
-        }
+        String situation = switch (dayState) {
+            case day -> "day";
+            case dusk -> "dusk";
+            case night -> "night";
+            case dawn -> "dawn";
+            default -> "";
+        };
 
         g2.setColor(Color.WHITE);
         g2.setFont(g2.getFont().deriveFont(50f));

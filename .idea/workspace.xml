@@ -8,9 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386db496-e533-4c11-89ba-e5f09e407936" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/objects/OBJ_Tent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/environment/EnvironmentManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/environment/EnvironmentManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/environment/Lighting.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/environment/Lighting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Lantern.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Lantern.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/EnvironmentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/EnvironmentManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environment/Lighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/Lighting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AssetSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Lantern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Lantern.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

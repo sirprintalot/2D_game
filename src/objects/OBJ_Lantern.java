@@ -13,6 +13,6 @@ public class OBJ_Lantern extends Entity {
         down1 = setup("/objects/lantern", gp.tileSize, gp.tileSize) ;
         itemDescription = "["+ name + "]/nA small oil /nlantern...";
         price = 200;
-        lightRadius = 250;
+        lightRadius = 110;
     }
 }
