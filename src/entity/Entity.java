@@ -132,12 +132,40 @@ public class Entity {
     int knockBackCounter = 0;
     public int knockBackPower = 0;
 
+    public Entity attacker;
+    public String knockBackDirection;
+
     public Entity(GamePanel gp) {
         this.gp = gp;
     }
 
     // METHODS
     public void setAction() {
+    }
+
+    public int getXdistance(Entity target){
+        int xDistance = Math.abs(worldX - target.worldX);
+        return xDistance;
+    }
+
+    public int getYdistance(Entity target){
+        int yDistance = Math.abs(worldY - gp.player.worldY);
+        return yDistance;
+    }
+
+    public int getTileDistance(Entity target){
+        int tileDistance = (getXdistance(target) + getYdistance(target)) / gp.tileSize;
+        return tileDistance;
+    }
+
+    public int getGoalCol(Entity target){
+        int goalCol = (target.worldX + target.solidArea.x) / gp.tileSize;
+        return  goalCol;
+    }
+
+    public int getGoalRow(Entity target){
+        int goalRow = (target.worldY + target.solidArea.y) / gp.tileSize;
+        return goalRow;
     }
 
     public int getLeftX(){
@@ -275,7 +303,7 @@ public class Entity {
                 speed = defaultSpeed;
             }
             else {
-                switch(gp.player.direction){
+                switch(knockBackDirection){
                     case "up" -> worldY -= speed;
                     case "down" -> worldY += speed;
                     case "left" -> worldX -= speed;
@@ -331,6 +359,57 @@ public class Entity {
 
     }
 
+    public void checkStopChasing(Entity target, int distance, int rate){
+        if(getTileDistance(target) > distance){
+            int i = new Random().nextInt(rate);
+            if(i == 0){
+                onPath = false;
+            }
+        }
+    }
+
+    public void checkStartChasing(Entity target, int distance, int rate){
+        if(getTileDistance(target) < distance){
+            int i = new Random().nextInt(rate);
+            if(i == 0){
+                onPath = true;
+            }
+        }
+    }
+
+    public void checkShoot(int rate, int shotInterval){
+        int i = new Random().nextInt(rate);
+        if (i == 0 && !projectile.isAlive && shotAvailableCounter == shotInterval) {
+            projectile.set(worldX, worldY, direction, true, this);
+            //CHECK VACANCY
+            for (int j = 0; j < gp.projectile.length; j++) {
+                if (gp.projectile[gp.currentMap][j] == null) {
+                    gp.projectile[gp.currentMap][j] = projectile;
+                    break;
+                }
+            }
+            shotAvailableCounter = 0;
+        }
+    }
+
+    public void getRandomDirection(){
+        actionLockCounter++;
+
+        if (actionLockCounter == 120) {
+
+            Random rand = new Random();
+            int i = rand.nextInt(100) + 1;
+
+            if (i <= 25) {direction = "up";}
+            if (i > 26 && i <= 50) {direction = "down";}
+            if (i > 51 && i <= 75) {direction = "left";}
+            if (i > 76) {direction = "right";}
+            
+            actionLockCounter = 0;
+        }
+
+    }
+
     public void damagePlayer(int attack) {
 
         if (!gp.player.invincible) {
@@ -347,6 +426,14 @@ public class Entity {
             gp.player.life -= damage;
             gp.player.invincible = true;
         }
+    }
+
+    public void setKnockBack(Entity target, Entity attacker, int knockBackPower) {
+
+         this.attacker = attacker;
+         target.knockBackDirection = attacker.direction;
+        target.speed += knockBackPower;
+        target.knockBack = true;
 
     }
 

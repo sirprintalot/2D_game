@@ -74,7 +74,7 @@ public class Player extends Entity {
         direction = "down";
 
         //PLAYER STATUS
-        maxLife = 10;
+        maxLife = 30;
         life = maxLife;
 
         //projectile
@@ -365,7 +365,7 @@ public class Player extends Entity {
 
             // check monster collision with the updated coordinates
             int monsterIndex = gp.cCheck.checkEntity(this, gp.monster);
-            damageMonster(monsterIndex, attack, currentWeapon.knockBackPower);
+            damageMonster(monsterIndex, this, attack, currentWeapon.knockBackPower);
 
             // interactive tile
             int inTileIndex = gp.cCheck.checkEntity(this, gp.inTile);
@@ -458,7 +458,7 @@ public class Player extends Entity {
         }
     }
 
-    public void damageMonster(int i, int attack, int knockBackPower) {
+    public void damageMonster(int i, Entity attacker,  int attack, int knockBackPower) {
 
         if (i != 999) {
             if (!gp.monster[gp.currentMap][i].invincible) {
@@ -467,7 +467,7 @@ public class Player extends Entity {
 
                 if (knockBackPower > 0) {
 
-                    knockBack(gp.monster[gp.currentMap][i], knockBackPower);
+                    setKnockBack(gp.monster[gp.currentMap][i], attacker, knockBackPower);
                 }
 
                 int damage = attack - gp.monster[gp.currentMap][i].defense;
@@ -497,15 +497,6 @@ public class Player extends Entity {
                 }
             }
         }
-    }
-
-    public void knockBack(Entity entity, int knockBackPower) {
-
-        entity.direction = direction;
-        entity.speed += knockBackPower;
-        entity.knockBack = true;
-
-
     }
 
     public void damageInteractiveTile(int index) {
