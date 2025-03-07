@@ -125,6 +125,8 @@ public class Player extends Entity {
 
         //set the attack area according to the current weapon
         attackArea = currentWeapon.attackArea;
+        motion1_duration = currentWeapon.motion1_duration;
+        motion2_duration = currentWeapon.motion2_duration;
         return attack = strength * currentWeapon.attackValue;
     }
 
@@ -334,58 +336,7 @@ public class Player extends Entity {
     }
 
 
-    public void attack() {
-
-        // Creating the attacking animation
-        spriteCounter++;
-
-        if (spriteCounter <= 5) {
-            spriteNum = 1;
-        }
-        if (spriteCounter > 8 && spriteCounter <= 25) {
-            spriteNum = 2;
-
-            // original position of the player
-            int currentWorldX = worldX;
-            int currentWorldY = worldY;
-            int solidAreaWidth = solidArea.width;
-            int solidAreaHeight = solidArea.height;
-
-            // player's position adjusted for the attack
-            switch (direction) {
-                case "up" -> worldY -= attackArea.height;
-                case "down" -> worldY += attackArea.height;
-                case "left" -> worldX -= attackArea.width;
-                case "right" -> worldX += attackArea.width;
-            }
-
-            // Attack area becomes solid area
-            solidArea.width = attackArea.width;
-            solidArea.height = attackArea.height;
-
-            // check monster collision with the updated coordinates
-            int monsterIndex = gp.cCheck.checkEntity(this, gp.monster);
-            damageMonster(monsterIndex, this, attack, currentWeapon.knockBackPower);
-
-            // interactive tile
-            int inTileIndex = gp.cCheck.checkEntity(this, gp.inTile);
-            damageInteractiveTile(inTileIndex);
-
-            int projectleIndex = gp.cCheck.checkEntity(this, gp.projectile);
-            damageProjectile(projectleIndex);
-
-            // Reset the player's position
-            worldX = currentWorldX;
-            worldY = currentWorldY;
-            solidArea.width = solidAreaWidth;
-            solidArea.height = solidAreaHeight;
-        }
-        if (spriteCounter > 25) {
-            spriteNum = 1;
-            spriteCounter = 0;
-            attacking = false;
-        }
-    }
+   
 
     //pick object
     public void pickUpObject(int i) {

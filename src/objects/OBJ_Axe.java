@@ -12,12 +12,14 @@ public class OBJ_Axe extends Entity {
         down1 = setup("/objects/axe", gp.tileSize, gp.tileSize);
 
         type = typeAxe;
-        attackValue = 2;
+        attackValue = 4;
         knockBackPower = 20;
         attackArea.width = 28;
         attackArea.height = 28;
         itemDescription = "[" +name+"] /nA small axe!!/nAttack +" + attackValue;
-        price = 10;
+        price = 35;
+        motion1_duration = 20;
+        motion2_duration = 40;
 
     }
 }

@@ -18,19 +18,22 @@ public class MON_Orc extends Entity {
 
         type = typeMonster;
         name = "Orc";
-        defaultSpeed = 3;
+        defaultSpeed = 1;
         speed = defaultSpeed;
-        maxLife = 10;
+        maxLife = 100;
         life = maxLife;
 
         attack = 8;
-        defense = 2;
+        defense = 3;
         exp = 10;
 
-        solidArea.x = 3;
-        solidArea.y = 4;
-        solidArea.width = 40;
-        solidArea.height = 44;
+        motion1_duration = 40;
+        motion2_duration = 85;
+
+        solidArea.x = 9;
+        solidArea.y = 7;
+        solidArea.width = 30;
+        solidArea.height = 30;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         attackArea.width = 48;
@@ -69,20 +72,19 @@ public class MON_Orc extends Entity {
     }
 
     // case 3 NPC getting aggro at certain distance
-//    public void update(){
-//        super.update();
-//    }
+    public void update(){
+        super.update();
+    }
 
     public void setAction() {
 
         if (onPath) {
             //check if stops chasing
             //stop hunting at a certain distance
-//        if(tileDistance >= 10){
-//            onPath = false;
-//            System.out.println("aggro finished!");
-//        }
-
+        if(this.getTileDistance(gp.player) >= 10){
+            onPath = false;
+            System.out.println("aggro finished!");
+        }
             //search direction to goal
             // case 2 the npc follows the player
 //            speed = 7;
@@ -90,27 +92,24 @@ public class MON_Orc extends Entity {
 
         } else {
             //check if starts chasing
-//            checkStopChasing(gp.player, 15, 100);
-
-
-            //checkStartChasing(gp.player, 5, 100);
-            //if(!onPath && tileDistance < 5){
-//            // option 1
-//            // onPath = true;
-//
+            checkStopChasing(gp.player, 15, 100);
+            checkStartChasing(gp.player, 5, 100);
+            if(!onPath && this.getTileDistance(gp.player) < 5){
+            // option 1
+             onPath = true;
 //            //option 2 randomize
 //            int i = new Random().nextInt(100) + 1;
 //            if(i > 50){
 //                onPath = true;
 //                System.out.println("aggro started ");
 //            }
-//        }
+        }
             //get a random direction
             getRandomDirection();
-
-
         }
-
+        if(!attacking){
+           checkAttackOrNot(30, gp.tileSize*4, gp.tileSize);
+        }
     }
 
     public void damageReaction() {
@@ -118,7 +117,7 @@ public class MON_Orc extends Entity {
         actionLockCounter = 0;
 //        direction = gp.player.direction;
         //getting aggro when player attacks
-        onPath = true;
+//        onPath = true;
 
     }
 

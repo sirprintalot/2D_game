@@ -23,7 +23,7 @@ public class MON_GreenSlime extends Entity {
         life = maxLife;
 
         attack = 4;
-        defense = 1;
+        defense = 2;
         exp = 2;
 
         projectile = new OBJ_Rock(gp);
