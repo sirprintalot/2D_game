@@ -33,9 +33,6 @@ public class OBJ_Boots extends Entity {
 
             gp.player.speedBoosted = true;
             gp.player.speed += value;
-            System.out.println(gp.player.speed);
-//            gp.player.speedBoostDuration = 500;
-            System.out.println(speedBoostDuration);
             System.out.println("Active");
             
         }
@@ -43,10 +40,4 @@ public class OBJ_Boots extends Entity {
         return true;
     }
 
-    public void resetSpeed(){
-        if(gp.player != null){
-            gp.player.speed = gp.player.defaultSpeed;
-        }
-        speedBoosted = false;
-    }
 }

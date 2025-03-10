@@ -18,8 +18,8 @@ public class OBJ_Axe extends Entity {
         attackArea.height = 28;
         itemDescription = "[" +name+"] /nA small axe!!/nAttack +" + attackValue;
         price = 35;
-        motion1_duration = 20;
-        motion2_duration = 40;
+        motion1_duration = 15;
+        motion2_duration = 35;
 
     }
 }

@@ -4,7 +4,6 @@ import entity.*;
 import objects.*;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
 import java.util.*;
@@ -955,7 +954,7 @@ public class UI {
                 gp.eManager.lighting.dayState = gp.eManager.lighting.day;
                 gp.eManager.lighting.dayCounter = 0;
                 gp.gameState = gp.playState;
-                gp.player.getPlayerImage();
+                gp.player.getImage();
             }
         }
     }

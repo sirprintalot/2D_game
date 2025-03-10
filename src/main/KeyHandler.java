@@ -6,7 +6,7 @@ public class KeyHandler implements KeyListener {
 
     GamePanel gp;
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, shootPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, shootPressed, spacePressed;
 
     //DEBUG
     public boolean debugFunc = false;
@@ -201,14 +201,19 @@ public class KeyHandler implements KeyListener {
             gp.gameState = gp.mapState;
 
         }
+        // Mini map
         if (code == KeyEvent.VK_X) {
 
-            if(!gp.map.miniMapOn){
-               gp.map.miniMapOn = true;
-            }
-            else{
+            if (!gp.map.miniMapOn) {
+                gp.map.miniMapOn = true;
+            } else {
                 gp.map.miniMapOn = false;
             }
+
+        }
+        // Guard
+        if (code == KeyEvent.VK_SPACE) {
+            spacePressed = true;
 
         }
 
@@ -228,10 +233,10 @@ public class KeyHandler implements KeyListener {
 
     }
 
-    public void mapState(int code){
-         if(code == KeyEvent.VK_M){
-             gp.gameState = gp.playState;
-         }
+    public void mapState(int code) {
+        if (code == KeyEvent.VK_M) {
+            gp.gameState = gp.playState;
+        }
     }
 
     public void dialogueState(int code) {
@@ -384,7 +389,7 @@ public class KeyHandler implements KeyListener {
         }
     }
 
-    public void npcInventory(int code){
+    public void npcInventory(int code) {
 
         //cursor movement
         if (code == KeyEvent.VK_W) {
@@ -417,7 +422,7 @@ public class KeyHandler implements KeyListener {
                 gp.playSoundEffect(14);
             }
         }
-        
+
     }
 
     public void gameOverState(int code) {
@@ -478,22 +483,22 @@ public class KeyHandler implements KeyListener {
             }
         }
 
-        if(gp.ui.subState == 1){
+        if (gp.ui.subState == 1) {
             npcInventory(code);
-            if(code == KeyEvent.VK_ESCAPE){
+            if (code == KeyEvent.VK_ESCAPE) {
                 gp.ui.subState = 0;
             }
         }
 
-        if(gp.ui.subState == 2){
+        if (gp.ui.subState == 2) {
             playerInventory(code);
-            if(code == KeyEvent.VK_ESCAPE){
+            if (code == KeyEvent.VK_ESCAPE) {
                 gp.ui.subState = 0;
             }
         }
     }
 
-    
+
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
@@ -516,6 +521,9 @@ public class KeyHandler implements KeyListener {
         }
         if (code == KeyEvent.VK_F) {
             shootPressed = false;
+        }
+        if (code == KeyEvent.VK_SPACE) {
+            spacePressed = false;
         }
 
     }

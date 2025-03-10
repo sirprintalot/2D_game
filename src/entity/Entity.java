@@ -19,7 +19,8 @@ public class Entity {
     // Walking
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     // Atacking
-    public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
+    public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1,
+            attackRight2,guardUp, guardDown, guardLeft, guardRight ;
 
     //DIRECTION 
     public String direction = "down";
@@ -71,7 +72,7 @@ public class Entity {
      // speed up
     public boolean speedBoosted = false;
     public int speedBoostTimer = 0;
-    public int speedBoostDuration = 500;
+    public int speedBoostDuration;
 
     //Inventory
     public ArrayList<Entity> inventory = new ArrayList<>();
@@ -91,6 +92,10 @@ public class Entity {
     // Attack
     public boolean attacking = false;
     public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
+
+    //guarding
+    public boolean guarding = false;
+    public boolean transparent = false;
 
     public int shotAvailableCounter = 0;
 
@@ -150,6 +155,17 @@ public class Entity {
 
     // METHODS
     public void setAction() {
+    }
+
+    public String getOppositeDirection(String direction){
+        String opDirection = "";
+        switch(direction){
+            case "up" -> opDirection = "down";
+            case "down" -> opDirection = "up";
+            case "left" -> opDirection = "right";
+            case "right" -> opDirection = "left";
+        }
+        return  opDirection;
     }
 
     public int getXdistance(Entity target){
@@ -302,8 +318,6 @@ public class Entity {
         }
     }
 
-    public void speedBoost(){
-    }
     public void resetSpeed(){
 
     }
@@ -531,16 +545,28 @@ public class Entity {
     public void damagePlayer(int attack) {
 
         if (!gp.player.invincible) {
-
             // if the player is not invincible, we add damage
-            gp.playSoundEffect(10);
-
             int damage = attack - gp.player.defense;
 
-            if (damage < 0) {
-                damage = 0;
+            // Get the opposite direction of the attacker
+            String canGuardDirection = getOppositeDirection(direction);
+
+            if(gp.player.guarding && canGuardDirection.equals(gp.player.direction)){
+                 damage /= 4;
+                 gp.playSoundEffect(5);
+            }
+            else{
+                // not guarding
+                gp.playSoundEffect(10);
+                if (damage < 1) {
+                    damage = 1;
+                }
             }
 
+            if(damage != 0){
+                gp.player.transparent = true;
+            }
+            
             gp.player.life -= damage;
             gp.player.invincible = true;
         }

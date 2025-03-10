@@ -8,11 +8,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386db496-e533-4c11-89ba-e5f09e407936" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_guard_down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_guard_left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_guard_right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_guard_up.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Projectile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Projectile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/KeyHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/KeyHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/Sound.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/Sound.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/UI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/UI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Axe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Axe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Boots.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Boots.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monster/MON_Orc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_Orc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Projectile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Axe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Axe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Boots.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,11 +77,11 @@
       <recent name="$PROJECT_DIR$/Resources/npc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Resources/player" />
       <recent name="$PROJECT_DIR$/Resources/monster" />
       <recent name="$PROJECT_DIR$/Resources/npc" />
       <recent name="$PROJECT_DIR$/Resources/maps" />
       <recent name="$PROJECT_DIR$/Resources/tiles" />
-      <recent name="$PROJECT_DIR$/Resources/interactive_tiles" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
