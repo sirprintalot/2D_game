@@ -11,10 +11,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monster/MON_GreenSlime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_GreenSlime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/monster/MON_Orc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_Orc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Axe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Axe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Sword_Normal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Sword_Normal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Boots.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

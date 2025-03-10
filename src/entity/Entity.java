@@ -68,6 +68,11 @@ public class Entity {
     public int price;
     public int lightRadius;
 
+     // speed up
+    public boolean speedBoosted = false;
+    public int speedBoostTimer = 0;
+    public int speedBoostDuration = 500;
+
     //Inventory
     public ArrayList<Entity> inventory = new ArrayList<>();
     public final int inventorySize = 20;
@@ -153,7 +158,7 @@ public class Entity {
     }
 
     public int getYdistance(Entity target){
-        int yDistance = Math.abs(worldY - gp.player.worldY);
+        int yDistance = Math.abs(worldY - target.worldY);
         return yDistance;
     }
 
@@ -297,6 +302,12 @@ public class Entity {
         }
     }
 
+    public void speedBoost(){
+    }
+    public void resetSpeed(){
+
+    }
+
     // UPDATE
     public void update() {
         if(knockBack){
@@ -399,6 +410,7 @@ public class Entity {
     }
 
     public void checkAttackOrNot(int rate, int straight, int horizontal){
+
         boolean targetInrange = false;
         int xDistance = getXdistance(gp.player);
         int yDistance = getYdistance(gp.player);

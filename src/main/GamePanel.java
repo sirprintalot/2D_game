@@ -79,7 +79,7 @@ public class GamePanel extends JPanel implements Runnable {
     ArrayList<Entity> entityList = new ArrayList<>();
 
     //for cutting the projectiles
-    public Entity projectile[][] = new Entity[maxMap][20];
+    public Entity[][] projectile = new Entity[maxMap][20];
 
 //    public ArrayList<Entity> projectileList = new ArrayList<>(); //must be public 16:27
 

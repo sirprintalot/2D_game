@@ -27,9 +27,11 @@ public class MON_Orc extends Entity {
         defense = 3;
         exp = 10;
 
+        //attack sprites duration
         motion1_duration = 40;
         motion2_duration = 85;
 
+        //solid area
         solidArea.x = 9;
         solidArea.y = 7;
         solidArea.width = 30;
@@ -60,19 +62,22 @@ public class MON_Orc extends Entity {
 
     }
 
-    public void getAttackImage(){
+    public void getAttackImage() {
         attackUp1 = setup("/monster/orc_attack_up_1", gp.tileSize, gp.tileSize * 2);
         attackUp2 = setup("/monster/orc_attack_up_2", gp.tileSize, gp.tileSize * 2);
+
         attackDown1 = setup("/monster/orc_attack_down_1", gp.tileSize, gp.tileSize * 2);
         attackDown2 = setup("/monster/orc_attack_down_2", gp.tileSize, gp.tileSize * 2);
+
         attackLeft1 = setup("/monster/orc_attack_left_1", gp.tileSize * 2, gp.tileSize);
         attackLeft2 = setup("/monster/orc_attack_left_2", gp.tileSize * 2, gp.tileSize);
+
         attackRight1 = setup("/monster/orc_attack_right_1", gp.tileSize * 2, gp.tileSize);
         attackRight2 = setup("/monster/orc_attack_right_2", gp.tileSize * 2, gp.tileSize);
     }
 
     // case 3 NPC getting aggro at certain distance
-    public void update(){
+    public void update() {
         super.update();
     }
 
@@ -81,10 +86,10 @@ public class MON_Orc extends Entity {
         if (onPath) {
             //check if stops chasing
             //stop hunting at a certain distance
-        if(this.getTileDistance(gp.player) >= 10){
-            onPath = false;
-            System.out.println("aggro finished!");
-        }
+            if (this.getTileDistance(gp.player) >= 10) {
+                onPath = false;
+                System.out.println("aggro finished!");
+            }
             //search direction to goal
             // case 2 the npc follows the player
 //            speed = 7;
@@ -94,21 +99,21 @@ public class MON_Orc extends Entity {
             //check if starts chasing
             checkStopChasing(gp.player, 15, 100);
             checkStartChasing(gp.player, 5, 100);
-            if(!onPath && this.getTileDistance(gp.player) < 5){
-            // option 1
-             onPath = true;
+            if (!onPath && this.getTileDistance(gp.player) < 5) {
+                // option 1
+                onPath = true;
 //            //option 2 randomize
 //            int i = new Random().nextInt(100) + 1;
 //            if(i > 50){
 //                onPath = true;
 //                System.out.println("aggro started ");
 //            }
-        }
+            }
             //get a random direction
             getRandomDirection();
         }
-        if(!attacking){
-           checkAttackOrNot(30, gp.tileSize*4, gp.tileSize);
+        if (!attacking) {
+            checkAttackOrNot(30, gp.tileSize * 4, gp.tileSize);
         }
     }
 

@@ -16,9 +16,6 @@ public class Player extends Entity {
     //standing sprite
     public int standingCounter = 0;
 
-    //power up
-    public int speedIncrement = 2;
-
     // Attack
     public boolean attackCancel = false;
 
@@ -119,6 +116,7 @@ public class Player extends Entity {
 
         inventory.add(currentWeapon);
         inventory.add(currentShield);
+        inventory.add(new OBJ_Boots(gp));
     }
 
     public int getAttack() {
@@ -302,6 +300,16 @@ public class Player extends Entity {
 
         }
 
+        // speed up
+        if(speedBoosted){
+            speedBoostTimer++;
+            System.out.println(speedBoostTimer);
+            if(speedBoostTimer == speedBoostDuration ){
+                resetSpeed();
+                System.out.println("ended");
+            }
+        }
+
         //Make player invincible when receive damage
         if (invincible) {
             invincibleCounter++;
@@ -335,6 +343,11 @@ public class Player extends Entity {
 
     }
 
+    public void resetSpeed(){
+        speed = defaultSpeed;
+        speedBoosted = false;
+        speedBoostTimer = 0;
+    }
 
    
 
