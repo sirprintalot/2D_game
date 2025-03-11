@@ -20,22 +20,23 @@ public class MON_Orc extends Entity {
         name = "Orc";
         defaultSpeed = 1;
         speed = defaultSpeed;
-        maxLife = 100;
+        maxLife = 11;
         life = maxLife;
+        knockBackPower = 6;
 
-        attack = 8;
-        defense = 3;
+        attack = 4;
+        defense = 2;
         exp = 10;
 
         //attack sprites duration
-        motion1_duration = 40;
-        motion2_duration = 85;
+        motion1_duration = 30;
+        motion2_duration = 75;
 
         //solid area
-        solidArea.x = 9;
-        solidArea.y = 7;
-        solidArea.width = 30;
-        solidArea.height = 30;
+        solidArea.x = 4;
+        solidArea.y = 3;
+        solidArea.width = 45;
+        solidArea.height = 45;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         attackArea.width = 48;

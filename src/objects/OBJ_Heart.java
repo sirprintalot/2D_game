@@ -3,6 +3,8 @@ package objects;
 import entity.*;
 import main.*;
 
+import java.awt.*;
+
 
 public class OBJ_Heart extends Entity {
 
@@ -25,7 +27,7 @@ public class OBJ_Heart extends Entity {
 
     public boolean useItem(Entity entity){
         gp.playSoundEffect(2);
-        gp.ui.addMessage("+ " + value + " Healed!");
+        gp.ui.addMessage("+ " + value + " Healed!", Color.GREEN);
         entity.life += value;
 
         return true;

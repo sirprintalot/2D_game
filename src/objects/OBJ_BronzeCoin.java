@@ -3,6 +3,8 @@ package objects;
 import entity.*;
 import main.*;
 
+import java.awt.*;
+
 public class OBJ_BronzeCoin extends Entity {
 
     GamePanel gp;
@@ -21,7 +23,7 @@ public class OBJ_BronzeCoin extends Entity {
 
     public boolean useItem(Entity entity){
         gp.playSoundEffect(1);
-        gp.ui.addMessage("+ " + value + " Coin");
+        gp.ui.addMessage("+ " + value + " Coin", Color.orange);
         gp.player.coin += value;
 
         return true;

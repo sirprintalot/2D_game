@@ -31,6 +31,8 @@ public class Lighting {
     public void setLightSource(){
 
         //TODO check this class again
+        //TODO reset the time cycle when restarting the game
+
 
         // instanciate the buffered image
         darknessFilter = new BufferedImage(gp.screenWidth, gp.screenHeight, BufferedImage.TYPE_INT_ARGB);

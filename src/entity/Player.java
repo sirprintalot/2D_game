@@ -109,6 +109,7 @@ public class Player extends Entity {
         life = maxLife;
         mana = maxMana;
         invincible = false;
+        transparent = false;
     }
 
     public void setItems() {
@@ -195,12 +196,51 @@ public class Player extends Entity {
     public void update() {
 
         boolean moving = keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed;
+        
+        if(knockBack){
+            
+            gp.cCheck.checkTile(this);
+            //Object collision
+            gp.cCheck.checkObject(this, true);
+            //Npc collision
+            gp.cCheck.checkEntity(this, gp.npc);
+            //Monster collision
+            gp.cCheck.checkEntity(this, gp.monster);
+            //Check interactive tile collision
+            gp.cCheck.checkEntity(this, gp.inTile);
+            
+            if(collisionOn){
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+            }
+            else {
+                switch(knockBackDirection){
+                    case "up" -> worldY -= speed;
+                    case "down" -> worldY += speed;
+                    case "left" -> worldX -= speed;
+                    case "right" -> worldX += speed;
+                }
+            }
+            knockBackCounter++;
+            if(knockBackCounter == 10){
+                knockBackCounter = 0;
+                knockBack = false;
+                speed = defaultSpeed;
+            }
+        }
 
-        if (attacking) {
+       else if (attacking) {
             attack();
-        } else if (keyH.spacePressed) {
+        }
+
+        // guard/parry
+       else if (keyH.spacePressed) {
             guarding = true;
-        } else if (moving || keyH.enterPressed) {
+            guardCounter++;
+        }
+
+       else if (moving || keyH.enterPressed) {
 
             if (keyH.upPressed) {
                 direction = "up";
@@ -259,6 +299,7 @@ public class Player extends Entity {
             gp.keyH.enterPressed = false;
 
             guarding = false;
+            guardCounter = 0;
 
             //sprite animation
             spriteCounter++;
@@ -306,7 +347,7 @@ public class Player extends Entity {
             System.out.println("shot fired!");
 
             if (gp.player.mana <= 0) {
-                gp.ui.addMessage("Not enough mana!");
+                gp.ui.addMessage("Not enough mana!", Color.WHITE);
             }
 
         }
@@ -323,7 +364,6 @@ public class Player extends Entity {
         }
 
         //Make player invincible when receive damage
-        //todo reset the player normal color when retry
         if (invincible) {
             invincibleCounter++;
             if (invincibleCounter > 60) {
@@ -396,7 +436,7 @@ public class Player extends Entity {
                     displayText = "Can't carry anything more!";
                 }
 
-                gp.ui.addMessage(displayText);
+                gp.ui.addMessage(displayText, Color.WHITE);
                 gp.obj[gp.currentMap][i] = null;     //THis dont show error but [gp.currentMap] most be in it
             }
         }
@@ -441,6 +481,8 @@ public class Player extends Entity {
         if (i != 999) {
             if (!gp.monster[gp.currentMap][i].invincible) {
 
+                int damage = attack - gp.monster[gp.currentMap][i].defense;
+
                 gp.playSoundEffect(11);
 
                 if (knockBackPower > 0) {
@@ -448,15 +490,21 @@ public class Player extends Entity {
                     setKnockBack(gp.monster[gp.currentMap][i], attacker, knockBackPower);
                 }
 
-                int damage = attack - gp.monster[gp.currentMap][i].defense;
+                if(gp.monster[gp.currentMap][i].offBalance){
 
-                if (damage < 0) {
-                    damage = 0;
+                    attack += 5;
+                    gp.ui.addMessage("Critical Hit!! " + "+ " + attack + " Damage!", Color.RED);
+
+                }
+                
+                //change to 0
+                if (damage < 1) {
+                    damage = 1;
                 }
 
                 gp.monster[gp.currentMap][i].life -= damage;
 
-                gp.ui.addMessage("+" + damage + " Damage!");
+                gp.ui.addMessage("+" + damage + " Damage!", Color.WHITE);
 
                 gp.monster[gp.currentMap][i].invincible = true;
                 gp.monster[gp.currentMap][i].damageReaction();
@@ -464,10 +512,10 @@ public class Player extends Entity {
                 if (gp.monster[gp.currentMap][i].life <= 0) {
                     gp.monster[gp.currentMap][i].dying = true;
                     //add message
-                    gp.ui.addMessage(gp.monster[gp.currentMap][i].name + " defeated");
+                    gp.ui.addMessage(gp.monster[gp.currentMap][i].name + " defeated", Color.WHITE);
 
                     //leveling up
-                    gp.ui.addMessage("+" + exp + " Experience!!");
+                    gp.ui.addMessage("+" + exp + " Experience!!", Color.DARK_GRAY);
                     exp += gp.monster[gp.currentMap][i].exp;
 
                     //check next level

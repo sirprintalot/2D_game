@@ -8,27 +8,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386db496-e533-4c11-89ba-e5f09e407936" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_guard_down.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_guard_left.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_guard_right.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_guard_up.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Entity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Projectile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Projectile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/KeyHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/KeyHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/Sound.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/Sound.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/UI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/UI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Axe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Axe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Boots.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Boots.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/Lighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/Lighting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Axe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Axe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Boots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monster/MON_GreenSlime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_GreenSlime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monster/MON_Orc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_Orc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_BronzeCoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_BronzeCoin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Heart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Heart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Rock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_manaCrystal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_manaCrystal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +37,7 @@
     <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2lAphJtzU1yXeqcznZn5MZLo7Da" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">

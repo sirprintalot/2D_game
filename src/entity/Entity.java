@@ -74,6 +74,11 @@ public class Entity {
     public int speedBoostTimer = 0;
     public int speedBoostDuration;
 
+    // PARRY
+    public int guardCounter = 0;
+    int offBalanceCounter = 0;
+    public boolean offBalance = false;
+
     //Inventory
     public ArrayList<Entity> inventory = new ArrayList<>();
     public final int inventorySize = 20;
@@ -324,6 +329,7 @@ public class Entity {
 
     // UPDATE
     public void update() {
+        
         if(knockBack){
             checkCollision();
             if(collisionOn){
@@ -386,6 +392,15 @@ public class Entity {
         // Timer for the next shoot
         if (shotAvailableCounter < 30) {
             shotAvailableCounter++;
+        }
+
+        //parry/guard
+        if(offBalance){
+            offBalanceCounter++;
+            if(offBalanceCounter > 60){
+                offBalance = false;
+                offBalanceCounter = 0;
+            }
         }
 
     }
@@ -552,8 +567,26 @@ public class Entity {
             String canGuardDirection = getOppositeDirection(direction);
 
             if(gp.player.guarding && canGuardDirection.equals(gp.player.direction)){
-                 damage /= 4;
-                 gp.playSoundEffect(5);
+
+                //parry
+                if(gp.player.guardCounter < 15){
+                    damage = 0;
+                    gp.playSoundEffect(21);
+                    System.out.println("parry");
+                    setKnockBack(this, gp.player, knockBackPower);
+                    offBalance = true;
+                    spriteCounter -= 60;
+                }
+
+                else{
+                    
+                    //guard
+                    damage /= 4;
+                    gp.playSoundEffect(5);
+
+                }
+
+
             }
             else{
                 // not guarding
@@ -565,7 +598,11 @@ public class Entity {
 
             if(damage != 0){
                 gp.player.transparent = true;
+                setKnockBack(gp.player, this, knockBackPower);
             }
+
+            //receive knockback if there's no damage
+            //setKnockBack(gp.player, this, knockBackPower);
             
             gp.player.life -= damage;
             gp.player.invincible = true;

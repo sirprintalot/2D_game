@@ -3,6 +3,8 @@ package objects;
 import entity.*;
 import main.*;
 
+import java.awt.*;
+
 public class OBJ_manaCrystal extends Entity {
 
     GamePanel gp;
@@ -23,7 +25,7 @@ public class OBJ_manaCrystal extends Entity {
 
     public boolean useItem(Entity entity){
         gp.playSoundEffect(2);
-        gp.ui.addMessage("+ " + value + " mana!!");
+        gp.ui.addMessage("+ " + value + " mana!!", Color.BLUE);
         entity.mana += value;
 
         return true;

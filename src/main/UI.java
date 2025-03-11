@@ -17,6 +17,8 @@ public class UI {
     BufferedImage fullHeart, halfHeart, blankHeart, crystal_full, crystal_blank, coin;
     public boolean messageOn = false;
 
+    public boolean criticalMessageOn = false;
+
     // player inventory
     public int playerSlotCol = 0;
     public int playerSlotRow = 0;
@@ -38,6 +40,7 @@ public class UI {
     //display scrolling messages
     ArrayList<String> message = new ArrayList<>();
     ArrayList<Integer> messageCounter = new ArrayList<>();
+    ArrayList<Color> messageColors = new ArrayList<>();
 
     public int commandNum = 0;
     //extra title screen substate for choosing character
@@ -86,10 +89,11 @@ public class UI {
 
     }
 
-    public void addMessage(String text) {
+    public void addMessage(String text, Color textColor) {
 
         message.add(text);
         messageCounter.add(0);
+        messageColors.add(textColor);
     }
 
 
@@ -136,7 +140,7 @@ public class UI {
 
         // Game Over state
         if (gp.gameState == gp.gameOverState) {
-            drawGameOverscreen();
+            drawGameOverScreen();
         }
 
         // TRansition state
@@ -213,7 +217,7 @@ public class UI {
     }
 
     // GAME OVER SCREEN
-    public void drawGameOverscreen() {
+    public void drawGameOverScreen() {
 
         g2.setColor(new Color(0, 0, 0, 150));
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
@@ -272,9 +276,12 @@ public class UI {
         for (int i = 0; i < message.size(); i++) {
             if (message.get(i) != null) {
 
+                //shadow
                 g2.setColor(Color.BLACK);
                 g2.drawString(message.get(i), messageX + 3, messageY + 3);
-                g2.setColor(Color.WHITE);
+
+                // message
+                g2.setColor(messageColors.get(i));
                 g2.drawString(message.get(i), messageX, messageY);
 
                 int counter = messageCounter.get(i) + 1;  // messageCounter++
@@ -286,6 +293,8 @@ public class UI {
                 if (messageCounter.get(i) > 125) {
                     message.remove(i);
                     messageCounter.remove(i);
+                    messageColors.remove(i);
+                    i--;
                 }
             }
         }
@@ -401,6 +410,7 @@ public class UI {
     public void drawPauseScreen() {
 
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 70f));
+        g2.setColor(Color.white);
         String text = "Game Paused";
 
         int x = getXforCenterDisplay(text);
