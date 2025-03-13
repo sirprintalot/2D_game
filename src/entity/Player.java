@@ -346,9 +346,9 @@ public class Player extends Entity {
             gp.playSoundEffect(15);
             System.out.println("shot fired!");
 
-            if (gp.player.mana <= 0) {
-                gp.ui.addMessage("Not enough mana!", Color.WHITE);
-            }
+//            if (gp.player.mana <= 0) {
+//                gp.ui.addMessage("Not enough mana!", Color.WHITE);
+//            }
 
         }
 
@@ -378,7 +378,7 @@ public class Player extends Entity {
             shotAvailableCounter++;
         }
 
-        // check if life or mana are at full when healing if so, the value is the max value
+        // check if life or mana is at full when healing if so, the value is the max value
         if (life > maxLife) {
             life = maxLife;
         }
@@ -393,6 +393,8 @@ public class Player extends Entity {
             gp.stopMusic();
             gp.playSoundEffect(17);
             gp.ui.commandNum = -1;
+            knockBack = false;
+            speed = defaultSpeed;
         }
 
     }

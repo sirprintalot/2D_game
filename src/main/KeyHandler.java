@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.*;
 import java.awt.event.*;
 
 public class KeyHandler implements KeyListener {
@@ -174,12 +175,14 @@ public class KeyHandler implements KeyListener {
         // shoot projectile
         if (code == KeyEvent.VK_F) {
             shootPressed = true;
+            if(gp.player.mana <= 0){
+                gp.ui.addMessage("Not enough mana!", Color.red);
+            }
         }
 
         // open character window
         if (code == KeyEvent.VK_C) {
             gp.gameState = gp.characterState;
-            System.out.println("char window");
         }
 
         // Pause game

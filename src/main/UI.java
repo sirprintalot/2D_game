@@ -240,7 +240,7 @@ public class UI {
         // RETRY OPTION
         g2.setColor(Color.WHITE);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 35f));
-        text = "Retry";
+        text = "RETRY";
         textX = getXforCenterDisplay(text);
         textY += gp.tileSize * 3;
         g2.drawString(text, textX, textY);

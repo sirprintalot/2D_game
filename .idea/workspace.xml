@@ -9,16 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" id="386db496-e533-4c11-89ba-e5f09e407936" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environment/Lighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/Lighting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monster/MON_GreenSlime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_GreenSlime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monster/MON_Orc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_Orc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_BronzeCoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_BronzeCoin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Heart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Heart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Rock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_manaCrystal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_manaCrystal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Fireball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Fireball.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
