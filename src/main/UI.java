@@ -1198,6 +1198,7 @@ public class UI {
                 titleScreenState = 0;
                 gp.gameState = gp.tittleState;
                 gp.stopMusic();
+                gp.resetGame(true);
             }
         }
 

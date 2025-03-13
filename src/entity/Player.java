@@ -49,10 +49,6 @@ public class Player extends Entity {
 
         // Methods
         setDefaultValues();
-        getImage();
-        getAttackImage();
-        getGuardImage();
-        setItems();
     }
 
 
@@ -64,21 +60,17 @@ public class Player extends Entity {
         //for map 1
 //        worldY = gp.tileSize * 10;
 //        worldX = gp.tileSize * 11;
-
         //test hut map
 //        worldX = gp.tileSize * 12;
 //        worldY = gp.tileSize * 13;
 
         direction = "down";
-
         //PLAYER STATUS
         maxLife = 30;
         life = maxLife;
-
         //projectile
         projectile = new OBJ_Fireball(gp);
 //        projectile = new OBJ_Rock(gp);
-
         // Player stats
         level = 1;
         strength = 1; // the more strength more damage
@@ -91,10 +83,16 @@ public class Player extends Entity {
         ammo = 10;
         currentWeapon = new OBJ_Sword_Normal(gp);
         currentShield = new OBJ_shield_Wood(gp);
+        currentLight = null;
         defaultSpeed = 5;
         speed = defaultSpeed;
         attack = getAttack();
         defense = getDefense();
+
+        getImage();
+        getAttackImage();
+        getGuardImage();
+        setItems();
 
     }
 
@@ -110,6 +108,11 @@ public class Player extends Entity {
         mana = maxMana;
         invincible = false;
         transparent = false;
+        attacking = false;
+        guarding = false;
+        knockBack = false;
+        lightUpdated = true;
+        speed = defaultSpeed;
     }
 
     public void setItems() {
@@ -344,11 +347,6 @@ public class Player extends Entity {
             shotAvailableCounter = 0;
 
             gp.playSoundEffect(15);
-            System.out.println("shot fired!");
-
-//            if (gp.player.mana <= 0) {
-//                gp.ui.addMessage("Not enough mana!", Color.WHITE);
-//            }
 
         }
 
@@ -387,17 +385,18 @@ public class Player extends Entity {
             mana = maxMana;
         }
 
+
         // Game Over
         if (life <= 0) {
             gp.gameState = gp.gameOverState;
             gp.stopMusic();
             gp.playSoundEffect(17);
             gp.ui.commandNum = -1;
-            knockBack = false;
-            speed = defaultSpeed;
         }
 
     }
+
+
 
     public void resetSpeed() {
 

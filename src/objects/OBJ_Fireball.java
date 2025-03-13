@@ -8,6 +8,7 @@ import java.awt.*;
 public class OBJ_Fireball extends Projectile {
 
     GamePanel gp;
+
     public OBJ_Fireball(GamePanel gp) {
         super(gp);
         this.gp = gp;
@@ -22,10 +23,10 @@ public class OBJ_Fireball extends Projectile {
         isAlive = false;
 
         getImage();
-        
+
     }
 
-    public void getImage(){
+    public void getImage() {
 
         up1 = setup("/projectile/fireball_up_1", gp.tileSize, gp.tileSize);
         up2 = setup("/projectile/fireball_up_2", gp.tileSize, gp.tileSize);
@@ -37,39 +38,41 @@ public class OBJ_Fireball extends Projectile {
         right2 = setup("/projectile/fireball_right_2", gp.tileSize, gp.tileSize);
     }
 
-    public boolean haveResources(Entity user){
+    public boolean haveResources(Entity user) {
 
-        boolean haveResource =  false;
-        if(user.mana >= useCost){
+        boolean haveResource = false;
+        if (user.mana >= useCost) {
             haveResource = true;
         }
 
         return haveResource;
     }
 
-    public void substrackResource(Entity user){
+
+    public void substrackResource(Entity user) {
         user.mana -= useCost;
+
     }
 
     //particle
-    public Color getParticleColor(){
+    public Color getParticleColor() {
 
-        return new Color(250, 150 ,100);
+        return new Color(250, 150, 100);
 
     }
 
-    public int getParticleSize(){
+    public int getParticleSize() {
         int size = 8;
         return size;
     }
 
-    public int getParticleSpeed(){
+    public int getParticleSpeed() {
 
         int speed = 1;
         return speed;
     }
 
-    public int getParticleMaxLife(){
+    public int getParticleMaxLife() {
 
         int maxLife = 25;
         return maxLife;
