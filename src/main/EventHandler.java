@@ -152,13 +152,17 @@ public class EventHandler {
             gp.gameState = gameState;
             gp.player.attackCancel = true;
             gp.playSoundEffect(2);
-            gp.ui.currentDialogue = "You drank the healing water. /nLife and Mana restored";
+            gp.ui.currentDialogue = "You drank the healing water. /nLife and Mana restored " +
+                    "/n(Progress saved!)";
             gp.player.life = gp.player.maxLife;
             canTouchEvent = false;
             //restore mana
             gp.player.mana = gp.player.maxMana;
             //after healing, the monsters reappear
             gp.assetSetter.setMonster();
+
+            // save the game when using the healing pool
+            gp.saveLoad.save();
         }
     }
 

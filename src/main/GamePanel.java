@@ -1,6 +1,7 @@
 package main;
 
 import ai.*;
+import data.*;
 import entity.*;
 import environment.*;
 import tile.*;
@@ -52,6 +53,8 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cCheck = new CollisionChecker(this);
     public AssetSetter assetSetter = new AssetSetter(this);
 
+    
+
     //lightning
     EnvironmentManager eManager = new EnvironmentManager(this);
 
@@ -63,6 +66,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     //Game thread
     Thread gameThread;
+
+    // SAVE LOAD
+    SaveLoad saveLoad = new SaveLoad(this);
 
     //player
     public Player player = new Player(this, keyH);  // tiene que ser public
