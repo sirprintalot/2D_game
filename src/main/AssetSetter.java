@@ -94,17 +94,20 @@ public class AssetSetter {
         gp.obj[mapNum][objIndex].worldY = 12  * gp.tileSize;
 
         objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp, new OBJ_Potion_Red(gp));
+        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp);
+        gp.obj[mapNum][objIndex].setLoot(new OBJ_Potion_Red(gp));
         gp.obj[mapNum][objIndex].worldX = 34 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 8  * gp.tileSize;
 
         objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp, new OBJ_Potion_Red(gp));
+        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp );
+        gp.obj[mapNum][objIndex].setLoot(new OBJ_Potion_Red(gp));
         gp.obj[mapNum][objIndex].worldX = 34 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 9  * gp.tileSize;
 
         objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp, new OBJ_Potion_Red(gp));
+        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp);
+        gp.obj[mapNum][objIndex].setLoot(new OBJ_manaCrystal(gp));
         gp.obj[mapNum][objIndex].worldX = 34 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 10  * gp.tileSize;
 

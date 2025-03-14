@@ -69,6 +69,10 @@ public class Entity {
     public int price;
     public int lightRadius;
 
+    //loot
+    public Entity loot;
+    public boolean opened = false;
+
     // speed up
     public boolean speedBoosted = false;
     public int speedBoostTimer = 0;
@@ -225,6 +229,8 @@ public class Entity {
     public boolean useItem(Entity entity) {
         return false;
     }
+
+    public void setLoot(Entity loot){}
 
     public void damageReaction() {
     }

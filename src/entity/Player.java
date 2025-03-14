@@ -139,6 +139,27 @@ public class Player extends Entity {
 
     }
 
+    public int getCurrentWeaponSlot(){
+        int currentWeaponSlot = 0;
+        for(int i = 0; i < inventory.size(); i++){
+            if(inventory.get(i) == currentWeapon){
+                currentWeaponSlot = i; 
+            }
+        }
+        return currentWeaponSlot;
+    }
+
+    public int getCurrentShieldSlot(){
+
+        int currentShieldSlot = 0;
+        for(int i = 0; i < inventory.size(); i++){
+            if(inventory.get(i) == currentShield){
+                currentShieldSlot = i;
+            }
+        }
+        return currentShieldSlot;
+    }
+
     public void getImage() {
         //enhanced method
         up1 = setup("/player/boy_up_1", gp.tileSize, gp.tileSize);

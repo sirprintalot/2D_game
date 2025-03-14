@@ -13,6 +13,7 @@ public class OBJ_manaCrystal extends Entity {
         this.gp = gp;
 
         name = "mana crystal";
+        stackable = true;
         type = typePickupOnly;
         value = 1;
 
