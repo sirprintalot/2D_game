@@ -20,7 +20,6 @@ public class OBJ_Chest extends Entity {
         image = setup("/objects/chest", gp.tileSize, gp.tileSize);
         image2 = setup("/objects/chest_opened", gp.tileSize, gp.tileSize);
         down1 =  image;
-//        price = 100;
         collision = true;
         solidArea.x = 4;
         solidArea.y =16;
@@ -44,7 +43,7 @@ public class OBJ_Chest extends Entity {
             StringBuilder sb = new StringBuilder();
             sb.append("You opened the chest /nand found a ").append(loot.name).append("!!");
 
-            // if inventory is fulll
+            // if inventory is full
             if(!gp.player.canReceiveItem(loot)){
                 sb.append("/nInventory full!").append("/nCan't carry anymore");
             }
@@ -57,10 +56,8 @@ public class OBJ_Chest extends Entity {
             gp.ui.currentDialogue = sb.toString();
         }
         else{
-
             gp.ui.currentDialogue = "The chest is empty...";
             down1 = image;
-
         }
     }
     

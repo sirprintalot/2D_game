@@ -45,12 +45,6 @@ public class AssetSetter {
         objIndex++;
 
         gp.obj[mapNum][objIndex] = new OBJ_Heart(gp);
-        gp.obj[mapNum][objIndex].worldX = 27 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 24 * gp.tileSize;
-
-        objIndex++;
-
-        gp.obj[mapNum][objIndex] = new OBJ_Heart(gp);
         gp.obj[mapNum][objIndex].worldX = 28 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 21 * gp.tileSize;
 
@@ -71,11 +65,11 @@ public class AssetSetter {
         gp.obj[mapNum][objIndex].worldX = 27 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 21 * gp.tileSize;
 
-        objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Potion_Red(gp);
-        gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 21 * gp.tileSize;
-
+//        objIndex++;
+//        gp.obj[mapNum][objIndex] = new OBJ_Potion_Red(gp);
+//        gp.obj[mapNum][objIndex].worldX = 23 * gp.tileSize;
+//        gp.obj[mapNum][objIndex].worldY = 21 * gp.tileSize;
+//
 
         objIndex++;
         gp.obj[mapNum][objIndex] = new OBJ_Axe(gp);
@@ -120,42 +114,7 @@ public class AssetSetter {
         gp.obj[mapNum][objIndex] = new OBJ_Tent(gp);
         gp.obj[mapNum][objIndex].worldX = 35 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 35  * gp.tileSize;
-
-
-        //set door
-////
-//        gp.obj[2] = new OBJ_Key(gp);
-//        gp.obj[2].worldX = 35 * gp.tileSize;
-//        gp.obj[2].worldY = 43 * gp.tileSize;
-//
-//        //DOORS
-//        gp.obj[3] = new OBJ_Door(gp);
-//        gp.obj[3].worldX = 23 * gp.tileSize;
-//        gp.obj[3].worldY = 30 * gp.tileSize;
-//
-//        gp.obj[4] = new OBJ_Door(gp);
-//        gp.obj[4].worldX = 12 * gp.tileSize;
-//        gp.obj[4].worldY = 22 * gp.tileSize;
-//
-//        gp.obj[5] = new OBJ_Door(gp);
-//        gp.obj[5].worldX = 23 * gp.tileSize;
-//        gp.obj[5].worldY = 35 * gp.tileSize;
-//
-//        //CHESTS
-//        gp.obj[6] = new OBJ_Chest(gp);
-//        gp.obj[6].worldX = 11 * gp.tileSize;
-//        gp.obj[6].worldY = 34 * gp.tileSize;
-//
-//        gp.obj[7] = new OBJ_Chest(gp);
-//        gp.obj[7].worldX = 10 * gp.tileSize;
-//        gp.obj[7].worldY = 7 * gp.tileSize;
-//
-//        gp.obj[8] = new OBJ_Chest(gp);
-//        gp.obj[8].worldX = 20 * gp.tileSize;
-//        gp.obj[8].worldY = 42 * gp.tileSize;
-//
-
-//    }
+        
     }
 
     public void setNpc() {

@@ -14,13 +14,14 @@ public class SaveLoad {
         this.gp = gp;
     }
 
-    public Entity getObject(String itemName){
-
-        if(itemName == null){
-            throw new RuntimeException("Null object name");
+    public Entity getObject(String itemNames){
+        
+        if(itemNames == null){
+            System.out.println((String) null);
+            return null;
         }
 
-        Entity obj = switch (itemName) {
+        Entity obj = switch (itemNames) {
             case "Axe" -> new OBJ_Axe(gp);
             case "light boots" -> new OBJ_Boots(gp);
             case "bronze coin" -> new OBJ_BronzeCoin(gp);
@@ -33,9 +34,15 @@ public class SaveLoad {
             case "Normal Sword" -> new OBJ_Sword_Normal(gp);
             case "Tent" -> new OBJ_Tent(gp);
             case "chest" -> new OBJ_Chest(gp);
-            default -> null;
+            case "heart" -> new OBJ_Heart(gp);
+            case "door" -> new OBJ_Door(gp);
+            case "fireball" -> new OBJ_Fireball(gp);
+            case "rock" -> new OBJ_Rock(gp);
+            default -> {
+                System.out.println("Warning: Unknown item name '" + itemNames + "'");
+                yield null;
+            }
         };
-
         return obj;
     }
 
@@ -87,12 +94,9 @@ public class SaveLoad {
                             ds.mapObjectLootName[mapNum][i] = gp.obj[mapNum][i].loot.name;
                         }
                         ds.mapObjectOpened[mapNum][i] = gp.obj[mapNum][i].opened;
-
                     }
                 }
             }
-
-
 
             // write the data storage object
             oos.writeObject(ds);
@@ -120,12 +124,13 @@ public class SaveLoad {
             gp.player.exp = ds.exp;
             gp.player.nextLevelExp = ds.nextLevelExp;
             gp.player.coin = ds.coin;
-//            gp.player.worldX = gp.tileSize * 23;
-//            gp.player.worldY = gp.tileSize * 12;
-//            gp.player.direction = "up";
+            gp.player.worldX = gp.tileSize * 23;
+            gp.player.worldY = gp.tileSize * 12;
+            gp.player.direction = "up";
 
             // Load player inventory
             gp.player.inventory.clear();
+            System.out.println("item names " + ds.itemNames);
             for(int i = 0; i < ds.itemNames.size(); i++){
                 gp.player.inventory.add(getObject(ds.itemNames.get(i)));
                 gp.player.inventory.get(i).ammount = ds.itemAmount.get(i);
@@ -153,10 +158,14 @@ public class SaveLoad {
                         if(ds.mapObjectLootName != null){
                             gp.obj[mapNum][i].loot =getObject(ds.mapObjectLootName[mapNum][i]);
                         }
+
                         gp.obj[mapNum][i].opened = ds.mapObjectOpened[mapNum][i];
                         if(gp.obj[mapNum][i].opened) {
-                            gp.obj[mapNum][i].down1 = gp.obj[mapNum][i].image2;
+                                gp.obj[mapNum][i].down1 = gp.obj[mapNum][i].image2;
                         }
+//                        else{
+//                            gp.obj[mapNum][i].down1 = gp.obj[mapNum][i].image;
+//                        }
                     }
                 }
             }
@@ -167,10 +176,7 @@ public class SaveLoad {
         catch(Exception e){
             throw new RuntimeException(e);
         }
-
-
-
-
+        
     }
 
 
