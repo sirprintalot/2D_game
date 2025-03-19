@@ -1,6 +1,5 @@
 package environment;
 
-import entity.*;
 import main.*;
 
 import java.awt.*;
@@ -31,8 +30,6 @@ public class Lighting {
     public void setLightSource(){
 
         //TODO check this class again
-        //TODO reset the time cycle when restarting the game
-
 
         // instanciate the buffered image
         darknessFilter = new BufferedImage(gp.screenWidth, gp.screenHeight, BufferedImage.TYPE_INT_ARGB);
@@ -102,7 +99,7 @@ public class Lighting {
         if(dayState == day){
             dayCounter++;
 
-            if(dayCounter > 6000){
+            if(dayCounter > 1000){
                 dayState = dusk;
                 dayCounter = 0;
             }
@@ -117,7 +114,7 @@ public class Lighting {
         }
         if(dayState == night){
             dayCounter++;
-            if(dayCounter > 6000){
+            if(dayCounter > 1000){
                 dayState = dawn;
                 dayCounter = 0;
             }

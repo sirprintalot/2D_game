@@ -14,14 +14,14 @@ public class SaveLoad {
         this.gp = gp;
     }
 
-    public Entity getObject(String itemNames){
+    public Entity getObject(String itemName){
         
-        if(itemNames == null){
-            System.out.println((String) null);
-            return null;
-        }
+//        if(itemName == null){
+//            System.out.println((String) null);
+//            return null;
+//        }
 
-        Entity obj = switch (itemNames) {
+        return switch (itemName) {
             case "Axe" -> new OBJ_Axe(gp);
             case "light boots" -> new OBJ_Boots(gp);
             case "bronze coin" -> new OBJ_BronzeCoin(gp);
@@ -39,11 +39,10 @@ public class SaveLoad {
             case "fireball" -> new OBJ_Fireball(gp);
             case "rock" -> new OBJ_Rock(gp);
             default -> {
-                System.out.println("Warning: Unknown item name '" + itemNames + "'");
+                System.out.println("Warning: Unknown item name '" + itemName + "'");
                 yield null;
             }
         };
-        return obj;
     }
 
     public void save(){
@@ -80,11 +79,13 @@ public class SaveLoad {
             ds.mapObjectLootName = new String[gp.maxMap][gp.obj[1].length];
             ds.mapObjectOpened = new boolean[gp.maxMap][gp.obj[1].length];
 
-            for(int mapNum = 0; mapNum < gp.maxMap; mapNum++){
+            for(int mapNum = 0; mapNum < gp.maxMap; mapNum++){ 
                 for(int i = 0; i < gp.obj[1].length; i++ ){
+                    
                     if(gp.obj[mapNum][i] == null){
                         ds.mapObjectNames[mapNum][i] = "NA";
                     }
+                     
                     else {
                         ds.mapObjectNames[mapNum][i] = gp.obj[mapNum][i].name;
                         ds.mapObjectWorldX[mapNum][i] = gp.obj[mapNum][i].worldX;
@@ -124,19 +125,21 @@ public class SaveLoad {
             gp.player.exp = ds.exp;
             gp.player.nextLevelExp = ds.nextLevelExp;
             gp.player.coin = ds.coin;
+
             gp.player.worldX = gp.tileSize * 23;
             gp.player.worldY = gp.tileSize * 12;
             gp.player.direction = "up";
 
             // Load player inventory
             gp.player.inventory.clear();
+            
             System.out.println("item names " + ds.itemNames);
             for(int i = 0; i < ds.itemNames.size(); i++){
                 gp.player.inventory.add(getObject(ds.itemNames.get(i)));
                 gp.player.inventory.get(i).ammount = ds.itemAmount.get(i);
             }
 
-            //load player cuurent weapon and shield
+            //load player cur rent weapon and shield
             gp.player.currentWeapon = gp.player.inventory.get(ds.currentWeaponSlot);
             gp.player.currentShield = gp.player.inventory.get(ds.currentShieldSlot);
             gp.player.getAttack();
@@ -146,26 +149,27 @@ public class SaveLoad {
             // Load objects on map
             for(int mapNum = 0; mapNum < gp.maxMap; mapNum++){
                 for(int i = 0; i < gp.obj[1].length; i++){
+                    
                     if(ds.mapObjectNames[mapNum][i].equals("NA")){
                         gp.obj[mapNum][i] = null;
                     }
                     else{
+                        
                         gp.obj[mapNum][i] = getObject(ds.mapObjectNames[mapNum][i]);
                         System.out.println(getObject(ds.mapObjectNames[mapNum][i]));
+
                         gp.obj[mapNum][i].worldX = ds.mapObjectWorldX[mapNum][i];
                         gp.obj[mapNum][i].worldY = ds.mapObjectWorldY[mapNum][i];
 
-                        if(ds.mapObjectLootName != null){
-                            gp.obj[mapNum][i].loot =getObject(ds.mapObjectLootName[mapNum][i]);
+                        if(ds.mapObjectLootName[mapNum][i] != null){
+                            gp.obj[mapNum][i].loot = getObject(ds.mapObjectLootName[mapNum][i]);
                         }
 
                         gp.obj[mapNum][i].opened = ds.mapObjectOpened[mapNum][i];
+                        
                         if(gp.obj[mapNum][i].opened) {
                                 gp.obj[mapNum][i].down1 = gp.obj[mapNum][i].image2;
                         }
-//                        else{
-//                            gp.obj[mapNum][i].down1 = gp.obj[mapNum][i].image;
-//                        }
                     }
                 }
             }

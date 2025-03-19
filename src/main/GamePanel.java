@@ -53,10 +53,9 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cCheck = new CollisionChecker(this);
     public AssetSetter assetSetter = new AssetSetter(this);
 
-    
 
     //lightning
-    EnvironmentManager eManager = new EnvironmentManager(this);
+    public EnvironmentManager eManager = new EnvironmentManager(this);
 
     // Config
     Config config = new Config(this);
@@ -173,6 +172,7 @@ public class GamePanel extends JPanel implements Runnable {
         playMusic(0);
 
         if(restart){
+
             player.setDefaultValues(); 
             assetSetter.setObject();
             assetSetter.setInteractiveTiles();

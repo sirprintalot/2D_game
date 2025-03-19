@@ -53,9 +53,10 @@ public class Player extends Entity {
 
 
     public void setDefaultValues() {
-//
-        worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 21;
+
+//        worldX = gp.tileSize * 23;
+//        worldY = gp.tileSize * 21;
+//        direction = "down";
 
         //for map 1
 //        worldY = gp.tileSize * 10;
@@ -64,7 +65,7 @@ public class Player extends Entity {
 //        worldX = gp.tileSize * 12;
 //        worldY = gp.tileSize * 13;
 
-        direction = "down";
+
         //PLAYER STATUS
         maxLife = 30;
         life = maxLife;
@@ -93,6 +94,7 @@ public class Player extends Entity {
         getAttackImage();
         getGuardImage();
         setItems();
+        setDefaultPosition();
 
     }
 
@@ -104,6 +106,7 @@ public class Player extends Entity {
     }
 
     public void restorePlayerStats() {
+
         life = maxLife;
         mana = maxMana;
         invincible = false;
@@ -435,6 +438,7 @@ public class Player extends Entity {
 
                 gp.obj[gp.currentMap][i].useItem(this);
                 gp.obj[gp.currentMap][i] = null;
+                System.out.println("null item");
 
             }
             // Obstacles

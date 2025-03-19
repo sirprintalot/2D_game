@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class DataStorage implements Serializable {
+
     // player stats
     int level;
     int maxLife;

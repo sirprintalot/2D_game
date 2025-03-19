@@ -22,11 +22,15 @@ public class OBJ_Key extends Entity {
     }
 
     public boolean useItem(Entity entity){
+
         gp.gameState = gp.dialogueState;
         int objIndex = getDetected(entity, gp.obj, "door");
+
         if(objIndex != 999){
+
             gp.ui.currentDialogue = name + " used, Door opened...";
             gp.playSoundEffect(3);
+
             gp.obj[gp.currentMap][objIndex] = null;
 
             return true;
