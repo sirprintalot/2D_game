@@ -32,6 +32,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxWorldRow = 50;
 
     public final int maxMap = 10;
+    
     public int currentMap = 0;
 
     // FULL SCREEN
@@ -165,10 +166,13 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void resetGame(boolean restart){
+        
         player.setDefaultPosition();
         player.restorePlayerStats();
+        player.resetCounter();
         assetSetter.setNpc();
         assetSetter.setMonster();
+        
         playMusic(0);
 
         if(restart){

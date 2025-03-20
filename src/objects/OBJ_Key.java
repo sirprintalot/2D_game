@@ -18,25 +18,30 @@ public class OBJ_Key extends Entity {
 
         down1 = setup("/objects/key", gp.tileSize, gp.tileSize);
         itemDescription ="[" + name + "] /n A golden key/n opens a door";
+        setDialogue();
 
     }
 
-    public boolean useItem(Entity entity){
+    public void setDialogue(){
+        dialogues[0][0] = name + " used, Door opened...";
+        
+        dialogues[1][0] =  "Can't use it here...";
+    }
 
-        gp.gameState = gp.dialogueState;
+    public boolean useItem(Entity entity){
+        
         int objIndex = getDetected(entity, gp.obj, "door");
 
         if(objIndex != 999){
 
-            gp.ui.currentDialogue = name + " used, Door opened...";
+            startDialogue(this, 0);
             gp.playSoundEffect(3);
-
             gp.obj[gp.currentMap][objIndex] = null;
 
             return true;
         }
         else{
-            gp.ui.currentDialogue = "Can't use it here...";
+            startDialogue(this, 1);
             return false;
         }
     }

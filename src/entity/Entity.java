@@ -126,8 +126,9 @@ public class Entity {
     public final int typeLight = 9;
 
     //DIALOGUE
-    String[] dialogues = new String[20];
-    int dialogueIndex = 0;
+    public String[][] dialogues = new String[20][20];
+    public int dialogueIndex = 0;
+    public int dialogueSet = 0;
 
     //solid area for all entities (can be overwritten for each case)
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
@@ -226,6 +227,16 @@ public class Entity {
         return (worldX + solidArea.x) / gp.tileSize;
     }
 
+    public void resetCounter(){
+         spriteCounter = 0;
+         shotAvailableCounter = 0;
+         dyingCounter = 0;
+         hpBarCounter = 0;
+         knockBackCounter = 0;
+         guardCounter = 0;
+         offBalanceCounter = 0;
+    }
+
     public boolean useItem(Entity entity) {
         return false;
     }
@@ -250,16 +261,10 @@ public class Entity {
         }
     }
 
-    public void speak() {
+    public void speak() {}
 
-        //if all the dialogues are finished, loop back to the first one
-        if (dialogues[dialogueIndex] == null) {
-            dialogueIndex = 0;
-        }
-
-        gp.ui.currentDialogue = dialogues[dialogueIndex];
-        dialogueIndex++;
-
+    // npc always facing the player
+    public void facePlayer(){
         //turn the npc facing the player when a dialogue occurs
         switch (gp.player.direction) {
             case "up" -> direction = "down";
@@ -268,6 +273,14 @@ public class Entity {
             case "right" -> direction = "left";
         }
     }
+
+    public void startDialogue(Entity entity, int setNum){
+        gp.gameState = gp.dialogueState;
+        gp.ui.npc = entity;
+        dialogueSet = setNum;
+    }
+
+
 
     //Interact with objects
     public void interact() {

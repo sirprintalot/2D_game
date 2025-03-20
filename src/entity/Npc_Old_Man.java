@@ -86,15 +86,45 @@ public class NPC_Old_Man extends Entity {
     //Load dialogues
     public void setDialogue() {
 
-        dialogues[0] = "Caco te ofrece coca machucada... /n Aceptar /n Rechazar";
-        dialogues[1] = "akfbakfbakfbak";
-        dialogues[2] = "sdad jasdfkanfn asdasdfa dafafasf /n qsaasasdasdfaf";
-        dialogues[3] = "asdfasf aksfbajffopnfasdfafaf /n asfafsasdasdad /n asdasdfasf";
+        // DIALOGUE SET 1
+        dialogues[0][0] = "Ah, traveler, " +
+                "/n you have the look " +
+                "/n of someone seeking wisdom. " +
+                "/n How may I assist you?";
+        
+        dialogues[0][1] = "Patience, dear one. " +
+                "/n Rushing into danger without thought " +
+                "/n is the surest way to regret.";
+        dialogues[0][2] = "There, there. " +
+                "/n Rest now, child. " +
+                "/n Even the strongest warriors " +
+                "/n need a gentle hand.";
+
+        // DIALOGUE SET 2
+        dialogues[1][0] = "Long ago, I lost something dear… " +
+                "/n If you happen upon it in your travels, " +
+                "/n I would be most " +
+                "grateful.";
+        dialogues[1][1] = "You carry a heavy burden, " +
+                "/n but do not falter. " +
+                "/n Even the smallest light can push back the " +
+                "/n darkness.";
+
+
+        //DIALOGUE SET 3
+        dialogues[2][0] =  "Go forth, " +
+                "/n and may the winds of fortune " +
+                "/n guide your path.";
+
+
+
     }
 
+
     public void speak() {
-        super.speak();
-        onPath = true;
+        facePlayer();
+        startDialogue(this, dialogueSet);
+       // onPath = true;
     }
 
 }

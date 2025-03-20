@@ -8,7 +8,7 @@ public class Main {
     public static JFrame window;
     
     public static void main(String[] args) {
-
+                                                           
         //window                     
         window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

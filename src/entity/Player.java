@@ -103,6 +103,11 @@ public class Player extends Entity {
         worldX = gp.tileSize * 23;
         worldY = gp.tileSize * 21;
         direction = "down";
+
+        //for map 1
+//        worldY = gp.tileSize * 10;
+//        worldX = gp.tileSize * 12;
+//        direction = "up";
     }
 
     public void restorePlayerStats() {
@@ -470,11 +475,9 @@ public class Player extends Entity {
 
     public void interactNpc(int i) {
 
-        if (keyH.enterPressed) {
-            if (i != 999) {
-
+        if (i != 999) {
+            if (keyH.enterPressed) { 
                 attackCancel = true;
-                gp.gameState = gp.dialogueState;
                 gp.npc[gp.currentMap][i].speak();
             }
         }
@@ -592,10 +595,16 @@ public class Player extends Entity {
             gp.playSoundEffect(13);
 
             gp.gameState = gp.dialogueState;
-            gp.ui.currentDialogue = "Level " + level + "!/n"
-                    + "need " + nextLevelExp + " exp for the next Level!";
+
+            setDialogue(); 
+            startDialogue(this, 0);
         }
 
+    }
+
+    public void setDialogue(){
+        dialogues[0][0] = "Level " + level + "!/n"
+                + "need " + nextLevelExp + " exp for the next Level!";
     }
 
     public void selectItem() {

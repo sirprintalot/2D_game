@@ -121,8 +121,6 @@ public class SaveLoad {
             gp.player.nextLevelExp = ds.nextLevelExp;
             gp.player.coin = ds.coin;
 
-            gp.eManager.lighting.dayCounter = ds.dayTime;
-
             gp.player.worldX = gp.tileSize * 23;
             gp.player.worldY = gp.tileSize * 12;
             gp.player.direction = "up";
@@ -169,8 +167,6 @@ public class SaveLoad {
                     }
                 }
             }
-
-
 
         }
         catch(Exception e){

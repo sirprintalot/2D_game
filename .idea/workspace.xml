@@ -12,9 +12,17 @@
       <change beforePath="$PROJECT_DIR$/save.dat" beforeDir="false" afterPath="$PROJECT_DIR$/save.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/DataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/SaveLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/SaveLoad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/NPC_Merchant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/NPC_Merchant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environment/Lighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/Lighting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Chest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Door.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Potion_Red.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Potion_Red.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

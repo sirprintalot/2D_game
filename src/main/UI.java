@@ -37,6 +37,7 @@ public class UI {
     int counter = 0;
 
     public boolean messageDisplay = true;
+    
     //display scrolling messages
     ArrayList<String> message = new ArrayList<>();
     ArrayList<Integer> messageCounter = new ArrayList<>();
@@ -48,7 +49,7 @@ public class UI {
 
     public String currentDialogue = "";
 
-    public Entity merchant;
+    public Entity npc;
 
 
     public UI(GamePanel gp) {
@@ -427,12 +428,35 @@ public class UI {
         int y = gp.tileSize / 2;
         int width = gp.screenWidth - (gp.tileSize * 6);
         int height = gp.tileSize * 4;
-
         drawSubWindow(x, y, width, height);
 
         x += (gp.tileSize / 2);
         y += gp.tileSize;
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28f));
+
+        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null){
+            currentDialogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
+
+            if(gp.keyH.enterPressed){
+                if(gp.gameState == gp.dialogueState){
+                    npc.dialogueIndex++;
+                     gp.keyH.enterPressed = false;
+                }
+            }
+        }
+        else{
+
+            npc.dialogueIndex = 0;
+            if (gp.gameState == gp.dialogueState) {
+                gp.gameState = gp.playState;
+            }
+
+        }
+
+
+
+
+        
 
         // create line brakes for dialogue
         for (String line : currentDialogue.split("/n")) {
@@ -760,7 +784,7 @@ public class UI {
 
         //DRAW NPC INVENTORY
 //        drawInventoryScreen(gp.npc[1][1], true);
-        drawInventoryScreen(merchant, true);
+        drawInventoryScreen(npc, true);
 
         //DRAW HINT WINDOW
         int x = gp.tileSize * 2;
@@ -782,7 +806,7 @@ public class UI {
         int itemIndex = getItemIndex(npcSlotCol, npcSlotRow);
 
         //if the slot is not empty, we display the price
-        if (itemIndex < merchant.inventory.size()) {
+        if (itemIndex < npc.inventory.size()) {
             x = (int) (gp.tileSize * 8);
             y = (int) (gp.tileSize);
             width = (int) (gp.tileSize * 2.5);
@@ -792,7 +816,7 @@ public class UI {
             drawSubWindow(x, y, width, height);
             g2.drawImage(coin, x + 10, y + 8, 32, 32, null);
 
-            int price = merchant.inventory.get(itemIndex).price;
+            int price = npc.inventory.get(itemIndex).price;
 
             String text = " " + price;
             x = getXforRightAlingn(text, gp.tileSize * 10);
@@ -802,7 +826,7 @@ public class UI {
         //BUY AN ITEM
         if (gp.keyH.enterPressed) {
 
-            int price = merchant.inventory.get(itemIndex).price;
+            int price = npc.inventory.get(itemIndex).price;
             //if a player doesn't have enough money
             if (price > gp.player.coin) {
 
@@ -812,7 +836,7 @@ public class UI {
                 subState = 0;
                 // if player doesn't have enough space in inventory
             } else {
-                if (gp.player.canReceiveItem(merchant.inventory.get(itemIndex))) {
+                if (gp.player.canReceiveItem(npc.inventory.get(itemIndex))) {
                     gp.player.coin -= price;
                 } else {
 

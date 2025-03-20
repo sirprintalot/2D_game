@@ -19,17 +19,21 @@ public class OBJ_Potion_Red extends Entity {
         stackable = true;
         name = "Red potion";
         down1 = setup("/objects/potion_red", gp.tileSize, gp.tileSize);
-        itemDescription ="["+ name +"] /nA healing potion!! /n+" + value + "Heal!!!";
+        itemDescription =  "["+ name +"] /nA healing potion!! /n+" + value + "Heal!!!";
         price = 13;
+
+        setDialogue();
+    }
+
+    public void setDialogue(){
+         dialogues[0][0] =  "You Drank the " + name + "!!!" + "/n"+
+                 "Your life has been restored!";
     }
 
     public boolean useItem(Entity entity){
 
-        gp.gameState = gp.dialogueState;
+        startDialogue(this, 0);
         gp.playSoundEffect(6);
-        gp.ui.currentDialogue = "You Drank the " + name + "!!!" + "/n"+
-                "Your life has been restored!";
-
         entity.life += value;
 
         return true;
