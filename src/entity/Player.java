@@ -438,8 +438,6 @@ public class Player extends Entity {
 
                 gp.obj[gp.currentMap][i].useItem(this);
                 gp.obj[gp.currentMap][i] = null;
-                System.out.println("null item");
-
             }
             // Obstacles
             else if (gp.obj[gp.currentMap][i].type == typeObstacle) {

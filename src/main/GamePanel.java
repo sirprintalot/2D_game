@@ -172,7 +172,6 @@ public class GamePanel extends JPanel implements Runnable {
         playMusic(0);
 
         if(restart){
-
             player.setDefaultValues(); 
             assetSetter.setObject();
             assetSetter.setInteractiveTiles();

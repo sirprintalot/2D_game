@@ -89,6 +89,7 @@ public class Lighting {
     }
 
     public void update(){
+
         if(gp.player.lightUpdated){
             setLightSource();
             gp.player.lightUpdated = false;

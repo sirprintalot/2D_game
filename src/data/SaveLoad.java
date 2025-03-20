@@ -15,11 +15,6 @@ public class SaveLoad {
     }
 
     public Entity getObject(String itemName){
-        
-//        if(itemName == null){
-//            System.out.println((String) null);
-//            return null;
-//        }
 
         return switch (itemName) {
             case "Axe" -> new OBJ_Axe(gp);
@@ -126,6 +121,8 @@ public class SaveLoad {
             gp.player.nextLevelExp = ds.nextLevelExp;
             gp.player.coin = ds.coin;
 
+            gp.eManager.lighting.dayCounter = ds.dayTime;
+
             gp.player.worldX = gp.tileSize * 23;
             gp.player.worldY = gp.tileSize * 12;
             gp.player.direction = "up";
@@ -133,7 +130,7 @@ public class SaveLoad {
             // Load player inventory
             gp.player.inventory.clear();
             
-            System.out.println("item names " + ds.itemNames);
+//            System.out.println("item names " + ds.itemNames);
             for(int i = 0; i < ds.itemNames.size(); i++){
                 gp.player.inventory.add(getObject(ds.itemNames.get(i)));
                 gp.player.inventory.get(i).ammount = ds.itemAmount.get(i);
@@ -156,7 +153,6 @@ public class SaveLoad {
                     else{
                         
                         gp.obj[mapNum][i] = getObject(ds.mapObjectNames[mapNum][i]);
-                        System.out.println(getObject(ds.mapObjectNames[mapNum][i]));
 
                         gp.obj[mapNum][i].worldX = ds.mapObjectWorldX[mapNum][i];
                         gp.obj[mapNum][i].worldY = ds.mapObjectWorldY[mapNum][i];
