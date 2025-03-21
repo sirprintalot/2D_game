@@ -732,6 +732,7 @@ public class UI {
 
     public void trade_Select() {
 
+        npc.dialogueSet = 0;
         drawDialogueScreen();
 
         // DRAW OPTIONS WINDOW
@@ -768,9 +769,8 @@ public class UI {
             g2.drawString(">", x - 24, y);
             if (gp.keyH.enterPressed) {
                 commandNum = 0;
-
-                gp.gameState = gp.dialogueState;
-                gp.ui.currentDialogue = "Bye";
+                npc.startDialogue(npc, 1);
+//                gp.gameState = gp.dialogueState;
             }
         }
 
@@ -829,20 +829,15 @@ public class UI {
             int price = npc.inventory.get(itemIndex).price;
             //if a player doesn't have enough money
             if (price > gp.player.coin) {
-
-                gp.gameState = gp.dialogueState;
-                currentDialogue = "Not enough Coins!";
-                drawDialogueScreen();
+                npc.startDialogue(npc, 2);
                 subState = 0;
                 // if player doesn't have enough space in inventory
             } else {
                 if (gp.player.canReceiveItem(npc.inventory.get(itemIndex))) {
                     gp.player.coin -= price;
                 } else {
-
                     subState = 0;
-                    gp.gameState = gp.dialogueState;
-                    currentDialogue = "Inventory full!!";
+                    npc.startDialogue(npc, 3);
 //                    drawDialogueScreen();
                 }
             }
@@ -916,8 +911,8 @@ public class UI {
                 subState = 0;
                 commandNum = 0;
                 gp.gameState = gp.dialogueState;
-                currentDialogue = "Cant sell this item!!";
-                drawDialogueScreen();
+                npc.startDialogue(npc, 4 );
+//                drawDialogueScreen();
             } else {
                 if (gp.player.inventory.get(itemIndex).ammount > 1) {
                     gp.player.inventory.get(itemIndex).ammount--;

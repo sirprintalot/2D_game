@@ -32,7 +32,6 @@ public class OBJ_Chest extends Entity {
 
     public void setLoot(Entity loot){
         this.loot = loot;
-
         setDialogue();
     }
 
@@ -44,8 +43,7 @@ public class OBJ_Chest extends Entity {
         dialogues[1][0] = "You opened the chest " +
                 "/n and found a " + (loot.name) + "!!";
 
-        dialogues[2][0] = "/nInventory full!" +
-                "/n Can't carry anymore";
+        dialogues[2][0] = "The chest is empty!!";
     }
 
     public void interact()  {
