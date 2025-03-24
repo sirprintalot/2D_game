@@ -43,6 +43,10 @@ public class UI {
     ArrayList<Integer> messageCounter = new ArrayList<>();
     ArrayList<Color> messageColors = new ArrayList<>();
 
+    // Display message letter by letter
+    int charIndex = 0;
+    String combinedText = "";
+
     public int commandNum = 0;
     //extra title screen substate for choosing character
     public int titleScreenState = 0; //0 = first screen(main) 1 = character selection screen
@@ -435,9 +439,23 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28f));
 
         if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null){
-            currentDialogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
+            //currentDialogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
+            char[] characters =  npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
+            if(charIndex < characters.length){
+
+//                gp.playSoundEffect(22);
+                String s = String.valueOf(characters[charIndex]);
+                combinedText = combinedText + s;
+                currentDialogue = combinedText;
+                charIndex++;
+            }
+
 
             if(gp.keyH.enterPressed){
+
+                charIndex = 0;
+                combinedText = "";
+
                 if(gp.gameState == gp.dialogueState){
                     npc.dialogueIndex++;
                      gp.keyH.enterPressed = false;

@@ -21,6 +21,9 @@ public class NPC_Old_Man extends Entity {
         solidAreaDefaultY = solidArea.y;
         solidArea.width = 30;
         solidArea.height = 30;
+
+        dialogueSet = -1;
+
         getImage();
         setDialogue();
 
@@ -124,7 +127,23 @@ public class NPC_Old_Man extends Entity {
     public void speak() {
         facePlayer();
         startDialogue(this, dialogueSet);
+
+        dialogueSet++; // this change de dialogue set everytime we speak with the npc
        // onPath = true;
+
+        if(dialogues[dialogueSet][0] == null){
+            dialogueSet = 0;
+
+            //dialogueSet--; repeat the las dialogue
+        }
+
+        // use a specific dialogue set based on specific conditions.
+//        if(gp.player.life == gp.player.maxLife/3){
+//            dialogueSet = 1;
+//        }
+
+
+
     }
 
 }
