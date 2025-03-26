@@ -19,6 +19,9 @@ public class UI {
 
     public boolean criticalMessageOn = false;
 
+    //dialogue speed
+    private int textSpeedCounter = 0;
+
     // player inventory
     public int playerSlotCol = 0;
     public int playerSlotRow = 0;
@@ -37,7 +40,7 @@ public class UI {
     int counter = 0;
 
     public boolean messageDisplay = true;
-    
+
     //display scrolling messages
     ArrayList<String> message = new ArrayList<>();
     ArrayList<Integer> messageCounter = new ArrayList<>();
@@ -158,7 +161,7 @@ public class UI {
             drawTradeScreen();
         }
         // sleep state
-        if(gp.gameState == gp.sleepState){
+        if (gp.gameState == gp.sleepState) {
             drawSleepScreen();
         }
     }
@@ -438,31 +441,33 @@ public class UI {
         y += gp.tileSize;
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28f));
 
-        if(npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null){
-            //currentDialogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
-            char[] characters =  npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
-            if(charIndex < characters.length){
+        if (npc.dialogues[npc.dialogueSet][npc.dialogueIndex] != null) {
+//            currentDialogue = npc.dialogues[npc.dialogueSet][npc.dialogueIndex];
+            char[] characters = npc.dialogues[npc.dialogueSet][npc.dialogueIndex].toCharArray();
+            if (charIndex < characters.length) {
 
-//                gp.playSoundEffect(22);
-                String s = String.valueOf(characters[charIndex]);
-                combinedText = combinedText + s;
-                currentDialogue = combinedText;
-                charIndex++;
+                double textSpeed = 2.1;
+                textSpeedCounter++;
+                if (textSpeedCounter >= textSpeed) {
+                    String s = String.valueOf(characters[charIndex]);
+                    combinedText = combinedText + s;
+                    currentDialogue = combinedText;
+                    gp.playSoundEffect(22);
+                    charIndex++;
+                    textSpeedCounter = 0;
+                }
             }
 
-
-            if(gp.keyH.enterPressed){
-
+            if (gp.keyH.enterPressed) {
                 charIndex = 0;
                 combinedText = "";
 
-                if(gp.gameState == gp.dialogueState){
+                if (gp.gameState == gp.dialogueState) {
                     npc.dialogueIndex++;
-                     gp.keyH.enterPressed = false;
+                    gp.keyH.enterPressed = false;
                 }
             }
-        }
-        else{
+        } else {
 
             npc.dialogueIndex = 0;
             if (gp.gameState == gp.dialogueState) {
@@ -470,11 +475,6 @@ public class UI {
             }
 
         }
-
-
-
-
-        
 
         // create line brakes for dialogue
         for (String line : currentDialogue.split("/n")) {
@@ -706,7 +706,7 @@ public class UI {
                 g2.drawString(s, amountX - 2, amountY - 2);
 
             }
-            
+
             //pass to the next column
             slotX += slotSize;
 
@@ -929,7 +929,7 @@ public class UI {
                 subState = 0;
                 commandNum = 0;
                 gp.gameState = gp.dialogueState;
-                npc.startDialogue(npc, 4 );
+                npc.startDialogue(npc, 4);
 //                drawDialogueScreen();
             } else {
                 if (gp.player.inventory.get(itemIndex).ammount > 1) {
@@ -983,19 +983,19 @@ public class UI {
 
     }
 
-    public void drawSleepScreen(){
+    public void drawSleepScreen() {
 
         counter++;
-        
-        if(counter < 120) {
+
+        if (counter < 120) {
             gp.eManager.lighting.filterAlpha += 0.01f;
-            if(gp.eManager.lighting.filterAlpha > 1f){
+            if (gp.eManager.lighting.filterAlpha > 1f) {
                 gp.eManager.lighting.filterAlpha = 1f;
             }
         }
-        if(counter >= 120){
+        if (counter >= 120) {
             gp.eManager.lighting.filterAlpha -= 0.01f;
-            if(gp.eManager.lighting.filterAlpha <= 0f){
+            if (gp.eManager.lighting.filterAlpha <= 0f) {
                 gp.eManager.lighting.filterAlpha = 0f;
                 counter = 0;
                 gp.eManager.lighting.dayState = gp.eManager.lighting.day;

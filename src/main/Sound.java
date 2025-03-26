@@ -49,7 +49,6 @@ public class Sound {
             clip.open(ais);
             fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             checkVolume();
-//            System.out.println("check volume");
 
         } catch (Exception e) {
 

@@ -379,11 +379,12 @@ public class GamePanel extends JPanel implements Runnable {
         if (keyH.debugFunc) {
             long drawEnd = System.nanoTime();
             long passedTime = drawEnd - drawStart;
+            double drawInterval = (double) 1_000_000_000 / FPS;
 
             g2.setFont(new Font("Arial", Font.PLAIN, 25));
 
             int textX = 20;
-            int textY = 480;
+            int textY = 450;
             int lineHeight = 20;
 
             g2.drawString("Player's world X: " + player.worldX, textX, textY);
@@ -400,6 +401,10 @@ public class GamePanel extends JPanel implements Runnable {
 
             g2.setColor(Color.white);
             g2.drawString("Time passed: " + passedTime, textX, textY);
+            textY += lineHeight;
+
+            g2.drawString("FPS: " + drawInterval, textX, textY);
+
         }
 
     }

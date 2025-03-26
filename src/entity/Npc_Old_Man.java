@@ -133,7 +133,6 @@ public class NPC_Old_Man extends Entity {
 
         if(dialogues[dialogueSet][0] == null){
             dialogueSet = 0;
-
             //dialogueSet--; repeat the las dialogue
         }
 
