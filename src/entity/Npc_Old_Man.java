@@ -90,37 +90,38 @@ public class NPC_Old_Man extends Entity {
     public void setDialogue() {
 
         // DIALOGUE SET 1
-        dialogues[0][0] = "Ah, traveler, " +
-                "/n you have the look " +
-                "/n of someone seeking wisdom. " +
-                "/n How may I assist you?";
+        dialogues[0][0] = "Ah, traveler.." +
+                "#You have the look" +
+                "#of someone seeking wisdom." +
+                "#How may I assist you?";
         
         dialogues[0][1] = "Patience, dear one. " +
-                "/n Rushing into danger without thought " +
-                "/n is the surest way to regret.";
+                "#Rushing into danger without thought " +
+                "#is the surest way to regret.";
         dialogues[0][2] = "There, there. " +
-                "/n Rest now, child. " +
-                "/n Even the strongest warriors " +
-                "/n need a gentle hand.";
+                "#Rest now, child. " +
+                "#Even the strongest warriors " +
+                "#need a gentle hand.";
 
         // DIALOGUE SET 2
         dialogues[1][0] = "Long ago, I lost something dear… " +
-                "/n If you happen upon it in your travels, " +
-                "/n I would be most " +
+                "#If you happen upon it in your travels, " +
+                "#I would be most " +
                 "grateful.";
         dialogues[1][1] = "You carry a heavy burden, " +
-                "/n but do not falter. " +
-                "/n Even the smallest light can push back the " +
-                "/n darkness.";
+                "#but do not falter. " +
+                "#Even the smallest light can push back the " +
+                "#darkness.";
 
 
         //DIALOGUE SET 3
         dialogues[2][0] =  "Go forth, " +
-                "/n and may the winds of fortune " +
-                "/n guide your path.";
+                "#and may the winds of fortune " +
+                "#guide your path.";
 
-
-
+        //DIALOGUE SET 4
+        dialogues[3][0] =  "Your health is low.." +
+                "#You should take a rest";
     }
 
 
@@ -131,18 +132,14 @@ public class NPC_Old_Man extends Entity {
         dialogueSet++; // this change de dialogue set everytime we speak with the npc
        // onPath = true;
 
-        if(dialogues[dialogueSet][0] == null){
+        // use a specific dialogue set based on specific conditions.
+        if(gp.player.life == gp.player.maxLife/3){
+            dialogueSet = 3;
+        }
+
+        if(dialogues[dialogueSet][0] == null) {
             dialogueSet = 0;
             //dialogueSet--; repeat the las dialogue
         }
-
-        // use a specific dialogue set based on specific conditions.
-//        if(gp.player.life == gp.player.maxLife/3){
-//            dialogueSet = 1;
-//        }
-
-
-
     }
-
 }

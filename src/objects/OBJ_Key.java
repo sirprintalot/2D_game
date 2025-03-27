@@ -7,12 +7,13 @@ import main.*;
 public class OBJ_Key extends Entity {
 
     GamePanel gp;
+    public static final String objName = "key";
 
     public OBJ_Key(GamePanel gp){
 
         super(gp);
         this.gp = gp;
-        name = "key";
+        name = objName;
         type = typeUsable;
         stackable = true;
 

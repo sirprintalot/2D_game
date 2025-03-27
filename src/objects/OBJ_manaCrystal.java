@@ -8,11 +8,12 @@ import java.awt.*;
 public class OBJ_manaCrystal extends Entity {
 
     GamePanel gp;
+    public static final String objName = "mana crystal";
     public OBJ_manaCrystal(GamePanel gp) {
         super(gp);
         this.gp = gp;
 
-        name = "mana crystal";
+        name = objName;
         stackable = true;
         type = typePickupOnly;
         value = 1;

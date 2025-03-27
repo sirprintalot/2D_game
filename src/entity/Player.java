@@ -61,16 +61,15 @@ public class Player extends Entity {
 //        worldX = gp.tileSize * 12;
 //        worldY = gp.tileSize * 13;
 
-
         //PLAYER STATUS
-        maxLife = 30;
+        maxLife = 10;
         life = maxLife;
         //projectile
         projectile = new OBJ_Fireball(gp);
 //        projectile = new OBJ_Rock(gp);
         // Player stats
         level = 1;
-        strength = 1; // the more strength more damage
+        strength = 5; // the more strength more damage
         dexterity = 1; // more dexterity, more chances to block attacks
         exp = 1;
         nextLevelExp = 5;
@@ -662,9 +661,11 @@ public class Player extends Entity {
     public boolean canReceiveItem(Entity item) {
         boolean canObtain = false;
 
+        Entity newItem = gp.entityGenerator.getObject(item.name);
+
         //CHEck if item is stackable
-        if (item.stackable) {
-            int index = searchItemOnInventory(item.name);
+        if (newItem.stackable) {
+            int index = searchItemOnInventory(newItem.name);
 
             if (index != 999) {
                 inventory.get(index).ammount++;
@@ -673,7 +674,7 @@ public class Player extends Entity {
             // new item has to be checked for vacancy
             else {
                 if (inventory.size() != inventorySize) {
-                    inventory.add(item);
+                    inventory.add(newItem);
                     canObtain = true;
                 }
             }
@@ -681,7 +682,7 @@ public class Player extends Entity {
         // NOT STACKABLE check vacancy
         else {
             if (inventory.size() != inventorySize) {
-                inventory.add(item);
+                inventory.add(newItem);
                 canObtain = true;
             }
         }

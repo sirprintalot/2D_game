@@ -5,6 +5,8 @@ import main.*;
 
 public class OBJ_shield_Wood extends Entity {
 
+    public static final String objName = "Wooden Shield";
+
     public OBJ_shield_Wood(GamePanel gp) {
         super(gp);
 

@@ -54,6 +54,8 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cCheck = new CollisionChecker(this);
     public AssetSetter assetSetter = new AssetSetter(this);
 
+    public EntityGenerator entityGenerator = new EntityGenerator(this);
+
 
     //lightning
     public EnvironmentManager eManager = new EnvironmentManager(this);

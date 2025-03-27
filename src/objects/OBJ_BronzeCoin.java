@@ -8,6 +8,7 @@ import java.awt.*;
 public class OBJ_BronzeCoin extends Entity {
 
     GamePanel gp;
+    public static final String objName = "bronze coin";
 
 
     public OBJ_BronzeCoin(GamePanel gp) {
@@ -15,7 +16,7 @@ public class OBJ_BronzeCoin extends Entity {
         this.gp = gp;
 
         type = typePickupOnly;
-        name = "bronze coin";
+        name = objName;
         value = 1;
         down1 = setup("/objects/coin_bronze", gp.tileSize, gp.tileSize);
 

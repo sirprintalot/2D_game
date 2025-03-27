@@ -9,13 +9,14 @@ import java.awt.*;
 public class OBJ_Heart extends Entity {
 
     GamePanel gp;
+    public static final String objName = "heart";
     
     public OBJ_Heart(GamePanel gp) {
         super(gp);
         this.gp = gp;
 
         type = typePickupOnly;
-        name = "heart";
+        name = objName;
         value = 3;
         down1 = setup("/objects/heart_full", gp.tileSize, gp.tileSize);
 

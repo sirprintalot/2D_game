@@ -3,9 +3,12 @@ package objects;
 import entity.*;
 import main.*;
 
+//TODO update the dialogue system for this class
 
 public class OBJ_Boots extends Entity {
 
+    public static final String objName = "light boots";
+            
     GamePanel gp;
     public int speedBoosterTimer = 0;
     public int duration = 5000;
@@ -17,7 +20,7 @@ public class OBJ_Boots extends Entity {
         value = 5;
         type = typeUsable;
         stackable = true;
-        name = "light boots";
+        name = objName;
         down1 = setup("/objects/boots", gp.tileSize, gp.tileSize);
         itemDescription ="["+ name +"] /nA pair of boots/nSpeed increased!";
         price = 10;
@@ -30,7 +33,6 @@ public class OBJ_Boots extends Entity {
                 "Your speed has increased!";
         
         if(entity.type == typePlayer)  {
-
             gp.player.speedBoosted = true;
             gp.player.speed += value;
             System.out.println("Active");

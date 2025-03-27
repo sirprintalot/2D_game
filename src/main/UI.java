@@ -477,7 +477,7 @@ public class UI {
         }
 
         // create line brakes for dialogue
-        for (String line : currentDialogue.split("/n")) {
+        for (String line : currentDialogue.split("#")) {
             g2.drawString(line, x, y);
             y += 40;
         }

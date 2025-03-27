@@ -14,31 +14,31 @@ public class SaveLoad {
         this.gp = gp;
     }
 
-    public Entity getObject(String itemName){
-
-        return switch (itemName) {
-            case "Axe" -> new OBJ_Axe(gp);
-            case "light boots" -> new OBJ_Boots(gp);
-            case "bronze coin" -> new OBJ_BronzeCoin(gp);
-            case "key" -> new OBJ_Key(gp);
-            case "Lantern" -> new OBJ_Lantern(gp);
-            case "mana crystal" -> new OBJ_manaCrystal(gp);
-            case "Red potion" -> new OBJ_Potion_Red(gp);
-            case "Blue Shield" -> new OBJ_Shield_blue(gp);
-            case "Wooden Shield" -> new OBJ_shield_Wood(gp);
-            case "Normal Sword" -> new OBJ_Sword_Normal(gp);
-            case "Tent" -> new OBJ_Tent(gp);
-            case "chest" -> new OBJ_Chest(gp);
-            case "heart" -> new OBJ_Heart(gp);
-            case "door" -> new OBJ_Door(gp);
-            case "fireball" -> new OBJ_Fireball(gp);
-            case "rock" -> new OBJ_Rock(gp);
-            default -> {
-                System.out.println("Warning: Unknown item name '" + itemName + "'");
-                yield null;
-            }
-        };
-    }
+//    public Entity getObject(String itemName){
+//
+//        return switch (itemName) {
+//            case "Axe" -> new OBJ_Axe(gp);
+//            case "light boots" -> new OBJ_Boots(gp);
+//            case "bronze coin" -> new OBJ_BronzeCoin(gp);
+//            case "key" -> new OBJ_Key(gp);
+//            case "Lantern" -> new OBJ_Lantern(gp);
+//            case "mana crystal" -> new OBJ_manaCrystal(gp);
+//            case "Red potion" -> new OBJ_Potion_Red(gp);
+//            case "Blue Shield" -> new OBJ_Shield_blue(gp);
+//            case "Wooden Shield" -> new OBJ_shield_Wood(gp);
+//            case "Normal Sword" -> new OBJ_Sword_Normal(gp);
+//            case "Tent" -> new OBJ_Tent(gp);
+//            case "chest" -> new OBJ_Chest(gp);
+//            case "heart" -> new OBJ_Heart(gp);
+//            case "door" -> new OBJ_Door(gp);
+//            case "fireball" -> new OBJ_Fireball(gp);
+//            case "rock" -> new OBJ_Rock(gp);
+//            default -> {
+//                System.out.println("Warning: Unknown item name '" + itemName + "'");
+//                yield null;
+//            }
+//        };
+//    }
 
     public void save(){
         try {
@@ -130,7 +130,7 @@ public class SaveLoad {
             
 //            System.out.println("item names " + ds.itemNames);
             for(int i = 0; i < ds.itemNames.size(); i++){
-                gp.player.inventory.add(getObject(ds.itemNames.get(i)));
+                gp.player.inventory.add(gp.entityGenerator.getObject(ds.itemNames.get(i)));
                 gp.player.inventory.get(i).ammount = ds.itemAmount.get(i);
             }
 
@@ -150,13 +150,13 @@ public class SaveLoad {
                     }
                     else{
                         
-                        gp.obj[mapNum][i] = getObject(ds.mapObjectNames[mapNum][i]);
+                        gp.obj[mapNum][i] = gp.entityGenerator.getObject(ds.mapObjectNames[mapNum][i]);
 
                         gp.obj[mapNum][i].worldX = ds.mapObjectWorldX[mapNum][i];
                         gp.obj[mapNum][i].worldY = ds.mapObjectWorldY[mapNum][i];
 
                         if(ds.mapObjectLootName[mapNum][i] != null){
-                            gp.obj[mapNum][i].loot = getObject(ds.mapObjectLootName[mapNum][i]);
+                            gp.obj[mapNum][i].loot = gp.entityGenerator.getObject(ds.mapObjectLootName[mapNum][i]);
                         }
 
                         gp.obj[mapNum][i].opened = ds.mapObjectOpened[mapNum][i];
