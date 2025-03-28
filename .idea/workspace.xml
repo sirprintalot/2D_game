@@ -8,35 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386db496-e533-4c11-89ba-e5f09e407936" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/EntityGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Npc_Old_Man.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Npc_Old_Man.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/UI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/UI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Boots.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/objects/OBJ_Boots.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save.dat" beforeDir="false" afterPath="$PROJECT_DIR$/save.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/SaveLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/SaveLoad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Npc_Old_Man.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Npc_Old_Man.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environment/Lighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/Lighting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Axe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Axe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Boots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_BronzeCoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_BronzeCoin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Chest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Door.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Fireball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Fireball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Heart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Heart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Lantern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Lantern.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Potion_Red.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Potion_Red.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Rock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Shield_blue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Shield_blue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Sword_Normal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Sword_Normal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Tent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Tent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_manaCrystal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_manaCrystal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_shield_Wood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_shield_Wood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

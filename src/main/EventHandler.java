@@ -203,6 +203,7 @@ public class EventHandler {
 
         canTouchEvent = false;
         gp.playSoundEffect(18);
+        gp.eManager.lighting.resetDay();
 
     }
 
