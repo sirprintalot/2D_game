@@ -89,7 +89,6 @@ public class MON_Orc extends Entity {
             //stop hunting at a certain distance
             if (this.getTileDistance(gp.player) >= 10) {
                 onPath = false;
-                System.out.println("aggro finished!");
             }
             //search direction to goal
             // case 2 the npc follows the player
@@ -107,7 +106,6 @@ public class MON_Orc extends Entity {
 //            int i = new Random().nextInt(100) + 1;
 //            if(i > 50){
 //                onPath = true;
-//                System.out.println("aggro started ");
 //            }
             }
             //get a random direction

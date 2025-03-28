@@ -27,7 +27,7 @@ public class MON_GreenSlime extends Entity {
         defense = 2;
         exp = 2;
 
-        projectile = new OBJ_Rock(gp);
+//        projectile = new OBJ_Rock(gp);
 
         solidArea.x = 3;
         solidArea.y = 18;
@@ -75,9 +75,8 @@ public class MON_GreenSlime extends Entity {
             // case 2 the npc follows the player
 //            speed = 7;
             searchPath(getGoalCol(gp.player), getGoalRow(gp.player));
-
             //check if it shoots a projectile
-            checkShoot(200, 30);
+//            checkShoot(200, 30);
         } else {
             //check if starts chasing
 //            checkStopChasing(gp.player, 15, 100);
@@ -97,8 +96,6 @@ public class MON_GreenSlime extends Entity {
 //        }
             //get a random direction
             getRandomDirection();
-
-
         }
 
     }

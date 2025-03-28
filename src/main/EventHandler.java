@@ -29,32 +29,34 @@ public class EventHandler {
         int col = 0;
 
         while (map < gp.maxMap && row < gp.maxWorldRow && col < gp.maxWorldCol) {
-                eventRect[map][col][row] = new EventRect();
-                eventRect[map][col][row].x = 23;
-                eventRect[map][col][row].y = 23;
-                eventRect[map][col][row].width = 2;
-                eventRect[map][col][row].height = 2;
-                eventRect[map][col][row].eventRectDefaultX = eventRect[map][col][row].x;
-                eventRect[map][col][row].eventRectDefaultY = eventRect[map][col][row].y;
-                col++;
-                if(col == gp.maxWorldCol){
-                    col = 0;
-                    row++;
-                    if(row == gp.maxWorldRow){
-                        row = 0;
-                        map++;
-                    }
+            eventRect[map][col][row] = new EventRect();
+            eventRect[map][col][row].x = 23;
+            eventRect[map][col][row].y = 23;
+            eventRect[map][col][row].width = 2;
+            eventRect[map][col][row].height = 2;
+            eventRect[map][col][row].eventRectDefaultX = eventRect[map][col][row].x;
+            eventRect[map][col][row].eventRectDefaultY = eventRect[map][col][row].y;
+            col++;
+            if (col == gp.maxWorldCol) {
+                col = 0;
+                row++;
+                if (row == gp.maxWorldRow) {
+                    row = 0;
+                    map++;
                 }
+            }
         }
 
         setDialogue();
     }
 
-    public void setDialogue(){
-         eventMaster.dialogues[0][0] = "You fall into a pit";
+    public void setDialogue() {
+        eventMaster.dialogues[0][0] = "You fall into a pit";
 
         eventMaster.dialogues[1][0] = "You drank the healing water. /nLife and Mana restored " +
                 "/n(Progress saved!)";
+
+        eventMaster.dialogues[2][0] = "Teleported!!";
     }
 
     public void checkEvent() {
@@ -74,13 +76,9 @@ public class EventHandler {
 
             if (hit(0, 27, 16, "right")) {
                 damagePit(gp.dialogueState);
-            }
-            
-            else if (hit(0, 23, 42, "any")) {
+            } else if (hit(0, 23, 42, "any")) {
                 teleport(gp.dialogueState);
-            }
-
-            else if (hit(0, 23, 12, "any")) {
+            } else if (hit(0, 23, 12, "any")) {
                 healingPool(gp.dialogueState);
             }
 
@@ -96,9 +94,7 @@ public class EventHandler {
                 nextMap(0, 10, 39);
                 gp.stopMusic();
                 gp.playMusic(0);
-            }
-
-            else if (hit(1, 12, 9, "up")) {
+            } else if (hit(1, 12, 9, "up")) {
                 speak(gp.npc[1][1]);
             }
         }
@@ -109,7 +105,7 @@ public class EventHandler {
 
         boolean hit = false;
 
-        if(map == gp.currentMap){
+        if (map == gp.currentMap) {
             // PLayer's position
             gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
             gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
@@ -143,7 +139,7 @@ public class EventHandler {
 
         gp.gameState = gameState;
         gp.playSoundEffect(10);
-        eventMaster.startDialogue(eventMaster,0 );
+        eventMaster.startDialogue(eventMaster, 0);
         gp.player.life -= 1;
 
         //this flag makes the event happens just one time
@@ -174,9 +170,10 @@ public class EventHandler {
 
     public void teleport(int gameState) {
 
-        gp.playSoundEffect(12);
         gp.gameState = gameState;
-        gp.ui.currentDialogue = "Teleport!";
+        gp.playSoundEffect(12);
+
+        eventMaster.startDialogue(eventMaster, 2);
 
         // position to be teleported to
         gp.player.worldX = gp.tileSize * 38;
@@ -184,9 +181,10 @@ public class EventHandler {
 
         //TODO after one teleportation reset the tile to the original one
         //TODO MAKE THE PLAYER flicker while teleporting
+        //TODO set dialogue
     }
 
-    public void nextMap(int map, int col, int row){
+    public void nextMap(int map, int col, int row) {
 
         gp.gameState = gp.transitionState;
 
@@ -207,14 +205,13 @@ public class EventHandler {
 
     }
 
-    public void speak(Entity entity){
-        if(gp.keyH.enterPressed){
+    public void speak(Entity entity) {
+        if (gp.keyH.enterPressed) {
             gp.gameState = gp.dialogueState;
             gp.player.attackCancel = true;
             entity.speak();
         }
     }
-
 
 
 }
