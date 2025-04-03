@@ -94,6 +94,10 @@ public class Player extends Entity {
     }
 
     public void setDefaultPosition() {
+//        //test map
+//        worldX = gp.tileSize * 26;
+//        worldY = gp.tileSize * 60;
+//        direction = "down";
 
         worldX = gp.tileSize * 23;
         worldY = gp.tileSize * 21;
