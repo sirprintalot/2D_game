@@ -732,6 +732,7 @@ public class UI {
             gp.player.worldY = gp.tileSize * gp.eventHandler.tempRow;
             gp.eventHandler.previousEventX = gp.player.worldX;
             gp.eventHandler.previousEventY = gp.player.worldY;
+            gp.changeArea();
         }
 
     }

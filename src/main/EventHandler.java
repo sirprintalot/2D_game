@@ -82,22 +82,36 @@ public class EventHandler {
                 healingPool(gp.dialogueState);
             }
 
-            //Move to the next map
-            else if (hit(0, 10, 39, "any")) {
-                nextMap(1, 12, 13);
-                gp.stopMusic();
-                gp.playMusic(19);
-            }
 
+            //Move to the Merchant map
+            else if (hit(0, 10, 39, "any")) {
+                nextMap(1, 12, 13, gp.indoor);
+                gp.stopMusic();
+            }
             //Go back to the original map
             else if (hit(1, 12, 13, "any")) {
-                nextMap(0, 10, 39);
-                gp.stopMusic();
-                gp.playMusic(0);
+                nextMap(0, 10, 39, gp.outside);
+                //speak to the merchant
             } else if (hit(1, 12, 9, "up")) {
                 speak(gp.npc[1][1]);
+                // go into the dungeon
+            } else if (hit(0,12,9, "any")) {
+                nextMap(2,9, 41, gp.dungeon );
+            }
+            //get of the dungeon
+            else if (hit(2,9,41, "any")) {
+                nextMap(0,11, 9, gp.outside );
+            }
+            //get into the dungeon 2
+            else if (hit(2,8,7, "any")) {
+                nextMap(3,33, 22, gp.dungeon );
+            }
+            //get out of the dungeon 2
+            else if (hit(3,26,40, "any")) {
+                nextMap(2,8, 7, gp.dungeon );
             }
         }
+
     }
 
     //TODO check this method again
@@ -184,14 +198,15 @@ public class EventHandler {
         //TODO set dialogue
     }
 
-    public void nextMap(int map, int col, int row) {
+    public void nextMap(int map, int col, int row, int area) {
 
         gp.gameState = gp.transitionState;
-
         //Transition
         tempMap = map;
         tempCol = col;
         tempRow = row;
+
+        gp.nextArea = area;
 
 //        gp.currentMap = map;
 //        gp.player.worldX = gp.tileSize * col;
@@ -201,7 +216,7 @@ public class EventHandler {
 
         canTouchEvent = false;
         gp.playSoundEffect(18);
-        gp.eManager.lighting.resetDay();
+//        gp.eManager.lighting.resetDay();
 
     }
 

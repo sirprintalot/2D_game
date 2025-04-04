@@ -62,10 +62,10 @@ public class Map extends TileManager {
         g2.drawImage(worldMap[gp.currentMap], x, y, width, height, null);
 
         // Draw player
-        double scale = (double) (gp.tileSize * gp.maxWorldCol) /width;
-        int playerX = (int)(x + gp.player.worldX / scale);
-        int playerY = (int)(y + gp.player.worldY / scale);
-        int playerSize = (int)(gp.tileSize/scale + 8);
+        double scale = (double) (gp.tileSize * gp.maxWorldCol) / width;
+        int playerX = (int) (x + gp.player.worldX / scale);
+        int playerY = (int) (y + gp.player.worldY / scale);
+        int playerSize = (int) (gp.tileSize / scale + 8);
 
         g2.drawImage(gp.player.down1, playerX, playerY, playerSize, playerSize, null);
 
@@ -76,8 +76,8 @@ public class Map extends TileManager {
 
     }
 
-    public void drawMiniMap(Graphics2D g2){
-        if(miniMapOn){
+    public void drawMiniMap(Graphics2D g2) {
+        if (miniMapOn) {
 
             // Draw the map
             int width = 200;
@@ -86,19 +86,19 @@ public class Map extends TileManager {
             int y = 3;
 
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.85f));
-            g2.drawImage(worldMap[gp.currentMap], x, y,width, height, null);
+            g2.drawImage(worldMap[gp.currentMap], x, y, width, height, null);
 
             // Draw player
-            double scale = (double) (gp.tileSize * gp.maxWorldCol) /width;
-            int playerX = (int)(x + gp.player.worldX / scale);
-            int playerY = (int)(y + gp.player.worldY / scale);
-            int playerSize = (int)(gp.tileSize/3.8);
+            double scale = (double) (gp.tileSize * gp.maxWorldCol) / width;
+            int playerX = (int) (x + gp.player.worldX / scale);
+            int playerY = (int) (y + gp.player.worldY / scale);
+            int playerSize = (int) (gp.tileSize / 3.8);
 
             // draw the player with the offset
-            g2.drawImage(gp.player.down1, playerX-4, playerY-4, playerSize, playerSize, null);
+            g2.drawImage(gp.player.down1, playerX - 4, playerY - 4, playerSize, playerSize, null);
 
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-            
+
         }
     }
 

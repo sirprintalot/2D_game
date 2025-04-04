@@ -8,93 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386db496-e533-4c11-89ba-e5f09e407936" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Resources/maps/dungeon01.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/maps/dungeon02.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/maps/indoor01.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/maps/tiledata.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/maps/worldmap.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/earth.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/017.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/floor01.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/037.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/grass00.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/001.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/grass01.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/002.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/hut.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/000.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road00.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/003.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road01.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/004.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road02.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/005.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road03.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/006.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road04.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/007.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road05.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/008.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road06.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/009.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road07.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/010.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road08.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/011.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road09.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/012.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road10.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/013.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road11.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/014.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/road12.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/015.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/table01.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/036.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/teleport.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/tree.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/016.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/wall.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/032.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water00.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/018.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water01.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/019.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water02.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/020.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water03.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/021.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water04.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/022.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water05.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/023.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water06.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/024.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water07.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/025.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water08.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/026.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water09.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/027.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water10.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/028.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water11.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/029.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water12.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/030.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/tiles/water13.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/tiles/031.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/ai/Pathfinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/ai/Pathfinder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/EventHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/EventHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/GamePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tile/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/tile/Map.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tile/TileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/tile/TileManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/earth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/floor01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/grass00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/grass01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/hut.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/road12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/table01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/teleport.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/tree.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/wall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tiles/water13.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/save.dat" beforeDir="false" afterPath="$PROJECT_DIR$/save.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/Lighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/Lighting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tile/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tile/Map.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

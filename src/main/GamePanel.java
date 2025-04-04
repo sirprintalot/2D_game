@@ -32,7 +32,7 @@ public class GamePanel extends JPanel implements Runnable {
     public int maxWorldRow;
 
     public final int maxMap = 10;
-    
+
     public int currentMap = 0;
 
     // FULL SCREEN
@@ -118,9 +118,15 @@ public class GamePanel extends JPanel implements Runnable {
     public final int sleepState = 9;
     public final int mapState = 10;
 
+    // Game areas
+    public int currentArea;
+    public int nextArea;
+    public final int outside = 50;
+    public final int indoor = 51;
+    public final int dungeon = 52;
+
 
     public GamePanel() {
-
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
@@ -136,6 +142,8 @@ public class GamePanel extends JPanel implements Runnable {
         assetSetter.setInteractiveTiles();
         eManager.setup();
 
+        currentArea = outside;
+
         gameState = tittleState;
         playMusic(8);
 
@@ -146,7 +154,7 @@ public class GamePanel extends JPanel implements Runnable {
         if (fullScreenOn) {
             setFullScreen();
         }
-        
+
     }
 
     public void setFullScreen() {
@@ -164,28 +172,27 @@ public class GamePanel extends JPanel implements Runnable {
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         screenWidth2 = (int) (gd.getDefaultConfiguration().getBounds().getWidth());
         screenHeight2 = (int) (gd.getDefaultConfiguration().getBounds().getHeight());
-        
+
     }
 
-    public void resetGame(boolean restart){
-        
+    public void resetGame(boolean restart) {
+
         player.setDefaultPosition();
         player.restorePlayerStats();
         player.resetCounter();
         assetSetter.setNpc();
         assetSetter.setMonster();
-        
+
         playMusic(0);
 
-        if(restart){
-            player.setDefaultValues(); 
+        if (restart) {
+            player.setDefaultValues();
             assetSetter.setObject();
             assetSetter.setInteractiveTiles();
             eManager.lighting.resetDay();
         }
-        
-    }
 
+    }
 
 
     public void startGameThread() {
@@ -303,7 +310,7 @@ public class GamePanel extends JPanel implements Runnable {
             ui.draw(g2);
         }
         //map screen
-        else if(gameState == mapState){
+        else if (gameState == mapState) {
             map.drawFullMapScreen(g2);
         }
 
@@ -545,6 +552,25 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
 
+    // change the game area
+    public void changeArea() {
+        if (nextArea != currentArea) {
+            stopMusic();
+            if (nextArea == outside) {
+                playMusic(0);
+            }
+            if (nextArea == indoor) {
+                playMusic(19);
+            }
+            if (nextArea == dungeon) {
+                playMusic(23);
+            }
+        }
+
+
+        assetSetter.setMonster();
+        currentArea = nextArea;
+    }
 
     //SOUND 
     public void playMusic(int songIndex) {

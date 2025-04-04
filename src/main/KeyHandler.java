@@ -204,9 +204,7 @@ public class KeyHandler implements KeyListener {
         }
         // map
         if (code == KeyEvent.VK_M) {
-
             gp.gameState = gp.mapState;
-
         }
         // Mini map
         if (code == KeyEvent.VK_X) {
@@ -229,13 +227,13 @@ public class KeyHandler implements KeyListener {
             debugFunc = !debugFunc;
         }
 
-        if (code == KeyEvent.VK_R) {
-            switch (gp.currentMap) {
-                case 0 -> gp.tileM.loadMap("/maps/worldV3.txt", 0);
-                case 1 -> gp.tileM.loadMap("/maps/interior01.txt", 1);
-            }
-
-        }
+//        if (code == KeyEvent.VK_R) {
+//            switch (gp.currentMap) {
+//                case 0 -> gp.tileM.loadMap("/maps/worldV3.txt", 0);
+//                case 1 -> gp.tileM.loadMap("/maps/interior01.txt", 1);
+//            }
+//
+//        }
 
 
     }

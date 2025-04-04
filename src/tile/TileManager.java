@@ -1,6 +1,7 @@
 package tile;
 
 import main.*;
+import org.w3c.dom.ls.*;
 
 import javax.imageio.*;
 import java.awt.*;
@@ -19,9 +20,7 @@ public class TileManager {
     ArrayList<String> collisionStatus = new ArrayList<>();
 
     public TileManager(GamePanel gp) {
-
         this.gp = gp;
-
         //Read the Tile Data
         InputStream is = getClass().getResourceAsStream("/maps/tiledata.txt");
         assert is != null;
@@ -249,11 +248,12 @@ public class TileManager {
                 col = 0;  // Reset column counter for next row
                 row++;    // Move to the next row
             }
-            System.out.println("map loaded");
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println("map loaded loadMap method");
     }
 
     public void draw(Graphics2D g2) {
