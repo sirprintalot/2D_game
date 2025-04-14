@@ -124,6 +124,7 @@ public class Entity {
     public final int typePickupOnly = 7;
     public final int typeObstacle = 8;
     public final int typeLight = 9;
+    public final int typePickAxe = 10;
 
     //DIALOGUE
     public String[][] dialogues = new String[20][20];

@@ -8,17 +8,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386db496-e533-4c11-89ba-e5f09e407936" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Resources/interactive_tiles/destructiblewall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/interactive_tiles/metalplate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/monster/bat_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/monster/bat_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/npc/bigrock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_up_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/objects/OBJ_PickAxe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tile_interactive/IT_DestructibleWall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save.dat" beforeDir="false" afterPath="$PROJECT_DIR$/save.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/AssetSetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/AssetSetter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/EntityGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/EntityGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/Sound.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/Sound.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environment/Lighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/Lighting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AssetSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/EntityGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EntityGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tile/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tile/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tile/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Lantern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Lantern.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,11 +85,11 @@
       <recent name="$PROJECT_DIR$/Resources/npc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Resources/tiles" />
-      <recent name="$PROJECT_DIR$/Resources/maps" />
-      <recent name="$PROJECT_DIR$/Resources/monster" />
-      <recent name="$PROJECT_DIR$/Resources/player" />
+      <recent name="$PROJECT_DIR$/Resources/interactive_tiles" />
       <recent name="$PROJECT_DIR$/Resources/npc" />
+      <recent name="$PROJECT_DIR$/Resources/player" />
+      <recent name="$PROJECT_DIR$/Resources/objects" />
+      <recent name="$PROJECT_DIR$/Resources/monster" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

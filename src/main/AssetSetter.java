@@ -85,36 +85,62 @@ public class AssetSetter {
         objIndex++;
         gp.obj[mapNum][objIndex] = new OBJ_Door(gp);
         gp.obj[mapNum][objIndex].worldX = 12 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 12  * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 12 * gp.tileSize;
 //
         objIndex++;
         gp.obj[mapNum][objIndex] = new OBJ_Chest(gp);
         gp.obj[mapNum][objIndex].setLoot(new OBJ_Potion_Red(gp));
         gp.obj[mapNum][objIndex].worldX = 34 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 8  * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 8 * gp.tileSize;
 
         objIndex++;
-        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp );
+        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp);
         gp.obj[mapNum][objIndex].setLoot(new OBJ_Potion_Red(gp));
         gp.obj[mapNum][objIndex].worldX = 34 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 9  * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 9 * gp.tileSize;
 
         objIndex++;
         gp.obj[mapNum][objIndex] = new OBJ_Chest(gp);
         gp.obj[mapNum][objIndex].setLoot(new OBJ_manaCrystal(gp));
         gp.obj[mapNum][objIndex].worldX = 34 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 10  * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 10 * gp.tileSize;
 
         objIndex++;
         gp.obj[mapNum][objIndex] = new OBJ_Lantern(gp);
         gp.obj[mapNum][objIndex].worldX = 18 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 20  * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 20 * gp.tileSize;
 
         objIndex++;
         gp.obj[mapNum][objIndex] = new OBJ_Tent(gp);
         gp.obj[mapNum][objIndex].worldX = 35 * gp.tileSize;
-        gp.obj[mapNum][objIndex].worldY = 35  * gp.tileSize;
-        
+        gp.obj[mapNum][objIndex].worldY = 35 * gp.tileSize;
+
+
+        mapNum = 2;
+        objIndex++;
+        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp);
+        gp.obj[mapNum][objIndex].setLoot(new OBJ_PickAxe(gp));
+        gp.obj[mapNum][objIndex].worldX = 40 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 41 * gp.tileSize;
+
+        objIndex++;
+        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp);
+        gp.obj[mapNum][objIndex].setLoot(new OBJ_Potion_Red(gp));
+        gp.obj[mapNum][objIndex].worldX = 13 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 16 * gp.tileSize;
+
+        objIndex++;
+        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp);
+        gp.obj[mapNum][objIndex].setLoot(new OBJ_Potion_Red(gp));
+        gp.obj[mapNum][objIndex].worldX = 26 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 34 * gp.tileSize;
+
+        objIndex++;
+        gp.obj[mapNum][objIndex] = new OBJ_Chest(gp);
+        gp.obj[mapNum][objIndex].setLoot(new OBJ_Potion_Red(gp));
+        gp.obj[mapNum][objIndex].worldX = 27 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 15 * gp.tileSize;
+
     }
 
     public void setNpc() {
@@ -130,12 +156,11 @@ public class AssetSetter {
 
 
         // Merchant
-         mapNum = 1;
-         i = 1;
+        mapNum = 1;
+        i = 1;
         gp.npc[mapNum][i] = new NPC_Merchant(gp);
         gp.npc[mapNum][i].worldX = gp.tileSize * 12;
         gp.npc[mapNum][i].worldY = gp.tileSize * 7;
-
 
 
     }
@@ -244,6 +269,27 @@ public class AssetSetter {
         gp.inTile[mapNum][i] = new IT_DryTree(gp, 10, 41);
         i++;
         gp.inTile[mapNum][i] = new IT_DryTree(gp, 10, 40);
+
+        //DUNGEON   
+        mapNum = 2;
+        i = 0 ;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 30); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 17, 31); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 17, 32); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 17, 34); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 34); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 33); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 10, 22); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 10, 24); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 18); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 19); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 20); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 21); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 13); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 14); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 22, 28); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 30, 28); i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 32, 28); i++;
 
     }
 
