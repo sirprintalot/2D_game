@@ -30,6 +30,7 @@ public class EntityGenerator {
             case OBJ_Sword_Normal.objName -> new OBJ_Sword_Normal(gp);
             case OBJ_Tent.objName -> new OBJ_Tent(gp);
             case OBJ_PickAxe.objName -> new OBJ_PickAxe(gp);
+            case OBJ_IronDoor.objName -> new OBJ_IronDoor(gp);
             default -> {
                 System.out.println("Warning: Unknown item name '" + itemName + "'");
                 yield null;

@@ -8,35 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386db496-e533-4c11-89ba-e5f09e407936" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Resources/interactive_tiles/destructiblewall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/interactive_tiles/metalplate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/bat_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/bat_down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/npc/bigrock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_left_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_left_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_right_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_right_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_up_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/player/boy_pick_up_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/OBJ_PickAxe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tile_interactive/IT_DestructibleWall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/NPC_BigRock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/objects/OBJ_IronDoor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tile_interactive/IT_MetalPLate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Entity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/AssetSetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/AssetSetter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/EntityGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/EntityGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/GamePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/main/Sound.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/main/Sound.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/AssetSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetSetter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/EntityGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EntityGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Lantern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Lantern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Door.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

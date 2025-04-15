@@ -168,6 +168,10 @@ public class Entity {
     public void setAction() {
     }
 
+    public void move(String direction){
+        
+    }
+
     public String getOppositeDirection(String direction) {
         String opDirection = "";
         switch (direction) {
@@ -775,8 +779,8 @@ public class Entity {
             changeAlpha(g2, 1f);
 
             //draw solid area
-            g2.setColor(Color.BLUE);
-            g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+            //g2.setColor(Color.BLUE);
+           // g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
         }
     }
 
