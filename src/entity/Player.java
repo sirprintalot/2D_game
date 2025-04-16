@@ -58,8 +58,8 @@ public class Player extends Entity {
 //        worldY = gp.tileSize * 10;
 //        worldX = gp.tileSize * 11;
         //test hut map
-//        worldX = gp.tileSize * 12;
-//        worldY = gp.tileSize * 13;
+        worldX = gp.tileSize * 8;
+        worldY = gp.tileSize * 40;
 
         //PLAYER STATUS
         maxLife = 10;
@@ -89,16 +89,16 @@ public class Player extends Entity {
         getAttackImage();
         getGuardImage();
         setItems();
-        setDefaultPosition();
+//        setDefaultPosition();
 
     }
 
     public void setDefaultPosition() {
 
         //World Map
-        worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 21;
-        direction = "down";
+//        worldX = gp.tileSize * 23;
+//        worldY = gp.tileSize * 21;
+//        direction = "down";
 
         //for map 1
 //        worldY = gp.tileSize * 10;
@@ -106,9 +106,9 @@ public class Player extends Entity {
 //        direction = "up";
 
         //for map 2
-//        worldY = gp.tileSize * 20;
-//        worldX = gp.tileSize * 8;
-//        direction = "up";
+        worldY = gp.tileSize * 20;
+        worldX = gp.tileSize * 8;
+        direction = "up";
     }
 
     public void restorePlayerStats() {

@@ -34,8 +34,9 @@ public class IT_DestructibleWall extends InteractiveTile{
         return correctItem;
     }
 
+    //TODO fix the sound bug
     public void playSoundEffect(){
-        gp.playSoundEffect(16);
+        gp.playSoundEffect(25);
     }
 
     public InteractiveTile getDestroyedForm(){

@@ -41,6 +41,8 @@ public class Sound {
         soundURL[24] = getClass().getResource("/sounds/dooropen.wav");
         soundURL[25] = getClass().getResource("/sounds/chipwall.wav");
 
+        soundURL[26] = getClass().getResource("/sounds/unlock.wav");
+
     }
 
 

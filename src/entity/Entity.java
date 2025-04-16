@@ -116,6 +116,9 @@ public class Entity {
     public final int typeNpc = 1;
     public final int typeMonster = 2;
 
+    // dungeon puzzle
+    public Entity linkedEntity;
+
     //Objects
     public final int typeSword = 3;
     public final int typeAxe = 4;

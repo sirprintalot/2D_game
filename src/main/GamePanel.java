@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public final int maxMap = 10;
 
-    public int currentMap = 0;
+    public int currentMap = 2;
 
     // FULL SCREEN
     int screenWidth2 = screenWidth;
@@ -565,11 +565,14 @@ public class GamePanel extends JPanel implements Runnable {
             if (nextArea == dungeon) {
                 playMusic(23);
             }
+
+            // reset all the npc when exiting an area
+            //TODO create a separate method that only affects certain NPCs
+            assetSetter.setNpc();
         }
 
-
-        assetSetter.setMonster();
         currentArea = nextArea;
+        assetSetter.setMonster();
     }
 
     //SOUND 
