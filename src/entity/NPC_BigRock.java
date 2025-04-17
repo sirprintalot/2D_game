@@ -17,8 +17,7 @@ public class NPC_BigRock extends Entity {
         super(gp);
         name = npcName;
         direction = "down";
-        speed = 4;
-//        solidArea = new Rectangle();
+        speed = 6;
         solidArea.x = 2;
         solidArea.y = 6;
         solidAreaDefaultX = solidArea.x;
@@ -99,7 +98,7 @@ public class NPC_BigRock extends Entity {
         // rock list
         for (int i = 0; i < gp.npc[1].length; i++) {
             if (gp.npc[gp.currentMap][i] != null &&
-                    gp.npc[gp.currentMap][i].name.equals(NPC_BigRock.npcName)) {
+                    gp.npc[gp.currentMap][i]instanceof NPC_BigRock) {
                 rockList.add(gp.npc[gp.currentMap][i]);
             }
         }
@@ -112,7 +111,7 @@ public class NPC_BigRock extends Entity {
             int yDistance = Math.abs(worldY - plateList.get(i).worldY);
             int distance = Math.max(xDistance, yDistance);
 
-            int minDistance = 8;
+            int minDistance = 8;   //in pixels
 
             if (distance < minDistance) {
                 if (linkedEntity == null) {

@@ -6,7 +6,7 @@ import objects.*;
 
 import java.io.*;
 
-public class SaveLoad {
+public class  SaveLoad {
 
     GamePanel gp;
 
@@ -156,7 +156,7 @@ public class SaveLoad {
                         gp.obj[mapNum][i].worldY = ds.mapObjectWorldY[mapNum][i];
 
                         if(ds.mapObjectLootName[mapNum][i] != null){
-                            gp.obj[mapNum][i].loot = gp.entityGenerator.getObject(ds.mapObjectLootName[mapNum][i]);
+                            gp.obj[mapNum][i].setLoot(gp.entityGenerator.getObject(ds.mapObjectLootName[mapNum][i]));
                         }
 
                         gp.obj[mapNum][i].opened = ds.mapObjectOpened[mapNum][i];

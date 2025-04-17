@@ -8,6 +8,7 @@ import java.awt.*;
 import java.util.*;
 
 public class IT_DestructibleWall extends InteractiveTile{
+
     GamePanel gp;
 
     public IT_DestructibleWall(GamePanel gp, int col, int row) {
@@ -36,7 +37,7 @@ public class IT_DestructibleWall extends InteractiveTile{
 
     //TODO fix the sound bug
     public void playSoundEffect(){
-        gp.playSoundEffect(25);
+        gp.playSoundEffect(16);
     }
 
     public InteractiveTile getDestroyedForm(){
