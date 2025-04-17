@@ -36,7 +36,7 @@ public class Lighting {
         Graphics2D g2 = (Graphics2D)darknessFilter.getGraphics();
 
         if(gp.player.currentLight == null){
-            g2.setColor(new Color(0,0,0,0.95f));
+            g2.setColor(new Color(0,0,0,0.93f));
         }
 
         else{
@@ -60,7 +60,7 @@ public class Lighting {
             color[8] = new Color(0,0,0,0.91f);
             color[9] = new Color(0,0,0,0.92f);
             color[10] = new Color(0,0,0,0.94f);
-            color[11] = new Color(0,0,0,0.95f);
+            color[11] = new Color(0,0,0,0.97f);
 
             fraction[0] = 0f;
             fraction[1] = 0.4f;

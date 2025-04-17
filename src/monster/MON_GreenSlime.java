@@ -95,7 +95,7 @@ public class MON_GreenSlime extends Entity {
 //            }
 //        }
             //get a random direction
-            getRandomDirection();
+            getRandomDirection(60);
         }
 
     }

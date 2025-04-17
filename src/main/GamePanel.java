@@ -177,6 +177,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void resetGame(boolean restart) {
 
+        //for world map1
+//        currentArea = outside;
+
+        //for dungeon
+        currentArea = dungeon;
         player.setDefaultPosition();
         player.restorePlayerStats();
         player.resetCounter();

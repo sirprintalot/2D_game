@@ -507,10 +507,10 @@ public class Entity {
         }
     }
 
-    public void getRandomDirection() {
+    public void getRandomDirection(int interval) {
         actionLockCounter++;
 
-        if (actionLockCounter == 120) {
+        if (actionLockCounter == interval) {
 
             Random rand = new Random();
             int i = rand.nextInt(100) + 1;

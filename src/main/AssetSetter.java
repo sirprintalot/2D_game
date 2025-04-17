@@ -244,57 +244,123 @@ public class AssetSetter {
         gp.monster[mapNum][i].worldX = gp.tileSize * 39;
         gp.monster[mapNum][i].worldY = gp.tileSize * 9;
 
+        // Dungeon 2 pt.
+        mapNum = 2;
+
+        i++;
+        gp.monster[mapNum][i] = new MON_Bat(gp);
+        gp.monster[mapNum][i].worldX = gp.tileSize * 34;
+        gp.monster[mapNum][i].worldY = gp.tileSize * 39;
+
+        i++;
+        gp.monster[mapNum][i] = new MON_Bat(gp);
+        gp.monster[mapNum][i].worldX = gp.tileSize * 36;
+        gp.monster[mapNum][i].worldY = gp.tileSize * 25;
+
+        i++;
+        gp.monster[mapNum][i] = new MON_Bat(gp);
+        gp.monster[mapNum][i].worldX = gp.tileSize * 39;
+        gp.monster[mapNum][i].worldY = gp.tileSize * 26;
+
+        i++;
+        gp.monster[mapNum][i] = new MON_Bat(gp);
+        gp.monster[mapNum][i].worldX = gp.tileSize * 28;
+        gp.monster[mapNum][i].worldY = gp.tileSize * 11;
+
+        i++;
+        gp.monster[mapNum][i] = new MON_Bat(gp);
+        gp.monster[mapNum][i].worldX = gp.tileSize * 10;
+        gp.monster[mapNum][i].worldY = gp.tileSize * 19;
+
+
     }
 
     public void setInteractiveTiles() {
 
         int mapNum = 0;
         int i = 0;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 27, 12);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 28, 12);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 29, 12);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 30, 12);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 31, 12);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 32, 12);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 33, 12);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 18, 40);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 17, 40);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 16, 40);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 15, 40);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 14, 40);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 13, 40);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 13, 41);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 12, 41);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 11, 41);i++;
-        gp.inTile[mapNum][i] = new IT_DryTree(gp, 10, 41);i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 27, 12);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 28, 12);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 29, 12);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 30, 12);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 31, 12);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 32, 12);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 33, 12);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 18, 40);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 17, 40);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 16, 40);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 15, 40);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 14, 40);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 13, 40);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 13, 41);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 12, 41);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 11, 41);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DryTree(gp, 10, 41);
+        i++;
         gp.inTile[mapNum][i] = new IT_DryTree(gp, 10, 40);
 
         //DUNGEON   
         mapNum = 2;
         i = 0;
         //Destructible wall
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 30);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 17, 31);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 17, 32);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 17, 34);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 34);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 33);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 10, 22);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 10, 24);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 18);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 19);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 20);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 21);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 13);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 14);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 22, 28);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 30, 28);i++;
-        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 32, 28);i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 30);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 17, 31);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 17, 32);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 17, 34);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 34);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 33);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 10, 22);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 10, 24);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 18);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 19);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 20);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 38, 21);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 13);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 18, 14);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 22, 28);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 30, 28);
+        i++;
+        gp.inTile[mapNum][i] = new IT_DestructibleWall(gp, 32, 28);
+        i++;
 
         //Metal plate
-        gp.inTile[mapNum][i] = new IT_MetalPLate(gp, 20, 22);i++;
-        gp.inTile[mapNum][i] = new IT_MetalPLate(gp, 8, 17);i++;
-        gp.inTile[mapNum][i] = new IT_MetalPLate(gp, 39, 31);i++;
+        gp.inTile[mapNum][i] = new IT_MetalPLate(gp, 20, 22);
+        i++;
+        gp.inTile[mapNum][i] = new IT_MetalPLate(gp, 8, 17);
+        i++;
+        gp.inTile[mapNum][i] = new IT_MetalPLate(gp, 39, 31);
+        i++;
 
     }
 

@@ -8,15 +8,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386db496-e533-4c11-89ba-e5f09e407936" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/monster/MON_Bat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/entity/NPC_BigRock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/entity/NPC_BigRock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tile_interactive/IT_DestructibleWall.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/tile_interactive/IT_DestructibleWall.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GAME_V1/tile_interactive/IT_DryTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GAME_V1/tile_interactive/IT_DryTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save.dat" beforeDir="false" afterPath="$PROJECT_DIR$/save.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/SaveLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/SaveLoad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/NPC_BigRock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/NPC_BigRock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/CollisionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CollisionChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tile_interactive/IT_DestructibleWall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tile_interactive/IT_DestructibleWall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environment/Lighting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/Lighting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AssetSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monster/MON_GreenSlime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_GreenSlime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monster/MON_Orc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_Orc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monster/MON_RedSlime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_RedSlime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/OBJ_Lantern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/OBJ_Lantern.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

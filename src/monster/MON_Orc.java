@@ -109,7 +109,7 @@ public class MON_Orc extends Entity {
 //            }
             }
             //get a random direction
-            getRandomDirection();
+            getRandomDirection(100);
         }
         if (!attacking) {
             checkAttackOrNot(30, gp.tileSize * 4, gp.tileSize);
