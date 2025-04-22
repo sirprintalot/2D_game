@@ -136,6 +136,7 @@ public class Player extends Entity {
         inventory.add(new OBJ_Key(gp));
         inventory.add(new OBJ_Key(gp));
         inventory.add(new OBJ_Lantern(gp));
+
     }
 
     public int getAttack() {
@@ -432,14 +433,19 @@ public class Player extends Entity {
             mana = maxMana;
         }
 
-
         // Game Over
-        if (life <= 0) {
-            gp.gameState = gp.gameOverState;
-            gp.stopMusic();
-            gp.playSoundEffect(17);
-            gp.ui.commandNum = -1;
+        if(!keyH.godModeOn){
+            if (life <= 0) {
+                gp.gameState = gp.gameOverState;
+                gp.ui.commandNum = -1;
+                gp.stopMusic();
+                gp.playSoundEffect(17);
+            }
         }
+
+
+
+
 
     }
 

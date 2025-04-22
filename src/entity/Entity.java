@@ -171,8 +171,8 @@ public class Entity {
     public void setAction() {
     }
 
-    public void move(String direction){
-        
+    public void move(String direction) {
+
     }
 
     public String getOppositeDirection(String direction) {
@@ -186,13 +186,21 @@ public class Entity {
         return opDirection;
     }
 
+    // final boss
+    public int getCenterX(){
+        return worldX - left1.getWidth()/2;
+    }
+    public int getCenterY(){
+       return worldY - up1.getHeight()/2;
+    }
+
     public int getXdistance(Entity target) {
-        int xDistance = Math.abs(worldX - target.worldX);
+        int xDistance = Math.abs(getCenterX() - target.getCenterX());
         return xDistance;
     }
 
     public int getYdistance(Entity target) {
-        int yDistance = Math.abs(worldY - target.worldY);
+        int yDistance = Math.abs(getCenterY() - target.getCenterY());
         return yDistance;
     }
 
@@ -235,21 +243,22 @@ public class Entity {
         return (worldX + solidArea.x) / gp.tileSize;
     }
 
-    public void resetCounter(){
-         spriteCounter = 0;
-         shotAvailableCounter = 0;
-         dyingCounter = 0;
-         hpBarCounter = 0;
-         knockBackCounter = 0;
-         guardCounter = 0;
-         offBalanceCounter = 0;
+    public void resetCounter() {
+        spriteCounter = 0;
+        shotAvailableCounter = 0;
+        dyingCounter = 0;
+        hpBarCounter = 0;
+        knockBackCounter = 0;
+        guardCounter = 0;
+        offBalanceCounter = 0;
     }
 
     public boolean useItem(Entity entity) {
         return false;
     }
 
-    public void setLoot(Entity loot){}
+    public void setLoot(Entity loot) {
+    }
 
     public void damageReaction() {
     }
@@ -269,10 +278,11 @@ public class Entity {
         }
     }
 
-    public void speak() {}
+    public void speak() {
+    }
 
     // npc always facing the player
-    public void facePlayer(){
+    public void facePlayer() {
         //turn the npc facing the player when a dialogue occurs
         switch (gp.player.direction) {
             case "up" -> direction = "down";
@@ -282,12 +292,11 @@ public class Entity {
         }
     }
 
-    public void startDialogue(Entity entity, int setNum){
+    public void startDialogue(Entity entity, int setNum) {
         gp.gameState = gp.dialogueState;
         gp.ui.npc = entity;
         dialogueSet = setNum;
     }
-
 
 
     //Interact with objects
@@ -476,21 +485,21 @@ public class Entity {
 
         switch (direction) {
             case "up":
-                if (gp.player.worldY < worldY && yDistance < straight && xDistance < horizontal) {
+                if (gp.player.getCenterY() < getCenterY() && yDistance < straight && xDistance < horizontal) {
                     targetInrange = true;
                 }
             case "down":
-                if (gp.player.worldY > worldY && yDistance < straight && xDistance < horizontal) {
+                if (gp.player.getCenterY() > getCenterY() && yDistance < straight && xDistance < horizontal) {
                     targetInrange = true;
                 }
 
             case "left":
-                if (gp.player.worldX < worldX && xDistance < straight && yDistance < horizontal) {
+                if (gp.player.getCenterX() < getCenterX() && xDistance < straight && yDistance < horizontal) {
                     targetInrange = true;
                 }
 
             case "right":
-                if (gp.player.worldX > worldX && xDistance < straight && yDistance < horizontal) {
+                if (gp.player.getCenterX() > getCenterX() && xDistance < straight && yDistance < horizontal) {
                     targetInrange = true;
                 }
 
@@ -650,9 +659,9 @@ public class Entity {
     }
 
     public boolean isOnScreen() {
-        return worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
+        return worldX + gp.tileSize * 5 > gp.player.worldX - gp.player.screenX &&
                 worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
+                worldY + gp.tileSize * 5 > gp.player.worldY - gp.player.screenY &&
                 worldY - gp.tileSize < gp.player.worldY + gp.player.screenY;
     }
 
@@ -681,7 +690,7 @@ public class Entity {
                         }
                     }
                     if (attacking) {
-                        tempScreenY = screenY - gp.tileSize;
+                        tempScreenY = screenY - up1.getHeight();  // for all size entities
                         if (spriteNum == 1) {
                             image = attackUp1;
                         }
@@ -718,7 +727,7 @@ public class Entity {
                         }
                     }
                     if (attacking) {
-                        tempScreenX = screenX - gp.tileSize;
+                        tempScreenX = screenX - left1.getWidth();  // for all size entities
                         if (spriteNum == 1) {
                             image = attackLeft1;
                         }
@@ -783,7 +792,7 @@ public class Entity {
 
             //draw solid area
             //g2.setColor(Color.BLUE);
-           // g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+            // g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
         }
     }
 
