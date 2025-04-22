@@ -119,6 +119,9 @@ public class Entity {
     // dungeon puzzle
     public Entity linkedEntity;
 
+    // Final boss
+    public boolean inRage = false;
+
     //Objects
     public final int typeSword = 3;
     public final int typeAxe = 4;
@@ -187,11 +190,12 @@ public class Entity {
     }
 
     // final boss
-    public int getCenterX(){
-        return worldX - left1.getWidth()/2;
+    public int getCenterX() {
+        return worldX - left1.getWidth() / 2;
     }
-    public int getCenterY(){
-       return worldY - up1.getHeight()/2;
+
+    public int getCenterY() {
+        return worldY - up1.getHeight() / 2;
     }
 
     public int getXdistance(Entity target) {
@@ -519,7 +523,7 @@ public class Entity {
     public void getRandomDirection(int interval) {
         actionLockCounter++;
 
-        if (actionLockCounter == interval) {
+        if (actionLockCounter > interval) {
 
             Random rand = new Random();
             int i = rand.nextInt(100) + 1;
@@ -646,6 +650,30 @@ public class Entity {
 
             gp.player.life -= damage;
             gp.player.invincible = true;
+        }
+    }
+
+    public void moveTowardPlayer(int interval) {
+
+        actionLockCounter++;
+
+        if (actionLockCounter > interval) {
+            if (getXdistance(gp.player) > getYdistance(gp.player)) {
+                if (gp.player.getCenterX() < getCenterX()) {
+                    direction = "left";
+                } else {
+                    direction = "right";
+                }
+
+            } else if (getXdistance(gp.player) < getYdistance(gp.player)) {
+                if (gp.player.getCenterY() < getCenterY()) {
+                    direction = "up";
+                } else {
+                    direction = "down";
+                }
+
+            }
+            actionLockCounter = 0;
         }
     }
 

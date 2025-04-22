@@ -17,7 +17,7 @@ public class MON_SkeletonLord extends Entity {
 
         type = typeMonster;
         name = monName;
-        defaultSpeed = 2;
+        defaultSpeed = 4;
         speed = defaultSpeed;
         maxLife = 50;
         life = maxLife;
@@ -25,7 +25,7 @@ public class MON_SkeletonLord extends Entity {
 
         attack = 10;
         defense = 4;
-        exp = 50;
+        exp = 80;
 
         //attack sprites duration
         motion1_duration = 25;
@@ -53,33 +53,72 @@ public class MON_SkeletonLord extends Entity {
 
         int scale = 5;
 
-        up1 = setup("/monster/skeletonlord_attack_up_1", gp.tileSize * scale, gp.tileSize * scale);
-        up2 = setup("/monster/skeletonlord_attack_up_2", gp.tileSize * scale, gp.tileSize * scale);
+        if(!inRage){
 
-        down1 = setup("/monster/skeletonlord_attack_down_1", gp.tileSize * scale, gp.tileSize * scale);
-        down2 = setup("/monster/skeletonlord_attack_down_2", gp.tileSize * scale, gp.tileSize * scale);
+            up1 = setup("/monster/skeletonlord_up_1", gp.tileSize * scale, gp.tileSize * scale);
+            up2 = setup("/monster/skeletonlord_up_2", gp.tileSize * scale, gp.tileSize * scale);
 
-        left1 = setup("/monster/skeletonlord_attack_left_1", gp.tileSize * scale, gp.tileSize * scale);
-        left2 = setup("/monster/skeletonlord_attack_left_2", gp.tileSize * scale, gp.tileSize * scale);
+            down1 = setup("/monster/skeletonlord_down_1", gp.tileSize * scale, gp.tileSize * scale);
+            down2 = setup("/monster/skeletonlord_down_2", gp.tileSize * scale, gp.tileSize * scale);
 
-        right1 = setup("/monster/skeletonlord_attack_right_1", gp.tileSize * scale, gp.tileSize * scale);
-        right2 = setup("/monster/skeletonlord_attack_right_2", gp.tileSize * scale, gp.tileSize * scale);
+            left1 = setup("/monster/skeletonlord_left_1", gp.tileSize * scale, gp.tileSize * scale);
+            left2 = setup("/monster/skeletonlord_left_2", gp.tileSize * scale, gp.tileSize * scale);
+
+            right1 = setup("/monster/skeletonlord_right_1", gp.tileSize * scale, gp.tileSize * scale);
+            right2 = setup("/monster/skeletonlord_right_2", gp.tileSize * scale, gp.tileSize * scale);
+        }
+        if(inRage){
+            up1 = setup("/monster/skeletonlord_phase2_up_1", gp.tileSize * scale, gp.tileSize * scale);
+            up2 = setup("/monster/skeletonlord_phase2_up_2", gp.tileSize * scale, gp.tileSize * scale);
+
+            down1 = setup("/monster/skeletonlord_phase2_down_1", gp.tileSize * scale, gp.tileSize * scale);
+            down2 = setup("/monster/skeletonlord_phase2_down_2", gp.tileSize * scale, gp.tileSize * scale);
+
+            left1 = setup("/monster/skeletonlord_phase2_left_1", gp.tileSize * scale, gp.tileSize * scale);
+            left2 = setup("/monster/skeletonlord_phase2_left_2", gp.tileSize * scale, gp.tileSize * scale);
+
+            right1 = setup("/monster/skeletonlord_phase2_right_1", gp.tileSize * scale, gp.tileSize * scale);
+            right2 = setup("/monster/skeletonlord_phase2_right_2", gp.tileSize * scale, gp.tileSize * scale);
+        }
+
 
     }
 
     public void getAttackImage() {
         int scale = 5;
-        attackUp1 = setup("/monster/skeletonlord_attack_up_1", gp.tileSize * scale, gp.tileSize * scale * 2);
-        attackUp2 = setup("/monster/skeletonlord_attack_up_2", gp.tileSize * scale, gp.tileSize * scale * 2);
+        if(!inRage){
+            attackUp1 = setup("/monster/skeletonlord_attack_up_1", gp.tileSize * scale, gp.tileSize * scale * 2);
+            attackUp2 = setup("/monster/skeletonlord_attack_up_2", gp.tileSize * scale, gp.tileSize * scale * 2);
 
-        attackDown1 = setup("/monster/skeletonlord_attack_down_1", gp.tileSize * scale, gp.tileSize * scale * 2);
-        attackDown2 = setup("/monster/skeletonlord_attack_down_2", gp.tileSize * scale, gp.tileSize * scale * 2);
+            attackDown1 = setup("/monster/skeletonlord_attack_down_1", gp.tileSize * scale, gp.tileSize * scale * 2);
+            attackDown2 = setup("/monster/skeletonlord_attack_down_2", gp.tileSize * scale, gp.tileSize * scale * 2);
 
-        attackLeft1 = setup("/monster/skeletonlord_attack_left_1", gp.tileSize * scale * 2, gp.tileSize * scale);
-        attackLeft2 = setup("/monster/skeletonlord_attack_left_2", gp.tileSize * scale * 2, gp.tileSize * scale);
+            attackLeft1 = setup("/monster/skeletonlord_attack_left_1", gp.tileSize * scale * 2, gp.tileSize * scale);
+            attackLeft2 = setup("/monster/skeletonlord_attack_left_2", gp.tileSize * scale * 2, gp.tileSize * scale);
 
-        attackRight1 = setup("/monster/skeletonlord_attack_right_1", gp.tileSize * scale * 2, gp.tileSize * scale);
-        attackRight2 = setup("/monster/skeletonlord_attack_right_2", gp.tileSize * scale * 2, gp.tileSize * scale);
+            attackRight1 = setup("/monster/skeletonlord_attack_right_1", gp.tileSize * scale * 2, gp.tileSize * scale);
+            attackRight2 = setup("/monster/skeletonlord_attack_right_2", gp.tileSize * scale * 2, gp.tileSize * scale);
+        }
+        if(inRage){
+            attackUp1 = setup("/monster/skeletonlord_phase2_attack_up_1", gp.tileSize * scale, gp.tileSize * scale * 2);
+            attackUp2 = setup("/monster/skeletonlord_phase2_attack_up_2", gp.tileSize * scale, gp.tileSize * scale * 2);
+
+            attackDown1 = setup("/monster/skeletonlord_phase2_attack_down_1", gp.tileSize * scale,
+                    gp.tileSize * scale * 2);
+            attackDown2 = setup("/monster/skeletonlord_phase2_attack_down_2", gp.tileSize * scale,
+                    gp.tileSize * scale * 2);
+
+            attackLeft1 = setup("/monster/skeletonlord_phase2_attack_left_1", gp.tileSize * scale * 2,
+                    gp.tileSize * scale);
+            attackLeft2 = setup("/monster/skeletonlord_phase2_attack_left_2", gp.tileSize * scale * 2,
+                    gp.tileSize * scale);
+
+            attackRight1 = setup("/monster/skeletonlord_phase2_attack_right_1", gp.tileSize * scale * 2,
+                    gp.tileSize * scale);
+            attackRight2 = setup("/monster/skeletonlord_phase2_attack_right_2", gp.tileSize * scale * 2,
+                    gp.tileSize * scale);
+        }
+
     }
 
     // case 3 NPC getting aggro at certain distance
@@ -88,22 +127,34 @@ public class MON_SkeletonLord extends Entity {
     }
 
     public void setAction() {
+        if(!inRage && life < maxLife/2){
+            inRage = true;
+            getImage();
+            getAttackImage();
+            gp.playSoundEffect(13);
+            defaultSpeed += 2;
+            speed = defaultSpeed;
+            defense = 7;
+            
+            
+        }
 
-        if (onPath) {
-
+        if (getTileDistance(gp.player) < 10) {
+            System.out.println("Move toward player " + direction );
+             moveTowardPlayer(30);
 
         } else {
-            getRandomDirection(100);
+            getRandomDirection(120);
         }
         if (!attacking) {
-            checkAttackOrNot(60, gp.tileSize * 10, gp.tileSize * 5);
+            checkAttackOrNot(60, gp.tileSize * 7, gp.tileSize * 5);
         }
     }
 
     public void damageReaction() {
 
         actionLockCounter = 0;
-        direction = getOppositeDirection(gp.player.direction);
+//        direction = getOppositeDirection(gp.player.direction); 
 
     }
 

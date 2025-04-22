@@ -8,47 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386db496-e533-4c11-89ba-e5f09e407936" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_attack_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_attack_down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_attack_left_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_attack_left_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_attack_right_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_attack_right_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_attack_up_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_attack_up_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_left_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_left_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_attack_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_attack_down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_attack_left_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_attack_left_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_attack_right_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_attack_right_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_attack_up_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_attack_up_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_left_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_left_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_right_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_right_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_up_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_phase2_up_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_right_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_right_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_up_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/monster/skeletonlord_up_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/monster/MON_SkeletonLord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environment/EnvironmentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/environment/EnvironmentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AssetSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetSetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/KeyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monster/MON_SkeletonLord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monster/MON_SkeletonLord.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -69,7 +69,7 @@ public class Player extends Entity {
 //        projectile = new OBJ_Rock(gp);
         // Player stats
         level = 1;
-        strength = 3; // the more strength more damage
+        strength = 6; // the more strength more damage
         dexterity = 1; // more dexterity, more chances to block attacks
         exp = 1;
         nextLevelExp = 5;

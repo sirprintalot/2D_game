@@ -19,7 +19,7 @@ public class Main {
         GamePanel gamePanel = new GamePanel();
 
         //add game panel to window
-        window.add(gamePanel);
+        window.add(gamePanel);              
 
         // Load configurations                        
         gamePanel.config.loadConfig();
