@@ -62,14 +62,14 @@ public class Player extends Entity {
 //        worldY = gp.tileSize * 39;
 
         //PLAYER STATUS
-        maxLife = 10;
+        maxLife = 22;
         life = maxLife;
         //projectile
         projectile = new OBJ_Fireball(gp);
 //        projectile = new OBJ_Rock(gp);
         // Player stats
         level = 1;
-        strength = 6; // the more strength more damage
+        strength = 2; // the more strength more damage
         dexterity = 1; // more dexterity, more chances to block attacks
         exp = 1;
         nextLevelExp = 5;

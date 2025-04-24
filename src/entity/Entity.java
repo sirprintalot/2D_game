@@ -92,7 +92,7 @@ public class Entity {
     public int ammount = 1;
 
     // HP bar on monsters
-    boolean hpBarOn = false;
+    public boolean hpBarOn = false;
 
     // CHARACTER DAMAGE MANAGE
     public boolean invincible = false;
@@ -121,6 +121,7 @@ public class Entity {
 
     // Final boss
     public boolean inRage = false;
+    public boolean boss;
 
     //Objects
     public final int typeSword = 3;
@@ -147,7 +148,7 @@ public class Entity {
     public int actionLockCounter = 0;
     public int dyingCounter = 0;
 
-    int hpBarCounter = 0;
+    public int hpBarCounter = 0;
 
     //Super object attributes
     public BufferedImage image, image2, image3;
@@ -196,6 +197,14 @@ public class Entity {
 
     public int getCenterY() {
         return worldY - up1.getHeight() / 2;
+    }
+
+    public int getScreenX(){
+        return worldX - gp.player.worldX + gp.player.screenX;
+    }
+
+    public int getScreenY(){
+         return worldY - gp.player.worldY + gp.player.screenY;
     }
 
     public int getXdistance(Entity target) {
@@ -697,14 +706,14 @@ public class Entity {
 
         BufferedImage image = null;
 
-        int screenX = worldX - gp.player.worldX + gp.player.screenX;
-        int screenY = worldY - gp.player.worldY + gp.player.screenY;
+//        int screenX = worldX - gp.player.worldX + gp.player.screenX;
+//        int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
         //change for a boolean method
         if (isOnScreen()) {
 
-            int tempScreenX = screenX;
-            int tempScreenY = screenY;
+            int tempScreenX = getScreenX();
+            int tempScreenY = getScreenY();
 
             switch (direction) {
 
@@ -718,7 +727,7 @@ public class Entity {
                         }
                     }
                     if (attacking) {
-                        tempScreenY = screenY - up1.getHeight();  // for all size entities
+                        tempScreenY = getScreenX() - up1.getHeight();  // for all size entities
                         if (spriteNum == 1) {
                             image = attackUp1;
                         }
@@ -755,7 +764,7 @@ public class Entity {
                         }
                     }
                     if (attacking) {
-                        tempScreenX = screenX - left1.getWidth();  // for all size entities
+                        tempScreenX = getScreenX() - left1.getWidth();  // for all size entities
                         if (spriteNum == 1) {
                             image = attackLeft1;
                         }
@@ -782,26 +791,6 @@ public class Entity {
                         }
                     }
 
-                }
-            }
-            // Monster's health bar
-            if (type == 2 && hpBarOn) {
-                // Calculate the remaining life
-                double oneScale = (double) gp.tileSize / maxLife;
-                double hpBarValue = oneScale * life;
-
-                //border
-                g2.setColor(Color.BLACK);
-                g2.fillRect(screenX - 3, screenY - 6, gp.tileSize + 5, 15);
-                // fill
-                g2.setColor(new Color(255, 0, 90));
-                g2.fillRect(screenX, screenY - 4, (int) hpBarValue, 10);
-
-                hpBarCounter++;
-
-                if (hpBarCounter > 600) {
-                    hpBarCounter = 0;
-                    hpBarOn = false;
                 }
             }
 

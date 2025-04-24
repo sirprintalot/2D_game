@@ -17,9 +17,10 @@ public class MON_SkeletonLord extends Entity {
 
         type = typeMonster;
         name = monName;
-        defaultSpeed = 4;
+        boss = true;
+        defaultSpeed = 1;
         speed = defaultSpeed;
-        maxLife = 50;
+        maxLife = 80;
         life = maxLife;
         knockBackPower = 7;
 
@@ -28,8 +29,8 @@ public class MON_SkeletonLord extends Entity {
         exp = 80;
 
         //attack sprites duration
-        motion1_duration = 25;
-        motion2_duration = 50;
+        motion1_duration = 15;
+        motion2_duration = 35;
 
         //solid area
 
@@ -132,29 +133,29 @@ public class MON_SkeletonLord extends Entity {
             getImage();
             getAttackImage();
             gp.playSoundEffect(13);
-            defaultSpeed += 2;
+            defaultSpeed += 5;
             speed = defaultSpeed;
-            defense = 7;
+            defense += 10;
             
             
         }
 
-        if (getTileDistance(gp.player) < 10) {
-            System.out.println("Move toward player " + direction );
-             moveTowardPlayer(30);
+        if (getTileDistance(gp.player) < 16) {
+            System.out.println("Move toward player " + direction + " " + getTileDistance(gp.player) );
+             moveTowardPlayer(40);
 
         } else {
-            getRandomDirection(120);
+            getRandomDirection(80);
         }
         if (!attacking) {
-            checkAttackOrNot(60, gp.tileSize * 7, gp.tileSize * 5);
+            checkAttackOrNot(80, gp.tileSize * 7, gp.tileSize * 5);
         }
     }
 
     public void damageReaction() {
 
         actionLockCounter = 0;
-//        direction = getOppositeDirection(gp.player.direction); 
+        direction = getOppositeDirection(gp.player.direction);
 
     }
 

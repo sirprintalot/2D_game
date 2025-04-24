@@ -16,7 +16,7 @@ public class Main {
         window.setTitle("2D game");
 
         //game panel
-        GamePanel gamePanel = new GamePanel();
+        GamePanel gamePanel = new GamePanel();  
 
         //add game panel to window
         window.add(gamePanel);              
