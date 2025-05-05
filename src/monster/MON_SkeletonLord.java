@@ -1,5 +1,6 @@
 package monster;
 
+import data.*;
 import entity.*;
 import main.*;
 import objects.*;
@@ -18,15 +19,16 @@ public class MON_SkeletonLord extends Entity {
         type = typeMonster;
         name = monName;
         boss = true;
+        sleep = true;
         defaultSpeed = 1;
         speed = defaultSpeed;
-        maxLife = 80;
+        maxLife = 14;
         life = maxLife;
         knockBackPower = 7;
 
         attack = 10;
         defense = 4;
-        exp = 80;
+        exp = 120;
 
         //attack sprites duration
         motion1_duration = 15;
@@ -47,6 +49,7 @@ public class MON_SkeletonLord extends Entity {
 
         getImage();
         getAttackImage();
+        setDialogue();
 
     }
 
@@ -152,6 +155,12 @@ public class MON_SkeletonLord extends Entity {
         }
     }
 
+    public void setDialogue(){
+        dialogues[0][0] = "Who dare to disturb me?";
+        dialogues[0][1] = "No one can steal my treasure!!";
+        dialogues[0][2] = "this will be your grave!";
+    }
+
     public void damageReaction() {
 
         actionLockCounter = 0;
@@ -161,20 +170,38 @@ public class MON_SkeletonLord extends Entity {
 
     public void checkItemDrop() {
 
+           gp.bossBattleOn = false;
+        Progress.skeletonLordDefeated = true;
+
+           //Restore the previous music
+        gp.stopMusic();
+        gp.playMusic(23);
+
+        //search the iron door to eliminate it
+        for(int i = 0; i < gp.obj[1].length; i++){
+            if(gp.obj[gp.currentMap][i] != null && gp.obj[gp.currentMap][i].name.equals(OBJ_IronDoor.objName)){
+                gp.playSoundEffect(26);
+                gp.obj[gp.currentMap][i] = null;
+            }
+        }
+
+          dropItem(new OBJ_Shield_blue(gp));
+
+
         //pick a random number
-        int i = new Random().nextInt(100) + 1;
-
-        //set the monster drop
-        if (i < 50) {
-            dropItem(new OBJ_BronzeCoin(gp));
-        }
-        if (i >= 50 && i < 75) {
-            dropItem(new OBJ_Heart(gp));
-        }
-        if (i >= 75 && i < 100) {
-
-            dropItem(new OBJ_manaCrystal(gp));
-        }
+//        int i = new Random().nextInt(100) + 1;
+//
+//        //set the monster drop
+//        if (i < 50) {
+//            dropItem(new OBJ_BronzeCoin(gp));
+//        }
+//        if (i >= 50 && i < 75) {
+//            dropItem(new OBJ_Heart(gp));
+//        }
+//        if (i >= 75 && i < 100) {
+//
+//            dropItem(new OBJ_manaCrystal(gp));
+//        }
 
     }
 }

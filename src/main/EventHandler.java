@@ -1,6 +1,7 @@
 package main;
 
 
+import data.*;
 import entity.*;
 
 public class EventHandler {
@@ -64,11 +65,9 @@ public class EventHandler {
         //is it's more than a tile the event can happen again
         int xDistance = Math.abs(gp.player.worldX - previousEventX);
         int yDistance = Math.abs(gp.player.worldY - previousEventY);
-
         int distance = Math.max(xDistance, yDistance);
 
         if (distance > gp.tileSize) {
-
             canTouchEvent = true;
         }
 
@@ -104,11 +103,16 @@ public class EventHandler {
             }
             //get into the dungeon 2
             else if (hit(2,8,7, "any")) {
-                nextMap(3,33, 22, gp.dungeon );
+                nextMap(3,26, 39, gp.dungeon );
             }
             //get out of the dungeon 2
             else if (hit(3,26,40, "any")) {
                 nextMap(2,8, 7, gp.dungeon );
+            }
+
+            //Boss battle
+            else if (hit(3,25,27, "any")) {
+                skeletonLord();
             }
         }
 
@@ -226,6 +230,13 @@ public class EventHandler {
             gp.player.attackCancel = true;
             entity.speak();
         }
+    }
+
+    public void skeletonLord(){
+          if(!gp.bossBattleOn && !Progress.skeletonLordDefeated){
+              gp.gameState = gp.cutSceneState;
+              gp.cutSceneManager.sceneNum = gp.cutSceneManager.skeletonLord; 
+          }
     }
 
 

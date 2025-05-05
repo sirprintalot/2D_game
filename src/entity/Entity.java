@@ -122,6 +122,11 @@ public class Entity {
     // Final boss
     public boolean inRage = false;
     public boolean boss;
+    public boolean sleep = false;
+
+    // Cut scene
+    public boolean temp = false;
+    public boolean drawing = true;
 
     //Objects
     public final int typeSword = 3;
@@ -199,12 +204,12 @@ public class Entity {
         return worldY - up1.getHeight() / 2;
     }
 
-    public int getScreenX(){
+    public int getScreenX() {
         return worldX - gp.player.worldX + gp.player.screenX;
     }
 
-    public int getScreenY(){
-         return worldY - gp.player.worldY + gp.player.screenY;
+    public int getScreenY() {
+        return worldY - gp.player.worldY + gp.player.screenY;
     }
 
     public int getXdistance(Entity target) {
@@ -386,74 +391,80 @@ public class Entity {
     // UPDATE
     public void update() {
 
-        if (knockBack) {
-            checkCollision();
-            if (collisionOn) {
-                knockBackCounter = 0;
-                knockBack = false;
-                speed = defaultSpeed;
+        if (!sleep) {
+            if (knockBack) {
+                checkCollision();
+                if (collisionOn) {
+                    knockBackCounter = 0;
+                    knockBack = false;
+                    speed = defaultSpeed;
+                } else {
+                    switch (knockBackDirection) {
+                        case "up" -> worldY -= speed;
+                        case "down" -> worldY += speed;
+                        case "left" -> worldX -= speed;
+                        case "right" -> worldX += speed;
+                    }
+                }
+                knockBackCounter++;
+                if (knockBackCounter == 10) {
+                    knockBackCounter = 0;
+                    knockBack = false;
+                    speed = defaultSpeed;
+                }
+            } else if (attacking) {
+                attack();
             } else {
-                switch (knockBackDirection) {
-                    case "up" -> worldY -= speed;
-                    case "down" -> worldY += speed;
-                    case "left" -> worldX -= speed;
-                    case "right" -> worldX += speed;
+                setAction();
+                checkCollision();
+                //for the movement we copy the player's movement
+                // if collision is false player can move
+                if (!collisionOn) {
+                    switch (direction) {
+                        case "up" -> worldY -= speed;
+                        case "down" -> worldY += speed;
+                        case "left" -> worldX -= speed;
+                        case "right" -> worldX += speed;
+                    }
                 }
-            }
-            knockBackCounter++;
-            if (knockBackCounter == 10) {
-                knockBackCounter = 0;
-                knockBack = false;
-                speed = defaultSpeed;
-            }
-        } else if (attacking) {
-            attack();
-        } else {
-            setAction();
-            checkCollision();
-            //for the movement we copy the player's movement
-            // if collision is false player can move
-            if (!collisionOn) {
-                switch (direction) {
-                    case "up" -> worldY -= speed;
-                    case "down" -> worldY += speed;
-                    case "left" -> worldX -= speed;
-                    case "right" -> worldX += speed;
+
+                spriteCounter++;
+                if (spriteCounter > animationSpeed) {
+                    if (spriteNum == 1) {
+                        spriteNum = 2;
+                    } else if (spriteNum == 2) {
+                        spriteNum = 1;
+                    }
+                    spriteCounter = 0;
                 }
             }
 
-            spriteCounter++;
-            if (spriteCounter > animationSpeed) {
-                if (spriteNum == 1) {
-                    spriteNum = 2;
-                } else if (spriteNum == 2) {
-                    spriteNum = 1;
+            if (invincible) {
+                invincibleCounter++;
+                if (invincibleCounter > 40) {
+                    invincible = false;
+                    invincibleCounter = 0;
                 }
-                spriteCounter = 0;
             }
+
+            // Timer for the next shoot
+            if (shotAvailableCounter < 30) {
+                shotAvailableCounter++;
+            }
+
+            //parry/guard
+            if (offBalance) {
+                offBalanceCounter++;
+                if (offBalanceCounter > 60) {
+                    offBalance = false;
+                    offBalanceCounter = 0;
+                }
+            }
+
         }
 
-        if (invincible) {
-            invincibleCounter++;
-            if (invincibleCounter > 40) {
-                invincible = false;
-                invincibleCounter = 0;
-            }
-        }
+        
 
-        // Timer for the next shoot
-        if (shotAvailableCounter < 30) {
-            shotAvailableCounter++;
-        }
-
-        //parry/guard
-        if (offBalance) {
-            offBalanceCounter++;
-            if (offBalanceCounter > 60) {
-                offBalance = false;
-                offBalanceCounter = 0;
-            }
-        }
 
     }
 

@@ -141,12 +141,15 @@ public class AssetSetter {
         gp.obj[mapNum][objIndex].setLoot(new OBJ_Potion_Red(gp));
         gp.obj[mapNum][objIndex].worldX = 27 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 15 * gp.tileSize;
-        objIndex++;
 
-//        gp.obj[mapNum][objIndex] = new OBJ_IronDoor(gp);
-//        gp.obj[mapNum][objIndex].worldX = 18 * gp.tileSize;
-//        gp.obj[mapNum][objIndex].worldY = 23 * gp.tileSize;
-//        objIndex++;
+        // boss battle upper door
+        mapNum = 3;
+        objIndex = 0;
+        gp.obj[mapNum][objIndex] = new OBJ_IronDoor(gp);
+        gp.obj[mapNum][objIndex].worldX = 25 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 15 * gp.tileSize;
+
+
 
     }
 

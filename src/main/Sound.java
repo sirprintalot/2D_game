@@ -43,6 +43,9 @@ public class Sound {
 
         soundURL[26] = getClass().getResource("/sounds/unlock.wav");
 
+        soundURL[27] = getClass().getResource("/sounds/FinalBattle.wav");
+
+
     }
 
 

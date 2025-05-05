@@ -56,6 +56,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public EntityGenerator entityGenerator = new EntityGenerator(this);
 
+    //cut scene
+    public CutSceneManager cutSceneManager = new CutSceneManager(this);
+
 
     //lightning
     public EnvironmentManager eManager = new EnvironmentManager(this);
@@ -117,6 +120,11 @@ public class GamePanel extends JPanel implements Runnable {
     public final int tradeState = 8;
     public final int sleepState = 9;
     public final int mapState = 10;
+    public final int cutSceneState = 11;
+
+    //cut Scene
+    public boolean bossBattleOn = false;
+
 
     // Game areas
     public int currentArea;
@@ -182,6 +190,9 @@ public class GamePanel extends JPanel implements Runnable {
 
         //for dungeon
         currentArea = dungeon;
+
+        removeTempEntity();
+        bossBattleOn = false;
         player.setDefaultPosition();
         player.restorePlayerStats();
         player.resetCounter();
@@ -384,6 +395,9 @@ public class GamePanel extends JPanel implements Runnable {
             // minimap
             map.drawMiniMap(g2);
 
+            // Cut scene
+            cutSceneManager.draw(g2);
+
             //UI must be at last or other displayed items will appear in front of the UI
             ui.draw(g2);
 
@@ -581,6 +595,21 @@ public class GamePanel extends JPanel implements Runnable {
         currentArea = nextArea;
         assetSetter.setMonster();
     }
+
+    // Cut scene
+    public void removeTempEntity(){
+        for(int mapnum = 0; mapnum < maxMap; mapnum++){
+            for(int i = 0; i < obj[1].length; i++){
+                if(obj[currentMap][i] != null && obj[currentMap][i].temp){
+                    obj[currentMap][i] = null;
+                    
+                }
+            }
+        }
+    }
+
+
+
 
     //SOUND 
     public void playMusic(int songIndex) {
