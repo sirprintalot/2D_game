@@ -185,6 +185,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void resetGame(boolean restart) {
 
+
+        stopMusic();
         //for world map1
 //        currentArea = outside;
 
@@ -199,7 +201,7 @@ public class GamePanel extends JPanel implements Runnable {
         assetSetter.setNpc();
         assetSetter.setMonster();
 
-        playMusic(0);
+//        playMusic(0);
 
         if (restart) {
             player.setDefaultValues();

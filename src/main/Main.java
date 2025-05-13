@@ -2,7 +2,8 @@ package main;
 
 
 import javax.swing.*;
-                                       
+import java.util.*;
+
 public class Main {
         
     public static JFrame window;
@@ -14,6 +15,8 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("2D game");
+
+        new Main().setIcon();
 
         //game panel
         GamePanel gamePanel = new GamePanel();  
@@ -38,6 +41,12 @@ public class Main {
 
         //run the game thread
         gamePanel.startGameThread();
+    }
+
+    public void setIcon(){
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("player/boy_down_1.png")));
+
+        window.setIconImage(imageIcon.getImage());
     }
 }
  

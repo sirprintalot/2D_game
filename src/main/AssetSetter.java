@@ -1,6 +1,7 @@
 package main;
 
 
+import data.*;
 import entity.*;
 import monster.*;
 import objects.*;
@@ -148,6 +149,11 @@ public class AssetSetter {
         gp.obj[mapNum][objIndex] = new OBJ_IronDoor(gp);
         gp.obj[mapNum][objIndex].worldX = 25 * gp.tileSize;
         gp.obj[mapNum][objIndex].worldY = 15 * gp.tileSize;
+        objIndex++;
+
+        gp.obj[mapNum][objIndex] = new OBJ_BlueHeart(gp);
+        gp.obj[mapNum][objIndex].worldX = 25 * gp.tileSize;
+        gp.obj[mapNum][objIndex].worldY = 8 * gp.tileSize;
 
 
 
@@ -277,9 +283,14 @@ public class AssetSetter {
 
         mapNum = 3;
         i++;
-        gp.monster[mapNum][i] = new MON_SkeletonLord(gp);
-        gp.monster[mapNum][i].worldX = gp.tileSize * 23;
-        gp.monster[mapNum][i].worldY = gp.tileSize * 16;
+
+        if(!Progress.skeletonLordDefeated){
+            gp.monster[mapNum][i] = new MON_SkeletonLord(gp);
+            gp.monster[mapNum][i].worldX = gp.tileSize * 23;
+            gp.monster[mapNum][i].worldY = gp.tileSize * 16;
+            i++;
+        }
+
 
     }
 
