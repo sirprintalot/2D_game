@@ -12,7 +12,7 @@ public class OBJ_Sword_Normal extends Entity {
         type = typeSword;
         name = objName;
         down1 = setup("/objects/sword_normal", gp.tileSize, gp.tileSize);
-        attackValue = 2;
+        attackValue = 10;
         knockBackPower = 10;
         attackArea.width = 36;
         attackArea.height = 36;

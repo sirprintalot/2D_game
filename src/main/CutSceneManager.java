@@ -16,6 +16,7 @@ public class CutSceneManager {
     public int counter = 0;
     float alpha = 0f;
     int y;
+    String endCredit;
 
     //Scene number
     public final int NA = 0;
@@ -25,6 +26,15 @@ public class CutSceneManager {
 
     public CutSceneManager(GamePanel gp) {
         this.gp = gp;
+
+        endCredit = "Created By: mca\n" +
+                "music by: mca\n" +
+                "\n\n\n\n\n\n\n\n\n\n\n\n\n\n"+
+                "Story by: mca\n"+
+                "Thanks to: \n"+
+                "Thanks to: \n"+
+                "Thanks to: \n"+
+                "Thanks to: \n";
 
     }
 
@@ -136,7 +146,6 @@ public class CutSceneManager {
 
         }
 
-
     }
 
     public void scene_ending() {
@@ -156,23 +165,109 @@ public class CutSceneManager {
         if (scenePhase == 3) {
 
             //wait until the sound effect ends
-            if(counterreached(300)){
+            if (counterReached(300)) {
                 scenePhase++;
             }
         }
-        if(scenePhase == 4){
+        if (scenePhase == 4) {
+            // screen gets darker
+            alpha += 0.005f;
+            if (alpha > 1f) {
+                alpha = 1f;
+            }
+            drawBlackBackground(alpha);
+            if (alpha == 1f) {
+                alpha = 0;
+                scenePhase++;
+            }
+        }
+        if (scenePhase == 5) {
+
+            // draw a black rectangle
+            drawBlackBackground(1f);
+
+            alpha += 0.005f;
+            if (alpha > 1f) {
+                alpha = 1f;
+            }
+
+            String text = "After a fierce battle\n" +
+                    " against the Skeleton Lord;\n" +
+                    "Our hero received the King's emerald,\n" +
+                    "Once part of his family treasure,\n" +
+                    " until it was stolen.\n" +
+                    "Now he can return home...";
+
+            drawString(alpha, 35f, 200, text, 50);
+
+            if (counterReached(600)) {
+
+                gp.playMusic(0);
+                scenePhase++;
+            }
+
+        }
+        if(scenePhase == 6){
+            drawBlackBackground(1f);
+
+            drawString(1f, 120f, gp.screenHeight/2, "Blue boy Adventure", 40);
+
+            if(counterReached(400)){
+                scenePhase++;
+            }
             
+        }
+
+        if(scenePhase == 7){
+            drawBlackBackground(1f);
+            y = gp.screenHeight/2;
+           drawString(1f, 30f, y , endCredit, 40);
+            if(counterReached(350)){
+                scenePhase++;
+            }
+        }
+
+        if(scenePhase == 8){
+            drawBlackBackground(1f);
+            
+            //scroll the credits
+            y--;
+            drawString(1f, 30f, y, endCredit, 40);
         }
     }
 
-    public boolean counterreached(int targetNum) {
+    public void drawString(float alpha, float fontSize, int y, String text, int lineHeight) {
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+        g2.setColor(Color.WHITE);
+
+        g2.setFont(g2.getFont().deriveFont(fontSize));
+
+        for (String line : text.split("\n")) {
+            int x = gp.ui.getXforCenterDisplay(line);
+            g2.drawString(line, x, y);
+            y += lineHeight;
+        }
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+
+    }
+
+    public boolean counterReached(int targetNum) {
         boolean counterReached = false;
         counter++;
-        if (counter > targetNum) {
+        if (counter >= targetNum) {
             counterReached = true;
             counter = 0;
         }
         return counterReached;
     }
 
+    public void drawBlackBackground(float alpha) {
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+        g2.setColor(Color.BLACK);
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        //reset alpha
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+
+
+    }
 }
